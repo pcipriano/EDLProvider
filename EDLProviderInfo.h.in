@@ -1,0 +1,21 @@
+#ifndef EDL_PROVIDER_INFO_H
+#define EDL_PROVIDER_INFO_H
+
+namespace edlprovider
+{
+namespace info
+{
+
+const int @PROJECT_NAME_UPPER@_VERSION_V = ${@PROJECT_NAME_UPPER@_VERSION_V};
+const int @PROJECT_NAME_UPPER@_VERSION_I = ${@PROJECT_NAME_UPPER@_VERSION_I};
+const int @PROJECT_NAME_UPPER@_VERSION_R = ${@PROJECT_NAME_UPPER@_VERSION_R};
+const int @PROJECT_NAME_UPPER@_VERSION_P = ${@PROJECT_NAME_UPPER@_VERSION_P};
+
+const char* const @PROJECT_NAME_UPPER@_VERSION = "${@PROJECT_NAME_UPPER@_VERSION}";
+
+const char* const PROJECT_NAME = "@PROJECT_NAME@";
+
+}
+}
+
+#endif      // EDL_PROVIDER_INFO_H

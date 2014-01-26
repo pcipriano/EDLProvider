@@ -7,6 +7,7 @@ set(HEADERS
         EDLProviderService.h
    )
 
+include_directories(../../Common)
 include_directories(../../Submodules/qt-solutions/qtservice/src)
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})

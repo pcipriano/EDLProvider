@@ -23,6 +23,8 @@ configure_file(
     "${PROJECT_BINARY_DIR}/EDLProviderInfo.h"
   )
 
+option(COMMON_QT "Compile common library with classes depending on Qt." ON)
+
 if(MSVC)
   #Enable multi threaded in Visual Studio
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
@@ -54,6 +56,7 @@ find_package(Doxygen)
 
 #Directories
 add_subdirectory(Core)
+add_subdirectory(Common)
 
 #Include directories
 include(Submodules/qtservice.cmake)

@@ -1,6 +1,10 @@
 #include "EDLProviderService.h"
 
+#include <QDebug>
+
 #include "EDLProviderInfo.h"
+
+#include "LoggerHelper.h"
 
 using namespace edlprovider::core;
 
@@ -15,7 +19,9 @@ EDLProviderService::~EDLProviderService()
 
 void EDLProviderService::start()
 {
+    common::logging::LoggerHelper::instance().setLoggingFile(application()->applicationDirPath() + "/" + "test.log");
 
+    qDebug() << "Test message";
 }
 
 void EDLProviderService::stop()
@@ -34,5 +40,5 @@ void EDLProviderService::createApplication(int& argc, char** argv)
 
 int EDLProviderService::executeApplication()
 {
-    return 0;
+    return QtService::executeApplication();
 }

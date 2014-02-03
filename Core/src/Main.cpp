@@ -1,4 +1,9 @@
+#include "EDLProviderService.h"
+
 int main(int argc, char** argv)
 {
-    return 0;
+    edlprovider::core::EDLProviderService service(argc, argv);
+
+    //Start the service
+    return service.exec();
 }

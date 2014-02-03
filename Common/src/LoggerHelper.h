@@ -19,7 +19,9 @@ public:
     void handleLogMessage(QtMsgType type, const QMessageLogContext& context, const QString& msg);
 
 private:
-    LoggerHelper() = default;
+    LoggerHelper();
+
+    ~LoggerHelper();
 
     friend class util::SingletonHelper<LoggerHelper>;
 

@@ -1,3 +1,6 @@
 [submodule "Submodules/qt-solutions"]
 	path = Submodules/qt-solutions
 	url = git://gitorious.org/qt-solutions/qt-solutions.git
+[submodule "Submodules/easyloggingpp"]
+	path = Submodules/easyloggingpp
+	url = https://github.com/easylogging/easyloggingpp.git

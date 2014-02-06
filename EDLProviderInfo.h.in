@@ -15,6 +15,8 @@ const char* const @PROJECT_NAME_UPPER@_VERSION = "${@PROJECT_NAME_UPPER@_VERSION
 const char* const PROJECT_NAME = "@PROJECT_NAME@";
 const char* const PROJECT_USER_NAME = "@PROJECT_USER_NAME@";
 
+const char* const PROJECT_LOG_FILE_CONFIG = "@LOG_CONFIG_FILE_NAME@";
+
 }
 }
 

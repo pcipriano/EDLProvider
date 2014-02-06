@@ -26,7 +26,6 @@ configure_file(
 option(COMMON_QT "Compile common library with classes depending on Qt." ON)
 
 if(MSVC)
-  #Enable multi threaded in Visual Studio
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
   if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
     string(REGEX REPLACE "/W[0-4]" "/W3" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
@@ -36,6 +35,10 @@ if(MSVC)
 elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -static-libstdc++ -Wall -Wno-long-long -pedantic -Werror")
 endif()
+
+#Logging defines
+add_definitions(-D_ELPP_THREAD_SAFE -D_ELPP_STACKTRACE_ON_CRASH -D_ELPP_STL_LOGGING -D_ELPP_QT_LOGGING)
+set(LOG_CONFIG_FILE_NAME "logger.conf")
 
 #Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -54,12 +57,13 @@ find_package(Qt5Test QUIET REQUIRED)
 #Doxygen
 find_package(Doxygen)
 
+#Extra includes
+include(Macros.cmake)
+include(Submodules/qtservice.cmake)
+
 #Directories
 add_subdirectory(Core)
 add_subdirectory(Common)
-
-#Include directories
-include(Submodules/qtservice.cmake)
 
 #Specify output directories
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${${PROJECT_NAME}_BINARY_DIR}/bin")

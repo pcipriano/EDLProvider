@@ -1,4 +1,8 @@
+#include "easylogging++.h"
+
 #include "EDLProviderService.h"
+
+_INITIALIZE_EASYLOGGINGPP       //Initialize logging
 
 int main(int argc, char** argv)
 {

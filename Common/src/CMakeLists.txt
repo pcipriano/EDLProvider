@@ -1,10 +1,10 @@
 if(COMMON_QT)
     set(SOURCES_QT_DEPENDS
-            LoggerHelper.cpp
+            PathAppender.cpp
         )
 
     set(HEADERS_QT_DEPENDS
-            LoggerHelper.h
+            PathAppender.h
         )
 endif()
 

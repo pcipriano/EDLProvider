@@ -17,6 +17,8 @@ public:
 
     ~EDLProviderService();
 
+    bool setUp();
+
 protected:
     virtual void start() override;
 

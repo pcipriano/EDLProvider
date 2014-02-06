@@ -1,15 +1,15 @@
 if(COMMON_QT)
     set(SOURCES_QT_DEPENDS
             PathAppender.cpp
-        )
+       )
 
     set(HEADERS_QT_DEPENDS
             PathAppender.h
-        )
+       )
 endif()
 
 set(SOURCES
-    )
+   )
 
 set(HEADERS
         Uncopyable.h

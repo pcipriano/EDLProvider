@@ -18,12 +18,12 @@ private Q_SLOTS:
     void initTestCase_data();
 
     void combineTest();
+
+    void operatorTest();
 };
 
 }
 }
 }
-
-DECLARE_TEST(common::util::tests::PathAppenderTest)
 
 #endif // COMMON_TESTS_PATHAPPENDERTEST_H

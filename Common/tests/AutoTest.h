@@ -1,5 +1,5 @@
-#ifndef COMMON_TESTS_AUTOTEST_H
-#define COMMON_TESTS_AUTOTEST_H
+#ifndef AUTOTEST_H
+#define AUTOTEST_H
 
 #include <QTest>
 #include <QList>
@@ -75,7 +75,7 @@ public:
 #define TEST_MAIN \
     int main(int argc, char** argv) \
     { \
-    return AutoTest::run(argc, argv); \
+        return AutoTest::run(argc, argv); \
     }
 
-#endif // COMMON_TESTS_AUTOTEST_H
+#endif // AUTOTEST_H

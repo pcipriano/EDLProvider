@@ -21,11 +21,6 @@ PathAppender::PathAppender(const QString& path1, const QString path2)
 
 PathAppender& PathAppender::operator<<(const QString& path)
 {
-    return operator+(path);
-}
-
-PathAppender& PathAppender::operator+(const QString& path)
-{
     path_ = combine(path_, path);
     return *this;
 }

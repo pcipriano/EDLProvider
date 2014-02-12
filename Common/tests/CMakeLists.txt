@@ -1,10 +1,12 @@
 set(SOURCES
         Main.cpp
+        PimplTest.cpp
         PathAppenderTest.cpp
    )
 
 set(HEADERS
         AutoTest.h
+        PimplTest.h
         PathAppenderTest.h
    )
 

@@ -19,8 +19,6 @@ public:
 
     PathAppender& operator<<(const QString& path);
 
-    PathAppender& operator+(const QString& path);
-
     QString toString() const { return path_; }
 
     operator QString() const { return path_; }

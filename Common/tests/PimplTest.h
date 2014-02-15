@@ -16,6 +16,8 @@ class PimplTest : public QObject
 
 private Q_SLOTS:
     void pimplConstructionTest();
+
+    void pimplCopyTest();
 };
 
 }

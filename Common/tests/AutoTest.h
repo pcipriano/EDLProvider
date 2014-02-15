@@ -55,8 +55,6 @@ inline int run(int argc, char** argv)
     return ret;
 }
 
-}
-
 template <class T>
 class Test
 {
@@ -70,7 +68,9 @@ public:
     }
 };
 
-#define DECLARE_TEST(className) static Test<className> t(#className);
+}
+
+#define DECLARE_TEST(className) static AutoTest::Test<className> t(#className);
 
 #define TEST_MAIN \
     int main(int argc, char** argv) \

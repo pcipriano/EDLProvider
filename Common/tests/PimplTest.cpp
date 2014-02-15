@@ -22,6 +22,11 @@ public:
         return impl_->value2_;
     }
 
+    QString concatenate() const
+    {
+        return impl_->concatenate();
+    }
+
 private:
     struct Impl
     {
@@ -38,6 +43,11 @@ private:
               value2_(value2)
         {
         }
+
+        QString concatenate() const
+        {
+            return QString("%1-%2").arg(value1_).arg(value2_);
+        }
     };
     common::util::Pimpl<Impl> impl_;
 };
@@ -52,6 +62,23 @@ void PimplTest::pimplConstructionTest()
 
     QCOMPARE(instance2.getValue(), 3);
     QCOMPARE(instance2.getValueString(), QString("TestString"));
+    QCOMPARE(instance2.concatenate(), QString("3-TestString"));
+}
+
+void PimplTest::pimplCopyTest()
+{
+    TestClass test(20, "TestCopy");
+
+    TestClass testConstruct = test;
+    QCOMPARE(testConstruct.getValue(), 20);
+    QCOMPARE(testConstruct.getValueString(), QString("TestCopy"));
+    QCOMPARE(testConstruct.concatenate(), QString("20-TestCopy"));
+
+    TestClass testAssign(50, "Initial");
+    testAssign = test;
+    QCOMPARE(testAssign.getValue(), 20);
+    QCOMPARE(testAssign.getValueString(), QString("TestCopy"));
+    QCOMPARE(testAssign.concatenate(), QString("20-TestCopy"));
 }
 
 DECLARE_TEST(PimplTest)

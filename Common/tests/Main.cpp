@@ -1,7 +1,15 @@
+#include <QCoreApplication>
+
 #include "AutoTest.h"
 
 #include "easylogging++.h"
 
 _INITIALIZE_EASYLOGGINGPP       //Initialize logging
 
-TEST_MAIN
+int main(int argc, char** argv)
+{
+    QCoreApplication application(argc, argv);
+    Q_UNUSED(application);
+
+    return AutoTest::run(argc, argv);
+}

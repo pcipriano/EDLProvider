@@ -36,28 +36,46 @@ static T convertToType(const QString& value, bool* ok)
 template<typename T>
 T ConfigurationReader::getValue(const QString& elementName, bool* ok) const
 {
+    return getValue<T>(QStringList() << elementName, ok);
+}
+
+template<typename T>
+T ConfigurationReader::getValue(const QStringList& elementPath, bool* ok) const
+{
     if (ok != nullptr)
         *ok = false;
 
-    auto rootElement = getConfiguration().documentElement();
-
-    auto node = rootElement.namedItem(elementName);
-
-    if (node.isNull() || !node.isElement())
+    if (elementPath.isEmpty())
         return T();
 
-    auto element = node.toElement();
-    if (element.isNull())
-        return T();
+    auto parentElement = getConfiguration().documentElement();
 
+    QDomNode parentNode;
+    for (const QString& elementName : elementPath)
+    {
+        parentNode = parentElement.namedItem(elementName);
+
+        if (parentNode.isNull() || !parentNode.isElement())
+            return T();
+
+        parentElement = parentNode.toElement();
+    }
+
+    auto element = parentNode.toElement();
     return convertToType<T>(element.text(), ok);
 }
 
 template<typename T>
 T ConfigurationReader::getValueOrDefault(const QString& elementName, const T& defaultValue) const
 {
+    return getValueOrDefault<T>(QStringList() << elementName, defaultValue);
+}
+
+template<typename T>
+T ConfigurationReader::getValueOrDefault(const QStringList& elementPath, const T& defaultValue) const
+{
     bool ok;
-    auto ret = getValue<T>(elementName, &ok);
+    auto ret = getValue<T>(elementPath, &ok);
     return ok ? ret : defaultValue;
 }
 
@@ -86,7 +104,7 @@ QList<std::pair<QString, T>> ConfigurationReader::getSection(const QStringList& 
         if (parentNode.isNull() || !parentNode.isElement())
             return QList<std::pair<QString, T>>();
 
-        parentElement = parentNode;
+        parentElement = parentNode.toElement();
     }
 
     bool valid = false;

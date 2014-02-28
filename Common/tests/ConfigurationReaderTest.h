@@ -35,6 +35,8 @@ private Q_SLOTS:
 
     void getSectionTest();
 
+    void setValueTest();
+
 private:
     void setData();
 

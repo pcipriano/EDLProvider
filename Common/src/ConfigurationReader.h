@@ -61,6 +61,12 @@ public:
     template<typename T>
     QList<std::pair<QString, T>> getSection(const QStringList& elementPath, bool* ok = nullptr);
 
+    template<typename T>
+    bool setValue(const QString& elementName, const T& value, bool create = false);
+
+    template<typename T>
+    bool setValue(const QStringList& elementPath, const T& value, bool create = false);
+
 private:
     class Impl;
     Pimpl<Impl> impl_;

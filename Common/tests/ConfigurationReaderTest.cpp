@@ -283,6 +283,14 @@ void ConfigurationReaderTest::getSectionTest()
     QVERIFY(!ok);
 }
 
+void ConfigurationReaderTest::setValueTest()
+{
+    ConfigurationReader confReader;
+    QVERIFY(confReader.loadXml(validConfig_));
+
+    confReader.setValue("test", 10);
+}
+
 void ConfigurationReaderTest::setData()
 {
     QTest::addColumn<QString>("xml");

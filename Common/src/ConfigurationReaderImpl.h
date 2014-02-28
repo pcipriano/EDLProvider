@@ -34,6 +34,18 @@ static T convertToType(const QString& value, bool* ok)
 }
 
 template<typename T>
+static QString convertToString(const T& value, std::true_type)
+{
+    return QString::number(value);
+}
+
+template<typename T>
+static QString convertToString(const T& value, std::false_type)
+{
+    return value.toString();
+}
+
+template<typename T>
 T ConfigurationReader::getValue(const QString& elementName, bool* ok) const
 {
     return getValue<T>(QStringList() << elementName, ok);
@@ -127,6 +139,69 @@ QList<std::pair<QString, T>> ConfigurationReader::getSection(const QStringList& 
         *ok = valid;
 
     return result;
+}
+
+template<typename T>
+bool ConfigurationReader::setValue(const QString& elementName, const T& value, bool create)
+{
+    return setValue(QStringList() << elementName, value, create);
+}
+
+template<typename T>
+bool ConfigurationReader::setValue(const QStringList& elementPath, const T& value, bool create)
+{
+    if (elementPath.isEmpty())
+        return false;
+
+    auto configDoc = getConfiguration();
+
+    auto parentElement = configDoc.documentElement();
+
+    QDomNode parentNode;
+    for (const QString& elementName : elementPath)
+    {
+        parentNode = parentElement.namedItem(elementName);
+
+        if ((parentNode.isNull() || !parentNode.isElement()) && create)
+        {
+            parentNode = configDoc.createElement(elementName);
+            parentElement.appendChild(parentNode);
+        }
+        else
+            return false;
+
+        parentElement = parentNode.toElement();
+    }
+
+    QString valueConverted = convertToString(value, typename std::is_fundamental<T>::type());
+
+    if (!parentNode.hasChildNodes() && create)
+    {
+        parentNode.appendChild(configDoc.createTextNode(valueConverted));
+        return true;
+    }
+    else
+    {
+        QDomNodeList nodeList = parentNode.childNodes();
+        for (int i = 0; i < nodeList.length(); i++)
+        {
+            //On first text node found change the value.
+            if (nodeList.at(i).isText())
+            {
+                nodeList.at(i).setNodeValue(valueConverted);
+                return true;
+            }
+        }
+
+        //If create and no text node found create it and set the value.
+        if (create)
+        {
+            parentNode.appendChild(configDoc.createTextNode(valueConverted));
+            return true;
+        }
+    }
+
+    return false;
 }
 
 }

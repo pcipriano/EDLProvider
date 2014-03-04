@@ -6,6 +6,9 @@ namespace common
 namespace util
 {
 
+/*!
+ * \brief Helper class for marking other classes as uncopyable.
+ */
 class Uncopyable
 {
 protected:

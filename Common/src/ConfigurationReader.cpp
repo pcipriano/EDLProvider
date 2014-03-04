@@ -3,13 +3,14 @@
 #include <QFile>
 #include <QXmlSchema>
 #include <QTextStream>
+#include <QFileSystemWatcher>
 #include <QXmlSchemaValidator>
 
 #include "easylogging++.h"
 
 using namespace common::util;
 
-class ConfigurationReader::Impl
+class ConfigurationReader::Impl : public QObject
 {
 public:
     bool autoUpdate_;
@@ -17,9 +18,10 @@ public:
     bool isValid_ = false;
     QString configPath_;
     QDomDocument configDoc_;
+    QFileSystemWatcher fileWatcher_;
 
     Impl(bool autoUpdate)
-        : autoUpdate_(autoUpdate)
+        : Impl(QUrl(), autoUpdate)
     {
     }
 
@@ -27,12 +29,28 @@ public:
         : autoUpdate_(autoUpdate),
           schemaPath_(schemaPath)
     {
+        if (autoUpdate)
+        {
+            connect(&fileWatcher_,
+                    &QFileSystemWatcher::fileChanged,
+                    this,
+                    &Impl::handleConfigurationChange);
+        }
     }
 
     bool loadConfigFile(const QString& filePath)
     {
         isValid_ = false;
         configPath_ = filePath;
+        bool ret = readConfigFile(filePath);
+        if (ret)
+            updateWatcherPath(filePath);
+
+        return ret;
+    }
+
+    bool readConfigFile(const QString& filePath)
+    {
         QFile confFile(filePath);
         if (!confFile.open(QIODevice::ReadOnly | QIODevice::Text))
         {
@@ -78,6 +96,15 @@ public:
         return true;
     }
 
+    void changeFilePath(const QString& filePath)
+    {
+        if (filePath != configPath_)
+        {
+            configPath_ = filePath;
+            updateWatcherPath(filePath);
+        }
+    }
+
     bool saveConfig(bool overWrite) const
     {
         return saveConfig(configPath_, overWrite);
@@ -107,6 +134,84 @@ public:
         QTextStream streamWriter(&saveFile);
         configDoc_.save(streamWriter, 4);
         return true;
+    }
+
+    bool setValue(const QStringList& elementPath, const QString& value, bool create)
+    {
+        if (elementPath.isEmpty())
+            return false;
+
+        auto parentElement = configDoc_.documentElement();
+
+        QDomNode parentNode;
+        for (const QString& elementName : elementPath)
+        {
+            parentNode = parentElement.namedItem(elementName);
+
+            if (parentNode.isNull() && create)
+            {
+                parentNode = configDoc_.createElement(elementName);
+                parentElement.appendChild(parentNode);
+            }
+            else if (parentNode.isNull() || !parentNode.isElement())
+            {
+                return false;
+            }
+
+            parentElement = parentNode.toElement();
+        }
+
+        if (!parentNode.hasChildNodes() && create)
+        {
+            parentNode.appendChild(configDoc_.createTextNode(value));
+            return true;
+        }
+        else
+        {
+            QDomNodeList nodeList = parentNode.childNodes();
+            for (int i = 0; i < nodeList.length(); i++)
+            {
+                //On first text node found change the value.
+                if (nodeList.at(i).isText())
+                {
+                    nodeList.at(i).setNodeValue(value);
+                    return true;
+                }
+            }
+
+            //If create and no text node found create it and set the value.
+            if (create)
+            {
+                parentNode.appendChild(configDoc_.createTextNode(value));
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    void updateWatcherPath(const QString& newPath)
+    {
+        if (autoUpdate_)
+        {
+            //Remove file being watched and add new path
+            fileWatcher_.removePaths(fileWatcher_.files());
+            fileWatcher_.addPath(newPath);
+        }
+    }
+
+public Q_SLOTS:
+    void handleConfigurationChange(const QString& path)
+    {
+        //Check first if file was not renamed or removed
+        if (!QFile::exists(path))
+        {
+            LOG(TRACE) << "Configuration file [" << path << "] does not exist anymore in the filesystem.";
+            return;
+        }
+
+        if (!readConfigFile(path))
+            LOG(TRACE) << "Failed to load configuration file [" << path << "] after file changed.";
     }
 };
 
@@ -139,6 +244,11 @@ bool ConfigurationReader::loadXml(const QString& xmlData)
     return impl_->loadXmlString(xmlData);
 }
 
+void ConfigurationReader::setFilePath(const QString& filePath)
+{
+    impl_->changeFilePath(filePath);
+}
+
 bool ConfigurationReader::save(bool overwrite) const
 {
     return impl_->saveConfig(overwrite);
@@ -152,4 +262,24 @@ bool ConfigurationReader::save(const QString& newPath, bool overwrite) const
 QDomDocument ConfigurationReader::getConfiguration(bool detached) const
 {
     return detached ? impl_->configDoc_.cloneNode().toDocument() : impl_->configDoc_;
+}
+
+bool ConfigurationReader::setValue(const QString& elementName, const char* value, bool create)
+{
+    return setValue(elementName, QString(value), create);
+}
+
+bool ConfigurationReader::setValue(const QStringList& elementPath, const char* value, bool create)
+{
+    return setValue(elementPath, QString(value), create);
+}
+
+bool ConfigurationReader::setValue(const QString& elementName, const QString& value, bool create)
+{
+    return setValue(QStringList() << elementName, value, create);
+}
+
+bool ConfigurationReader::setValue(const QStringList& elementPath, const QString& value, bool create)
+{
+    return impl_->setValue(elementPath, value, create);
 }

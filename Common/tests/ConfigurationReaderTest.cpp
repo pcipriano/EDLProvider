@@ -11,7 +11,7 @@ using namespace common::util::tests;
 ConfigurationReaderTest::ConfigurationReaderTest()
 {
     validConfig_ = QString("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-                           "<root>"
+                           "<root rootId=\"1\">"
                                "<section1 sectionId=\"1\">"
                                    "<subsection subsectionId=\"2\">"
                                        "<value1>Value number 1</value1>"
@@ -131,6 +131,7 @@ ConfigurationReaderTest::ConfigurationReaderTest()
                                                 "</xs:element>"
                                                 "<xs:element name=\"value\" type=\"xs:string\" />"
                                             "</xs:sequence>"
+                                            "<xs:attribute name=\"rootId\" type=\"xs:unsignedByte\" use=\"required\" />"
                                         "</xs:complexType>"
                                     "</xs:element>"
                                 "</xs:schema>");
@@ -251,6 +252,31 @@ void ConfigurationReaderTest::getValueTest()
              QUrl("http://test/resource.xml"));
 }
 
+void ConfigurationReaderTest::getAttributeTest()
+{
+    ConfigurationReader confReader;
+    QVERIFY(confReader.loadXml(validConfig_));
+
+    bool ok;
+    QCOMPARE(confReader.getAttribute<int>("rootId", "", &ok), 1);
+    QVERIFY(ok);
+    confReader.getAttribute<int>("rootnotfoundId", "", &ok);
+    QVERIFY(!ok);
+
+    QCOMPARE(confReader.getAttributeOrDefault<int>("rootId", "", 5), 1);
+    QCOMPARE(confReader.getAttributeOrDefault<int>("rootnotfoundId", "", 5), 5);
+
+    QStringList elementPath;
+    elementPath << "section1" << "subsection";
+    QCOMPARE(confReader.getAttribute<int>("subsectionId", elementPath, &ok), 2);
+    QVERIFY(ok);
+    confReader.getAttribute<int>("subsectionIdnotfound", elementPath, &ok);
+    QVERIFY(!ok);
+
+    QCOMPARE(confReader.getAttributeOrDefault<int>("subsectionId", elementPath, 5), 2);
+    QCOMPARE(confReader.getAttributeOrDefault<int>("subsectionIdnotfound", elementPath, 5), 5);
+}
+
 void ConfigurationReaderTest::getSectionTest()
 {
     ConfigurationReader confReader;
@@ -288,7 +314,35 @@ void ConfigurationReaderTest::setValueTest()
     ConfigurationReader confReader;
     QVERIFY(confReader.loadXml(validConfig_));
 
-    confReader.setValue("test", 10);
+    QVERIFY(!confReader.setValue("test", 10));
+    QVERIFY(confReader.setValue("test", 10, true));
+    QCOMPARE(confReader.getValueOrDefault<int>("test", 20), 10);
+
+    QVERIFY(!confReader.setValue(QStringList() << "section1" << "subsection" << "value7", "Value number 7"));
+    QVERIFY(confReader.setValue(QStringList() << "section1" << "subsection" << "value7", "Value number 7", true));
+    QCOMPARE(confReader.getValueOrDefault<QString>(QStringList() << "section1" << "subsection" << "value7", "Value number 10"),
+             QString("Value number 7"));
+
+    QVERIFY(confReader.setValue(QStringList() << "section3" << "subsection" << "value", "Inserted value", true));
+    QCOMPARE(confReader.getValueOrDefault<QString>(QStringList() << "section3" << "subsection" << "value", "Inserted wrong value"),
+             QString("Inserted value"));
+
+    //Now create a temporary file and read it back to confirm the values
+    QTemporaryFile file;
+    if (file.open())
+    {
+        file.close();
+        QVERIFY(confReader.save(file.fileName()));
+    }
+
+    ConfigurationReader confFromFile;
+    confFromFile.loadFile(file.fileName());
+    QCOMPARE(confFromFile.getValueOrDefault<int>("test", 20), 10);
+    QCOMPARE(confFromFile.getValueOrDefault<QString>(QStringList() << "section1" << "subsection" << "value7", "Value number 10"),
+             QString("Value number 7"));
+    QCOMPARE(confFromFile.getValueOrDefault<QString>(QStringList() << "section3" << "subsection" << "value", "Inserted wrong value"),
+             QString("Inserted value"));
+
 }
 
 void ConfigurationReaderTest::setData()

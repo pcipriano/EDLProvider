@@ -92,15 +92,62 @@ T ConfigurationReader::getValueOrDefault(const QStringList& elementPath, const T
 }
 
 template<typename T>
+T ConfigurationReader::getAttribute(const QString& attributeName, const QString& elementName, bool* ok) const
+{
+    return getAttribute<T>(attributeName, elementName.isEmpty() ? QStringList() : QStringList() << elementName, ok);
+}
+
+template<typename T>
+T ConfigurationReader::getAttribute(const QString& attributeName, const QStringList& elementPath, bool* ok) const
+{
+    if (ok != nullptr)
+        *ok = false;
+
+    auto parentElement = getConfiguration().documentElement();
+
+    QDomNode parentNode;
+    for (const QString& elementName : elementPath)
+    {
+        parentNode = parentElement.namedItem(elementName);
+
+        if (parentNode.isNull() || !parentNode.isElement())
+            return T();
+
+        parentElement = parentNode.toElement();
+    }
+
+    if (!parentElement.hasAttribute(attributeName))
+            return T();
+
+    return convertToType<T>(parentElement.attribute(attributeName), ok);
+}
+
+template<typename T>
+T ConfigurationReader::getAttributeOrDefault(const QString& attributeName, const QString& elementName, const T& defaultValue) const
+{
+    bool ok;
+    auto ret = getAttribute<T>(attributeName, elementName, &ok);
+    return ok ? ret : defaultValue;
+}
+
+template<typename T>
+T ConfigurationReader::getAttributeOrDefault(const QString& attributeName, const QStringList& elementPath, const T& defaultValue) const
+{
+    bool ok;
+    auto ret = getAttribute<T>(attributeName, elementPath, &ok);
+    return ok ? ret : defaultValue;
+}
+
+template<typename T>
 QList<std::pair<QString, T>> ConfigurationReader::getSection(const QString& parentElementName, bool* ok)
 {
     return getSection<T>(QStringList() << parentElementName, ok);
 }
 
 template<typename T>
-QList<std::pair<QString, T>> ConfigurationReader::getSection(const QStringList& elementPath, bool* ok)
+QList<std::pair<QString, T>> ConfigurationReader::getSection(const QStringList& parentElementPath, bool* ok)
 {
-    if (elementPath.isEmpty())
+    if (parentElementPath.isEmpty())
         return QList<std::pair<QString, T>>();
 
     if (ok != nullptr)
@@ -109,7 +156,7 @@ QList<std::pair<QString, T>> ConfigurationReader::getSection(const QStringList& 
     auto parentElement = getConfiguration().documentElement();
 
     QDomNode parentNode;
-    for (const QString& elementName : elementPath)
+    for (const QString& elementName : parentElementPath)
     {
         parentNode = parentElement.namedItem(elementName);
 
@@ -150,58 +197,7 @@ bool ConfigurationReader::setValue(const QString& elementName, const T& value, b
 template<typename T>
 bool ConfigurationReader::setValue(const QStringList& elementPath, const T& value, bool create)
 {
-    if (elementPath.isEmpty())
-        return false;
-
-    auto configDoc = getConfiguration();
-
-    auto parentElement = configDoc.documentElement();
-
-    QDomNode parentNode;
-    for (const QString& elementName : elementPath)
-    {
-        parentNode = parentElement.namedItem(elementName);
-
-        if ((parentNode.isNull() || !parentNode.isElement()) && create)
-        {
-            parentNode = configDoc.createElement(elementName);
-            parentElement.appendChild(parentNode);
-        }
-        else
-            return false;
-
-        parentElement = parentNode.toElement();
-    }
-
-    QString valueConverted = convertToString(value, typename std::is_fundamental<T>::type());
-
-    if (!parentNode.hasChildNodes() && create)
-    {
-        parentNode.appendChild(configDoc.createTextNode(valueConverted));
-        return true;
-    }
-    else
-    {
-        QDomNodeList nodeList = parentNode.childNodes();
-        for (int i = 0; i < nodeList.length(); i++)
-        {
-            //On first text node found change the value.
-            if (nodeList.at(i).isText())
-            {
-                nodeList.at(i).setNodeValue(valueConverted);
-                return true;
-            }
-        }
-
-        //If create and no text node found create it and set the value.
-        if (create)
-        {
-            parentNode.appendChild(configDoc.createTextNode(valueConverted));
-            return true;
-        }
-    }
-
-    return false;
+    return setValue(elementPath, convertToString(value, typename std::is_fundamental<T>::type()), create);
 }
 
 }

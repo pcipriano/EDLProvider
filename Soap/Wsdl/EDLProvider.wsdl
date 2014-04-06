@@ -25,6 +25,54 @@
                     <documentation source="urn:x-fims:inclusionInResponse"/>
                 </annotation>
             </element>
+            <element name="getEdlRequest" type="edlns:EdlCreateRequestType">
+                <annotation>
+                    <documentation source="urn:x-fims:description">
+                        This element represents the request made to create an EDL.
+                    </documentation>
+                    <documentation source="urn:x-fims:normativeRequirement"/>
+                    <documentation source="urn:x-fims:serviceDescription"/>
+                    <documentation source="urn:x-fims:contentOfServiceDescription"/>
+                    <documentation source="urn:x-fims:inclusionInRequest"/>
+                    <documentation source="urn:x-fims:inclusionInResponse"/>
+                </annotation>
+            </element>
+            <element name="getEdlDoubleRequest" type="edlns:EdlCreateRequestDoubleType">
+                <annotation>
+                    <documentation source="urn:x-fims:description">
+                        This element represents the request made to create an EDL using a frame rate represented in floating point.
+                    </documentation>
+                    <documentation source="urn:x-fims:normativeRequirement"/>
+                    <documentation source="urn:x-fims:serviceDescription"/>
+                    <documentation source="urn:x-fims:contentOfServiceDescription"/>
+                    <documentation source="urn:x-fims:inclusionInRequest"/>
+                    <documentation source="urn:x-fims:inclusionInResponse"/>
+                </annotation>
+            </element>
+            <element name="getEdlResponse" type="edlns:EdlCreateResponseType">
+                <annotation>
+                    <documentation source="urn:x-fims:description">
+                        This element represents the response when a EDL is created, containing the EDL contents.
+                    </documentation>
+                    <documentation source="urn:x-fims:normativeRequirement"/>
+                    <documentation source="urn:x-fims:serviceDescription"/>
+                    <documentation source="urn:x-fims:contentOfServiceDescription"/>
+                    <documentation source="urn:x-fims:inclusionInRequest"/>
+                    <documentation source="urn:x-fims:inclusionInResponse"/>
+                </annotation>
+            </element>
+            <element name="edlProviderFault" type="edlns:EdlProviderFaultType">
+                <annotation>
+                    <documentation source="urn:x-fims:description">
+                        This element represents the a fault that migh occur when requesting EDL's from the service.
+                    </documentation>
+                    <documentation source="urn:x-fims:normativeRequirement"/>
+                    <documentation source="urn:x-fims:serviceDescription"/>
+                    <documentation source="urn:x-fims:contentOfServiceDescription"/>
+                    <documentation source="urn:x-fims:inclusionInRequest"/>
+                    <documentation source="urn:x-fims:inclusionInResponse"/>
+                </annotation>
+            </element>
         </schema>
     </wsdl:types>
 
@@ -35,18 +83,55 @@
             <wsdl:documentation>This message provides the response to getting all the edl types available in the service.</wsdl:documentation>
         </wsdl:part>
     </wsdl:message>
+    <wsdl:message name="getEdlRequestMsg">
+        <wsdl:part name="out" element="edlns:getEdlRequest">
+            <wsdl:documentation>This message represents the request to create an EDL with a specific type.</wsdl:documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getEdlResponseMsg">
+        <wsdl:part name="out" element="edlns:getEdlResponse">
+            <wsdl:documentation>This message provides the response to getting an EDL type from the service.</wsdl:documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getEdlDoubleRequestMsg">
+        <wsdl:part name="out" element="edlns:getEdlDoubleRequest">
+            <wsdl:documentation>This message represents the request to create an EDL with a specific type.</wsdl:documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getEdlDoubleResponseMsg">
+        <wsdl:part name="out" element="edlns:getEdlResponse">
+            <wsdl:documentation>This message provides the response to getting an EDL type from the service.</wsdl:documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="FaultMsg">
+        <wsdl:part name="fault" element="edlns:edlProviderFault" >
+            <wsdl:documentation>This message represents a fault which might occur in the EDL service.</wsdl:documentation>
+        </wsdl:part>
+    </wsdl:message>
 
     <wsdl:portType name="EdlProviderService">
-        <wsdl:documentation>The EDLProvider SOAP interface provides a based on FIMS service for createing edl's.</wsdl:documentation>
+        <wsdl:documentation>The EDLProvider SOAP interface provides a based on FIMS service for creating edl's.</wsdl:documentation>
         <wsdl:operation name="getInstalledEdls">
             <wsdl:documentation>This operation gets all the edl types available in the service.</wsdl:documentation>
             <wsdl:input wsaw:Action="http://temp/edlprovider/getInstalledEdls" message="edlns:getInstalledEdlsRequestMsg"/>
             <wsdl:output wsaw:Action="http://temp/edlprovider/getInstalledEdlsResponse" message="edlns:getInstalledEdlsResponseMsg"/>
-            <!--<wsdl:fault name="fault" message="edlns:FaultMsg" />-->
+            <wsdl:fault name="fault" message="edlns:FaultMsg" />
+        </wsdl:operation>
+        <wsdl:operation name="getEdl">
+            <wsdl:documentation>This operation gets all the edl types available in the service.</wsdl:documentation>
+            <wsdl:input wsaw:Action="http://temp/edlprovider/getEdl" message="edlns:getEdlRequestMsg"/>
+            <wsdl:output wsaw:Action="http://temp/edlprovider/getEdlResponse" message="edlns:getEdlResponseMsg"/>
+            <wsdl:fault name="fault" message="edlns:FaultMsg" />
+        </wsdl:operation>
+        <wsdl:operation name="getEdlDouble">
+            <wsdl:documentation>This operation gets all the edl types available in the service.</wsdl:documentation>
+            <wsdl:input wsaw:Action="http://temp/edlprovider/getEdlDouble" message="edlns:getEdlDoubleRequestMsg"/>
+            <wsdl:output wsaw:Action="http://temp/edlprovider/getEdlDoubleResponse" message="edlns:getEdlDoubleResponseMsg"/>
+            <wsdl:fault name="fault" message="edlns:FaultMsg" />
         </wsdl:operation>
     </wsdl:portType>
 
-    <wsdl:binding name="EDLProviderBinding" type="edlns:EdlProviderService">
+    <wsdl:binding name="EdlProviderBinding" type="edlns:EdlProviderService">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsdl:operation name="getInstalledEdls">
             <soap:operation soapAction="http://temp/edlprovider/getInstalledEdls" style="document"/>
@@ -60,10 +145,34 @@
                 <soap:fault use="literal" name="fault" />
             </wsdl:fault>
         </wsdl:operation>
+        <wsdl:operation name="getEdl">
+            <soap:operation soapAction="http://temp/edlprovider/getEdl" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getEdlDouble">
+            <soap:operation soapAction="http://temp/edlprovider/getEdlDouble" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault" />
+            </wsdl:fault>
+        </wsdl:operation>
     </wsdl:binding>
 
     <wsdl:service name="EdlProviderService">
-        <wsdl:port name="EdlProviderService" binding="edlns:EDLProviderBinding">
+        <wsdl:port name="EdlProviderService" binding="edlns:EdlProviderBinding">
             <soap:address location="http://host/path/EDLProviderPort"/>
         </wsdl:port>
     </wsdl:service>

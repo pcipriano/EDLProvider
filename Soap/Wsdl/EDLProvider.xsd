@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema targetNamespace="http://temp/edlprovider" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edlns="http://temp/edlprovider">
-    <!--<import namespace="http://base.fims.tv" schemaLocation="baseMediaService-V1_0_7.xsd"/>-->
+<xs:schema targetNamespace="http://temp/edlprovider" elementFormDefault="qualified" xmlns:bms="http://base.fims.tv" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edlns="http://temp/edlprovider">
+    <xs:import namespace="http://base.fims.tv" schemaLocation="baseMediaService-V1_0_7.xsd"/>
 
     <xs:complexType name="ArrayOfstring">
         <xs:sequence>
@@ -122,4 +122,74 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
+    <xs:complexType name="EdlCreateResponseType">
+        <xs:sequence>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="getEdlResult" nillable="true" type="xs:base64Binary"/>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EdlProviderFaultType">
+        <xs:annotation>
+            <xs:documentation source="urn:x-fims:description">
+                Fault information for the EDL provider service.
+            </xs:documentation>
+            <xs:documentation source="urn:x-fims:normativeRequirement">
+                If an exception is generated when the an EDL request message is submitted to the service,
+                it shall respond with a message based on the EdlProviderFaultType.
+            </xs:documentation>
+            <xs:documentation source="urn:x-fims:serviceDescription"/>
+            <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="bms:FaultType">
+                <xs:sequence>
+                    <xs:element name="extendedCode" type="edlns:EDLProviderErrorCodeType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation source="urn:x-fims:description">
+                                EDL provider service-specific error codes as detailed in EDLProviderErrorCodeType.
+                            </xs:documentation>
+                            <xs:documentation source="urn:x-fims:normativeRequirement">
+                                This element shall be set if the service needs to provide service-specific error codes which
+                                are not specified in the fault 'code' element. In this
+                                case, the code element shall be set to 'EXT_S00_0000' and
+                                the extendedCode shall be set to one of the codes described in
+                                EDLProviderErrorCodeType. If the 'code'; element is set
+                                to any other value than 'EXT_S00_0000'; then this element
+                                shall not be set.
+                            </xs:documentation>
+                            <xs:documentation source="urn:x-fims:serviceDescription"/>
+                            <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+                            <xs:documentation source="urn:x-fims:inclusionInRequest">Not applicable</xs:documentation>
+                            <xs:documentation source="urn:x-fims:inclusionInResponse">Optional</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- **************************** FIMS-defined enumerations **************************** -->
+    <xs:simpleType name="EDLProviderErrorCodeType">
+        <xs:annotation>
+            <xs:documentation source="urn:x-fims:description">
+                Specific error codes for the EDL provider service, possible errors:
+                - INF_S00_xxxx: Infrastructure errors (system, storage, network, memory, processor)
+                - DAT_S00_xxxx: Data errors (validation, missing,  duplication)
+                - SVC_S00_xxxx: Operation errors (existence, support, lock, connection, failure)
+                - SEC_S00_xxxx: Security errors (authentication, authorization)
+                - EXT_S00_xxxx: Extended code.
+            </xs:documentation>
+            <xs:documentation source="urn:x-fims:normativeRequirement"/>
+            <xs:documentation source="urn:x-fims:serviceDescription"/>
+            <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EXT_S00_0001">
+                <xs:annotation>
+                    <xs:documentation source="urn:x-fims:description">EDL type not found.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>

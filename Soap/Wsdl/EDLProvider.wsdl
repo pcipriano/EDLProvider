@@ -1,0 +1,70 @@
+<wsdl:definitions name="EDLProvider" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                  xmlns="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+                  xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+                  xmlns:bms="http://base.fims.tv"
+                  xmlns:edlns="http://temp/edlprovider"
+                  targetNamespace="http://temp/edlprovider">
+
+    <wsdl:types>
+        <schema targetNamespace="http://temp/edlprovider" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <include schemaLocation="EDLProvider.xsd"/>
+            <element name="installedEdlsResponse" type="edlns:ArrayOfstring">
+                <annotation>
+                    <documentation source="urn:x-fims:description">
+                        This element provides the list of edl types in the service.
+                    </documentation>
+                    <documentation source="urn:x-fims:normativeRequirement"/>
+                    <documentation source="urn:x-fims:serviceDescription"/>
+                    <documentation source="urn:x-fims:contentOfServiceDescription"/>
+                    <documentation source="urn:x-fims:inclusionInRequest"/>
+                    <documentation source="urn:x-fims:inclusionInResponse"/>
+                </annotation>
+            </element>
+        </schema>
+    </wsdl:types>
+
+    <wsdl:message name="getInstalledEdlsRequestMsg">
+    </wsdl:message>
+    <wsdl:message name="getInstalledEdlsResponseMsg">
+        <wsdl:part name="out" element="edlns:installedEdlsResponse">
+            <wsdl:documentation>This message provides the response to getting all the edl types available in the service.</wsdl:documentation>
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:portType name="EdlProviderService">
+        <wsdl:documentation>The EDLProvider SOAP interface provides a based on FIMS service for createing edl's.</wsdl:documentation>
+        <wsdl:operation name="getInstalledEdls">
+            <wsdl:documentation>This operation gets all the edl types available in the service.</wsdl:documentation>
+            <wsdl:input wsaw:Action="http://temp/edlprovider/getInstalledEdls" message="edlns:getInstalledEdlsRequestMsg"/>
+            <wsdl:output wsaw:Action="http://temp/edlprovider/getInstalledEdlsResponse" message="edlns:getInstalledEdlsResponseMsg"/>
+            <!--<wsdl:fault name="fault" message="edlns:FaultMsg" />-->
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="EDLProviderBinding" type="edlns:EdlProviderService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getInstalledEdls">
+            <soap:operation soapAction="http://temp/edlprovider/getInstalledEdls" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="fault">
+                <soap:fault use="literal" name="fault" />
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="EdlProviderService">
+        <wsdl:port name="EdlProviderService" binding="edlns:EDLProviderBinding">
+            <soap:address location="http://host/path/EDLProviderPort"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

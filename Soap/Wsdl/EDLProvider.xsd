@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://temp/edlprovider" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edlns="http://temp/edlprovider">
+    <!--<import namespace="http://base.fims.tv" schemaLocation="baseMediaService-V1_0_7.xsd"/>-->
+
+    <xs:complexType name="ArrayOfstring">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ArrayOfClips">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="clip" type="edlns:ClipType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ClipType">
+        <xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- **************************** Messages and faults **************************** -->    
+    <xs:complexType name="EdlCreateRequestBaseType">
+        <xs:annotation>
+            <xs:documentation source="urn:x-fims:description">
+                Represents the request to create a edl for the specified type.
+            </xs:documentation>
+            <xs:documentation source="urn:x-fims:normativeRequirement"/>
+            <xs:documentation source="urn:x-fims:serviceDescription"/>
+            <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="edlType" minOccurs="1" maxOccurs="1" type="xs:string" nillable="false">
+                <xs:annotation>
+                    <xs:documentation source="urn:x-fims:description">The edl type to generate, the types available can be obtained using getInstalledEdls.</xs:documentation>
+                    <xs:documentation source="urn:x-fims:normativeRequirement"/>
+                    <xs:documentation source="urn:x-fims:serviceDescription"/>
+                    <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+                    <xs:documentation source="urn:x-fims:inclusionInRequest">Mandatory</xs:documentation>
+                    <xs:documentation source="urn:x-fims:inclusionInResponse">Not applicable</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="clips" minOccurs="0" type="edlns:ArrayOfClips" nillable="true">
+                <xs:annotation>
+                    <xs:documentation source="urn:x-fims:description">List of clips to include in the created EDL.</xs:documentation>
+                    <xs:documentation source="urn:x-fims:normativeRequirement"/>
+                    <xs:documentation source="urn:x-fims:serviceDescription"/>
+                    <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+                    <xs:documentation source="urn:x-fims:inclusionInRequest">Mandatory</xs:documentation>
+                    <xs:documentation source="urn:x-fims:inclusionInResponse">Not applicable</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="edlSequenceName" nillable="true" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation source="urn:x-fims:description">The EDL sequence name. This might mean something different in different EDL's.</xs:documentation>
+                    <xs:documentation source="urn:x-fims:normativeRequirement"/>
+                    <xs:documentation source="urn:x-fims:serviceDescription"/>
+                    <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+                    <xs:documentation source="urn:x-fims:inclusionInRequest">Mandatory</xs:documentation>
+                    <xs:documentation source="urn:x-fims:inclusionInResponse">Not applicable</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EdlCreateRequestType">
+        <xs:annotation>
+            <xs:documentation source="urn:x-fims:description">
+                Represents the request to create a edl for the specified type and frame rate.
+            </xs:documentation>
+            <xs:documentation source="urn:x-fims:normativeRequirement"/>
+            <xs:documentation source="urn:x-fims:serviceDescription"/>
+            <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="edlns:EdlCreateRequestBaseType">
+                <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="edlFramesPerSecondNumerator" type="xs:int" nillable="false">
+                        <xs:annotation>
+                            <xs:documentation source="urn:x-fims:description">The EDL frames per second numerator.</xs:documentation>
+                            <xs:documentation source="urn:x-fims:normativeRequirement"/>
+                            <xs:documentation source="urn:x-fims:serviceDescription"/>
+                            <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+                            <xs:documentation source="urn:x-fims:inclusionInRequest">Mandatory</xs:documentation>
+                            <xs:documentation source="urn:x-fims:inclusionInResponse">Not applicable</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="1" maxOccurs="1" name="edlFramesPerSecondDenominator" type="xs:int" nillable="false">
+                        <xs:annotation>
+                            <xs:documentation source="urn:x-fims:description">The EDL frames per second denominator.</xs:documentation>
+                            <xs:documentation source="urn:x-fims:normativeRequirement"/>
+                            <xs:documentation source="urn:x-fims:serviceDescription"/>
+                            <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+                            <xs:documentation source="urn:x-fims:inclusionInRequest">Mandatory</xs:documentation>
+                            <xs:documentation source="urn:x-fims:inclusionInResponse">Not applicable</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="EdlCreateRequestDoubleType">
+        <xs:annotation>
+            <xs:documentation source="urn:x-fims:description">
+                Represents the request to create a edl for the specified type and frame rate.
+            </xs:documentation>
+            <xs:documentation source="urn:x-fims:normativeRequirement"/>
+            <xs:documentation source="urn:x-fims:serviceDescription"/>
+            <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="edlns:EdlCreateRequestBaseType">
+                <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="edlFramesPerSecond" type="xs:double" nillable="false">
+                        <xs:annotation>
+                            <xs:documentation source="urn:x-fims:description">The EDL frames per second.</xs:documentation>
+                            <xs:documentation source="urn:x-fims:normativeRequirement"/>
+                            <xs:documentation source="urn:x-fims:serviceDescription"/>
+                            <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+                            <xs:documentation source="urn:x-fims:inclusionInRequest">Mandatory</xs:documentation>
+                            <xs:documentation source="urn:x-fims:inclusionInResponse">Not applicable</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>                    
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

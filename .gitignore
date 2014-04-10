@@ -12,6 +12,3 @@ Makefile*
 
 *.autosave
 *.user
-
-# gsoap generate files
-Soap/gsoap/src

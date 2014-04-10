@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+  xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+  xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:fimsdescription="http://description.fims.tv"
+  xmlns:fims="http://base.fims.tv"
+  xmlns:edlprovider="http://temp/edlprovider">
+ <SOAP-ENV:Body>
+   <edlprovider:getEdlDoubleRequest>
+    <edlFramesPerSecond>0.0</edlFramesPerSecond>
+    <edlType></edlType>
+    <clips>
+     <clip>
+     </clip>
+     <clip>
+     </clip>
+    </clips>
+    <edlSequenceName></edlSequenceName>
+   </edlprovider:getEdlDoubleRequest>
+
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

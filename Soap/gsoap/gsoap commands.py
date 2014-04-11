@@ -22,7 +22,7 @@ if os.path.isdir(gsoapRootPath) and os.path.exists(gsoapRootPath):
         elif platform.system() == "Linux":
             soapcpp2Path = os.path.join(gsoapRootPath, "bin", "linux386", "soapcpp2")
 
-        result = subprocess.call([soapcpp2Path, '-j', '-S', '-I', os.path.join(gsoapRootPath, "import") + ";" + gsoapRootPath, edlInterfaceHeader, '-p', 'EDLProvider', '-d', destinationDir])
+        result = subprocess.call([soapcpp2Path, '-j', '-i', '-S', '-I', os.path.join(gsoapRootPath, "import") + ";" + gsoapRootPath, edlInterfaceHeader, '-p', 'EDLProvider', '-d', destinationDir])
         if result:
             print("Call to soapcpp2 in [{}] failed.".format(soapcpp2Path))
     else:

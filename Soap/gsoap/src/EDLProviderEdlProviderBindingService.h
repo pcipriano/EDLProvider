@@ -11,14 +11,12 @@ compiling, linking, and/or using OpenSSL is allowed.
 #ifndef EDLProviderEdlProviderBindingService_H
 #define EDLProviderEdlProviderBindingService_H
 #include "EDLProviderH.h"
-class SOAP_CMAC EdlProviderBindingService
+class SOAP_CMAC EdlProviderBindingService : public soap
 { public:
-	struct soap *soap;
-	bool own;
 	/// Constructor
 	EdlProviderBindingService();
-	/// Constructor to use/share an engine state
-	EdlProviderBindingService(struct soap*);
+	/// Construct from another engine state
+	EdlProviderBindingService(const struct soap&);
 	/// Constructor with engine input+output mode control
 	EdlProviderBindingService(soap_mode iomode);
 	/// Constructor with engine input and output mode control

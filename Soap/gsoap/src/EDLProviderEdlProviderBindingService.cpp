@@ -11,37 +11,26 @@ compiling, linking, and/or using OpenSSL is allowed.
 #include "EDLProviderEdlProviderBindingService.h"
 
 EdlProviderBindingService::EdlProviderBindingService()
-{	this->soap = soap_new();
-	this->own = true;
-	EdlProviderBindingService_init(SOAP_IO_DEFAULT, SOAP_IO_DEFAULT);
+{	EdlProviderBindingService_init(SOAP_IO_DEFAULT, SOAP_IO_DEFAULT);
 }
 
-EdlProviderBindingService::EdlProviderBindingService(struct soap *_soap)
-{	this->soap = _soap;
-	this->own = false;
-	EdlProviderBindingService_init(_soap->imode, _soap->omode);
-}
+EdlProviderBindingService::EdlProviderBindingService(const struct soap &_soap) : soap(_soap)
+{ }
 
 EdlProviderBindingService::EdlProviderBindingService(soap_mode iomode)
-{	this->soap = soap_new();
-	this->own = true;
-	EdlProviderBindingService_init(iomode, iomode);
+{	EdlProviderBindingService_init(iomode, iomode);
 }
 
 EdlProviderBindingService::EdlProviderBindingService(soap_mode imode, soap_mode omode)
-{	this->soap = soap_new();
-	this->own = true;
-	EdlProviderBindingService_init(imode, omode);
+{	EdlProviderBindingService_init(imode, omode);
 }
 
 EdlProviderBindingService::~EdlProviderBindingService()
-{	if (this->own)
-		soap_free(this->soap);
-}
+{ }
 
 void EdlProviderBindingService::EdlProviderBindingService_init(soap_mode imode, soap_mode omode)
-{	soap_imode(this->soap, imode);
-	soap_omode(this->soap, omode);
+{	soap_imode(this, imode);
+	soap_omode(this, omode);
 	static const struct Namespace namespaces[] =
 {
 	{"SOAP-ENV", "http://www.w3.org/2003/05/soap-envelope", "http://schemas.xmlsoap.org/soap/envelope/", NULL},
@@ -53,139 +42,137 @@ void EdlProviderBindingService::EdlProviderBindingService_init(soap_mode imode, 
 	{"edlprovider", "http://temp/edlprovider", NULL, NULL},
 	{NULL, NULL, NULL, NULL}
 };
-	soap_set_namespaces(this->soap, namespaces);
+	soap_set_namespaces(this, namespaces);
 }
 
 void EdlProviderBindingService::destroy()
-{	soap_destroy(this->soap);
-	soap_end(this->soap);
+{	soap_destroy(this);
+	soap_end(this);
 }
 
 void EdlProviderBindingService::reset()
 {	destroy();
-	soap_done(this->soap);
-	soap_initialize(this->soap);
+	soap_done(this);
+	soap_initialize(this);
 	EdlProviderBindingService_init(SOAP_IO_DEFAULT, SOAP_IO_DEFAULT);
 }
 
 #ifndef WITH_PURE_VIRTUAL
 EdlProviderBindingService *EdlProviderBindingService::copy()
-{	EdlProviderBindingService *dup = SOAP_NEW_COPY(EdlProviderBindingService);
-	if (dup)
-		soap_copy_context(dup->soap, this->soap);
+{	EdlProviderBindingService *dup = SOAP_NEW_COPY(EdlProviderBindingService(*(struct soap*)this));
 	return dup;
 }
 #endif
 
 int EdlProviderBindingService::soap_close_socket()
-{	return soap_closesock(this->soap);
+{	return soap_closesock(this);
 }
 
 int EdlProviderBindingService::soap_force_close_socket()
-{	return soap_force_closesock(this->soap);
+{	return soap_force_closesock(this);
 }
 
 int EdlProviderBindingService::soap_senderfault(const char *string, const char *detailXML)
-{	return ::soap_sender_fault(this->soap, string, detailXML);
+{	return ::soap_sender_fault(this, string, detailXML);
 }
 
 int EdlProviderBindingService::soap_senderfault(const char *subcodeQName, const char *string, const char *detailXML)
-{	return ::soap_sender_fault_subcode(this->soap, subcodeQName, string, detailXML);
+{	return ::soap_sender_fault_subcode(this, subcodeQName, string, detailXML);
 }
 
 int EdlProviderBindingService::soap_receiverfault(const char *string, const char *detailXML)
-{	return ::soap_receiver_fault(this->soap, string, detailXML);
+{	return ::soap_receiver_fault(this, string, detailXML);
 }
 
 int EdlProviderBindingService::soap_receiverfault(const char *subcodeQName, const char *string, const char *detailXML)
-{	return ::soap_receiver_fault_subcode(this->soap, subcodeQName, string, detailXML);
+{	return ::soap_receiver_fault_subcode(this, subcodeQName, string, detailXML);
 }
 
 void EdlProviderBindingService::soap_print_fault(FILE *fd)
-{	::soap_print_fault(this->soap, fd);
+{	::soap_print_fault(this, fd);
 }
 
 #ifndef WITH_LEAN
 #ifndef WITH_COMPAT
 void EdlProviderBindingService::soap_stream_fault(std::ostream& os)
-{	::soap_stream_fault(this->soap, os);
+{	::soap_stream_fault(this, os);
 }
 #endif
 
 char *EdlProviderBindingService::soap_sprint_fault(char *buf, size_t len)
-{	return ::soap_sprint_fault(this->soap, buf, len);
+{	return ::soap_sprint_fault(this, buf, len);
 }
 #endif
 
 void EdlProviderBindingService::soap_noheader()
-{	this->soap->header = NULL;
+{	this->header = NULL;
 }
 
 const SOAP_ENV__Header *EdlProviderBindingService::soap_header()
-{	return this->soap->header;
+{	return this->header;
 }
 
 int EdlProviderBindingService::run(int port)
-{	if (soap_valid_socket(this->soap->master) || soap_valid_socket(bind(NULL, port, 100)))
+{	if (soap_valid_socket(this->master) || soap_valid_socket(bind(NULL, port, 100)))
 	{	for (;;)
 		{	if (!soap_valid_socket(accept()) || serve())
-				return this->soap->error;
-			soap_destroy(this->soap);
-			soap_end(this->soap);
+				return this->error;
+			soap_destroy(this);
+			soap_end(this);
 		}
 	}
 	else
-		return this->soap->error;
+		return this->error;
 	return SOAP_OK;
 }
 
 SOAP_SOCKET EdlProviderBindingService::bind(const char *host, int port, int backlog)
-{	return soap_bind(this->soap, host, port, backlog);
+{	return soap_bind(this, host, port, backlog);
 }
 
 SOAP_SOCKET EdlProviderBindingService::accept()
-{	return soap_accept(this->soap);
+{	return soap_accept(this);
 }
 
 #if defined(WITH_OPENSSL) || defined(WITH_GNUTLS)
 int EdlProviderBindingService::ssl_accept()
-{	return soap_ssl_accept(this->soap);
+{	return soap_ssl_accept(this);
 }
 #endif
 
 int EdlProviderBindingService::serve()
 {
 #ifndef WITH_FASTCGI
-	unsigned int k = this->soap->max_keep_alive;
+	unsigned int k = this->max_keep_alive;
 #endif
 	do
 	{
 
 #ifndef WITH_FASTCGI
-		if (this->soap->max_keep_alive > 0 && !--k)
-			this->soap->keep_alive = 0;
+		if (this->max_keep_alive > 0 && !--k)
+			this->keep_alive = 0;
 #endif
 
-		if (soap_begin_serve(this->soap))
-		{	if (this->soap->error >= SOAP_STOP)
+		if (soap_begin_serve(this))
+		{	if (this->error >= SOAP_STOP)
 				continue;
-			return this->soap->error;
+			return this->error;
 		}
-		if (dispatch() || (this->soap->fserveloop && this->soap->fserveloop(this->soap)))
+		if (dispatch() || (this->fserveloop && this->fserveloop(this)))
 		{
 #ifdef WITH_FASTCGI
-			soap_send_fault(this->soap);
+			soap_send_fault(this);
 #else
-			return soap_send_fault(this->soap);
+			return soap_send_fault(this);
 #endif
 		}
 
 #ifdef WITH_FASTCGI
-		soap_destroy(this->soap);
-		soap_end(this->soap);
+		soap_destroy(this);
+		soap_end(this);
 	} while (1);
 #else
-	} while (this->soap->keep_alive);
+	} while (this->keep_alive);
 #endif
 	return SOAP_OK;
 }
@@ -195,18 +182,16 @@ static int serve___edlprovider__getEdl(EdlProviderBindingService*);
 static int serve___edlprovider__getEdlDouble(EdlProviderBindingService*);
 
 int EdlProviderBindingService::dispatch()
-{	EdlProviderBindingService_init(this->soap->imode, this->soap->omode);
-	soap_peek_element(this->soap);
-	if (!soap_match_tag(this->soap, this->soap->tag, "edlprovider:getEdlRequest"))
+{	soap_peek_element(this);
+	if (!soap_match_tag(this, this->tag, "edlprovider:getEdlRequest"))
 		return serve___edlprovider__getEdl(this);
-	if (!soap_match_tag(this->soap, this->soap->tag, "edlprovider:getEdlDoubleRequest"))
+	if (!soap_match_tag(this, this->tag, "edlprovider:getEdlDoubleRequest"))
 		return serve___edlprovider__getEdlDouble(this);
 	return serve___edlprovider__getInstalledEdls(this);
 }
 
-static int serve___edlprovider__getInstalledEdls(EdlProviderBindingService *service)
-{	struct soap *soap = service->soap;
-	struct __edlprovider__getInstalledEdls soap_tmp___edlprovider__getInstalledEdls;
+static int serve___edlprovider__getInstalledEdls(EdlProviderBindingService *soap)
+{	struct __edlprovider__getInstalledEdls soap_tmp___edlprovider__getInstalledEdls;
 	edlprovider__ArrayOfstring edlprovider__installedEdlsResponse;
 	edlprovider__installedEdlsResponse.soap_default(soap);
 	soap_default___edlprovider__getInstalledEdls(soap, &soap_tmp___edlprovider__getInstalledEdls);
@@ -214,7 +199,7 @@ static int serve___edlprovider__getInstalledEdls(EdlProviderBindingService *serv
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = service->getInstalledEdls(&edlprovider__installedEdlsResponse);
+	soap->error = soap->getInstalledEdls(&edlprovider__installedEdlsResponse);
 	if (soap->error)
 		return soap->error;
 	soap->encodingStyle = NULL;
@@ -244,9 +229,8 @@ static int serve___edlprovider__getInstalledEdls(EdlProviderBindingService *serv
 	return soap_closesock(soap);
 }
 
-static int serve___edlprovider__getEdl(EdlProviderBindingService *service)
-{	struct soap *soap = service->soap;
-	struct __edlprovider__getEdl soap_tmp___edlprovider__getEdl;
+static int serve___edlprovider__getEdl(EdlProviderBindingService *soap)
+{	struct __edlprovider__getEdl soap_tmp___edlprovider__getEdl;
 	edlprovider__EdlCreateResponseType edlprovider__getEdlResponse;
 	edlprovider__getEdlResponse.soap_default(soap);
 	soap_default___edlprovider__getEdl(soap, &soap_tmp___edlprovider__getEdl);
@@ -256,7 +240,7 @@ static int serve___edlprovider__getEdl(EdlProviderBindingService *service)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = service->getEdl(soap_tmp___edlprovider__getEdl.edlprovider__getEdlRequest, &edlprovider__getEdlResponse);
+	soap->error = soap->getEdl(soap_tmp___edlprovider__getEdl.edlprovider__getEdlRequest, &edlprovider__getEdlResponse);
 	if (soap->error)
 		return soap->error;
 	soap->encodingStyle = NULL;
@@ -286,9 +270,8 @@ static int serve___edlprovider__getEdl(EdlProviderBindingService *service)
 	return soap_closesock(soap);
 }
 
-static int serve___edlprovider__getEdlDouble(EdlProviderBindingService *service)
-{	struct soap *soap = service->soap;
-	struct __edlprovider__getEdlDouble soap_tmp___edlprovider__getEdlDouble;
+static int serve___edlprovider__getEdlDouble(EdlProviderBindingService *soap)
+{	struct __edlprovider__getEdlDouble soap_tmp___edlprovider__getEdlDouble;
 	edlprovider__EdlCreateResponseType edlprovider__getEdlResponse;
 	edlprovider__getEdlResponse.soap_default(soap);
 	soap_default___edlprovider__getEdlDouble(soap, &soap_tmp___edlprovider__getEdlDouble);
@@ -298,7 +281,7 @@ static int serve___edlprovider__getEdlDouble(EdlProviderBindingService *service)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = service->getEdlDouble(soap_tmp___edlprovider__getEdlDouble.edlprovider__getEdlDoubleRequest, &edlprovider__getEdlResponse);
+	soap->error = soap->getEdlDouble(soap_tmp___edlprovider__getEdlDouble.edlprovider__getEdlDoubleRequest, &edlprovider__getEdlResponse);
 	if (soap->error)
 		return soap->error;
 	soap->encodingStyle = NULL;

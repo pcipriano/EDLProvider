@@ -15,7 +15,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 
 #include "EDLProviderH.h"
 
-SOAP_SOURCE_STAMP("@(#) EDLProviderC.cpp ver 2.8.17r 2014-04-11 20:00:34 GMT")
+SOAP_SOURCE_STAMP("@(#) EDLProviderC.cpp ver 2.8.17r 2014-04-11 21:11:31 GMT")
 
 
 #ifndef WITH_NOGLOBAL

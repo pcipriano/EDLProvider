@@ -15,7 +15,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 
 #include "EDLProviderH.h"
 
-SOAP_SOURCE_STAMP("@(#) EDLProviderC.cpp ver 2.8.17r 2014-04-11 21:11:31 GMT")
+SOAP_SOURCE_STAMP("@(#) EDLProviderC.cpp ver 2.8.17r 2014-04-12 19:16:59 GMT")
 
 
 #ifndef WITH_NOGLOBAL
@@ -528,8 +528,6 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		return soap_in_PointerTofims__BMTrackType(soap, NULL, NULL, "fims:BMTrackType");
 	case SOAP_TYPE_PointerTofims__CodecType:
 		return soap_in_PointerTofims__CodecType(soap, NULL, NULL, "fims:CodecType");
-	case SOAP_TYPE_PointerTofims__RationalType:
-		return soap_in_PointerTofims__RationalType(soap, NULL, NULL, "fims:RationalType");
 	case SOAP_TYPE_PointerTofims__LengthType:
 		return soap_in_PointerTofims__LengthType(soap, NULL, NULL, "fims:LengthType");
 	case SOAP_TYPE_PointerTo_fims__BMEssenceLocatorType_containerMimeType:
@@ -572,12 +570,12 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		return soap_in_PointerTofims__ListFilterType(soap, NULL, NULL, "fims:ListFilterType");
 	case SOAP_TYPE_PointerTofims__DurationType:
 		return soap_in_PointerTofims__DurationType(soap, NULL, NULL, "fims:DurationType");
-	case SOAP_TYPE_PointerTofims__TimeType:
-		return soap_in_PointerTofims__TimeType(soap, NULL, NULL, "fims:TimeType");
 	case SOAP_TYPE_PointerTofims__AsyncEndpointType:
 		return soap_in_PointerTofims__AsyncEndpointType(soap, NULL, NULL, "fims:AsyncEndpointType");
 	case SOAP_TYPE_PointerToedlprovider__EDLProviderErrorCodeType:
 		return soap_in_PointerToedlprovider__EDLProviderErrorCodeType(soap, NULL, NULL, "edlprovider:EDLProviderErrorCodeType");
+	case SOAP_TYPE_PointerTofims__RationalType:
+		return soap_in_PointerTofims__RationalType(soap, NULL, NULL, "fims:RationalType");
 	case SOAP_TYPE_PointerTo_fimsdescription__addressType_country:
 		return soap_in_PointerTo_fimsdescription__addressType_country(soap, NULL, NULL, "fimsdescription:addressType-country");
 	case SOAP_TYPE_PointerTofimsdescription__addressType:
@@ -642,8 +640,6 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		return soap_in_PointerTofims__BMContentFormatType(soap, NULL, NULL, "fims:BMContentFormatType");
 	case SOAP_TYPE_PointerTofims__BMContentType:
 		return soap_in_PointerTofims__BMContentType(soap, NULL, NULL, "fims:BMContentType");
-	case SOAP_TYPE_PointerTofims__BMObjectType:
-		return soap_in_PointerTofims__BMObjectType(soap, NULL, NULL, "fims:BMObjectType");
 	case SOAP_TYPE_PointerTofims__DataFormatType:
 		return soap_in_PointerTofims__DataFormatType(soap, NULL, NULL, "fims:DataFormatType");
 	case SOAP_TYPE_PointerTofims__ProfileType:
@@ -704,6 +700,10 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		return soap_in_PointerTostd__wstring(soap, NULL, NULL, "xsd:string");
 	case SOAP_TYPE_PointerToedlprovider__ArrayOfClips:
 		return soap_in_PointerToedlprovider__ArrayOfClips(soap, NULL, NULL, "edlprovider:ArrayOfClips");
+	case SOAP_TYPE_PointerTofims__BMObjectType:
+		return soap_in_PointerTofims__BMObjectType(soap, NULL, NULL, "fims:BMObjectType");
+	case SOAP_TYPE_PointerTofims__TimeType:
+		return soap_in_PointerTofims__TimeType(soap, NULL, NULL, "fims:TimeType");
 	case SOAP_TYPE_PointerToedlprovider__ClipType:
 		return soap_in_PointerToedlprovider__ClipType(soap, NULL, NULL, "edlprovider:ClipType");
 	case SOAP_TYPE_PointerTounsignedByte:
@@ -1884,8 +1884,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return soap_out_PointerTofims__BMTrackType(soap, tag, id, (fims__BMTrackType *const*)ptr, "fims:BMTrackType");
 	case SOAP_TYPE_PointerTofims__CodecType:
 		return soap_out_PointerTofims__CodecType(soap, tag, id, (fims__CodecType *const*)ptr, "fims:CodecType");
-	case SOAP_TYPE_PointerTofims__RationalType:
-		return soap_out_PointerTofims__RationalType(soap, tag, id, (fims__RationalType *const*)ptr, "fims:RationalType");
 	case SOAP_TYPE_PointerTofims__LengthType:
 		return soap_out_PointerTofims__LengthType(soap, tag, id, (fims__LengthType *const*)ptr, "fims:LengthType");
 	case SOAP_TYPE_PointerTo_fims__BMEssenceLocatorType_containerMimeType:
@@ -1928,12 +1926,12 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return soap_out_PointerTofims__ListFilterType(soap, tag, id, (fims__ListFilterType *const*)ptr, "fims:ListFilterType");
 	case SOAP_TYPE_PointerTofims__DurationType:
 		return soap_out_PointerTofims__DurationType(soap, tag, id, (fims__DurationType *const*)ptr, "fims:DurationType");
-	case SOAP_TYPE_PointerTofims__TimeType:
-		return soap_out_PointerTofims__TimeType(soap, tag, id, (fims__TimeType *const*)ptr, "fims:TimeType");
 	case SOAP_TYPE_PointerTofims__AsyncEndpointType:
 		return soap_out_PointerTofims__AsyncEndpointType(soap, tag, id, (fims__AsyncEndpointType *const*)ptr, "fims:AsyncEndpointType");
 	case SOAP_TYPE_PointerToedlprovider__EDLProviderErrorCodeType:
 		return soap_out_PointerToedlprovider__EDLProviderErrorCodeType(soap, tag, id, (enum edlprovider__EDLProviderErrorCodeType *const*)ptr, "edlprovider:EDLProviderErrorCodeType");
+	case SOAP_TYPE_PointerTofims__RationalType:
+		return soap_out_PointerTofims__RationalType(soap, tag, id, (fims__RationalType *const*)ptr, "fims:RationalType");
 	case SOAP_TYPE_PointerTo_fimsdescription__addressType_country:
 		return soap_out_PointerTo_fimsdescription__addressType_country(soap, tag, id, (_fimsdescription__addressType_country *const*)ptr, "fimsdescription:addressType-country");
 	case SOAP_TYPE_PointerTofimsdescription__addressType:
@@ -1998,8 +1996,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return soap_out_PointerTofims__BMContentFormatType(soap, tag, id, (fims__BMContentFormatType *const*)ptr, "fims:BMContentFormatType");
 	case SOAP_TYPE_PointerTofims__BMContentType:
 		return soap_out_PointerTofims__BMContentType(soap, tag, id, (fims__BMContentType *const*)ptr, "fims:BMContentType");
-	case SOAP_TYPE_PointerTofims__BMObjectType:
-		return soap_out_PointerTofims__BMObjectType(soap, tag, id, (fims__BMObjectType *const*)ptr, "fims:BMObjectType");
 	case SOAP_TYPE_PointerTofims__DataFormatType:
 		return soap_out_PointerTofims__DataFormatType(soap, tag, id, (fims__DataFormatType *const*)ptr, "fims:DataFormatType");
 	case SOAP_TYPE_PointerTofims__ProfileType:
@@ -2060,6 +2056,10 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return soap_out_PointerTostd__wstring(soap, tag, id, (std::wstring *const*)ptr, "xsd:string");
 	case SOAP_TYPE_PointerToedlprovider__ArrayOfClips:
 		return soap_out_PointerToedlprovider__ArrayOfClips(soap, tag, id, (edlprovider__ArrayOfClips *const*)ptr, "edlprovider:ArrayOfClips");
+	case SOAP_TYPE_PointerTofims__BMObjectType:
+		return soap_out_PointerTofims__BMObjectType(soap, tag, id, (fims__BMObjectType *const*)ptr, "fims:BMObjectType");
+	case SOAP_TYPE_PointerTofims__TimeType:
+		return soap_out_PointerTofims__TimeType(soap, tag, id, (fims__TimeType *const*)ptr, "fims:TimeType");
 	case SOAP_TYPE_PointerToedlprovider__ClipType:
 		return soap_out_PointerToedlprovider__ClipType(soap, tag, id, (edlprovider__ClipType *const*)ptr, "edlprovider:ClipType");
 	case SOAP_TYPE_PointerTounsignedByte:
@@ -2617,9 +2617,6 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 	case SOAP_TYPE_PointerTofims__CodecType:
 		soap_serialize_PointerTofims__CodecType(soap, (fims__CodecType *const*)ptr);
 		break;
-	case SOAP_TYPE_PointerTofims__RationalType:
-		soap_serialize_PointerTofims__RationalType(soap, (fims__RationalType *const*)ptr);
-		break;
 	case SOAP_TYPE_PointerTofims__LengthType:
 		soap_serialize_PointerTofims__LengthType(soap, (fims__LengthType *const*)ptr);
 		break;
@@ -2683,14 +2680,14 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 	case SOAP_TYPE_PointerTofims__DurationType:
 		soap_serialize_PointerTofims__DurationType(soap, (fims__DurationType *const*)ptr);
 		break;
-	case SOAP_TYPE_PointerTofims__TimeType:
-		soap_serialize_PointerTofims__TimeType(soap, (fims__TimeType *const*)ptr);
-		break;
 	case SOAP_TYPE_PointerTofims__AsyncEndpointType:
 		soap_serialize_PointerTofims__AsyncEndpointType(soap, (fims__AsyncEndpointType *const*)ptr);
 		break;
 	case SOAP_TYPE_PointerToedlprovider__EDLProviderErrorCodeType:
 		soap_serialize_PointerToedlprovider__EDLProviderErrorCodeType(soap, (enum edlprovider__EDLProviderErrorCodeType *const*)ptr);
+		break;
+	case SOAP_TYPE_PointerTofims__RationalType:
+		soap_serialize_PointerTofims__RationalType(soap, (fims__RationalType *const*)ptr);
 		break;
 	case SOAP_TYPE_PointerTo_fimsdescription__addressType_country:
 		soap_serialize_PointerTo_fimsdescription__addressType_country(soap, (_fimsdescription__addressType_country *const*)ptr);
@@ -2788,9 +2785,6 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 	case SOAP_TYPE_PointerTofims__BMContentType:
 		soap_serialize_PointerTofims__BMContentType(soap, (fims__BMContentType *const*)ptr);
 		break;
-	case SOAP_TYPE_PointerTofims__BMObjectType:
-		soap_serialize_PointerTofims__BMObjectType(soap, (fims__BMObjectType *const*)ptr);
-		break;
 	case SOAP_TYPE_PointerTofims__DataFormatType:
 		soap_serialize_PointerTofims__DataFormatType(soap, (fims__DataFormatType *const*)ptr);
 		break;
@@ -2880,6 +2874,12 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 		break;
 	case SOAP_TYPE_PointerToedlprovider__ArrayOfClips:
 		soap_serialize_PointerToedlprovider__ArrayOfClips(soap, (edlprovider__ArrayOfClips *const*)ptr);
+		break;
+	case SOAP_TYPE_PointerTofims__BMObjectType:
+		soap_serialize_PointerTofims__BMObjectType(soap, (fims__BMObjectType *const*)ptr);
+		break;
+	case SOAP_TYPE_PointerTofims__TimeType:
+		soap_serialize_PointerTofims__TimeType(soap, (fims__TimeType *const*)ptr);
 		break;
 	case SOAP_TYPE_PointerToedlprovider__ClipType:
 		soap_serialize_PointerToedlprovider__ClipType(soap, (edlprovider__ClipType *const*)ptr);
@@ -31221,14 +31221,14 @@ void edlprovider__EdlCreateRequestType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
 	this->edlprovider__EdlCreateRequestBaseType::soap_default(soap);
-	soap_default_int(soap, &this->edlprovider__EdlCreateRequestType::edlFramesPerSecondNumerator);
-	soap_default_int(soap, &this->edlprovider__EdlCreateRequestType::edlFramesPerSecondDenominator);
+	this->edlprovider__EdlCreateRequestType::edlFramesPerSecond = NULL;
 }
 
 void edlprovider__EdlCreateRequestType::soap_serialize(struct soap *soap) const
 {
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
+	soap_serialize_PointerTofims__RationalType(soap, &this->edlprovider__EdlCreateRequestType::edlFramesPerSecond);
 	this->edlprovider__EdlCreateRequestBaseType::soap_serialize(soap);
 #endif
 }
@@ -31249,9 +31249,11 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__EdlCreateRequestType(struct soap
 	if (soap_out_PointerTostd__wstring(soap, "edlSequenceName", -1, &(a->edlprovider__EdlCreateRequestBaseType::edlSequenceName), ""))
 		return soap->error;
 	/* transient soap skipped */
-	if (soap_out_int(soap, "edlFramesPerSecondNumerator", -1, &(a->edlprovider__EdlCreateRequestType::edlFramesPerSecondNumerator), ""))
-		return soap->error;
-	if (soap_out_int(soap, "edlFramesPerSecondDenominator", -1, &(a->edlprovider__EdlCreateRequestType::edlFramesPerSecondDenominator), ""))
+	if (a->edlprovider__EdlCreateRequestType::edlFramesPerSecond)
+	{	if (soap_out_PointerTofims__RationalType(soap, "edlFramesPerSecond", -1, &a->edlprovider__EdlCreateRequestType::edlFramesPerSecond, ""))
+			return soap->error;
+	}
+	else if (soap_element_nil(soap, "edlFramesPerSecond"))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
@@ -31279,8 +31281,7 @@ SOAP_FMAC3 edlprovider__EdlCreateRequestType * SOAP_FMAC4 soap_in_edlprovider__E
 	size_t soap_flag_edlType2 = 1;
 	size_t soap_flag_clips2 = 1;
 	size_t soap_flag_edlSequenceName2 = 1;
-	size_t soap_flag_edlFramesPerSecondNumerator1 = 1;
-	size_t soap_flag_edlFramesPerSecondDenominator1 = 1;
+	size_t soap_flag_edlFramesPerSecond1 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
@@ -31301,14 +31302,9 @@ SOAP_FMAC3 edlprovider__EdlCreateRequestType * SOAP_FMAC4 soap_in_edlprovider__E
 					continue;
 				}
 			/* transient soap skipped */
-			if (soap_flag_edlFramesPerSecondNumerator1 && soap->error == SOAP_TAG_MISMATCH)
-				if (soap_in_int(soap, "edlFramesPerSecondNumerator", &(a->edlprovider__EdlCreateRequestType::edlFramesPerSecondNumerator), "xsd:int"))
-				{	soap_flag_edlFramesPerSecondNumerator1--;
-					continue;
-				}
-			if (soap_flag_edlFramesPerSecondDenominator1 && soap->error == SOAP_TAG_MISMATCH)
-				if (soap_in_int(soap, "edlFramesPerSecondDenominator", &(a->edlprovider__EdlCreateRequestType::edlFramesPerSecondDenominator), "xsd:int"))
-				{	soap_flag_edlFramesPerSecondDenominator1--;
+			if (soap_flag_edlFramesPerSecond1 && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_PointerTofims__RationalType(soap, "edlFramesPerSecond", &(a->edlprovider__EdlCreateRequestType::edlFramesPerSecond), "fims:RationalType"))
+				{	soap_flag_edlFramesPerSecond1--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -31326,7 +31322,7 @@ SOAP_FMAC3 edlprovider__EdlCreateRequestType * SOAP_FMAC4 soap_in_edlprovider__E
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
-	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_edlType2 > 0 || soap_flag_edlFramesPerSecondNumerator1 > 0 || soap_flag_edlFramesPerSecondDenominator1 > 0))
+	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_edlType2 > 0 || soap_flag_edlFramesPerSecond1 > 0))
 	{	soap->error = SOAP_OCCURS;
 		return NULL;
 	}
@@ -31593,6 +31589,9 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__EdlCreateRequestBaseType(struc
 void edlprovider__ClipType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->edlprovider__ClipType::markIn = NULL;
+	this->edlprovider__ClipType::markOut = NULL;
+	this->edlprovider__ClipType::clipInfo = NULL;
 	/* transient soap skipped */
 }
 
@@ -31600,6 +31599,9 @@ void edlprovider__ClipType::soap_serialize(struct soap *soap) const
 {
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
+	soap_serialize_PointerTofims__TimeType(soap, &this->edlprovider__ClipType::markIn);
+	soap_serialize_PointerTofims__TimeType(soap, &this->edlprovider__ClipType::markOut);
+	soap_serialize_PointerTofims__BMObjectType(soap, &this->edlprovider__ClipType::clipInfo);
 	/* transient soap skipped */
 #endif
 }
@@ -31612,6 +31614,24 @@ int edlprovider__ClipType::soap_out(struct soap *soap, const char *tag, int id, 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__ClipType(struct soap *soap, const char *tag, int id, const edlprovider__ClipType *a, const char *type)
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__ClipType), type))
+		return soap->error;
+	if (a->edlprovider__ClipType::markIn)
+	{	if (soap_out_PointerTofims__TimeType(soap, "markIn", -1, &a->edlprovider__ClipType::markIn, ""))
+			return soap->error;
+	}
+	else if (soap_element_nil(soap, "markIn"))
+		return soap->error;
+	if (a->edlprovider__ClipType::markOut)
+	{	if (soap_out_PointerTofims__TimeType(soap, "markOut", -1, &a->edlprovider__ClipType::markOut, ""))
+			return soap->error;
+	}
+	else if (soap_element_nil(soap, "markOut"))
+		return soap->error;
+	if (a->edlprovider__ClipType::clipInfo)
+	{	if (soap_out_PointerTofims__BMObjectType(soap, "clipInfo", -1, &a->edlprovider__ClipType::clipInfo, ""))
+			return soap->error;
+	}
+	else if (soap_element_nil(soap, "clipInfo"))
 		return soap->error;
 	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
@@ -31637,10 +31657,28 @@ SOAP_FMAC3 edlprovider__ClipType * SOAP_FMAC4 soap_in_edlprovider__ClipType(stru
 			return (edlprovider__ClipType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag_markIn1 = 1;
+	size_t soap_flag_markOut1 = 1;
+	size_t soap_flag_clipInfo1 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			if (soap_flag_markIn1 && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_PointerTofims__TimeType(soap, "markIn", &(a->edlprovider__ClipType::markIn), "fims:TimeType"))
+				{	soap_flag_markIn1--;
+					continue;
+				}
+			if (soap_flag_markOut1 && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_PointerTofims__TimeType(soap, "markOut", &(a->edlprovider__ClipType::markOut), "fims:TimeType"))
+				{	soap_flag_markOut1--;
+					continue;
+				}
+			if (soap_flag_clipInfo1 && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_PointerTofims__BMObjectType(soap, "clipInfo", &(a->edlprovider__ClipType::clipInfo), "fims:BMObjectType"))
+				{	soap_flag_clipInfo1--;
+					continue;
+				}
 			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
@@ -31656,6 +31694,10 @@ SOAP_FMAC3 edlprovider__ClipType * SOAP_FMAC4 soap_in_edlprovider__ClipType(stru
 	{	a = (edlprovider__ClipType *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_edlprovider__ClipType, 0, sizeof(edlprovider__ClipType), 0, soap_copy_edlprovider__ClipType);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
+	}
+	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_markIn1 > 0 || soap_flag_markOut1 > 0 || soap_flag_clipInfo1 > 0))
+	{	soap->error = SOAP_OCCURS;
+		return NULL;
 	}
 	return a;
 }
@@ -31718,7 +31760,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__ClipType(struct soap *soap, in
 void edlprovider__ArrayOfClips::soap_default(struct soap *soap)
 {
 	this->soap = soap;
-	soap_default_std__vectorTemplateOfPointerToedlprovider__ClipType(soap, &this->edlprovider__ArrayOfClips::clip);
+	soap_default_std__vectorTemplateOfPointerToedlprovider__ClipType(soap, &this->edlprovider__ArrayOfClips::clips);
 	/* transient soap skipped */
 }
 
@@ -31726,7 +31768,7 @@ void edlprovider__ArrayOfClips::soap_serialize(struct soap *soap) const
 {
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
-	soap_serialize_std__vectorTemplateOfPointerToedlprovider__ClipType(soap, &this->edlprovider__ArrayOfClips::clip);
+	soap_serialize_std__vectorTemplateOfPointerToedlprovider__ClipType(soap, &this->edlprovider__ArrayOfClips::clips);
 	/* transient soap skipped */
 #endif
 }
@@ -31740,7 +31782,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__ArrayOfClips(struct soap *soap, 
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__ArrayOfClips), type))
 		return soap->error;
-	if (soap_out_std__vectorTemplateOfPointerToedlprovider__ClipType(soap, "clip", -1, &(a->edlprovider__ArrayOfClips::clip), ""))
+	if (soap_out_std__vectorTemplateOfPointerToedlprovider__ClipType(soap, "clips", -1, &(a->edlprovider__ArrayOfClips::clips), ""))
 		return soap->error;
 	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
@@ -31771,7 +31813,7 @@ SOAP_FMAC3 edlprovider__ArrayOfClips * SOAP_FMAC4 soap_in_edlprovider__ArrayOfCl
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap->error == SOAP_TAG_MISMATCH)
-				if (soap_in_std__vectorTemplateOfPointerToedlprovider__ClipType(soap, "clip", &(a->edlprovider__ArrayOfClips::clip), "edlprovider:ClipType"))
+				if (soap_in_std__vectorTemplateOfPointerToedlprovider__ClipType(soap, "clips", &(a->edlprovider__ArrayOfClips::clips), "edlprovider:ClipType"))
 					continue;
 			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -34964,63 +35006,6 @@ SOAP_FMAC3 fims__CodecType ** SOAP_FMAC4 soap_get_PointerTofims__CodecType(struc
 	return p;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__RationalType(struct soap *soap, fims__RationalType *const*a)
-{
-#ifndef WITH_NOIDREF
-	if (!soap_reference(soap, *a, SOAP_TYPE_fims__RationalType))
-		(*a)->soap_serialize(soap);
-#endif
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__RationalType(struct soap *soap, const char *tag, int id, fims__RationalType *const*a, const char *type)
-{
-	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_fims__RationalType);
-	if (id < 0)
-		return soap->error;
-	return (*a)->soap_out(soap, tag, id, type);
-}
-
-SOAP_FMAC3 fims__RationalType ** SOAP_FMAC4 soap_in_PointerTofims__RationalType(struct soap *soap, const char *tag, fims__RationalType **a, const char *type)
-{
-	if (soap_element_begin_in(soap, tag, 1, NULL))
-		return NULL;
-	if (!a)
-		if (!(a = (fims__RationalType **)soap_malloc(soap, sizeof(fims__RationalType *))))
-			return NULL;
-	*a = NULL;
-	if (!soap->null && *soap->href != '#')
-	{	soap_revert(soap);
-		if (!(*a = (fims__RationalType *)soap_instantiate_fims__RationalType(soap, -1, soap->type, soap->arrayType, NULL)))
-			return NULL;
-		(*a)->soap_default(soap);
-		if (!(*a)->soap_in(soap, tag, NULL))
-			return NULL;
-	}
-	else
-	{	fims__RationalType ** p = (fims__RationalType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__RationalType, sizeof(fims__RationalType), 0);
-		a = p;
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTofims__RationalType(struct soap *soap, fims__RationalType *const*a, const char *tag, const char *type)
-{
-	register int id = soap_embed(soap, (void*)a, NULL, 0, tag, SOAP_TYPE_PointerTofims__RationalType);
-	if (soap_out_PointerTofims__RationalType(soap, tag?tag:"fims:RationalType", id, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 fims__RationalType ** SOAP_FMAC4 soap_get_PointerTofims__RationalType(struct soap *soap, fims__RationalType **p, const char *tag, const char *type)
-{
-	if ((p = soap_in_PointerTofims__RationalType(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__LengthType(struct soap *soap, fims__LengthType *const*a)
 {
 #ifndef WITH_NOIDREF
@@ -36223,63 +36208,6 @@ SOAP_FMAC3 fims__DurationType ** SOAP_FMAC4 soap_get_PointerTofims__DurationType
 	return p;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__TimeType(struct soap *soap, fims__TimeType *const*a)
-{
-#ifndef WITH_NOIDREF
-	if (!soap_reference(soap, *a, SOAP_TYPE_fims__TimeType))
-		(*a)->soap_serialize(soap);
-#endif
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__TimeType(struct soap *soap, const char *tag, int id, fims__TimeType *const*a, const char *type)
-{
-	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_fims__TimeType);
-	if (id < 0)
-		return soap->error;
-	return (*a)->soap_out(soap, tag, id, type);
-}
-
-SOAP_FMAC3 fims__TimeType ** SOAP_FMAC4 soap_in_PointerTofims__TimeType(struct soap *soap, const char *tag, fims__TimeType **a, const char *type)
-{
-	if (soap_element_begin_in(soap, tag, 1, NULL))
-		return NULL;
-	if (!a)
-		if (!(a = (fims__TimeType **)soap_malloc(soap, sizeof(fims__TimeType *))))
-			return NULL;
-	*a = NULL;
-	if (!soap->null && *soap->href != '#')
-	{	soap_revert(soap);
-		if (!(*a = (fims__TimeType *)soap_instantiate_fims__TimeType(soap, -1, soap->type, soap->arrayType, NULL)))
-			return NULL;
-		(*a)->soap_default(soap);
-		if (!(*a)->soap_in(soap, tag, NULL))
-			return NULL;
-	}
-	else
-	{	fims__TimeType ** p = (fims__TimeType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__TimeType, sizeof(fims__TimeType), 0);
-		a = p;
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTofims__TimeType(struct soap *soap, fims__TimeType *const*a, const char *tag, const char *type)
-{
-	register int id = soap_embed(soap, (void*)a, NULL, 0, tag, SOAP_TYPE_PointerTofims__TimeType);
-	if (soap_out_PointerTofims__TimeType(soap, tag?tag:"fims:TimeType", id, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 fims__TimeType ** SOAP_FMAC4 soap_get_PointerTofims__TimeType(struct soap *soap, fims__TimeType **p, const char *tag, const char *type)
-{
-	if ((p = soap_in_PointerTofims__TimeType(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__AsyncEndpointType(struct soap *soap, fims__AsyncEndpointType *const*a)
 {
 #ifndef WITH_NOIDREF
@@ -36384,6 +36312,63 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerToedlprovider__EDLProviderErrorCodeTyp
 SOAP_FMAC3 enum edlprovider__EDLProviderErrorCodeType ** SOAP_FMAC4 soap_get_PointerToedlprovider__EDLProviderErrorCodeType(struct soap *soap, enum edlprovider__EDLProviderErrorCodeType **p, const char *tag, const char *type)
 {
 	if ((p = soap_in_PointerToedlprovider__EDLProviderErrorCodeType(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__RationalType(struct soap *soap, fims__RationalType *const*a)
+{
+#ifndef WITH_NOIDREF
+	if (!soap_reference(soap, *a, SOAP_TYPE_fims__RationalType))
+		(*a)->soap_serialize(soap);
+#endif
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__RationalType(struct soap *soap, const char *tag, int id, fims__RationalType *const*a, const char *type)
+{
+	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_fims__RationalType);
+	if (id < 0)
+		return soap->error;
+	return (*a)->soap_out(soap, tag, id, type);
+}
+
+SOAP_FMAC3 fims__RationalType ** SOAP_FMAC4 soap_in_PointerTofims__RationalType(struct soap *soap, const char *tag, fims__RationalType **a, const char *type)
+{
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!a)
+		if (!(a = (fims__RationalType **)soap_malloc(soap, sizeof(fims__RationalType *))))
+			return NULL;
+	*a = NULL;
+	if (!soap->null && *soap->href != '#')
+	{	soap_revert(soap);
+		if (!(*a = (fims__RationalType *)soap_instantiate_fims__RationalType(soap, -1, soap->type, soap->arrayType, NULL)))
+			return NULL;
+		(*a)->soap_default(soap);
+		if (!(*a)->soap_in(soap, tag, NULL))
+			return NULL;
+	}
+	else
+	{	fims__RationalType ** p = (fims__RationalType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__RationalType, sizeof(fims__RationalType), 0);
+		a = p;
+		if (soap->body && soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	return a;
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTofims__RationalType(struct soap *soap, fims__RationalType *const*a, const char *tag, const char *type)
+{
+	register int id = soap_embed(soap, (void*)a, NULL, 0, tag, SOAP_TYPE_PointerTofims__RationalType);
+	if (soap_out_PointerTofims__RationalType(soap, tag?tag:"fims:RationalType", id, a, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+SOAP_FMAC3 fims__RationalType ** SOAP_FMAC4 soap_get_PointerTofims__RationalType(struct soap *soap, fims__RationalType **p, const char *tag, const char *type)
+{
+	if ((p = soap_in_PointerTofims__RationalType(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
@@ -38404,63 +38389,6 @@ SOAP_FMAC3 fims__BMContentType ** SOAP_FMAC4 soap_get_PointerTofims__BMContentTy
 	return p;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__BMObjectType(struct soap *soap, fims__BMObjectType *const*a)
-{
-#ifndef WITH_NOIDREF
-	if (!soap_reference(soap, *a, SOAP_TYPE_fims__BMObjectType))
-		(*a)->soap_serialize(soap);
-#endif
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__BMObjectType(struct soap *soap, const char *tag, int id, fims__BMObjectType *const*a, const char *type)
-{
-	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_fims__BMObjectType);
-	if (id < 0)
-		return soap->error;
-	return (*a)->soap_out(soap, tag, id, type);
-}
-
-SOAP_FMAC3 fims__BMObjectType ** SOAP_FMAC4 soap_in_PointerTofims__BMObjectType(struct soap *soap, const char *tag, fims__BMObjectType **a, const char *type)
-{
-	if (soap_element_begin_in(soap, tag, 1, NULL))
-		return NULL;
-	if (!a)
-		if (!(a = (fims__BMObjectType **)soap_malloc(soap, sizeof(fims__BMObjectType *))))
-			return NULL;
-	*a = NULL;
-	if (!soap->null && *soap->href != '#')
-	{	soap_revert(soap);
-		if (!(*a = (fims__BMObjectType *)soap_instantiate_fims__BMObjectType(soap, -1, soap->type, soap->arrayType, NULL)))
-			return NULL;
-		(*a)->soap_default(soap);
-		if (!(*a)->soap_in(soap, tag, NULL))
-			return NULL;
-	}
-	else
-	{	fims__BMObjectType ** p = (fims__BMObjectType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__BMObjectType, sizeof(fims__BMObjectType), 0);
-		a = p;
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTofims__BMObjectType(struct soap *soap, fims__BMObjectType *const*a, const char *tag, const char *type)
-{
-	register int id = soap_embed(soap, (void*)a, NULL, 0, tag, SOAP_TYPE_PointerTofims__BMObjectType);
-	if (soap_out_PointerTofims__BMObjectType(soap, tag?tag:"fims:BMObjectType", id, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 fims__BMObjectType ** SOAP_FMAC4 soap_get_PointerTofims__BMObjectType(struct soap *soap, fims__BMObjectType **p, const char *tag, const char *type)
-{
-	if ((p = soap_in_PointerTofims__BMObjectType(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__DataFormatType(struct soap *soap, fims__DataFormatType *const*a)
 {
 #ifndef WITH_NOIDREF
@@ -40179,6 +40107,120 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerToedlprovider__ArrayOfClips(struct soa
 SOAP_FMAC3 edlprovider__ArrayOfClips ** SOAP_FMAC4 soap_get_PointerToedlprovider__ArrayOfClips(struct soap *soap, edlprovider__ArrayOfClips **p, const char *tag, const char *type)
 {
 	if ((p = soap_in_PointerToedlprovider__ArrayOfClips(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__BMObjectType(struct soap *soap, fims__BMObjectType *const*a)
+{
+#ifndef WITH_NOIDREF
+	if (!soap_reference(soap, *a, SOAP_TYPE_fims__BMObjectType))
+		(*a)->soap_serialize(soap);
+#endif
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__BMObjectType(struct soap *soap, const char *tag, int id, fims__BMObjectType *const*a, const char *type)
+{
+	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_fims__BMObjectType);
+	if (id < 0)
+		return soap->error;
+	return (*a)->soap_out(soap, tag, id, type);
+}
+
+SOAP_FMAC3 fims__BMObjectType ** SOAP_FMAC4 soap_in_PointerTofims__BMObjectType(struct soap *soap, const char *tag, fims__BMObjectType **a, const char *type)
+{
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!a)
+		if (!(a = (fims__BMObjectType **)soap_malloc(soap, sizeof(fims__BMObjectType *))))
+			return NULL;
+	*a = NULL;
+	if (!soap->null && *soap->href != '#')
+	{	soap_revert(soap);
+		if (!(*a = (fims__BMObjectType *)soap_instantiate_fims__BMObjectType(soap, -1, soap->type, soap->arrayType, NULL)))
+			return NULL;
+		(*a)->soap_default(soap);
+		if (!(*a)->soap_in(soap, tag, NULL))
+			return NULL;
+	}
+	else
+	{	fims__BMObjectType ** p = (fims__BMObjectType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__BMObjectType, sizeof(fims__BMObjectType), 0);
+		a = p;
+		if (soap->body && soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	return a;
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTofims__BMObjectType(struct soap *soap, fims__BMObjectType *const*a, const char *tag, const char *type)
+{
+	register int id = soap_embed(soap, (void*)a, NULL, 0, tag, SOAP_TYPE_PointerTofims__BMObjectType);
+	if (soap_out_PointerTofims__BMObjectType(soap, tag?tag:"fims:BMObjectType", id, a, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+SOAP_FMAC3 fims__BMObjectType ** SOAP_FMAC4 soap_get_PointerTofims__BMObjectType(struct soap *soap, fims__BMObjectType **p, const char *tag, const char *type)
+{
+	if ((p = soap_in_PointerTofims__BMObjectType(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__TimeType(struct soap *soap, fims__TimeType *const*a)
+{
+#ifndef WITH_NOIDREF
+	if (!soap_reference(soap, *a, SOAP_TYPE_fims__TimeType))
+		(*a)->soap_serialize(soap);
+#endif
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__TimeType(struct soap *soap, const char *tag, int id, fims__TimeType *const*a, const char *type)
+{
+	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_fims__TimeType);
+	if (id < 0)
+		return soap->error;
+	return (*a)->soap_out(soap, tag, id, type);
+}
+
+SOAP_FMAC3 fims__TimeType ** SOAP_FMAC4 soap_in_PointerTofims__TimeType(struct soap *soap, const char *tag, fims__TimeType **a, const char *type)
+{
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!a)
+		if (!(a = (fims__TimeType **)soap_malloc(soap, sizeof(fims__TimeType *))))
+			return NULL;
+	*a = NULL;
+	if (!soap->null && *soap->href != '#')
+	{	soap_revert(soap);
+		if (!(*a = (fims__TimeType *)soap_instantiate_fims__TimeType(soap, -1, soap->type, soap->arrayType, NULL)))
+			return NULL;
+		(*a)->soap_default(soap);
+		if (!(*a)->soap_in(soap, tag, NULL))
+			return NULL;
+	}
+	else
+	{	fims__TimeType ** p = (fims__TimeType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__TimeType, sizeof(fims__TimeType), 0);
+		a = p;
+		if (soap->body && soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	return a;
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTofims__TimeType(struct soap *soap, fims__TimeType *const*a, const char *tag, const char *type)
+{
+	register int id = soap_embed(soap, (void*)a, NULL, 0, tag, SOAP_TYPE_PointerTofims__TimeType);
+	if (soap_out_PointerTofims__TimeType(soap, tag?tag:"fims:TimeType", id, a, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+SOAP_FMAC3 fims__TimeType ** SOAP_FMAC4 soap_get_PointerTofims__TimeType(struct soap *soap, fims__TimeType **p, const char *tag, const char *type)
+{
+	if ((p = soap_in_PointerTofims__TimeType(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;

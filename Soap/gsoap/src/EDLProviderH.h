@@ -87,7 +87,7 @@ SOAP_FMAC3 int * SOAP_FMAC4 soap_get_int(struct soap*, int *, const char*, const
 
 
 #ifndef SOAP_TYPE_LONG64
-#define SOAP_TYPE_LONG64 (297)
+#define SOAP_TYPE_LONG64 (299)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_LONG64(struct soap*, LONG64 *);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_LONG64(struct soap*, const char*, int, const LONG64 *, const char*);
@@ -131,7 +131,7 @@ SOAP_FMAC3 LONG64 * SOAP_FMAC4 soap_get_xsd__duration(struct soap*, LONG64 *, co
 
 
 #ifndef SOAP_TYPE_float
-#define SOAP_TYPE_float (265)
+#define SOAP_TYPE_float (266)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_float(struct soap*, float *);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_float(struct soap*, const char*, int, const float *, const char*);
@@ -151,7 +151,7 @@ SOAP_FMAC3 float * SOAP_FMAC4 soap_get_float(struct soap*, float *, const char*,
 
 
 #ifndef SOAP_TYPE_double
-#define SOAP_TYPE_double (294)
+#define SOAP_TYPE_double (296)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_double(struct soap*, double *);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_double(struct soap*, const char*, int, const double *, const char*);
@@ -211,7 +211,7 @@ SOAP_FMAC3 unsigned int * SOAP_FMAC4 soap_get_unsignedInt(struct soap*, unsigned
 
 
 #ifndef SOAP_TYPE_unsignedLONG64
-#define SOAP_TYPE_unsignedLONG64 (298)
+#define SOAP_TYPE_unsignedLONG64 (300)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_unsignedLONG64(struct soap*, ULONG64 *);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_unsignedLONG64(struct soap*, const char*, int, const ULONG64 *, const char*);
@@ -231,7 +231,7 @@ SOAP_FMAC3 ULONG64 * SOAP_FMAC4 soap_get_unsignedLONG64(struct soap*, ULONG64 *,
 
 
 #ifndef SOAP_TYPE_time
-#define SOAP_TYPE_time (192)
+#define SOAP_TYPE_time (194)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_time(struct soap*, time_t *);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_time(struct soap*, const char*, int, const time_t *, const char*);
@@ -251,7 +251,7 @@ SOAP_FMAC3 time_t * SOAP_FMAC4 soap_get_time(struct soap*, time_t *, const char*
 
 
 #ifndef SOAP_TYPE_bool
-#define SOAP_TYPE_bool (194)
+#define SOAP_TYPE_bool (196)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_bool(struct soap*, bool *);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_bool(struct soap*, const char*, int, const bool *, const char*);
@@ -275,7 +275,7 @@ SOAP_FMAC3 bool * SOAP_FMAC4 soap_get_bool(struct soap*, bool *, const char*, co
 
 
 #ifndef SOAP_TYPE__fims__QueryServiceDescriptionRequestType_responseType
-#define SOAP_TYPE__fims__QueryServiceDescriptionRequestType_responseType (190)
+#define SOAP_TYPE__fims__QueryServiceDescriptionRequestType_responseType (192)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default__fims__QueryServiceDescriptionRequestType_responseType(struct soap*, enum _fims__QueryServiceDescriptionRequestType_responseType *);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fims__QueryServiceDescriptionRequestType_responseType(struct soap*, const char*, int, const enum _fims__QueryServiceDescriptionRequestType_responseType *, const char*);
@@ -693,7 +693,7 @@ inline void soap_delete__fims__AudioFormatType_trackConfiguration(struct soap *s
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fims__AudioFormatType_trackConfiguration(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fims__BMEssenceLocatorType_containerMimeType
-#define SOAP_TYPE__fims__BMEssenceLocatorType_containerMimeType (323)
+#define SOAP_TYPE__fims__BMEssenceLocatorType_containerMimeType (324)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fims__BMEssenceLocatorType_containerMimeType(struct soap*, const char*, int, const _fims__BMEssenceLocatorType_containerMimeType *, const char*);
@@ -722,7 +722,7 @@ inline void soap_delete__fims__BMEssenceLocatorType_containerMimeType(struct soa
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fims__BMEssenceLocatorType_containerMimeType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fims__BMContentFormatType_mimeType
-#define SOAP_TYPE__fims__BMContentFormatType_mimeType (320)
+#define SOAP_TYPE__fims__BMContentFormatType_mimeType (321)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fims__BMContentFormatType_mimeType(struct soap*, const char*, int, const _fims__BMContentFormatType_mimeType *, const char*);
@@ -751,7 +751,7 @@ inline void soap_delete__fims__BMContentFormatType_mimeType(struct soap *soap, _
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fims__BMContentFormatType_mimeType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fims__ServiceType_serviceDescription
-#define SOAP_TYPE__fims__ServiceType_serviceDescription (303)
+#define SOAP_TYPE__fims__ServiceType_serviceDescription (304)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fims__ServiceType_serviceDescription(struct soap*, const char*, int, const _fims__ServiceType_serviceDescription *, const char*);
@@ -780,7 +780,7 @@ inline void soap_delete__fims__ServiceType_serviceDescription(struct soap *soap,
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fims__ServiceType_serviceDescription(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fimsdescription__addressType_country
-#define SOAP_TYPE__fimsdescription__addressType_country (292)
+#define SOAP_TYPE__fimsdescription__addressType_country (293)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fimsdescription__addressType_country(struct soap*, const char*, int, const _fimsdescription__addressType_country *, const char*);
@@ -809,7 +809,7 @@ inline void soap_delete__fimsdescription__addressType_country(struct soap *soap,
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fimsdescription__addressType_country(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fimsdescription__organisationDetailsType_organisationDepartment
-#define SOAP_TYPE__fimsdescription__organisationDetailsType_organisationDepartment (289)
+#define SOAP_TYPE__fimsdescription__organisationDetailsType_organisationDepartment (290)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fimsdescription__organisationDetailsType_organisationDepartment(struct soap*, const char*, int, const _fimsdescription__organisationDetailsType_organisationDepartment *, const char*);
@@ -838,7 +838,7 @@ inline void soap_delete__fimsdescription__organisationDetailsType_organisationDe
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fimsdescription__organisationDetailsType_organisationDepartment(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fimsdescription__entityType_role
-#define SOAP_TYPE__fimsdescription__entityType_role (283)
+#define SOAP_TYPE__fimsdescription__entityType_role (284)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fimsdescription__entityType_role(struct soap*, const char*, int, const _fimsdescription__entityType_role *, const char*);
@@ -867,7 +867,7 @@ inline void soap_delete__fimsdescription__entityType_role(struct soap *soap, _fi
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fimsdescription__entityType_role(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fimsdescription__dateType_alternative
-#define SOAP_TYPE__fimsdescription__dateType_alternative (279)
+#define SOAP_TYPE__fimsdescription__dateType_alternative (280)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fimsdescription__dateType_alternative(struct soap*, const char*, int, const _fimsdescription__dateType_alternative *, const char*);
@@ -896,7 +896,7 @@ inline void soap_delete__fimsdescription__dateType_alternative(struct soap *soap
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fimsdescription__dateType_alternative(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fimsdescription__dateType_issued
-#define SOAP_TYPE__fimsdescription__dateType_issued (277)
+#define SOAP_TYPE__fimsdescription__dateType_issued (278)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fimsdescription__dateType_issued(struct soap*, const char*, int, const _fimsdescription__dateType_issued *, const char*);
@@ -925,7 +925,7 @@ inline void soap_delete__fimsdescription__dateType_issued(struct soap *soap, _fi
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fimsdescription__dateType_issued(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fimsdescription__dateType_modified
-#define SOAP_TYPE__fimsdescription__dateType_modified (275)
+#define SOAP_TYPE__fimsdescription__dateType_modified (276)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fimsdescription__dateType_modified(struct soap*, const char*, int, const _fimsdescription__dateType_modified *, const char*);
@@ -954,7 +954,7 @@ inline void soap_delete__fimsdescription__dateType_modified(struct soap *soap, _
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fimsdescription__dateType_modified(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fimsdescription__dateType_created
-#define SOAP_TYPE__fimsdescription__dateType_created (271)
+#define SOAP_TYPE__fimsdescription__dateType_created (272)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fimsdescription__dateType_created(struct soap*, const char*, int, const _fimsdescription__dateType_created *, const char*);
@@ -983,7 +983,7 @@ inline void soap_delete__fimsdescription__dateType_created(struct soap *soap, _f
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fimsdescription__dateType_created(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fimsdescription__coverageType_spatial_coordinates
-#define SOAP_TYPE__fimsdescription__coverageType_spatial_coordinates (264)
+#define SOAP_TYPE__fimsdescription__coverageType_spatial_coordinates (265)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fimsdescription__coverageType_spatial_coordinates(struct soap*, const char*, int, const _fimsdescription__coverageType_spatial_coordinates *, const char*);
@@ -1012,7 +1012,7 @@ inline void soap_delete__fimsdescription__coverageType_spatial_coordinates(struc
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fimsdescription__coverageType_spatial_coordinates(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fimsdescription__coverageType_spatial_locationName
-#define SOAP_TYPE__fimsdescription__coverageType_spatial_locationName (263)
+#define SOAP_TYPE__fimsdescription__coverageType_spatial_locationName (264)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fimsdescription__coverageType_spatial_locationName(struct soap*, const char*, int, const _fimsdescription__coverageType_spatial_locationName *, const char*);
@@ -1041,7 +1041,7 @@ inline void soap_delete__fimsdescription__coverageType_spatial_locationName(stru
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fimsdescription__coverageType_spatial_locationName(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fimsdescription__coverageType_spatial
-#define SOAP_TYPE__fimsdescription__coverageType_spatial (262)
+#define SOAP_TYPE__fimsdescription__coverageType_spatial (263)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fimsdescription__coverageType_spatial(struct soap*, const char*, int, const _fimsdescription__coverageType_spatial *, const char*);
@@ -1070,7 +1070,7 @@ inline void soap_delete__fimsdescription__coverageType_spatial(struct soap *soap
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fimsdescription__coverageType_spatial(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fimsdescription__coverageType_temporal
-#define SOAP_TYPE__fimsdescription__coverageType_temporal (260)
+#define SOAP_TYPE__fimsdescription__coverageType_temporal (261)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fimsdescription__coverageType_temporal(struct soap*, const char*, int, const _fimsdescription__coverageType_temporal *, const char*);
@@ -1099,7 +1099,7 @@ inline void soap_delete__fimsdescription__coverageType_temporal(struct soap *soa
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fimsdescription__coverageType_temporal(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fimsdescription__typeType_targetAudience
-#define SOAP_TYPE__fimsdescription__typeType_targetAudience (257)
+#define SOAP_TYPE__fimsdescription__typeType_targetAudience (258)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fimsdescription__typeType_targetAudience(struct soap*, const char*, int, const _fimsdescription__typeType_targetAudience *, const char*);
@@ -1128,7 +1128,7 @@ inline void soap_delete__fimsdescription__typeType_targetAudience(struct soap *s
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fimsdescription__typeType_targetAudience(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fimsdescription__typeType_objectType
-#define SOAP_TYPE__fimsdescription__typeType_objectType (254)
+#define SOAP_TYPE__fimsdescription__typeType_objectType (255)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fimsdescription__typeType_objectType(struct soap*, const char*, int, const _fimsdescription__typeType_objectType *, const char*);
@@ -1157,7 +1157,7 @@ inline void soap_delete__fimsdescription__typeType_objectType(struct soap *soap,
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fimsdescription__typeType_objectType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE__fimsdescription__typeType_genre
-#define SOAP_TYPE__fimsdescription__typeType_genre (251)
+#define SOAP_TYPE__fimsdescription__typeType_genre (252)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fimsdescription__typeType_genre(struct soap*, const char*, int, const _fimsdescription__typeType_genre *, const char*);
@@ -1186,7 +1186,7 @@ inline void soap_delete__fimsdescription__typeType_genre(struct soap *soap, _fim
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fimsdescription__typeType_genre(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE___fims__DataFormatsType_sequence
-#define SOAP_TYPE___fims__DataFormatsType_sequence (215)
+#define SOAP_TYPE___fims__DataFormatsType_sequence (217)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out___fims__DataFormatsType_sequence(struct soap*, const char*, int, const __fims__DataFormatsType_sequence *, const char*);
@@ -1215,7 +1215,7 @@ inline void soap_delete___fims__DataFormatsType_sequence(struct soap *soap, __fi
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy___fims__DataFormatsType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE___fims__ContainerFormatsType_sequence
-#define SOAP_TYPE___fims__ContainerFormatsType_sequence (213)
+#define SOAP_TYPE___fims__ContainerFormatsType_sequence (215)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out___fims__ContainerFormatsType_sequence(struct soap*, const char*, int, const __fims__ContainerFormatsType_sequence *, const char*);
@@ -1244,7 +1244,7 @@ inline void soap_delete___fims__ContainerFormatsType_sequence(struct soap *soap,
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy___fims__ContainerFormatsType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE___fims__AudioFormatsType_sequence
-#define SOAP_TYPE___fims__AudioFormatsType_sequence (211)
+#define SOAP_TYPE___fims__AudioFormatsType_sequence (213)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out___fims__AudioFormatsType_sequence(struct soap*, const char*, int, const __fims__AudioFormatsType_sequence *, const char*);
@@ -1273,7 +1273,7 @@ inline void soap_delete___fims__AudioFormatsType_sequence(struct soap *soap, __f
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy___fims__AudioFormatsType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE___fims__VideoFormatsType_sequence
-#define SOAP_TYPE___fims__VideoFormatsType_sequence (209)
+#define SOAP_TYPE___fims__VideoFormatsType_sequence (211)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out___fims__VideoFormatsType_sequence(struct soap*, const char*, int, const __fims__VideoFormatsType_sequence *, const char*);
@@ -1302,7 +1302,7 @@ inline void soap_delete___fims__VideoFormatsType_sequence(struct soap *soap, __f
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy___fims__VideoFormatsType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE___fims__JobsType_sequence
-#define SOAP_TYPE___fims__JobsType_sequence (207)
+#define SOAP_TYPE___fims__JobsType_sequence (209)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out___fims__JobsType_sequence(struct soap*, const char*, int, const __fims__JobsType_sequence *, const char*);
@@ -1331,7 +1331,7 @@ inline void soap_delete___fims__JobsType_sequence(struct soap *soap, __fims__Job
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy___fims__JobsType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE___fims__QueuesType_sequence
-#define SOAP_TYPE___fims__QueuesType_sequence (205)
+#define SOAP_TYPE___fims__QueuesType_sequence (207)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out___fims__QueuesType_sequence(struct soap*, const char*, int, const __fims__QueuesType_sequence *, const char*);
@@ -1360,7 +1360,7 @@ inline void soap_delete___fims__QueuesType_sequence(struct soap *soap, __fims__Q
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy___fims__QueuesType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE___fims__ServicesType_sequence
-#define SOAP_TYPE___fims__ServicesType_sequence (203)
+#define SOAP_TYPE___fims__ServicesType_sequence (205)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out___fims__ServicesType_sequence(struct soap*, const char*, int, const __fims__ServicesType_sequence *, const char*);
@@ -1389,7 +1389,7 @@ inline void soap_delete___fims__ServicesType_sequence(struct soap *soap, __fims_
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy___fims__ServicesType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE___fims__ProfilesType_sequence
-#define SOAP_TYPE___fims__ProfilesType_sequence (200)
+#define SOAP_TYPE___fims__ProfilesType_sequence (202)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out___fims__ProfilesType_sequence(struct soap*, const char*, int, const __fims__ProfilesType_sequence *, const char*);
@@ -1418,7 +1418,7 @@ inline void soap_delete___fims__ProfilesType_sequence(struct soap *soap, __fims_
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy___fims__ProfilesType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE___fims__ResourcesType_sequence
-#define SOAP_TYPE___fims__ResourcesType_sequence (197)
+#define SOAP_TYPE___fims__ResourcesType_sequence (199)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out___fims__ResourcesType_sequence(struct soap*, const char*, int, const __fims__ResourcesType_sequence *, const char*);
@@ -4677,9 +4677,9 @@ SOAP_FMAC1 edlprovider__EdlCreateRequestType * SOAP_FMAC2 soap_instantiate_edlpr
 
 inline edlprovider__EdlCreateRequestType * soap_new_edlprovider__EdlCreateRequestType(struct soap *soap, int n = -1) { return soap_instantiate_edlprovider__EdlCreateRequestType(soap, n, NULL, NULL, NULL); }
 
-inline edlprovider__EdlCreateRequestType * soap_new_req_edlprovider__EdlCreateRequestType(struct soap *soap, int edlFramesPerSecondNumerator, int edlFramesPerSecondDenominator, std::wstring& edlType1) { edlprovider__EdlCreateRequestType *_p = soap_instantiate_edlprovider__EdlCreateRequestType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__EdlCreateRequestType::edlFramesPerSecondNumerator = edlFramesPerSecondNumerator; _p->edlprovider__EdlCreateRequestType::edlFramesPerSecondDenominator = edlFramesPerSecondDenominator; _p->edlprovider__EdlCreateRequestBaseType::edlType = edlType1; } return _p; }
+inline edlprovider__EdlCreateRequestType * soap_new_req_edlprovider__EdlCreateRequestType(struct soap *soap, fims__RationalType *edlFramesPerSecond, std::wstring& edlType1) { edlprovider__EdlCreateRequestType *_p = soap_instantiate_edlprovider__EdlCreateRequestType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__EdlCreateRequestType::edlFramesPerSecond = edlFramesPerSecond; _p->edlprovider__EdlCreateRequestBaseType::edlType = edlType1; } return _p; }
 
-inline edlprovider__EdlCreateRequestType * soap_new_set_edlprovider__EdlCreateRequestType(struct soap *soap, int edlFramesPerSecondNumerator, int edlFramesPerSecondDenominator, std::wstring& edlType1, edlprovider__ArrayOfClips *clips1, std::wstring *edlSequenceName1) { edlprovider__EdlCreateRequestType *_p = soap_instantiate_edlprovider__EdlCreateRequestType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__EdlCreateRequestType::edlFramesPerSecondNumerator = edlFramesPerSecondNumerator; _p->edlprovider__EdlCreateRequestType::edlFramesPerSecondDenominator = edlFramesPerSecondDenominator; _p->edlprovider__EdlCreateRequestBaseType::edlType = edlType1; _p->edlprovider__EdlCreateRequestBaseType::clips = clips1; _p->edlprovider__EdlCreateRequestBaseType::edlSequenceName = edlSequenceName1; } return _p; }
+inline edlprovider__EdlCreateRequestType * soap_new_set_edlprovider__EdlCreateRequestType(struct soap *soap, fims__RationalType *edlFramesPerSecond, std::wstring& edlType1, edlprovider__ArrayOfClips *clips1, std::wstring *edlSequenceName1) { edlprovider__EdlCreateRequestType *_p = soap_instantiate_edlprovider__EdlCreateRequestType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__EdlCreateRequestType::edlFramesPerSecond = edlFramesPerSecond; _p->edlprovider__EdlCreateRequestBaseType::edlType = edlType1; _p->edlprovider__EdlCreateRequestBaseType::clips = clips1; _p->edlprovider__EdlCreateRequestBaseType::edlSequenceName = edlSequenceName1; } return _p; }
 
 inline void soap_delete_edlprovider__EdlCreateRequestType(struct soap *soap, edlprovider__EdlCreateRequestType *p) { soap_delete(soap, p); }
 
@@ -4735,9 +4735,9 @@ SOAP_FMAC1 edlprovider__ClipType * SOAP_FMAC2 soap_instantiate_edlprovider__Clip
 
 inline edlprovider__ClipType * soap_new_edlprovider__ClipType(struct soap *soap, int n = -1) { return soap_instantiate_edlprovider__ClipType(soap, n, NULL, NULL, NULL); }
 
-inline edlprovider__ClipType * soap_new_req_edlprovider__ClipType(struct soap *soap) { edlprovider__ClipType *_p = soap_instantiate_edlprovider__ClipType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); } return _p; }
+inline edlprovider__ClipType * soap_new_req_edlprovider__ClipType(struct soap *soap, fims__TimeType *markIn, fims__TimeType *markOut, fims__BMObjectType *clipInfo) { edlprovider__ClipType *_p = soap_instantiate_edlprovider__ClipType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__ClipType::markIn = markIn; _p->edlprovider__ClipType::markOut = markOut; _p->edlprovider__ClipType::clipInfo = clipInfo; } return _p; }
 
-inline edlprovider__ClipType * soap_new_set_edlprovider__ClipType(struct soap *soap) { edlprovider__ClipType *_p = soap_instantiate_edlprovider__ClipType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); } return _p; }
+inline edlprovider__ClipType * soap_new_set_edlprovider__ClipType(struct soap *soap, fims__TimeType *markIn, fims__TimeType *markOut, fims__BMObjectType *clipInfo) { edlprovider__ClipType *_p = soap_instantiate_edlprovider__ClipType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__ClipType::markIn = markIn; _p->edlprovider__ClipType::markOut = markOut; _p->edlprovider__ClipType::clipInfo = clipInfo; } return _p; }
 
 inline void soap_delete_edlprovider__ClipType(struct soap *soap, edlprovider__ClipType *p) { soap_delete(soap, p); }
 
@@ -4766,7 +4766,7 @@ inline edlprovider__ArrayOfClips * soap_new_edlprovider__ArrayOfClips(struct soa
 
 inline edlprovider__ArrayOfClips * soap_new_req_edlprovider__ArrayOfClips(struct soap *soap) { edlprovider__ArrayOfClips *_p = soap_instantiate_edlprovider__ArrayOfClips(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); } return _p; }
 
-inline edlprovider__ArrayOfClips * soap_new_set_edlprovider__ArrayOfClips(struct soap *soap, std::vector<edlprovider__ClipType * >& clip) { edlprovider__ArrayOfClips *_p = soap_instantiate_edlprovider__ArrayOfClips(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__ArrayOfClips::clip = clip; } return _p; }
+inline edlprovider__ArrayOfClips * soap_new_set_edlprovider__ArrayOfClips(struct soap *soap, std::vector<edlprovider__ClipType * >& clips) { edlprovider__ArrayOfClips *_p = soap_instantiate_edlprovider__ArrayOfClips(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__ArrayOfClips::clips = clips; } return _p; }
 
 inline void soap_delete_edlprovider__ArrayOfClips(struct soap *soap, edlprovider__ArrayOfClips *p) { soap_delete(soap, p); }
 
@@ -5475,14 +5475,14 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_SOAP_ENV__Detail(struct soap*, int, int, vo
 #endif
 
 #ifndef SOAP_TYPE__fims__union_TimeType
-#define SOAP_TYPE__fims__union_TimeType (184)
+#define SOAP_TYPE__fims__union_TimeType (186)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__fims__union_TimeType(struct soap*, int, const union _fims__union_TimeType *);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fims__union_TimeType(struct soap*, int, const union _fims__union_TimeType *);
 SOAP_FMAC3 union _fims__union_TimeType * SOAP_FMAC4 soap_in__fims__union_TimeType(struct soap*, int*, union _fims__union_TimeType *);
 
 #ifndef SOAP_TYPE__fims__union_DurationType
-#define SOAP_TYPE__fims__union_DurationType (181)
+#define SOAP_TYPE__fims__union_DurationType (183)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize__fims__union_DurationType(struct soap*, int, const union _fims__union_DurationType *);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out__fims__union_DurationType(struct soap*, int, const union _fims__union_DurationType *);
@@ -5861,27 +5861,8 @@ SOAP_FMAC3 fims__CodecType ** SOAP_FMAC4 soap_get_PointerTofims__CodecType(struc
 #endif
 
 
-#ifndef SOAP_TYPE_PointerTofims__RationalType
-#define SOAP_TYPE_PointerTofims__RationalType (326)
-#endif
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__RationalType(struct soap*, fims__RationalType *const*);
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__RationalType(struct soap*, const char *, int, fims__RationalType *const*, const char *);
-SOAP_FMAC3 fims__RationalType ** SOAP_FMAC4 soap_in_PointerTofims__RationalType(struct soap*, const char*, fims__RationalType **, const char*);
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTofims__RationalType(struct soap*, fims__RationalType *const*, const char*, const char*);
-
-#ifndef soap_write_PointerTofims__RationalType
-#define soap_write_PointerTofims__RationalType(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_PointerTofims__RationalType(soap, data),0) || soap_put_PointerTofims__RationalType(soap, data, "fims:RationalType", NULL) || soap_end_send(soap), (soap)->error )
-#endif
-
-SOAP_FMAC3 fims__RationalType ** SOAP_FMAC4 soap_get_PointerTofims__RationalType(struct soap*, fims__RationalType **, const char*, const char*);
-
-#ifndef soap_read_PointerTofims__RationalType
-#define soap_read_PointerTofims__RationalType(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTofims__RationalType(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
-#endif
-
-
 #ifndef SOAP_TYPE_PointerTofims__LengthType
-#define SOAP_TYPE_PointerTofims__LengthType (325)
+#define SOAP_TYPE_PointerTofims__LengthType (326)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__LengthType(struct soap*, fims__LengthType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__LengthType(struct soap*, const char *, int, fims__LengthType *const*, const char *);
@@ -5900,7 +5881,7 @@ SOAP_FMAC3 fims__LengthType ** SOAP_FMAC4 soap_get_PointerTofims__LengthType(str
 
 
 #ifndef SOAP_TYPE_PointerTo_fims__BMEssenceLocatorType_containerMimeType
-#define SOAP_TYPE_PointerTo_fims__BMEssenceLocatorType_containerMimeType (324)
+#define SOAP_TYPE_PointerTo_fims__BMEssenceLocatorType_containerMimeType (325)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_fims__BMEssenceLocatorType_containerMimeType(struct soap*, _fims__BMEssenceLocatorType_containerMimeType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_fims__BMEssenceLocatorType_containerMimeType(struct soap*, const char *, int, _fims__BMEssenceLocatorType_containerMimeType *const*, const char *);
@@ -5919,7 +5900,7 @@ SOAP_FMAC3 _fims__BMEssenceLocatorType_containerMimeType ** SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE_PointerTofims__StorageType
-#define SOAP_TYPE_PointerTofims__StorageType (322)
+#define SOAP_TYPE_PointerTofims__StorageType (323)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__StorageType(struct soap*, fims__StorageType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__StorageType(struct soap*, const char *, int, fims__StorageType *const*, const char *);
@@ -5938,7 +5919,7 @@ SOAP_FMAC3 fims__StorageType ** SOAP_FMAC4 soap_get_PointerTofims__StorageType(s
 
 
 #ifndef SOAP_TYPE_PointerTo_fims__BMContentFormatType_mimeType
-#define SOAP_TYPE_PointerTo_fims__BMContentFormatType_mimeType (321)
+#define SOAP_TYPE_PointerTo_fims__BMContentFormatType_mimeType (322)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_fims__BMContentFormatType_mimeType(struct soap*, _fims__BMContentFormatType_mimeType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_fims__BMContentFormatType_mimeType(struct soap*, const char *, int, _fims__BMContentFormatType_mimeType *const*, const char *);
@@ -5957,7 +5938,7 @@ SOAP_FMAC3 _fims__BMContentFormatType_mimeType ** SOAP_FMAC4 soap_get_PointerTo_
 
 
 #ifndef SOAP_TYPE_PointerTounsignedLONG64
-#define SOAP_TYPE_PointerTounsignedLONG64 (319)
+#define SOAP_TYPE_PointerTounsignedLONG64 (320)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTounsignedLONG64(struct soap*, ULONG64 *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTounsignedLONG64(struct soap*, const char *, int, ULONG64 *const*, const char *);
@@ -5976,7 +5957,7 @@ SOAP_FMAC3 ULONG64 ** SOAP_FMAC4 soap_get_PointerTounsignedLONG64(struct soap*, 
 
 
 #ifndef SOAP_TYPE_PointerTofims__HashType
-#define SOAP_TYPE_PointerTofims__HashType (318)
+#define SOAP_TYPE_PointerTofims__HashType (319)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__HashType(struct soap*, fims__HashType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__HashType(struct soap*, const char *, int, fims__HashType *const*, const char *);
@@ -5995,7 +5976,7 @@ SOAP_FMAC3 fims__HashType ** SOAP_FMAC4 soap_get_PointerTofims__HashType(struct 
 
 
 #ifndef SOAP_TYPE_PointerTo_fims__formatCollection
-#define SOAP_TYPE_PointerTo_fims__formatCollection (317)
+#define SOAP_TYPE_PointerTo_fims__formatCollection (318)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_fims__formatCollection(struct soap*, _fims__formatCollection *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_fims__formatCollection(struct soap*, const char *, int, _fims__formatCollection *const*, const char *);
@@ -6014,7 +5995,7 @@ SOAP_FMAC3 _fims__formatCollection ** SOAP_FMAC4 soap_get_PointerTo_fims__format
 
 
 #ifndef SOAP_TYPE_PointerTofims__BMEssenceLocatorsType
-#define SOAP_TYPE_PointerTofims__BMEssenceLocatorsType (316)
+#define SOAP_TYPE_PointerTofims__BMEssenceLocatorsType (317)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__BMEssenceLocatorsType(struct soap*, fims__BMEssenceLocatorsType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__BMEssenceLocatorsType(struct soap*, const char *, int, fims__BMEssenceLocatorsType *const*, const char *);
@@ -6033,7 +6014,7 @@ SOAP_FMAC3 fims__BMEssenceLocatorsType ** SOAP_FMAC4 soap_get_PointerTofims__BME
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__bmContentDescriptionType
-#define SOAP_TYPE_PointerTofimsdescription__bmContentDescriptionType (315)
+#define SOAP_TYPE_PointerTofimsdescription__bmContentDescriptionType (316)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__bmContentDescriptionType(struct soap*, fimsdescription__bmContentDescriptionType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__bmContentDescriptionType(struct soap*, const char *, int, fimsdescription__bmContentDescriptionType *const*, const char *);
@@ -6052,7 +6033,7 @@ SOAP_FMAC3 fimsdescription__bmContentDescriptionType ** SOAP_FMAC4 soap_get_Poin
 
 
 #ifndef SOAP_TYPE_PointerTofims__DescriptionsType
-#define SOAP_TYPE_PointerTofims__DescriptionsType (314)
+#define SOAP_TYPE_PointerTofims__DescriptionsType (315)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__DescriptionsType(struct soap*, fims__DescriptionsType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__DescriptionsType(struct soap*, const char *, int, fims__DescriptionsType *const*, const char *);
@@ -6071,7 +6052,7 @@ SOAP_FMAC3 fims__DescriptionsType ** SOAP_FMAC4 soap_get_PointerTofims__Descript
 
 
 #ifndef SOAP_TYPE_PointerTofims__BMContentFormatsType
-#define SOAP_TYPE_PointerTofims__BMContentFormatsType (313)
+#define SOAP_TYPE_PointerTofims__BMContentFormatsType (314)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__BMContentFormatsType(struct soap*, fims__BMContentFormatsType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__BMContentFormatsType(struct soap*, const char *, int, fims__BMContentFormatsType *const*, const char *);
@@ -6090,7 +6071,7 @@ SOAP_FMAC3 fims__BMContentFormatsType ** SOAP_FMAC4 soap_get_PointerTofims__BMCo
 
 
 #ifndef SOAP_TYPE_PointerTofims__BMContentsType
-#define SOAP_TYPE_PointerTofims__BMContentsType (312)
+#define SOAP_TYPE_PointerTofims__BMContentsType (313)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__BMContentsType(struct soap*, fims__BMContentsType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__BMContentsType(struct soap*, const char *, int, fims__BMContentsType *const*, const char *);
@@ -6109,7 +6090,7 @@ SOAP_FMAC3 fims__BMContentsType ** SOAP_FMAC4 soap_get_PointerTofims__BMContents
 
 
 #ifndef SOAP_TYPE_PointerTofims__TechnicalAttributeType
-#define SOAP_TYPE_PointerTofims__TechnicalAttributeType (310)
+#define SOAP_TYPE_PointerTofims__TechnicalAttributeType (311)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__TechnicalAttributeType(struct soap*, fims__TechnicalAttributeType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__TechnicalAttributeType(struct soap*, const char *, int, fims__TechnicalAttributeType *const*, const char *);
@@ -6128,7 +6109,7 @@ SOAP_FMAC3 fims__TechnicalAttributeType ** SOAP_FMAC4 soap_get_PointerTofims__Te
 
 
 #ifndef SOAP_TYPE_PointerTofims__ProcessedInfoType
-#define SOAP_TYPE_PointerTofims__ProcessedInfoType (309)
+#define SOAP_TYPE_PointerTofims__ProcessedInfoType (310)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__ProcessedInfoType(struct soap*, fims__ProcessedInfoType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__ProcessedInfoType(struct soap*, const char *, int, fims__ProcessedInfoType *const*, const char *);
@@ -6147,7 +6128,7 @@ SOAP_FMAC3 fims__ProcessedInfoType ** SOAP_FMAC4 soap_get_PointerTofims__Process
 
 
 #ifndef SOAP_TYPE_PointerTofims__StartJobType
-#define SOAP_TYPE_PointerTofims__StartJobType (308)
+#define SOAP_TYPE_PointerTofims__StartJobType (309)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__StartJobType(struct soap*, fims__StartJobType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__StartJobType(struct soap*, const char *, int, fims__StartJobType *const*, const char *);
@@ -6166,7 +6147,7 @@ SOAP_FMAC3 fims__StartJobType ** SOAP_FMAC4 soap_get_PointerTofims__StartJobType
 
 
 #ifndef SOAP_TYPE_PointerTofims__BMObjectsType
-#define SOAP_TYPE_PointerTofims__BMObjectsType (307)
+#define SOAP_TYPE_PointerTofims__BMObjectsType (308)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__BMObjectsType(struct soap*, fims__BMObjectsType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__BMObjectsType(struct soap*, const char *, int, fims__BMObjectsType *const*, const char *);
@@ -6185,7 +6166,7 @@ SOAP_FMAC3 fims__BMObjectsType ** SOAP_FMAC4 soap_get_PointerTofims__BMObjectsTy
 
 
 #ifndef SOAP_TYPE_PointerTofims__JobStatusType
-#define SOAP_TYPE_PointerTofims__JobStatusType (306)
+#define SOAP_TYPE_PointerTofims__JobStatusType (307)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__JobStatusType(struct soap*, enum fims__JobStatusType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__JobStatusType(struct soap*, const char *, int, enum fims__JobStatusType *const*, const char *);
@@ -6204,7 +6185,7 @@ SOAP_FMAC3 enum fims__JobStatusType ** SOAP_FMAC4 soap_get_PointerTofims__JobSta
 
 
 #ifndef SOAP_TYPE_PointerTofims__QueueStatusType
-#define SOAP_TYPE_PointerTofims__QueueStatusType (305)
+#define SOAP_TYPE_PointerTofims__QueueStatusType (306)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__QueueStatusType(struct soap*, enum fims__QueueStatusType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__QueueStatusType(struct soap*, const char *, int, enum fims__QueueStatusType *const*, const char *);
@@ -6223,7 +6204,7 @@ SOAP_FMAC3 enum fims__QueueStatusType ** SOAP_FMAC4 soap_get_PointerTofims__Queu
 
 
 #ifndef SOAP_TYPE_PointerTo_fims__ServiceType_serviceDescription
-#define SOAP_TYPE_PointerTo_fims__ServiceType_serviceDescription (304)
+#define SOAP_TYPE_PointerTo_fims__ServiceType_serviceDescription (305)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_fims__ServiceType_serviceDescription(struct soap*, _fims__ServiceType_serviceDescription *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_fims__ServiceType_serviceDescription(struct soap*, const char *, int, _fims__ServiceType_serviceDescription *const*, const char *);
@@ -6242,7 +6223,7 @@ SOAP_FMAC3 _fims__ServiceType_serviceDescription ** SOAP_FMAC4 soap_get_PointerT
 
 
 #ifndef SOAP_TYPE_PointerTofims__ListFilterType
-#define SOAP_TYPE_PointerTofims__ListFilterType (302)
+#define SOAP_TYPE_PointerTofims__ListFilterType (303)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__ListFilterType(struct soap*, fims__ListFilterType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__ListFilterType(struct soap*, const char *, int, fims__ListFilterType *const*, const char *);
@@ -6261,7 +6242,7 @@ SOAP_FMAC3 fims__ListFilterType ** SOAP_FMAC4 soap_get_PointerTofims__ListFilter
 
 
 #ifndef SOAP_TYPE_PointerTofims__DurationType
-#define SOAP_TYPE_PointerTofims__DurationType (300)
+#define SOAP_TYPE_PointerTofims__DurationType (301)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__DurationType(struct soap*, fims__DurationType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__DurationType(struct soap*, const char *, int, fims__DurationType *const*, const char *);
@@ -6279,27 +6260,8 @@ SOAP_FMAC3 fims__DurationType ** SOAP_FMAC4 soap_get_PointerTofims__DurationType
 #endif
 
 
-#ifndef SOAP_TYPE_PointerTofims__TimeType
-#define SOAP_TYPE_PointerTofims__TimeType (299)
-#endif
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__TimeType(struct soap*, fims__TimeType *const*);
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__TimeType(struct soap*, const char *, int, fims__TimeType *const*, const char *);
-SOAP_FMAC3 fims__TimeType ** SOAP_FMAC4 soap_in_PointerTofims__TimeType(struct soap*, const char*, fims__TimeType **, const char*);
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTofims__TimeType(struct soap*, fims__TimeType *const*, const char*, const char*);
-
-#ifndef soap_write_PointerTofims__TimeType
-#define soap_write_PointerTofims__TimeType(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_PointerTofims__TimeType(soap, data),0) || soap_put_PointerTofims__TimeType(soap, data, "fims:TimeType", NULL) || soap_end_send(soap), (soap)->error )
-#endif
-
-SOAP_FMAC3 fims__TimeType ** SOAP_FMAC4 soap_get_PointerTofims__TimeType(struct soap*, fims__TimeType **, const char*, const char*);
-
-#ifndef soap_read_PointerTofims__TimeType
-#define soap_read_PointerTofims__TimeType(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTofims__TimeType(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
-#endif
-
-
 #ifndef SOAP_TYPE_PointerTofims__AsyncEndpointType
-#define SOAP_TYPE_PointerTofims__AsyncEndpointType (296)
+#define SOAP_TYPE_PointerTofims__AsyncEndpointType (298)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__AsyncEndpointType(struct soap*, fims__AsyncEndpointType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__AsyncEndpointType(struct soap*, const char *, int, fims__AsyncEndpointType *const*, const char *);
@@ -6318,7 +6280,7 @@ SOAP_FMAC3 fims__AsyncEndpointType ** SOAP_FMAC4 soap_get_PointerTofims__AsyncEn
 
 
 #ifndef SOAP_TYPE_PointerToedlprovider__EDLProviderErrorCodeType
-#define SOAP_TYPE_PointerToedlprovider__EDLProviderErrorCodeType (295)
+#define SOAP_TYPE_PointerToedlprovider__EDLProviderErrorCodeType (297)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToedlprovider__EDLProviderErrorCodeType(struct soap*, enum edlprovider__EDLProviderErrorCodeType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToedlprovider__EDLProviderErrorCodeType(struct soap*, const char *, int, enum edlprovider__EDLProviderErrorCodeType *const*, const char *);
@@ -6336,8 +6298,27 @@ SOAP_FMAC3 enum edlprovider__EDLProviderErrorCodeType ** SOAP_FMAC4 soap_get_Poi
 #endif
 
 
+#ifndef SOAP_TYPE_PointerTofims__RationalType
+#define SOAP_TYPE_PointerTofims__RationalType (295)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__RationalType(struct soap*, fims__RationalType *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__RationalType(struct soap*, const char *, int, fims__RationalType *const*, const char *);
+SOAP_FMAC3 fims__RationalType ** SOAP_FMAC4 soap_in_PointerTofims__RationalType(struct soap*, const char*, fims__RationalType **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTofims__RationalType(struct soap*, fims__RationalType *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTofims__RationalType
+#define soap_write_PointerTofims__RationalType(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_PointerTofims__RationalType(soap, data),0) || soap_put_PointerTofims__RationalType(soap, data, "fims:RationalType", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 fims__RationalType ** SOAP_FMAC4 soap_get_PointerTofims__RationalType(struct soap*, fims__RationalType **, const char*, const char*);
+
+#ifndef soap_read_PointerTofims__RationalType
+#define soap_read_PointerTofims__RationalType(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTofims__RationalType(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+
 #ifndef SOAP_TYPE_PointerTo_fimsdescription__addressType_country
-#define SOAP_TYPE_PointerTo_fimsdescription__addressType_country (293)
+#define SOAP_TYPE_PointerTo_fimsdescription__addressType_country (294)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_fimsdescription__addressType_country(struct soap*, _fimsdescription__addressType_country *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_fimsdescription__addressType_country(struct soap*, const char *, int, _fimsdescription__addressType_country *const*, const char *);
@@ -6356,7 +6337,7 @@ SOAP_FMAC3 _fimsdescription__addressType_country ** SOAP_FMAC4 soap_get_PointerT
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__addressType
-#define SOAP_TYPE_PointerTofimsdescription__addressType (291)
+#define SOAP_TYPE_PointerTofimsdescription__addressType (292)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__addressType(struct soap*, fimsdescription__addressType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__addressType(struct soap*, const char *, int, fimsdescription__addressType *const*, const char *);
@@ -6375,7 +6356,7 @@ SOAP_FMAC3 fimsdescription__addressType ** SOAP_FMAC4 soap_get_PointerTofimsdesc
 
 
 #ifndef SOAP_TYPE_PointerTo_fimsdescription__organisationDetailsType_organisationDepartment
-#define SOAP_TYPE_PointerTo_fimsdescription__organisationDetailsType_organisationDepartment (290)
+#define SOAP_TYPE_PointerTo_fimsdescription__organisationDetailsType_organisationDepartment (291)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_fimsdescription__organisationDetailsType_organisationDepartment(struct soap*, _fimsdescription__organisationDetailsType_organisationDepartment *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_fimsdescription__organisationDetailsType_organisationDepartment(struct soap*, const char *, int, _fimsdescription__organisationDetailsType_organisationDepartment *const*, const char *);
@@ -6394,7 +6375,7 @@ SOAP_FMAC3 _fimsdescription__organisationDetailsType_organisationDepartment ** S
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__detailsType
-#define SOAP_TYPE_PointerTofimsdescription__detailsType (286)
+#define SOAP_TYPE_PointerTofimsdescription__detailsType (287)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__detailsType(struct soap*, fimsdescription__detailsType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__detailsType(struct soap*, const char *, int, fimsdescription__detailsType *const*, const char *);
@@ -6413,7 +6394,7 @@ SOAP_FMAC3 fimsdescription__detailsType ** SOAP_FMAC4 soap_get_PointerTofimsdesc
 
 
 #ifndef SOAP_TYPE_PointerTostd__vectorTemplateOf_fimsdescription__entityType_role
-#define SOAP_TYPE_PointerTostd__vectorTemplateOf_fimsdescription__entityType_role (285)
+#define SOAP_TYPE_PointerTostd__vectorTemplateOf_fimsdescription__entityType_role (286)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTostd__vectorTemplateOf_fimsdescription__entityType_role(struct soap*, std::vector<_fimsdescription__entityType_role >*const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTostd__vectorTemplateOf_fimsdescription__entityType_role(struct soap*, const char *, int, std::vector<_fimsdescription__entityType_role >*const*, const char *);
@@ -6432,7 +6413,7 @@ SOAP_FMAC3 std::vector<_fimsdescription__entityType_role >** SOAP_FMAC4 soap_get
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__organisationDetailsType
-#define SOAP_TYPE_PointerTofimsdescription__organisationDetailsType (281)
+#define SOAP_TYPE_PointerTofimsdescription__organisationDetailsType (282)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__organisationDetailsType(struct soap*, fimsdescription__organisationDetailsType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__organisationDetailsType(struct soap*, const char *, int, fimsdescription__organisationDetailsType *const*, const char *);
@@ -6451,7 +6432,7 @@ SOAP_FMAC3 fimsdescription__organisationDetailsType ** SOAP_FMAC4 soap_get_Point
 
 
 #ifndef SOAP_TYPE_PointerTo_fimsdescription__dateType_alternative
-#define SOAP_TYPE_PointerTo_fimsdescription__dateType_alternative (280)
+#define SOAP_TYPE_PointerTo_fimsdescription__dateType_alternative (281)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_fimsdescription__dateType_alternative(struct soap*, _fimsdescription__dateType_alternative *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_fimsdescription__dateType_alternative(struct soap*, const char *, int, _fimsdescription__dateType_alternative *const*, const char *);
@@ -6470,7 +6451,7 @@ SOAP_FMAC3 _fimsdescription__dateType_alternative ** SOAP_FMAC4 soap_get_Pointer
 
 
 #ifndef SOAP_TYPE_PointerTo_fimsdescription__dateType_issued
-#define SOAP_TYPE_PointerTo_fimsdescription__dateType_issued (278)
+#define SOAP_TYPE_PointerTo_fimsdescription__dateType_issued (279)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_fimsdescription__dateType_issued(struct soap*, _fimsdescription__dateType_issued *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_fimsdescription__dateType_issued(struct soap*, const char *, int, _fimsdescription__dateType_issued *const*, const char *);
@@ -6489,7 +6470,7 @@ SOAP_FMAC3 _fimsdescription__dateType_issued ** SOAP_FMAC4 soap_get_PointerTo_fi
 
 
 #ifndef SOAP_TYPE_PointerTo_fimsdescription__dateType_modified
-#define SOAP_TYPE_PointerTo_fimsdescription__dateType_modified (276)
+#define SOAP_TYPE_PointerTo_fimsdescription__dateType_modified (277)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_fimsdescription__dateType_modified(struct soap*, _fimsdescription__dateType_modified *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_fimsdescription__dateType_modified(struct soap*, const char *, int, _fimsdescription__dateType_modified *const*, const char *);
@@ -6508,7 +6489,7 @@ SOAP_FMAC3 _fimsdescription__dateType_modified ** SOAP_FMAC4 soap_get_PointerTo_
 
 
 #ifndef SOAP_TYPE_PointerTo_fimsdescription__dateType_created
-#define SOAP_TYPE_PointerTo_fimsdescription__dateType_created (274)
+#define SOAP_TYPE_PointerTo_fimsdescription__dateType_created (275)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_fimsdescription__dateType_created(struct soap*, _fimsdescription__dateType_created *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_fimsdescription__dateType_created(struct soap*, const char *, int, _fimsdescription__dateType_created *const*, const char *);
@@ -6527,7 +6508,7 @@ SOAP_FMAC3 _fimsdescription__dateType_created ** SOAP_FMAC4 soap_get_PointerTo_f
 
 
 #ifndef SOAP_TYPE_PointerToxsd__date
-#define SOAP_TYPE_PointerToxsd__date (273)
+#define SOAP_TYPE_PointerToxsd__date (274)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToxsd__date(struct soap*, std::wstring *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToxsd__date(struct soap*, const char *, int, std::wstring *const*, const char *);
@@ -6546,7 +6527,7 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerToxsd__date(struct soap*, 
 
 
 #ifndef SOAP_TYPE_PointerToxsd__gYear
-#define SOAP_TYPE_PointerToxsd__gYear (272)
+#define SOAP_TYPE_PointerToxsd__gYear (273)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToxsd__gYear(struct soap*, std::wstring *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToxsd__gYear(struct soap*, const char *, int, std::wstring *const*, const char *);
@@ -6565,7 +6546,7 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerToxsd__gYear(struct soap*,
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__contactDetailsType
-#define SOAP_TYPE_PointerTofimsdescription__contactDetailsType (269)
+#define SOAP_TYPE_PointerTofimsdescription__contactDetailsType (270)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__contactDetailsType(struct soap*, fimsdescription__contactDetailsType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__contactDetailsType(struct soap*, const char *, int, fimsdescription__contactDetailsType *const*, const char *);
@@ -6584,7 +6565,7 @@ SOAP_FMAC3 fimsdescription__contactDetailsType ** SOAP_FMAC4 soap_get_PointerTof
 
 
 #ifndef SOAP_TYPE_PointerTobool
-#define SOAP_TYPE_PointerTobool (268)
+#define SOAP_TYPE_PointerTobool (269)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTobool(struct soap*, bool *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTobool(struct soap*, const char *, int, bool *const*, const char *);
@@ -6603,7 +6584,7 @@ SOAP_FMAC3 bool ** SOAP_FMAC4 soap_get_PointerTobool(struct soap*, bool **, cons
 
 
 #ifndef SOAP_TYPE_PointerTo_fimsdescription__coverageType_spatial
-#define SOAP_TYPE_PointerTo_fimsdescription__coverageType_spatial (267)
+#define SOAP_TYPE_PointerTo_fimsdescription__coverageType_spatial (268)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_fimsdescription__coverageType_spatial(struct soap*, _fimsdescription__coverageType_spatial *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_fimsdescription__coverageType_spatial(struct soap*, const char *, int, _fimsdescription__coverageType_spatial *const*, const char *);
@@ -6622,7 +6603,7 @@ SOAP_FMAC3 _fimsdescription__coverageType_spatial ** SOAP_FMAC4 soap_get_Pointer
 
 
 #ifndef SOAP_TYPE_PointerTo_fimsdescription__coverageType_spatial_coordinates
-#define SOAP_TYPE_PointerTo_fimsdescription__coverageType_spatial_coordinates (266)
+#define SOAP_TYPE_PointerTo_fimsdescription__coverageType_spatial_coordinates (267)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_fimsdescription__coverageType_spatial_coordinates(struct soap*, _fimsdescription__coverageType_spatial_coordinates *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_fimsdescription__coverageType_spatial_coordinates(struct soap*, const char *, int, _fimsdescription__coverageType_spatial_coordinates *const*, const char *);
@@ -6641,7 +6622,7 @@ SOAP_FMAC3 _fimsdescription__coverageType_spatial_coordinates ** SOAP_FMAC4 soap
 
 
 #ifndef SOAP_TYPE_PointerTo_fimsdescription__coverageType_temporal
-#define SOAP_TYPE_PointerTo_fimsdescription__coverageType_temporal (261)
+#define SOAP_TYPE_PointerTo_fimsdescription__coverageType_temporal (262)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_fimsdescription__coverageType_temporal(struct soap*, _fimsdescription__coverageType_temporal *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_fimsdescription__coverageType_temporal(struct soap*, const char *, int, _fimsdescription__coverageType_temporal *const*, const char *);
@@ -6660,7 +6641,7 @@ SOAP_FMAC3 _fimsdescription__coverageType_temporal ** SOAP_FMAC4 soap_get_Pointe
 
 
 #ifndef SOAP_TYPE_PointerTostd__vectorTemplateOf_fimsdescription__typeType_targetAudience
-#define SOAP_TYPE_PointerTostd__vectorTemplateOf_fimsdescription__typeType_targetAudience (259)
+#define SOAP_TYPE_PointerTostd__vectorTemplateOf_fimsdescription__typeType_targetAudience (260)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTostd__vectorTemplateOf_fimsdescription__typeType_targetAudience(struct soap*, std::vector<_fimsdescription__typeType_targetAudience >*const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTostd__vectorTemplateOf_fimsdescription__typeType_targetAudience(struct soap*, const char *, int, std::vector<_fimsdescription__typeType_targetAudience >*const*, const char *);
@@ -6679,7 +6660,7 @@ SOAP_FMAC3 std::vector<_fimsdescription__typeType_targetAudience >** SOAP_FMAC4 
 
 
 #ifndef SOAP_TYPE_PointerTostd__vectorTemplateOf_fimsdescription__typeType_objectType
-#define SOAP_TYPE_PointerTostd__vectorTemplateOf_fimsdescription__typeType_objectType (256)
+#define SOAP_TYPE_PointerTostd__vectorTemplateOf_fimsdescription__typeType_objectType (257)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTostd__vectorTemplateOf_fimsdescription__typeType_objectType(struct soap*, std::vector<_fimsdescription__typeType_objectType >*const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTostd__vectorTemplateOf_fimsdescription__typeType_objectType(struct soap*, const char *, int, std::vector<_fimsdescription__typeType_objectType >*const*, const char *);
@@ -6698,7 +6679,7 @@ SOAP_FMAC3 std::vector<_fimsdescription__typeType_objectType >** SOAP_FMAC4 soap
 
 
 #ifndef SOAP_TYPE_PointerTostd__vectorTemplateOf_fimsdescription__typeType_genre
-#define SOAP_TYPE_PointerTostd__vectorTemplateOf_fimsdescription__typeType_genre (253)
+#define SOAP_TYPE_PointerTostd__vectorTemplateOf_fimsdescription__typeType_genre (254)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTostd__vectorTemplateOf_fimsdescription__typeType_genre(struct soap*, std::vector<_fimsdescription__typeType_genre >*const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTostd__vectorTemplateOf_fimsdescription__typeType_genre(struct soap*, const char *, int, std::vector<_fimsdescription__typeType_genre >*const*, const char *);
@@ -6717,7 +6698,7 @@ SOAP_FMAC3 std::vector<_fimsdescription__typeType_genre >** SOAP_FMAC4 soap_get_
 
 
 #ifndef SOAP_TYPE_PointerTo_xml__lang
-#define SOAP_TYPE_PointerTo_xml__lang (250)
+#define SOAP_TYPE_PointerTo_xml__lang (251)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_xml__lang(struct soap*, std::wstring *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_xml__lang(struct soap*, const char *, int, std::wstring *const*, const char *);
@@ -6736,7 +6717,7 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerTo_xml__lang(struct soap*,
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__rightsType
-#define SOAP_TYPE_PointerTofimsdescription__rightsType (248)
+#define SOAP_TYPE_PointerTofimsdescription__rightsType (249)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__rightsType(struct soap*, fimsdescription__rightsType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__rightsType(struct soap*, const char *, int, fimsdescription__rightsType *const*, const char *);
@@ -6755,7 +6736,7 @@ SOAP_FMAC3 fimsdescription__rightsType ** SOAP_FMAC4 soap_get_PointerTofimsdescr
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__coverageType
-#define SOAP_TYPE_PointerTofimsdescription__coverageType (246)
+#define SOAP_TYPE_PointerTofimsdescription__coverageType (247)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__coverageType(struct soap*, fimsdescription__coverageType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__coverageType(struct soap*, const char *, int, fimsdescription__coverageType *const*, const char *);
@@ -6774,7 +6755,7 @@ SOAP_FMAC3 fimsdescription__coverageType ** SOAP_FMAC4 soap_get_PointerTofimsdes
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__languageType
-#define SOAP_TYPE_PointerTofimsdescription__languageType (244)
+#define SOAP_TYPE_PointerTofimsdescription__languageType (245)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__languageType(struct soap*, fimsdescription__languageType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__languageType(struct soap*, const char *, int, fimsdescription__languageType *const*, const char *);
@@ -6793,7 +6774,7 @@ SOAP_FMAC3 fimsdescription__languageType ** SOAP_FMAC4 soap_get_PointerTofimsdes
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__identifierType
-#define SOAP_TYPE_PointerTofimsdescription__identifierType (242)
+#define SOAP_TYPE_PointerTofimsdescription__identifierType (243)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__identifierType(struct soap*, fimsdescription__identifierType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__identifierType(struct soap*, const char *, int, fimsdescription__identifierType *const*, const char *);
@@ -6812,7 +6793,7 @@ SOAP_FMAC3 fimsdescription__identifierType ** SOAP_FMAC4 soap_get_PointerTofimsd
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__typeType
-#define SOAP_TYPE_PointerTofimsdescription__typeType (240)
+#define SOAP_TYPE_PointerTofimsdescription__typeType (241)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__typeType(struct soap*, fimsdescription__typeType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__typeType(struct soap*, const char *, int, fimsdescription__typeType *const*, const char *);
@@ -6831,7 +6812,7 @@ SOAP_FMAC3 fimsdescription__typeType ** SOAP_FMAC4 soap_get_PointerTofimsdescrip
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__dateType
-#define SOAP_TYPE_PointerTofimsdescription__dateType (238)
+#define SOAP_TYPE_PointerTofimsdescription__dateType (239)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__dateType(struct soap*, fimsdescription__dateType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__dateType(struct soap*, const char *, int, fimsdescription__dateType *const*, const char *);
@@ -6850,7 +6831,7 @@ SOAP_FMAC3 fimsdescription__dateType ** SOAP_FMAC4 soap_get_PointerTofimsdescrip
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__descriptionType
-#define SOAP_TYPE_PointerTofimsdescription__descriptionType (236)
+#define SOAP_TYPE_PointerTofimsdescription__descriptionType (237)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__descriptionType(struct soap*, fimsdescription__descriptionType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__descriptionType(struct soap*, const char *, int, fimsdescription__descriptionType *const*, const char *);
@@ -6869,7 +6850,7 @@ SOAP_FMAC3 fimsdescription__descriptionType ** SOAP_FMAC4 soap_get_PointerTofims
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__subjectType
-#define SOAP_TYPE_PointerTofimsdescription__subjectType (234)
+#define SOAP_TYPE_PointerTofimsdescription__subjectType (235)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__subjectType(struct soap*, fimsdescription__subjectType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__subjectType(struct soap*, const char *, int, fimsdescription__subjectType *const*, const char *);
@@ -6888,7 +6869,7 @@ SOAP_FMAC3 fimsdescription__subjectType ** SOAP_FMAC4 soap_get_PointerTofimsdesc
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__entityType
-#define SOAP_TYPE_PointerTofimsdescription__entityType (232)
+#define SOAP_TYPE_PointerTofimsdescription__entityType (233)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__entityType(struct soap*, fimsdescription__entityType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__entityType(struct soap*, const char *, int, fimsdescription__entityType *const*, const char *);
@@ -6907,7 +6888,7 @@ SOAP_FMAC3 fimsdescription__entityType ** SOAP_FMAC4 soap_get_PointerTofimsdescr
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__titleType
-#define SOAP_TYPE_PointerTofimsdescription__titleType (230)
+#define SOAP_TYPE_PointerTofimsdescription__titleType (231)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__titleType(struct soap*, fimsdescription__titleType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__titleType(struct soap*, const char *, int, fimsdescription__titleType *const*, const char *);
@@ -6926,7 +6907,7 @@ SOAP_FMAC3 fimsdescription__titleType ** SOAP_FMAC4 soap_get_PointerTofimsdescri
 
 
 #ifndef SOAP_TYPE_PointerTofimsdescription__textElementType
-#define SOAP_TYPE_PointerTofimsdescription__textElementType (228)
+#define SOAP_TYPE_PointerTofimsdescription__textElementType (229)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofimsdescription__textElementType(struct soap*, fimsdescription__textElementType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofimsdescription__textElementType(struct soap*, const char *, int, fimsdescription__textElementType *const*, const char *);
@@ -6945,7 +6926,7 @@ SOAP_FMAC3 fimsdescription__textElementType ** SOAP_FMAC4 soap_get_PointerTofims
 
 
 #ifndef SOAP_TYPE_PointerTofims__DescriptionType
-#define SOAP_TYPE_PointerTofims__DescriptionType (226)
+#define SOAP_TYPE_PointerTofims__DescriptionType (227)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__DescriptionType(struct soap*, fims__DescriptionType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__DescriptionType(struct soap*, const char *, int, fims__DescriptionType *const*, const char *);
@@ -6964,7 +6945,7 @@ SOAP_FMAC3 fims__DescriptionType ** SOAP_FMAC4 soap_get_PointerTofims__Descripti
 
 
 #ifndef SOAP_TYPE_PointerTofims__BMEssenceLocatorType
-#define SOAP_TYPE_PointerTofims__BMEssenceLocatorType (224)
+#define SOAP_TYPE_PointerTofims__BMEssenceLocatorType (225)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__BMEssenceLocatorType(struct soap*, fims__BMEssenceLocatorType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__BMEssenceLocatorType(struct soap*, const char *, int, fims__BMEssenceLocatorType *const*, const char *);
@@ -6983,7 +6964,7 @@ SOAP_FMAC3 fims__BMEssenceLocatorType ** SOAP_FMAC4 soap_get_PointerTofims__BMEs
 
 
 #ifndef SOAP_TYPE_PointerTofims__BMContentFormatType
-#define SOAP_TYPE_PointerTofims__BMContentFormatType (222)
+#define SOAP_TYPE_PointerTofims__BMContentFormatType (223)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__BMContentFormatType(struct soap*, fims__BMContentFormatType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__BMContentFormatType(struct soap*, const char *, int, fims__BMContentFormatType *const*, const char *);
@@ -7002,7 +6983,7 @@ SOAP_FMAC3 fims__BMContentFormatType ** SOAP_FMAC4 soap_get_PointerTofims__BMCon
 
 
 #ifndef SOAP_TYPE_PointerTofims__BMContentType
-#define SOAP_TYPE_PointerTofims__BMContentType (220)
+#define SOAP_TYPE_PointerTofims__BMContentType (221)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__BMContentType(struct soap*, fims__BMContentType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__BMContentType(struct soap*, const char *, int, fims__BMContentType *const*, const char *);
@@ -7020,27 +7001,8 @@ SOAP_FMAC3 fims__BMContentType ** SOAP_FMAC4 soap_get_PointerTofims__BMContentTy
 #endif
 
 
-#ifndef SOAP_TYPE_PointerTofims__BMObjectType
-#define SOAP_TYPE_PointerTofims__BMObjectType (218)
-#endif
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__BMObjectType(struct soap*, fims__BMObjectType *const*);
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__BMObjectType(struct soap*, const char *, int, fims__BMObjectType *const*, const char *);
-SOAP_FMAC3 fims__BMObjectType ** SOAP_FMAC4 soap_in_PointerTofims__BMObjectType(struct soap*, const char*, fims__BMObjectType **, const char*);
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTofims__BMObjectType(struct soap*, fims__BMObjectType *const*, const char*, const char*);
-
-#ifndef soap_write_PointerTofims__BMObjectType
-#define soap_write_PointerTofims__BMObjectType(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_PointerTofims__BMObjectType(soap, data),0) || soap_put_PointerTofims__BMObjectType(soap, data, "fims:BMObjectType", NULL) || soap_end_send(soap), (soap)->error )
-#endif
-
-SOAP_FMAC3 fims__BMObjectType ** SOAP_FMAC4 soap_get_PointerTofims__BMObjectType(struct soap*, fims__BMObjectType **, const char*, const char*);
-
-#ifndef soap_read_PointerTofims__BMObjectType
-#define soap_read_PointerTofims__BMObjectType(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTofims__BMObjectType(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
-#endif
-
-
 #ifndef SOAP_TYPE_PointerTofims__DataFormatType
-#define SOAP_TYPE_PointerTofims__DataFormatType (216)
+#define SOAP_TYPE_PointerTofims__DataFormatType (218)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__DataFormatType(struct soap*, fims__DataFormatType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__DataFormatType(struct soap*, const char *, int, fims__DataFormatType *const*, const char *);
@@ -7059,7 +7021,7 @@ SOAP_FMAC3 fims__DataFormatType ** SOAP_FMAC4 soap_get_PointerTofims__DataFormat
 
 
 #ifndef SOAP_TYPE_PointerTofims__ProfileType
-#define SOAP_TYPE_PointerTofims__ProfileType (201)
+#define SOAP_TYPE_PointerTofims__ProfileType (203)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__ProfileType(struct soap*, fims__ProfileType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__ProfileType(struct soap*, const char *, int, fims__ProfileType *const*, const char *);
@@ -7078,7 +7040,7 @@ SOAP_FMAC3 fims__ProfileType ** SOAP_FMAC4 soap_get_PointerTofims__ProfileType(s
 
 
 #ifndef SOAP_TYPE_PointerTofims__ResourceType
-#define SOAP_TYPE_PointerTofims__ResourceType (198)
+#define SOAP_TYPE_PointerTofims__ResourceType (200)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__ResourceType(struct soap*, fims__ResourceType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__ResourceType(struct soap*, const char *, int, fims__ResourceType *const*, const char *);
@@ -7097,7 +7059,7 @@ SOAP_FMAC3 fims__ResourceType ** SOAP_FMAC4 soap_get_PointerTofims__ResourceType
 
 
 #ifndef SOAP_TYPE_PointerTofims__InnerFaultType
-#define SOAP_TYPE_PointerTofims__InnerFaultType (195)
+#define SOAP_TYPE_PointerTofims__InnerFaultType (197)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__InnerFaultType(struct soap*, fims__InnerFaultType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__InnerFaultType(struct soap*, const char *, int, fims__InnerFaultType *const*, const char *);
@@ -7116,7 +7078,7 @@ SOAP_FMAC3 fims__InnerFaultType ** SOAP_FMAC4 soap_get_PointerTofims__InnerFault
 
 
 #ifndef SOAP_TYPE_PointerTotime
-#define SOAP_TYPE_PointerTotime (193)
+#define SOAP_TYPE_PointerTotime (195)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTotime(struct soap*, time_t *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTotime(struct soap*, const char *, int, time_t *const*, const char *);
@@ -7135,7 +7097,7 @@ SOAP_FMAC3 time_t ** SOAP_FMAC4 soap_get_PointerTotime(struct soap*, time_t **, 
 
 
 #ifndef SOAP_TYPE_PointerTofims__ServiceType
-#define SOAP_TYPE_PointerTofims__ServiceType (191)
+#define SOAP_TYPE_PointerTofims__ServiceType (193)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__ServiceType(struct soap*, fims__ServiceType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__ServiceType(struct soap*, const char *, int, fims__ServiceType *const*, const char *);
@@ -7154,7 +7116,7 @@ SOAP_FMAC3 fims__ServiceType ** SOAP_FMAC4 soap_get_PointerTofims__ServiceType(s
 
 
 #ifndef SOAP_TYPE_PointerToxsd__nonNegativeInteger
-#define SOAP_TYPE_PointerToxsd__nonNegativeInteger (189)
+#define SOAP_TYPE_PointerToxsd__nonNegativeInteger (191)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToxsd__nonNegativeInteger(struct soap*, std::wstring *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToxsd__nonNegativeInteger(struct soap*, const char *, int, std::wstring *const*, const char *);
@@ -7173,7 +7135,7 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerToxsd__nonNegativeInteger(
 
 
 #ifndef SOAP_TYPE_PointerTofims__JobsType
-#define SOAP_TYPE_PointerTofims__JobsType (188)
+#define SOAP_TYPE_PointerTofims__JobsType (190)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__JobsType(struct soap*, fims__JobsType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__JobsType(struct soap*, const char *, int, fims__JobsType *const*, const char *);
@@ -7192,7 +7154,7 @@ SOAP_FMAC3 fims__JobsType ** SOAP_FMAC4 soap_get_PointerTofims__JobsType(struct 
 
 
 #ifndef SOAP_TYPE_PointerTofims__QueueType
-#define SOAP_TYPE_PointerTofims__QueueType (187)
+#define SOAP_TYPE_PointerTofims__QueueType (189)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__QueueType(struct soap*, fims__QueueType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__QueueType(struct soap*, const char *, int, fims__QueueType *const*, const char *);
@@ -7211,7 +7173,7 @@ SOAP_FMAC3 fims__QueueType ** SOAP_FMAC4 soap_get_PointerTofims__QueueType(struc
 
 
 #ifndef SOAP_TYPE_PointerTofims__JobType
-#define SOAP_TYPE_PointerTofims__JobType (186)
+#define SOAP_TYPE_PointerTofims__JobType (188)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__JobType(struct soap*, fims__JobType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__JobType(struct soap*, const char *, int, fims__JobType *const*, const char *);
@@ -7230,7 +7192,7 @@ SOAP_FMAC3 fims__JobType ** SOAP_FMAC4 soap_get_PointerTofims__JobType(struct so
 
 
 #ifndef SOAP_TYPE_PointerTofims__PriorityType
-#define SOAP_TYPE_PointerTofims__PriorityType (185)
+#define SOAP_TYPE_PointerTofims__PriorityType (187)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__PriorityType(struct soap*, enum fims__PriorityType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__PriorityType(struct soap*, const char *, int, enum fims__PriorityType *const*, const char *);
@@ -7249,7 +7211,7 @@ SOAP_FMAC3 enum fims__PriorityType ** SOAP_FMAC4 soap_get_PointerTofims__Priorit
 
 
 #ifndef SOAP_TYPE_PointerToxsd__time
-#define SOAP_TYPE_PointerToxsd__time (183)
+#define SOAP_TYPE_PointerToxsd__time (185)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToxsd__time(struct soap*, std::wstring *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToxsd__time(struct soap*, const char *, int, std::wstring *const*, const char *);
@@ -7268,7 +7230,7 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerToxsd__time(struct soap*, 
 
 
 #ifndef SOAP_TYPE_PointerTofims__Timecode
-#define SOAP_TYPE_PointerTofims__Timecode (182)
+#define SOAP_TYPE_PointerTofims__Timecode (184)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__Timecode(struct soap*, std::wstring *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__Timecode(struct soap*, const char *, int, std::wstring *const*, const char *);
@@ -7287,7 +7249,7 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerTofims__Timecode(struct so
 
 
 #ifndef SOAP_TYPE_PointerTofims__EditUnitNumberType
-#define SOAP_TYPE_PointerTofims__EditUnitNumberType (180)
+#define SOAP_TYPE_PointerTofims__EditUnitNumberType (182)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__EditUnitNumberType(struct soap*, fims__EditUnitNumberType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__EditUnitNumberType(struct soap*, const char *, int, fims__EditUnitNumberType *const*, const char *);
@@ -7306,7 +7268,7 @@ SOAP_FMAC3 fims__EditUnitNumberType ** SOAP_FMAC4 soap_get_PointerTofims__EditUn
 
 
 #ifndef SOAP_TYPE_PointerToxsd__duration
-#define SOAP_TYPE_PointerToxsd__duration (179)
+#define SOAP_TYPE_PointerToxsd__duration (181)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToxsd__duration(struct soap*, LONG64 *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToxsd__duration(struct soap*, const char *, int, LONG64 *const*, const char *);
@@ -7325,7 +7287,7 @@ SOAP_FMAC3 LONG64 ** SOAP_FMAC4 soap_get_PointerToxsd__duration(struct soap*, LO
 
 
 #ifndef SOAP_TYPE_PointerTofims__TimecodeDuration
-#define SOAP_TYPE_PointerTofims__TimecodeDuration (178)
+#define SOAP_TYPE_PointerTofims__TimecodeDuration (180)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__TimecodeDuration(struct soap*, std::wstring *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__TimecodeDuration(struct soap*, const char *, int, std::wstring *const*, const char *);
@@ -7344,7 +7306,7 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerTofims__TimecodeDuration(s
 
 
 #ifndef SOAP_TYPE_PointerTofims__HashFunctionType
-#define SOAP_TYPE_PointerTofims__HashFunctionType (177)
+#define SOAP_TYPE_PointerTofims__HashFunctionType (179)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__HashFunctionType(struct soap*, fims__HashFunctionType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__HashFunctionType(struct soap*, const char *, int, fims__HashFunctionType *const*, const char *);
@@ -7363,7 +7325,7 @@ SOAP_FMAC3 fims__HashFunctionType ** SOAP_FMAC4 soap_get_PointerTofims__HashFunc
 
 
 #ifndef SOAP_TYPE_PointerTofims__ContainerFormatType
-#define SOAP_TYPE_PointerTofims__ContainerFormatType (176)
+#define SOAP_TYPE_PointerTofims__ContainerFormatType (178)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__ContainerFormatType(struct soap*, fims__ContainerFormatType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__ContainerFormatType(struct soap*, const char *, int, fims__ContainerFormatType *const*, const char *);
@@ -7382,7 +7344,7 @@ SOAP_FMAC3 fims__ContainerFormatType ** SOAP_FMAC4 soap_get_PointerTofims__Conta
 
 
 #ifndef SOAP_TYPE_PointerTofims__AudioFormatType
-#define SOAP_TYPE_PointerTofims__AudioFormatType (175)
+#define SOAP_TYPE_PointerTofims__AudioFormatType (177)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__AudioFormatType(struct soap*, fims__AudioFormatType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__AudioFormatType(struct soap*, const char *, int, fims__AudioFormatType *const*, const char *);
@@ -7401,7 +7363,7 @@ SOAP_FMAC3 fims__AudioFormatType ** SOAP_FMAC4 soap_get_PointerTofims__AudioForm
 
 
 #ifndef SOAP_TYPE_PointerTofims__VideoFormatType
-#define SOAP_TYPE_PointerTofims__VideoFormatType (174)
+#define SOAP_TYPE_PointerTofims__VideoFormatType (176)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__VideoFormatType(struct soap*, fims__VideoFormatType *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__VideoFormatType(struct soap*, const char *, int, fims__VideoFormatType *const*, const char *);
@@ -7420,7 +7382,7 @@ SOAP_FMAC3 fims__VideoFormatType ** SOAP_FMAC4 soap_get_PointerTofims__VideoForm
 
 
 #ifndef SOAP_TYPE_PointerToxsd__language
-#define SOAP_TYPE_PointerToxsd__language (173)
+#define SOAP_TYPE_PointerToxsd__language (175)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToxsd__language(struct soap*, std::wstring *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToxsd__language(struct soap*, const char *, int, std::wstring *const*, const char *);
@@ -7439,7 +7401,7 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerToxsd__language(struct soa
 
 
 #ifndef SOAP_TYPE_PointerTofims__UID
-#define SOAP_TYPE_PointerTofims__UID (172)
+#define SOAP_TYPE_PointerTofims__UID (174)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__UID(struct soap*, std::wstring *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__UID(struct soap*, const char *, int, std::wstring *const*, const char *);
@@ -7458,7 +7420,7 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerTofims__UID(struct soap*, 
 
 
 #ifndef SOAP_TYPE_PointerTofims__ExtensionAttributes
-#define SOAP_TYPE_PointerTofims__ExtensionAttributes (171)
+#define SOAP_TYPE_PointerTofims__ExtensionAttributes (173)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__ExtensionAttributes(struct soap*, fims__ExtensionAttributes *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__ExtensionAttributes(struct soap*, const char *, int, fims__ExtensionAttributes *const*, const char *);
@@ -7477,7 +7439,7 @@ SOAP_FMAC3 fims__ExtensionAttributes ** SOAP_FMAC4 soap_get_PointerTofims__Exten
 
 
 #ifndef SOAP_TYPE_PointerTofims__ExtensionGroup
-#define SOAP_TYPE_PointerTofims__ExtensionGroup (170)
+#define SOAP_TYPE_PointerTofims__ExtensionGroup (172)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__ExtensionGroup(struct soap*, fims__ExtensionGroup *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__ExtensionGroup(struct soap*, const char *, int, fims__ExtensionGroup *const*, const char *);
@@ -7496,7 +7458,7 @@ SOAP_FMAC3 fims__ExtensionGroup ** SOAP_FMAC4 soap_get_PointerTofims__ExtensionG
 
 
 #ifndef SOAP_TYPE_PointerToxsd__integer
-#define SOAP_TYPE_PointerToxsd__integer (169)
+#define SOAP_TYPE_PointerToxsd__integer (171)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToxsd__integer(struct soap*, std::wstring *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToxsd__integer(struct soap*, const char *, int, std::wstring *const*, const char *);
@@ -7515,7 +7477,7 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerToxsd__integer(struct soap
 
 
 #ifndef SOAP_TYPE_PointerToxsd__anyURI
-#define SOAP_TYPE_PointerToxsd__anyURI (168)
+#define SOAP_TYPE_PointerToxsd__anyURI (170)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToxsd__anyURI(struct soap*, std::wstring *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToxsd__anyURI(struct soap*, const char *, int, std::wstring *const*, const char *);
@@ -7534,7 +7496,7 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerToxsd__anyURI(struct soap*
 
 
 #ifndef SOAP_TYPE_PointerTofims__RevisionIDType
-#define SOAP_TYPE_PointerTofims__RevisionIDType (167)
+#define SOAP_TYPE_PointerTofims__RevisionIDType (169)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__RevisionIDType(struct soap*, std::wstring *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__RevisionIDType(struct soap*, const char *, int, std::wstring *const*, const char *);
@@ -7553,7 +7515,7 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerTofims__RevisionIDType(str
 
 
 #ifndef SOAP_TYPE_PointerToxsd__base64Binary
-#define SOAP_TYPE_PointerToxsd__base64Binary (165)
+#define SOAP_TYPE_PointerToxsd__base64Binary (167)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToxsd__base64Binary(struct soap*, xsd__base64Binary *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToxsd__base64Binary(struct soap*, const char *, int, xsd__base64Binary *const*, const char *);
@@ -7572,7 +7534,7 @@ SOAP_FMAC3 xsd__base64Binary ** SOAP_FMAC4 soap_get_PointerToxsd__base64Binary(s
 
 
 #ifndef SOAP_TYPE_PointerTostd__wstring
-#define SOAP_TYPE_PointerTostd__wstring (164)
+#define SOAP_TYPE_PointerTostd__wstring (166)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTostd__wstring(struct soap*, std::wstring *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTostd__wstring(struct soap*, const char *, int, std::wstring *const*, const char *);
@@ -7591,7 +7553,7 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerTostd__wstring(struct soap
 
 
 #ifndef SOAP_TYPE_PointerToedlprovider__ArrayOfClips
-#define SOAP_TYPE_PointerToedlprovider__ArrayOfClips (163)
+#define SOAP_TYPE_PointerToedlprovider__ArrayOfClips (165)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToedlprovider__ArrayOfClips(struct soap*, edlprovider__ArrayOfClips *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToedlprovider__ArrayOfClips(struct soap*, const char *, int, edlprovider__ArrayOfClips *const*, const char *);
@@ -7606,6 +7568,44 @@ SOAP_FMAC3 edlprovider__ArrayOfClips ** SOAP_FMAC4 soap_get_PointerToedlprovider
 
 #ifndef soap_read_PointerToedlprovider__ArrayOfClips
 #define soap_read_PointerToedlprovider__ArrayOfClips(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerToedlprovider__ArrayOfClips(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTofims__BMObjectType
+#define SOAP_TYPE_PointerTofims__BMObjectType (164)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__BMObjectType(struct soap*, fims__BMObjectType *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__BMObjectType(struct soap*, const char *, int, fims__BMObjectType *const*, const char *);
+SOAP_FMAC3 fims__BMObjectType ** SOAP_FMAC4 soap_in_PointerTofims__BMObjectType(struct soap*, const char*, fims__BMObjectType **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTofims__BMObjectType(struct soap*, fims__BMObjectType *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTofims__BMObjectType
+#define soap_write_PointerTofims__BMObjectType(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_PointerTofims__BMObjectType(soap, data),0) || soap_put_PointerTofims__BMObjectType(soap, data, "fims:BMObjectType", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 fims__BMObjectType ** SOAP_FMAC4 soap_get_PointerTofims__BMObjectType(struct soap*, fims__BMObjectType **, const char*, const char*);
+
+#ifndef soap_read_PointerTofims__BMObjectType
+#define soap_read_PointerTofims__BMObjectType(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTofims__BMObjectType(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+
+#ifndef SOAP_TYPE_PointerTofims__TimeType
+#define SOAP_TYPE_PointerTofims__TimeType (163)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTofims__TimeType(struct soap*, fims__TimeType *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTofims__TimeType(struct soap*, const char *, int, fims__TimeType *const*, const char *);
+SOAP_FMAC3 fims__TimeType ** SOAP_FMAC4 soap_in_PointerTofims__TimeType(struct soap*, const char*, fims__TimeType **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTofims__TimeType(struct soap*, fims__TimeType *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTofims__TimeType
+#define soap_write_PointerTofims__TimeType(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_PointerTofims__TimeType(soap, data),0) || soap_put_PointerTofims__TimeType(soap, data, "fims:TimeType", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 fims__TimeType ** SOAP_FMAC4 soap_get_PointerTofims__TimeType(struct soap*, fims__TimeType **, const char*, const char*);
+
+#ifndef soap_read_PointerTofims__TimeType
+#define soap_read_PointerTofims__TimeType(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTofims__TimeType(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
 #endif
 
 
@@ -7735,7 +7735,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofims__BMTrackType(struct s
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofims__BMTrackType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofims__TechnicalAttributeType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofims__TechnicalAttributeType (311)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofims__TechnicalAttributeType (312)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofims__TechnicalAttributeType(struct soap*, std::vector<fims__TechnicalAttributeType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofims__TechnicalAttributeType(struct soap*, const std::vector<fims__TechnicalAttributeType * >*);
@@ -7750,7 +7750,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofims__TechnicalAttributeTy
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofims__TechnicalAttributeType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOffims__UID
-#define SOAP_TYPE_std__vectorTemplateOffims__UID (301)
+#define SOAP_TYPE_std__vectorTemplateOffims__UID (302)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOffims__UID(struct soap*, std::vector<std::wstring >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOffims__UID(struct soap*, const std::vector<std::wstring >*);
@@ -7765,7 +7765,7 @@ inline void soap_delete_std__vectorTemplateOffims__UID(struct soap *soap, std::v
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOffims__UID(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfxsd__anyURI
-#define SOAP_TYPE_std__vectorTemplateOfxsd__anyURI (288)
+#define SOAP_TYPE_std__vectorTemplateOfxsd__anyURI (289)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfxsd__anyURI(struct soap*, std::vector<std::wstring >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfxsd__anyURI(struct soap*, const std::vector<std::wstring >*);
@@ -7780,7 +7780,7 @@ inline void soap_delete_std__vectorTemplateOfxsd__anyURI(struct soap *soap, std:
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfxsd__anyURI(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__detailsType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__detailsType (287)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__detailsType (288)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofimsdescription__detailsType(struct soap*, std::vector<fimsdescription__detailsType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofimsdescription__detailsType(struct soap*, const std::vector<fimsdescription__detailsType * >*);
@@ -7795,7 +7795,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofimsdescription__detailsTy
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofimsdescription__detailsType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOf_fimsdescription__entityType_role
-#define SOAP_TYPE_std__vectorTemplateOf_fimsdescription__entityType_role (284)
+#define SOAP_TYPE_std__vectorTemplateOf_fimsdescription__entityType_role (285)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf_fimsdescription__entityType_role(struct soap*, std::vector<_fimsdescription__entityType_role >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOf_fimsdescription__entityType_role(struct soap*, const std::vector<_fimsdescription__entityType_role >*);
@@ -7810,7 +7810,7 @@ inline void soap_delete_std__vectorTemplateOf_fimsdescription__entityType_role(s
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOf_fimsdescription__entityType_role(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__organisationDetailsType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__organisationDetailsType (282)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__organisationDetailsType (283)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofimsdescription__organisationDetailsType(struct soap*, std::vector<fimsdescription__organisationDetailsType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofimsdescription__organisationDetailsType(struct soap*, const std::vector<fimsdescription__organisationDetailsType * >*);
@@ -7825,7 +7825,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofimsdescription__organisat
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofimsdescription__organisationDetailsType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__contactDetailsType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__contactDetailsType (270)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__contactDetailsType (271)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofimsdescription__contactDetailsType(struct soap*, std::vector<fimsdescription__contactDetailsType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofimsdescription__contactDetailsType(struct soap*, const std::vector<fimsdescription__contactDetailsType * >*);
@@ -7840,7 +7840,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofimsdescription__contactDe
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofimsdescription__contactDetailsType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOf_fimsdescription__typeType_targetAudience
-#define SOAP_TYPE_std__vectorTemplateOf_fimsdescription__typeType_targetAudience (258)
+#define SOAP_TYPE_std__vectorTemplateOf_fimsdescription__typeType_targetAudience (259)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf_fimsdescription__typeType_targetAudience(struct soap*, std::vector<_fimsdescription__typeType_targetAudience >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOf_fimsdescription__typeType_targetAudience(struct soap*, const std::vector<_fimsdescription__typeType_targetAudience >*);
@@ -7855,7 +7855,7 @@ inline void soap_delete_std__vectorTemplateOf_fimsdescription__typeType_targetAu
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOf_fimsdescription__typeType_targetAudience(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOf_fimsdescription__typeType_objectType
-#define SOAP_TYPE_std__vectorTemplateOf_fimsdescription__typeType_objectType (255)
+#define SOAP_TYPE_std__vectorTemplateOf_fimsdescription__typeType_objectType (256)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf_fimsdescription__typeType_objectType(struct soap*, std::vector<_fimsdescription__typeType_objectType >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOf_fimsdescription__typeType_objectType(struct soap*, const std::vector<_fimsdescription__typeType_objectType >*);
@@ -7870,7 +7870,7 @@ inline void soap_delete_std__vectorTemplateOf_fimsdescription__typeType_objectTy
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOf_fimsdescription__typeType_objectType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOf_fimsdescription__typeType_genre
-#define SOAP_TYPE_std__vectorTemplateOf_fimsdescription__typeType_genre (252)
+#define SOAP_TYPE_std__vectorTemplateOf_fimsdescription__typeType_genre (253)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf_fimsdescription__typeType_genre(struct soap*, std::vector<_fimsdescription__typeType_genre >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOf_fimsdescription__typeType_genre(struct soap*, const std::vector<_fimsdescription__typeType_genre >*);
@@ -7885,7 +7885,7 @@ inline void soap_delete_std__vectorTemplateOf_fimsdescription__typeType_genre(st
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOf_fimsdescription__typeType_genre(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__rightsType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__rightsType (249)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__rightsType (250)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofimsdescription__rightsType(struct soap*, std::vector<fimsdescription__rightsType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofimsdescription__rightsType(struct soap*, const std::vector<fimsdescription__rightsType * >*);
@@ -7900,7 +7900,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofimsdescription__rightsTyp
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofimsdescription__rightsType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__coverageType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__coverageType (247)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__coverageType (248)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofimsdescription__coverageType(struct soap*, std::vector<fimsdescription__coverageType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofimsdescription__coverageType(struct soap*, const std::vector<fimsdescription__coverageType * >*);
@@ -7915,7 +7915,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofimsdescription__coverageT
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofimsdescription__coverageType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__languageType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__languageType (245)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__languageType (246)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofimsdescription__languageType(struct soap*, std::vector<fimsdescription__languageType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofimsdescription__languageType(struct soap*, const std::vector<fimsdescription__languageType * >*);
@@ -7930,7 +7930,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofimsdescription__languageT
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofimsdescription__languageType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__identifierType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__identifierType (243)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__identifierType (244)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofimsdescription__identifierType(struct soap*, std::vector<fimsdescription__identifierType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofimsdescription__identifierType(struct soap*, const std::vector<fimsdescription__identifierType * >*);
@@ -7945,7 +7945,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofimsdescription__identifie
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofimsdescription__identifierType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__typeType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__typeType (241)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__typeType (242)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofimsdescription__typeType(struct soap*, std::vector<fimsdescription__typeType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofimsdescription__typeType(struct soap*, const std::vector<fimsdescription__typeType * >*);
@@ -7960,7 +7960,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofimsdescription__typeType(
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofimsdescription__typeType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__dateType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__dateType (239)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__dateType (240)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofimsdescription__dateType(struct soap*, std::vector<fimsdescription__dateType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofimsdescription__dateType(struct soap*, const std::vector<fimsdescription__dateType * >*);
@@ -7975,7 +7975,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofimsdescription__dateType(
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofimsdescription__dateType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__descriptionType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__descriptionType (237)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__descriptionType (238)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofimsdescription__descriptionType(struct soap*, std::vector<fimsdescription__descriptionType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofimsdescription__descriptionType(struct soap*, const std::vector<fimsdescription__descriptionType * >*);
@@ -7990,7 +7990,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofimsdescription__descripti
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofimsdescription__descriptionType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__subjectType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__subjectType (235)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__subjectType (236)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofimsdescription__subjectType(struct soap*, std::vector<fimsdescription__subjectType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofimsdescription__subjectType(struct soap*, const std::vector<fimsdescription__subjectType * >*);
@@ -8005,7 +8005,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofimsdescription__subjectTy
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofimsdescription__subjectType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__entityType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__entityType (233)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__entityType (234)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofimsdescription__entityType(struct soap*, std::vector<fimsdescription__entityType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofimsdescription__entityType(struct soap*, const std::vector<fimsdescription__entityType * >*);
@@ -8020,7 +8020,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofimsdescription__entityTyp
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofimsdescription__entityType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__titleType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__titleType (231)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__titleType (232)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofimsdescription__titleType(struct soap*, std::vector<fimsdescription__titleType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofimsdescription__titleType(struct soap*, const std::vector<fimsdescription__titleType * >*);
@@ -8035,7 +8035,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofimsdescription__titleType
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofimsdescription__titleType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__textElementType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__textElementType (229)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofimsdescription__textElementType (230)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofimsdescription__textElementType(struct soap*, std::vector<fimsdescription__textElementType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofimsdescription__textElementType(struct soap*, const std::vector<fimsdescription__textElementType * >*);
@@ -8050,7 +8050,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofimsdescription__textEleme
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofimsdescription__textElementType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofims__DescriptionType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofims__DescriptionType (227)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofims__DescriptionType (228)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofims__DescriptionType(struct soap*, std::vector<fims__DescriptionType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofims__DescriptionType(struct soap*, const std::vector<fims__DescriptionType * >*);
@@ -8065,7 +8065,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofims__DescriptionType(stru
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofims__DescriptionType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofims__BMEssenceLocatorType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofims__BMEssenceLocatorType (225)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofims__BMEssenceLocatorType (226)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofims__BMEssenceLocatorType(struct soap*, std::vector<fims__BMEssenceLocatorType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofims__BMEssenceLocatorType(struct soap*, const std::vector<fims__BMEssenceLocatorType * >*);
@@ -8080,7 +8080,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofims__BMEssenceLocatorType
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofims__BMEssenceLocatorType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofims__BMContentFormatType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofims__BMContentFormatType (223)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofims__BMContentFormatType (224)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofims__BMContentFormatType(struct soap*, std::vector<fims__BMContentFormatType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofims__BMContentFormatType(struct soap*, const std::vector<fims__BMContentFormatType * >*);
@@ -8095,7 +8095,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofims__BMContentFormatType(
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofims__BMContentFormatType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofims__BMContentType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofims__BMContentType (221)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofims__BMContentType (222)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofims__BMContentType(struct soap*, std::vector<fims__BMContentType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofims__BMContentType(struct soap*, const std::vector<fims__BMContentType * >*);
@@ -8110,7 +8110,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofims__BMContentType(struct
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofims__BMContentType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofims__BMObjectType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofims__BMObjectType (219)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofims__BMObjectType (220)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofims__BMObjectType(struct soap*, std::vector<fims__BMObjectType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofims__BMObjectType(struct soap*, const std::vector<fims__BMObjectType * >*);
@@ -8125,7 +8125,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofims__BMObjectType(struct 
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofims__BMObjectType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOf__fims__DataFormatsType_sequence
-#define SOAP_TYPE_std__vectorTemplateOf__fims__DataFormatsType_sequence (217)
+#define SOAP_TYPE_std__vectorTemplateOf__fims__DataFormatsType_sequence (219)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf__fims__DataFormatsType_sequence(struct soap*, std::vector<__fims__DataFormatsType_sequence >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOf__fims__DataFormatsType_sequence(struct soap*, const std::vector<__fims__DataFormatsType_sequence >*);
@@ -8140,7 +8140,7 @@ inline void soap_delete_std__vectorTemplateOf__fims__DataFormatsType_sequence(st
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOf__fims__DataFormatsType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOf__fims__ContainerFormatsType_sequence
-#define SOAP_TYPE_std__vectorTemplateOf__fims__ContainerFormatsType_sequence (214)
+#define SOAP_TYPE_std__vectorTemplateOf__fims__ContainerFormatsType_sequence (216)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf__fims__ContainerFormatsType_sequence(struct soap*, std::vector<__fims__ContainerFormatsType_sequence >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOf__fims__ContainerFormatsType_sequence(struct soap*, const std::vector<__fims__ContainerFormatsType_sequence >*);
@@ -8155,7 +8155,7 @@ inline void soap_delete_std__vectorTemplateOf__fims__ContainerFormatsType_sequen
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOf__fims__ContainerFormatsType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOf__fims__AudioFormatsType_sequence
-#define SOAP_TYPE_std__vectorTemplateOf__fims__AudioFormatsType_sequence (212)
+#define SOAP_TYPE_std__vectorTemplateOf__fims__AudioFormatsType_sequence (214)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf__fims__AudioFormatsType_sequence(struct soap*, std::vector<__fims__AudioFormatsType_sequence >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOf__fims__AudioFormatsType_sequence(struct soap*, const std::vector<__fims__AudioFormatsType_sequence >*);
@@ -8170,7 +8170,7 @@ inline void soap_delete_std__vectorTemplateOf__fims__AudioFormatsType_sequence(s
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOf__fims__AudioFormatsType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOf__fims__VideoFormatsType_sequence
-#define SOAP_TYPE_std__vectorTemplateOf__fims__VideoFormatsType_sequence (210)
+#define SOAP_TYPE_std__vectorTemplateOf__fims__VideoFormatsType_sequence (212)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf__fims__VideoFormatsType_sequence(struct soap*, std::vector<__fims__VideoFormatsType_sequence >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOf__fims__VideoFormatsType_sequence(struct soap*, const std::vector<__fims__VideoFormatsType_sequence >*);
@@ -8185,7 +8185,7 @@ inline void soap_delete_std__vectorTemplateOf__fims__VideoFormatsType_sequence(s
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOf__fims__VideoFormatsType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOf__fims__JobsType_sequence
-#define SOAP_TYPE_std__vectorTemplateOf__fims__JobsType_sequence (208)
+#define SOAP_TYPE_std__vectorTemplateOf__fims__JobsType_sequence (210)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf__fims__JobsType_sequence(struct soap*, std::vector<__fims__JobsType_sequence >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOf__fims__JobsType_sequence(struct soap*, const std::vector<__fims__JobsType_sequence >*);
@@ -8200,7 +8200,7 @@ inline void soap_delete_std__vectorTemplateOf__fims__JobsType_sequence(struct so
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOf__fims__JobsType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOf__fims__QueuesType_sequence
-#define SOAP_TYPE_std__vectorTemplateOf__fims__QueuesType_sequence (206)
+#define SOAP_TYPE_std__vectorTemplateOf__fims__QueuesType_sequence (208)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf__fims__QueuesType_sequence(struct soap*, std::vector<__fims__QueuesType_sequence >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOf__fims__QueuesType_sequence(struct soap*, const std::vector<__fims__QueuesType_sequence >*);
@@ -8215,7 +8215,7 @@ inline void soap_delete_std__vectorTemplateOf__fims__QueuesType_sequence(struct 
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOf__fims__QueuesType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOf__fims__ServicesType_sequence
-#define SOAP_TYPE_std__vectorTemplateOf__fims__ServicesType_sequence (204)
+#define SOAP_TYPE_std__vectorTemplateOf__fims__ServicesType_sequence (206)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf__fims__ServicesType_sequence(struct soap*, std::vector<__fims__ServicesType_sequence >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOf__fims__ServicesType_sequence(struct soap*, const std::vector<__fims__ServicesType_sequence >*);
@@ -8230,7 +8230,7 @@ inline void soap_delete_std__vectorTemplateOf__fims__ServicesType_sequence(struc
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOf__fims__ServicesType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOf__fims__ProfilesType_sequence
-#define SOAP_TYPE_std__vectorTemplateOf__fims__ProfilesType_sequence (202)
+#define SOAP_TYPE_std__vectorTemplateOf__fims__ProfilesType_sequence (204)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf__fims__ProfilesType_sequence(struct soap*, std::vector<__fims__ProfilesType_sequence >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOf__fims__ProfilesType_sequence(struct soap*, const std::vector<__fims__ProfilesType_sequence >*);
@@ -8245,7 +8245,7 @@ inline void soap_delete_std__vectorTemplateOf__fims__ProfilesType_sequence(struc
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOf__fims__ProfilesType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOf__fims__ResourcesType_sequence
-#define SOAP_TYPE_std__vectorTemplateOf__fims__ResourcesType_sequence (199)
+#define SOAP_TYPE_std__vectorTemplateOf__fims__ResourcesType_sequence (201)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf__fims__ResourcesType_sequence(struct soap*, std::vector<__fims__ResourcesType_sequence >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOf__fims__ResourcesType_sequence(struct soap*, const std::vector<__fims__ResourcesType_sequence >*);
@@ -8260,7 +8260,7 @@ inline void soap_delete_std__vectorTemplateOf__fims__ResourcesType_sequence(stru
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOf__fims__ResourcesType_sequence(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOfPointerTofims__InnerFaultType
-#define SOAP_TYPE_std__vectorTemplateOfPointerTofims__InnerFaultType (196)
+#define SOAP_TYPE_std__vectorTemplateOfPointerTofims__InnerFaultType (198)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerTofims__InnerFaultType(struct soap*, std::vector<fims__InnerFaultType * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerTofims__InnerFaultType(struct soap*, const std::vector<fims__InnerFaultType * >*);
@@ -8275,7 +8275,7 @@ inline void soap_delete_std__vectorTemplateOfPointerTofims__InnerFaultType(struc
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerTofims__InnerFaultType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_std__vectorTemplateOf_XML
-#define SOAP_TYPE_std__vectorTemplateOf_XML (166)
+#define SOAP_TYPE_std__vectorTemplateOf_XML (168)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOf_XML(struct soap*, std::vector<char * >*);
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOf_XML(struct soap*, const std::vector<char * >*);

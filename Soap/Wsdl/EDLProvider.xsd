@@ -9,11 +9,14 @@
     </xs:complexType>
     <xs:complexType name="ArrayOfClips">
         <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" name="clip" type="edlns:ClipType"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="clips" type="edlns:ClipType"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="ClipType">
         <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="markIn" type="bms:TimeType"/>
+            <xs:element minOccurs="1" maxOccurs="1" name="markOut" type="bms:TimeType"/>
+            <xs:element minOccurs="1" maxOccurs="1" name="clipInfo" type="bms:BMObjectType"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -72,19 +75,9 @@
         <xs:complexContent>
             <xs:extension base="edlns:EdlCreateRequestBaseType">
                 <xs:sequence>
-                    <xs:element minOccurs="1" maxOccurs="1" name="edlFramesPerSecondNumerator" type="xs:int" nillable="false">
+                    <xs:element minOccurs="1" maxOccurs="1" name="edlFramesPerSecond" type="bms:RationalType" nillable="false">
                         <xs:annotation>
-                            <xs:documentation source="urn:x-fims:description">The EDL frames per second numerator.</xs:documentation>
-                            <xs:documentation source="urn:x-fims:normativeRequirement"/>
-                            <xs:documentation source="urn:x-fims:serviceDescription"/>
-                            <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
-                            <xs:documentation source="urn:x-fims:inclusionInRequest">Mandatory</xs:documentation>
-                            <xs:documentation source="urn:x-fims:inclusionInResponse">Not applicable</xs:documentation>
-                        </xs:annotation>
-                    </xs:element>
-                    <xs:element minOccurs="1" maxOccurs="1" name="edlFramesPerSecondDenominator" type="xs:int" nillable="false">
-                        <xs:annotation>
-                            <xs:documentation source="urn:x-fims:description">The EDL frames per second denominator.</xs:documentation>
+                            <xs:documentation source="urn:x-fims:description">The EDL frames per second.</xs:documentation>
                             <xs:documentation source="urn:x-fims:normativeRequirement"/>
                             <xs:documentation source="urn:x-fims:serviceDescription"/>
                             <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>

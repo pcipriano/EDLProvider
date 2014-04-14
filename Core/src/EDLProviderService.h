@@ -1,9 +1,10 @@
 #ifndef CORE_SRC_EDLPROVIDERSERVICE_H
 #define CORE_SRC_EDLPROVIDERSERVICE_H
 
+#include <QtServiceBase>
 #include <QCoreApplication>
 
-#include <QtServiceBase>
+#include "EDLProviderServer.h"
 
 namespace edlprovider
 {
@@ -20,13 +21,16 @@ public:
     bool setUp();
 
 protected:
-    virtual void start() override;
+    virtual void start() override final;
 
-    virtual void stop() override;
+    virtual void stop() override final;
 
-    virtual void createApplication(int &argc, char **argv) override;
+    virtual void createApplication(int &argc, char **argv) override final;
 
-    virtual int executeApplication() override;
+    virtual int executeApplication() override final;
+
+private:
+    QScopedPointer<soap::EDLProviderServer> soapServer_;
 };
 
 }

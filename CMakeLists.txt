@@ -63,6 +63,7 @@ include(Submodules/qtservice.cmake)
 
 #Directories
 add_subdirectory(Core)
+add_subdirectory(Soap)
 add_subdirectory(Common)
 
 #Specify output directories

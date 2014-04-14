@@ -27,12 +27,14 @@ bool EDLProviderService::setUp()
     el::Configurations conf(logConfFile.toStdString());
     el::Loggers::reconfigureAllLoggers(conf);
 
+    soapServer_.reset(new soap::EDLProviderServer());
+
     return true;
 }
 
 void EDLProviderService::start()
 {
-
+    soapServer_->run(8087);
 }
 
 void EDLProviderService::stop()

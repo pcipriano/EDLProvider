@@ -65,6 +65,7 @@ include(Submodules/qtservice.cmake)
 add_subdirectory(Core)
 add_subdirectory(Soap)
 add_subdirectory(Common)
+add_subdirectory(Plugins)
 
 #Specify output directories
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${${PROJECT_NAME}_BINARY_DIR}/bin")

@@ -1,4 +1,4 @@
-#include "EDLProviderService.h"
+#include "EdlProviderService.h"
 
 #include <QDebug>
 
@@ -9,16 +9,16 @@
 
 using namespace edlprovider::core;
 
-EDLProviderService::EDLProviderService(int argc, char** argv)
+EdlProviderService::EdlProviderService(int argc, char** argv)
     : QtService(argc, argv, edlprovider::info::PROJECT_USER_NAME)
 {
 }
 
-EDLProviderService::~EDLProviderService()
+EdlProviderService::~EdlProviderService()
 {
 }
 
-bool EDLProviderService::setUp()
+bool EdlProviderService::setUp()
 {
     QString logConfFile = common::util::PathAppender::combine(application()->applicationDirPath(),
                                                               edlprovider::info::PROJECT_LOG_FILE_CONFIG);
@@ -27,22 +27,22 @@ bool EDLProviderService::setUp()
     el::Configurations conf(logConfFile.toStdString());
     el::Loggers::reconfigureAllLoggers(conf);
 
-    soapServer_.reset(new soap::EDLProviderServer());
+    soapServer_.reset(new soap::EdlProviderServer());
 
     return true;
 }
 
-void EDLProviderService::start()
+void EdlProviderService::start()
 {
     soapServer_->run(8087);
 }
 
-void EDLProviderService::stop()
+void EdlProviderService::stop()
 {
 
 }
 
-void EDLProviderService::createApplication(int& argc, char** argv)
+void EdlProviderService::createApplication(int& argc, char** argv)
 {
     QtService::createApplication(argc, argv);
     el::Helpers::setArgs(argc, argv);
@@ -52,7 +52,7 @@ void EDLProviderService::createApplication(int& argc, char** argv)
     application()->setObjectName(edlprovider::info::PROJECT_NAME);
 }
 
-int EDLProviderService::executeApplication()
+int EdlProviderService::executeApplication()
 {
     if (!setUp())
         return -1;

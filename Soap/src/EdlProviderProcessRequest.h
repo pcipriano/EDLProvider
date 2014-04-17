@@ -4,17 +4,17 @@
 #include <QRunnable>
 #include <QScopedPointer>
 
-#include "EDLProviderServer.h"
+#include "EdlProviderServer.h"
 
 namespace edlprovider
 {
 namespace soap
 {
 
-class EDLProviderProcessRequest : public QRunnable
+class EdlProviderProcessRequest : public QRunnable
 {
 public:
-    explicit EDLProviderProcessRequest(EdlProviderBindingService* const edlProvider);
+    explicit EdlProviderProcessRequest(EdlProviderBindingService* const edlProvider);
 
     void run() override final;
 

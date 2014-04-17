@@ -4,19 +4,19 @@
 #include <QtServiceBase>
 #include <QCoreApplication>
 
-#include "EDLProviderServer.h"
+#include "EdlProviderServer.h"
 
 namespace edlprovider
 {
 namespace core
 {
 
-class EDLProviderService : public QtService<QCoreApplication>
+class EdlProviderService : public QtService<QCoreApplication>
 {
 public:
-    EDLProviderService(int argc, char** argv);
+    EdlProviderService(int argc, char** argv);
 
-    ~EDLProviderService();
+    ~EdlProviderService();
 
     bool setUp();
 
@@ -30,7 +30,7 @@ protected:
     virtual int executeApplication() override final;
 
 private:
-    QScopedPointer<soap::EDLProviderServer> soapServer_;
+    QScopedPointer<soap::EdlProviderServer> soapServer_;
 };
 
 }

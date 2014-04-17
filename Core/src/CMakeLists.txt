@@ -1,10 +1,10 @@
 set(SOURCES
         Main.cpp
-        EDLProviderService.cpp
+        EdlProviderService.cpp
     )
 
 set(HEADERS
-        EDLProviderService.h
+        EdlProviderService.h
    )
 
 include_directories(../../Soap/src)

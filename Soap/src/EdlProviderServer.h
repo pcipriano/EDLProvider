@@ -8,10 +8,10 @@ namespace edlprovider
 namespace soap
 {
 
-class EDLProviderServer : public EdlProviderBindingService
+class EdlProviderServer : public EdlProviderBindingService
 {
 public:
-    EDLProviderServer();
+    EdlProviderServer();
 
     int run(int port) override final;
 

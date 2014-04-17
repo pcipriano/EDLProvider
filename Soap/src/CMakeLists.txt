@@ -3,8 +3,8 @@ set(SOURCES
     ../gsoap/src/duration.cpp
     ../gsoap/src/stdsoap2.cpp
     ../gsoap/src/EDLProviderEdlProviderBindingService.cpp
-    EDLProviderServer.cpp
-    EDLProviderProcessRequest.cpp
+    EdlProviderServer.cpp
+    EdlProviderProcessRequest.cpp
    )
 
 set(HEADERS
@@ -14,8 +14,8 @@ set(HEADERS
     ../gsoap/src/stdsoap2.h
     ../gsoap/src/EdlProviderBinding.nsmap
     ../gsoap/src/duration.h
-    EDLProviderServer.h
-    EDLProviderProcessRequest.h
+    EdlProviderServer.h
+    EdlProviderProcessRequest.h
    )
 
 include_directories(../gsoap/src)

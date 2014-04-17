@@ -8,6 +8,8 @@ if(COMMON_QT)
             PathAppender.h
             ConfigurationReader.h
             ConfigurationReaderImpl.h
+            PluginLoader.h
+            PluginLoaderImpl.h
        )
 endif()
 

@@ -1,17 +1,17 @@
-#include "EDLProviderServer.h"
+#include "EdlProviderServer.h"
 
 #include <QThreadPool>
 
 #include "EdlProviderBinding.nsmap"
-#include "EDLProviderProcessRequest.h"
+#include "EdlProviderProcessRequest.h"
 
 using namespace edlprovider::soap;
 
-EDLProviderServer::EDLProviderServer()
+EdlProviderServer::EdlProviderServer()
 {
 }
 
-int EDLProviderServer::run(int port)
+int EdlProviderServer::run(int port)
 {
     if (soap_valid_socket(this->master) || soap_valid_socket(bind(NULL, port, 100)))
     {
@@ -20,7 +20,7 @@ int EDLProviderServer::run(int port)
             if (!soap_valid_socket(accept()))
                 return this->error;
 
-            EDLProviderProcessRequest* processor = new EDLProviderProcessRequest(copy());
+            EdlProviderProcessRequest* processor = new EdlProviderProcessRequest(copy());
             QThreadPool::globalInstance()->start(processor);
         }
     }
@@ -30,25 +30,25 @@ int EDLProviderServer::run(int port)
     return SOAP_OK;
 }
 
-EdlProviderBindingService* edlprovider::soap::EDLProviderServer::copy()
+EdlProviderBindingService* edlprovider::soap::EdlProviderServer::copy()
 {
-    return new EDLProviderServer(*this);
+    return new EdlProviderServer(*this);
 }
 
-int EDLProviderServer::getInstalledEdls(edlprovider__ArrayOfstring* edlprovider__installedEdlsResponse)
+int EdlProviderServer::getInstalledEdls(edlprovider__ArrayOfstring* edlprovider__installedEdlsResponse)
 {
     edlprovider__installedEdlsResponse->string = {L"First", L"Second"};
 
     return SOAP_OK;
 }
 
-int EDLProviderServer::getEdl(edlprovider__EdlCreateRequestType* edlprovider__getEdlRequest,
+int EdlProviderServer::getEdl(edlprovider__EdlCreateRequestType* edlprovider__getEdlRequest,
                               edlprovider__EdlCreateResponseType* edlprovider__getEdlResponse)
 {
     return SOAP_OK;
 }
 
-int EDLProviderServer::getEdlDouble(edlprovider__EdlCreateRequestDoubleType* edlprovider__getEdlDoubleRequest,
+int EdlProviderServer::getEdlDouble(edlprovider__EdlCreateRequestDoubleType* edlprovider__getEdlDoubleRequest,
                                     edlprovider__EdlCreateResponseType* edlprovider__getEdlResponse)
 {
     return SOAP_OK;

@@ -10,6 +10,7 @@ set(HEADERS
 include_directories(../../Soap/src)
 include_directories(../../Common/src)
 include_directories(../../Soap/gsoap/src)
+include_directories(../../Plugins/Interfaces/src)
 include_directories(../../Submodules/easyloggingpp/src)
 include_directories(../../Submodules/qt-solutions/qtservice/src)
 

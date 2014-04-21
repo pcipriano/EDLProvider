@@ -1,6 +1,10 @@
 project(EDLProvider)
 
-cmake_minimum_required(VERSION 2.8.11)
+if(WIN32)
+    cmake_minimum_required(VERSION 3.0.0)
+else()
+    cmake_minimum_required(VERSION 2.8.12)
+endif()
 
 set(PROJECT_USER_NAME "EDL Provider")
 string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPER)
@@ -26,14 +30,14 @@ configure_file(
 option(COMMON_QT "Compile common library with classes depending on Qt." ON)
 
 if(MSVC)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
-  if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
-    string(REGEX REPLACE "/W[0-4]" "/W3" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-  else()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3")
-  endif()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
+    if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
+        string(REGEX REPLACE "/W[0-4]" "/W3" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+    else()
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3")
+    endif()
 elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -static-libstdc++ -Wall -Wno-long-long -pedantic -Werror")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -static-libstdc++ -Wall -Wno-long-long -pedantic -Werror")
 endif()
 
 #Logging defines
@@ -57,6 +61,11 @@ find_package(Qt5Test QUIET REQUIRED)
 #Doxygen
 find_package(Doxygen)
 
+#Specify output directories
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${${PROJECT_NAME}_BINARY_DIR}/bin")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${${PROJECT_NAME}_BINARY_DIR}/lib")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${${PROJECT_NAME}_BINARY_DIR}/lib")
+
 #Extra includes
 include(Macros.cmake)
 include(Submodules/qtservice.cmake)
@@ -66,11 +75,6 @@ add_subdirectory(Core)
 add_subdirectory(Soap)
 add_subdirectory(Common)
 add_subdirectory(Plugins)
-
-#Specify output directories
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${${PROJECT_NAME}_BINARY_DIR}/bin")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${${PROJECT_NAME}_BINARY_DIR}/lib")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${${PROJECT_NAME}_BINARY_DIR}/lib")
 
 enable_testing()
 

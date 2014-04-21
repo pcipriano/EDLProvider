@@ -15,7 +15,7 @@ PluginLoader<T>::PluginLoader(const QString& pluginsLocation)
     {
         if (QLibrary::isLibrary(fileName))
         {
-            std::unique_ptr<QPluginLoader> loader(new QPluginLoader(fileName));
+            std::unique_ptr<QPluginLoader> loader(new QPluginLoader(pluginsFolder_.filePath(fileName)));
 
             if (qobject_cast<T*>(loader->instance()))
                 plugins_.push_back(std::move(loader));

@@ -1,6 +1,7 @@
 #ifndef SOAP_SRC_EDLPROVIDERSERVER_H
 #define SOAP_SRC_EDLPROVIDERSERVER_H
 
+#include "EdlPluginManager.h"
 #include "EDLProviderEdlProviderBindingService.h"
 
 namespace edlprovider
@@ -25,6 +26,8 @@ private:
 
     int getEdlDouble(edlprovider__EdlCreateRequestDoubleType* edlprovider__getEdlDoubleRequest,
                      edlprovider__EdlCreateResponseType* edlprovider__getEdlResponse) override final;
+
+    QSharedPointer<plugins::interfaces::EdlPluginManager> pluginManager_;
 };
 
 }

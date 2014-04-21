@@ -1,13 +1,19 @@
 #include "EdlProviderServer.h"
 
 #include <QThreadPool>
+#include <QCoreApplication>
 
+#include "PathAppender.h"
 #include "EdlProviderBinding.nsmap"
 #include "EdlProviderProcessRequest.h"
 
 using namespace edlprovider::soap;
+using namespace plugins::interfaces;
+
+const char* const EDL_PLUGIN_FOLDER = "plugins";
 
 EdlProviderServer::EdlProviderServer()
+    : pluginManager_(new EdlPluginManager(common::util::PathAppender::combine(QCoreApplication::applicationDirPath(), ::EDL_PLUGIN_FOLDER)))
 {
 }
 
@@ -37,7 +43,11 @@ EdlProviderBindingService* edlprovider::soap::EdlProviderServer::copy()
 
 int EdlProviderServer::getInstalledEdls(edlprovider__ArrayOfstring* edlprovider__installedEdlsResponse)
 {
-    edlprovider__installedEdlsResponse->string = {L"First", L"Second"};
+    //Get all plugin names.
+    for (EdlInterface* const edl : pluginManager_->getEdls())
+    {
+        edlprovider__installedEdlsResponse->string.push_back(edl->getEdlName());
+    }
 
     return SOAP_OK;
 }

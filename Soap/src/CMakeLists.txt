@@ -19,8 +19,10 @@ set(HEADERS
    )
 
 include_directories(../gsoap/src)
+include_directories(../../Common/src)
+include_directories(../../Plugins/Interfaces/src)
 include_directories(../../Submodules/easyloggingpp/src)
 
 add_library(SoapServer ${SOURCES} ${HEADERS})
-target_link_libraries(SoapServer Qt5::Core)
+target_link_libraries(SoapServer EdlPlugins Qt5::Core)
 set_target_properties(SoapServer PROPERTIES COMPILE_DEFINITIONS "WITH_PURE_VIRTUAL")

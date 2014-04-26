@@ -1,3 +1,4 @@
+#define _ELPP_NO_DEFAULT_LOG_FILE   //No default log file, app must provide one or errors are issued
 #include "easylogging++.h"
 
 #include "EdlProviderService.h"

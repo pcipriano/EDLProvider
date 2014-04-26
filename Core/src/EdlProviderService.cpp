@@ -20,21 +20,30 @@ EdlProviderService::~EdlProviderService()
 
 bool EdlProviderService::setUp()
 {
-    QString logConfFile = common::util::PathAppender::combine(application()->applicationDirPath(),
-                                                              edlprovider::info::PROJECT_LOG_FILE_CONFIG);
+    QString logConfFile = common::util::PathAppender(application()->applicationDirPath(),
+                                                     edlprovider::info::PROJECT_LOG_FILE_CONFIG);
 
     //Configure logger
     el::Configurations conf(logConfFile.toStdString());
     el::Loggers::reconfigureAllLoggers(conf);
-
-    soapServer_.reset(new soap::EdlProviderServer());
 
     return true;
 }
 
 void EdlProviderService::start()
 {
-    soapServer_->run(8087);
+    QString appConfigFile = common::util::PathAppender(application()->applicationDirPath(),
+                                                       edlprovider::info::PROJECT_CONFIG_FILE);
+
+    //Start configuration
+    configuration_.reset(new Configuration());
+    if (!configuration_->load(appConfigFile))
+        LOG(FATAL) << "Configuration from [" << appConfigFile << "].";
+
+    soapServer_.reset(new soap::EdlProviderServer(configuration_->getServiceHostName()));
+
+    if(soapServer_->run(configuration_->getServicePort()) != SOAP_OK)
+        LOG(ERROR) << "Service could not be started.";
 }
 
 void EdlProviderService::stop()

@@ -6,16 +6,18 @@ namespace edlprovider
 namespace info
 {
 
-const int @PROJECT_NAME_UPPER@_VERSION_V = ${@PROJECT_NAME_UPPER@_VERSION_V};
-const int @PROJECT_NAME_UPPER@_VERSION_I = ${@PROJECT_NAME_UPPER@_VERSION_I};
-const int @PROJECT_NAME_UPPER@_VERSION_P = ${@PROJECT_NAME_UPPER@_VERSION_P};
+static const int @PROJECT_NAME_UPPER@_VERSION_V = ${@PROJECT_NAME_UPPER@_VERSION_V};
+static const int @PROJECT_NAME_UPPER@_VERSION_I = ${@PROJECT_NAME_UPPER@_VERSION_I};
+static const int @PROJECT_NAME_UPPER@_VERSION_P = ${@PROJECT_NAME_UPPER@_VERSION_P};
 
-const char* const @PROJECT_NAME_UPPER@_VERSION = "${@PROJECT_NAME_UPPER@_VERSION}";
+static const char* const @PROJECT_NAME_UPPER@_VERSION = "${@PROJECT_NAME_UPPER@_VERSION}";
 
-const char* const PROJECT_NAME = "@PROJECT_NAME@";
-const char* const PROJECT_USER_NAME = "@PROJECT_USER_NAME@";
+static const char* const PROJECT_NAME = "@PROJECT_NAME@";
+static const char* const PROJECT_USER_NAME = "@PROJECT_USER_NAME@";
 
-const char* const PROJECT_LOG_FILE_CONFIG = "@LOG_CONFIG_FILE_NAME@";
+static const char* const PROJECT_LOG_FILE_CONFIG = "@LOG_CONFIG_FILE_NAME@";
+
+static const char* const PROJECT_CONFIG_FILE = "@APP_CONFIG_FILE@";
 
 }
 }

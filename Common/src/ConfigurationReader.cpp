@@ -74,7 +74,7 @@ public:
             return false;
         }
 
-        if (schemaPath_.isValid() && schemaPath_.isLocalFile() && !schemaPath_.isRelative())
+        if (schemaPath_.isValid() && !schemaPath_.isRelative())
         {
             QXmlSchema schema;
             schema.load(schemaPath_);
@@ -222,6 +222,11 @@ ConfigurationReader::ConfigurationReader(bool autoUpdate)
 
 ConfigurationReader::ConfigurationReader(const QString& schemaPath, bool autoUpdate)
     : impl_(QUrl::fromLocalFile(schemaPath), autoUpdate)
+{
+}
+
+ConfigurationReader::ConfigurationReader(const QUrl& schemaPath, bool autoUpdate)
+    : impl_(schemaPath, autoUpdate)
 {
 }
 

@@ -12,7 +12,7 @@ namespace soap
 class EdlProviderServer : public EdlProviderBindingService
 {
 public:
-    EdlProviderServer();
+    explicit EdlProviderServer(const QString& host);
 
     int run(int port) override final;
 
@@ -28,6 +28,8 @@ private:
                      edlprovider__EdlCreateResponseType* edlprovider__getEdlResponse) override final;
 
     QSharedPointer<plugins::interfaces::EdlPluginManager> pluginManager_;
+
+    QString hostName_;
 };
 
 }

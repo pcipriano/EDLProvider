@@ -17,6 +17,13 @@ set(${PROJECT_NAME_UPPER}_VERSION ${${PROJECT_NAME_UPPER}_VERSION_V}.${${PROJECT
 
 message(STATUS "Building ${PROJECT_NAME} ${${PROJECT_NAME_UPPER}_VERSION} in ${CMAKE_BUILD_TYPE} mode")
 
+#Logging defines
+add_definitions(-D_ELPP_THREAD_SAFE -D_ELPP_FORCE_USE_STD_THREAD -D_ELPP_STACKTRACE_ON_CRASH -D_ELPP_STL_LOGGING -D_ELPP_QT_LOGGING)
+set(LOG_CONFIG_FILE_NAME "logger.conf")
+
+#Configuration file
+set(APP_CONFIG_FILE "EdlProviderConfig.xml")
+
 configure_file(
     "${PROJECT_SOURCE_DIR}/EDLProviderInfo.h.in"
     "${PROJECT_BINARY_DIR}/EDLProviderInfo.h.out"
@@ -39,10 +46,6 @@ if(MSVC)
 elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -static-libstdc++ -Wall -Wno-long-long -pedantic -Werror")
 endif()
-
-#Logging defines
-add_definitions(-D_ELPP_THREAD_SAFE -D_ELPP_FORCE_USE_STD_THREAD -D_ELPP_STACKTRACE_ON_CRASH -D_ELPP_STL_LOGGING -D_ELPP_QT_LOGGING)
-set(LOG_CONFIG_FILE_NAME "logger.conf")
 
 #Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

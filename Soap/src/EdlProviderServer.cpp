@@ -12,14 +12,15 @@ using namespace plugins::interfaces;
 
 const char* const EDL_PLUGIN_FOLDER = "plugins";
 
-EdlProviderServer::EdlProviderServer()
-    : pluginManager_(new EdlPluginManager(common::util::PathAppender::combine(QCoreApplication::applicationDirPath(), ::EDL_PLUGIN_FOLDER)))
+EdlProviderServer::EdlProviderServer(const QString& host)
+    : pluginManager_(new EdlPluginManager(common::util::PathAppender::combine(QCoreApplication::applicationDirPath(), ::EDL_PLUGIN_FOLDER))),
+      hostName_(host)
 {
 }
 
 int EdlProviderServer::run(int port)
 {
-    if (soap_valid_socket(this->master) || soap_valid_socket(bind(NULL, port, 100)))
+    if (soap_valid_socket(this->master) || soap_valid_socket(bind(hostName_.isEmpty() ? NULL : hostName_.toLatin1().data(), port, 100)))
     {
         Q_FOREVER
         {

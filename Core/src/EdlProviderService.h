@@ -4,6 +4,7 @@
 #include <QtServiceBase>
 #include <QCoreApplication>
 
+#include "Configuration.h"
 #include "EdlProviderServer.h"
 
 namespace edlprovider
@@ -30,6 +31,8 @@ protected:
     virtual int executeApplication() override final;
 
 private:
+    QScopedPointer<Configuration> configuration_;
+
     QScopedPointer<soap::EdlProviderServer> soapServer_;
 };
 

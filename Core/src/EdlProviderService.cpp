@@ -40,7 +40,8 @@ void EdlProviderService::start()
     if (!configuration_->load(appConfigFile))
         LOG(FATAL) << "Configuration from [" << appConfigFile << "].";
 
-    soapServer_.reset(new soap::EdlProviderServer(configuration_->getServiceHostName()));
+    soapServer_.reset(new soap::EdlProviderServer(configuration_->getServiceHostName(),
+                                                  configuration_->getPluginsAutoUpdate()));
 
     if(soapServer_->run(configuration_->getServicePort()) != SOAP_OK)
         LOG(ERROR) << "Service could not be started.";
@@ -48,7 +49,7 @@ void EdlProviderService::start()
 
 void EdlProviderService::stop()
 {
-
+    LOG(INFO) << "Stopping [" << edlprovider::info::PROJECT_USER_NAME << "].";
 }
 
 void EdlProviderService::createApplication(int& argc, char** argv)

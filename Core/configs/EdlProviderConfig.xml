@@ -2,6 +2,7 @@
 <EdlProvider>
     <Service>
         <Port>8087</Port>
+        <!-- <Host>localhost</Host> -->
     </Service>
     <Plugins>
         <AutoReload>true</AutoReload>

@@ -19,6 +19,8 @@ public:
 
     QString getServiceHostName() const;
 
+    bool getPluginsAutoUpdate() const;
+
 private:
     common::util::ConfigurationReader configReader_;
 };

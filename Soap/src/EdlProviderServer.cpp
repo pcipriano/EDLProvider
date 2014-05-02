@@ -12,8 +12,9 @@ using namespace plugins::interfaces;
 
 const char* const EDL_PLUGIN_FOLDER = "plugins";
 
-EdlProviderServer::EdlProviderServer(const QString& host)
-    : pluginManager_(new EdlPluginManager(common::util::PathAppender::combine(QCoreApplication::applicationDirPath(), ::EDL_PLUGIN_FOLDER))),
+EdlProviderServer::EdlProviderServer(const QString& host, bool pluginsAutoReload)
+    : pluginManager_(new EdlPluginManager(common::util::PathAppender::combine(QCoreApplication::applicationDirPath(), ::EDL_PLUGIN_FOLDER),
+                                          pluginsAutoReload)),
       hostName_(host)
 {
 }

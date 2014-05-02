@@ -12,7 +12,7 @@ namespace soap
 class EdlProviderServer : public EdlProviderBindingService
 {
 public:
-    explicit EdlProviderServer(const QString& host);
+    explicit EdlProviderServer(const QString& host, bool pluginsAutoReload);
 
     int run(int port) override final;
 

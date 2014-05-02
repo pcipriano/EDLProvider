@@ -16,7 +16,7 @@
             <element name="installedEdlsResponse" type="edlns:MapType">
                 <annotation>
                     <documentation source="urn:x-fims:description">
-                        This element provides the list of edl types in the service.
+                        This element provides the list of edl types in the service together with the recommended extension types.
                     </documentation>
                     <documentation source="urn:x-fims:normativeRequirement"/>
                     <documentation source="urn:x-fims:serviceDescription"/>

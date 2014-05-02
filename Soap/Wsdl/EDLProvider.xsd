@@ -39,8 +39,8 @@
 
     <xs:complexType name="MapItemType">
         <xs:sequence>
-            <xs:element name="key" type="xs:anyType"/>
-            <xs:element name="value" type="xs:anyType"/>
+            <xs:element name="key" type="xs:string"/>
+            <xs:element name="value" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 

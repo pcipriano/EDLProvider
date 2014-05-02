@@ -19,6 +19,30 @@
             <xs:element minOccurs="1" maxOccurs="1" name="clipInfo" type="bms:BMObjectType"/>
         </xs:sequence>
     </xs:complexType>
+    <xs:element name="Map">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="item" type="edlns:MapItemType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:unique name="item">
+            <xs:selector xpath="item"/>
+            <xs:field xpath="key"/>
+        </xs:unique>
+    </xs:element>
+
+    <xs:complexType name="MapType">
+        <xs:sequence>
+            <xs:element ref="edlns:Map"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="MapItemType">
+        <xs:sequence>
+            <xs:element name="key" type="xs:anyType"/>
+            <xs:element name="value" type="xs:anyType"/>
+        </xs:sequence>
+    </xs:complexType>
 
     <!-- **************************** Messages and faults **************************** -->    
     <xs:complexType name="EdlCreateRequestBaseType">

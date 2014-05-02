@@ -15,9 +15,13 @@
      <clips>
       <markIn>
        <fims:timecode></fims:timecode>
+       <!-- extensibility element(s) -->
+
       </markIn>
       <markOut>
        <fims:timecode></fims:timecode>
+       <!-- extensibility element(s) -->
+
       </markOut>
       <clipInfo>
        <fims:bmContents>
@@ -25,88 +29,135 @@
          <fims:bmContentFormats>
           <fims:bmContentFormat>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:bmContentFormat>
           <fims:bmContentFormat>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:bmContentFormat>
+          <!-- extensibility element(s) -->
+
          </fims:bmContentFormats>
          <fims:descriptions>
           <fims:description>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:description>
           <fims:description>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:description>
+          <!-- extensibility element(s) -->
+
          </fims:descriptions>
-         <fims:resourceCreationDate>2014-04-12T19:16:59Z</fims:resourceCreationDate>
-         <fims:resourceModifiedDate>2014-04-12T19:16:59Z</fims:resourceModifiedDate>
+         <fims:resourceCreationDate>2014-05-02T18:06:45Z</fims:resourceCreationDate>
+         <fims:resourceModifiedDate>2014-05-02T18:06:45Z</fims:resourceModifiedDate>
          <fims:notifyAt>
           <fims:replyTo></fims:replyTo>
           <fims:faultTo></fims:faultTo>
+          <!-- extensibility element(s) -->
+
          </fims:notifyAt>
          <fims:ExtensionGroup>
+          <!-- extensibility element(s) -->
+
          </fims:ExtensionGroup>
-         <fims:ExtensionAttributes>
-         </fims:ExtensionAttributes>
+         <fims:ExtensionAttributes></fims:ExtensionAttributes>
          <fims:resourceID></fims:resourceID>
          <fims:revisionID></fims:revisionID>
          <fims:location></fims:location>
+         <!-- extensibility element(s) -->
+
         </fims:bmContent>
         <fims:bmContent>
          <fims:bmContentFormats>
           <fims:bmContentFormat>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:bmContentFormat>
           <fims:bmContentFormat>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:bmContentFormat>
+          <!-- extensibility element(s) -->
+
          </fims:bmContentFormats>
          <fims:descriptions>
           <fims:description>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:description>
           <fims:description>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:description>
+          <!-- extensibility element(s) -->
+
          </fims:descriptions>
-         <fims:resourceCreationDate>2014-04-12T19:16:59Z</fims:resourceCreationDate>
-         <fims:resourceModifiedDate>2014-04-12T19:16:59Z</fims:resourceModifiedDate>
+         <fims:resourceCreationDate>2014-05-02T18:06:45Z</fims:resourceCreationDate>
+         <fims:resourceModifiedDate>2014-05-02T18:06:45Z</fims:resourceModifiedDate>
          <fims:notifyAt>
           <fims:replyTo></fims:replyTo>
           <fims:faultTo></fims:faultTo>
+          <!-- extensibility element(s) -->
+
          </fims:notifyAt>
          <fims:ExtensionGroup>
+          <!-- extensibility element(s) -->
+
          </fims:ExtensionGroup>
-         <fims:ExtensionAttributes>
-         </fims:ExtensionAttributes>
+         <fims:ExtensionAttributes></fims:ExtensionAttributes>
          <fims:resourceID></fims:resourceID>
          <fims:revisionID></fims:revisionID>
          <fims:location></fims:location>
+         <!-- extensibility element(s) -->
+
         </fims:bmContent>
+        <!-- extensibility element(s) -->
+
        </fims:bmContents>
-       <fims:resourceCreationDate>2014-04-12T19:16:59Z</fims:resourceCreationDate>
-       <fims:resourceModifiedDate>2014-04-12T19:16:59Z</fims:resourceModifiedDate>
+       <fims:resourceCreationDate>2014-05-02T18:06:45Z</fims:resourceCreationDate>
+       <fims:resourceModifiedDate>2014-05-02T18:06:45Z</fims:resourceModifiedDate>
        <fims:notifyAt>
         <fims:replyTo></fims:replyTo>
         <fims:faultTo></fims:faultTo>
+        <!-- extensibility element(s) -->
+
        </fims:notifyAt>
        <fims:ExtensionGroup>
 
 
+        <!-- extensibility element(s) -->
+
        </fims:ExtensionGroup>
-       <fims:ExtensionAttributes>
-       </fims:ExtensionAttributes>
+       <fims:ExtensionAttributes></fims:ExtensionAttributes>
        <fims:resourceID></fims:resourceID>
        <fims:revisionID></fims:revisionID>
        <fims:location></fims:location>
+       <!-- extensibility element(s) -->
+
       </clipInfo>
+      <!-- extensibility element(s) -->
+
      </clips>
      <clips>
       <markIn>
        <fims:timecode></fims:timecode>
+       <!-- extensibility element(s) -->
+
       </markIn>
       <markOut>
        <fims:timecode></fims:timecode>
+       <!-- extensibility element(s) -->
+
       </markOut>
       <clipInfo>
        <fims:bmContents>
@@ -114,84 +165,131 @@
          <fims:bmContentFormats>
           <fims:bmContentFormat>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:bmContentFormat>
           <fims:bmContentFormat>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:bmContentFormat>
+          <!-- extensibility element(s) -->
+
          </fims:bmContentFormats>
          <fims:descriptions>
           <fims:description>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:description>
           <fims:description>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:description>
+          <!-- extensibility element(s) -->
+
          </fims:descriptions>
-         <fims:resourceCreationDate>2014-04-12T19:16:59Z</fims:resourceCreationDate>
-         <fims:resourceModifiedDate>2014-04-12T19:16:59Z</fims:resourceModifiedDate>
+         <fims:resourceCreationDate>2014-05-02T18:06:45Z</fims:resourceCreationDate>
+         <fims:resourceModifiedDate>2014-05-02T18:06:45Z</fims:resourceModifiedDate>
          <fims:notifyAt>
           <fims:replyTo></fims:replyTo>
           <fims:faultTo></fims:faultTo>
+          <!-- extensibility element(s) -->
+
          </fims:notifyAt>
          <fims:ExtensionGroup>
+          <!-- extensibility element(s) -->
+
          </fims:ExtensionGroup>
-         <fims:ExtensionAttributes>
-         </fims:ExtensionAttributes>
+         <fims:ExtensionAttributes></fims:ExtensionAttributes>
          <fims:resourceID></fims:resourceID>
          <fims:revisionID></fims:revisionID>
          <fims:location></fims:location>
+         <!-- extensibility element(s) -->
+
         </fims:bmContent>
         <fims:bmContent>
          <fims:bmContentFormats>
           <fims:bmContentFormat>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:bmContentFormat>
           <fims:bmContentFormat>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:bmContentFormat>
+          <!-- extensibility element(s) -->
+
          </fims:bmContentFormats>
          <fims:descriptions>
           <fims:description>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:description>
           <fims:description>
            <fims:resourceID></fims:resourceID>
+           <!-- extensibility element(s) -->
+
           </fims:description>
+          <!-- extensibility element(s) -->
+
          </fims:descriptions>
-         <fims:resourceCreationDate>2014-04-12T19:16:59Z</fims:resourceCreationDate>
-         <fims:resourceModifiedDate>2014-04-12T19:16:59Z</fims:resourceModifiedDate>
+         <fims:resourceCreationDate>2014-05-02T18:06:45Z</fims:resourceCreationDate>
+         <fims:resourceModifiedDate>2014-05-02T18:06:45Z</fims:resourceModifiedDate>
          <fims:notifyAt>
           <fims:replyTo></fims:replyTo>
           <fims:faultTo></fims:faultTo>
+          <!-- extensibility element(s) -->
+
          </fims:notifyAt>
          <fims:ExtensionGroup>
+          <!-- extensibility element(s) -->
+
          </fims:ExtensionGroup>
-         <fims:ExtensionAttributes>
-         </fims:ExtensionAttributes>
+         <fims:ExtensionAttributes></fims:ExtensionAttributes>
          <fims:resourceID></fims:resourceID>
          <fims:revisionID></fims:revisionID>
          <fims:location></fims:location>
+         <!-- extensibility element(s) -->
+
         </fims:bmContent>
+        <!-- extensibility element(s) -->
+
        </fims:bmContents>
-       <fims:resourceCreationDate>2014-04-12T19:16:59Z</fims:resourceCreationDate>
-       <fims:resourceModifiedDate>2014-04-12T19:16:59Z</fims:resourceModifiedDate>
+       <fims:resourceCreationDate>2014-05-02T18:06:45Z</fims:resourceCreationDate>
+       <fims:resourceModifiedDate>2014-05-02T18:06:45Z</fims:resourceModifiedDate>
        <fims:notifyAt>
         <fims:replyTo></fims:replyTo>
         <fims:faultTo></fims:faultTo>
+        <!-- extensibility element(s) -->
+
        </fims:notifyAt>
        <fims:ExtensionGroup>
 
 
+        <!-- extensibility element(s) -->
+
        </fims:ExtensionGroup>
-       <fims:ExtensionAttributes>
-       </fims:ExtensionAttributes>
+       <fims:ExtensionAttributes></fims:ExtensionAttributes>
        <fims:resourceID></fims:resourceID>
        <fims:revisionID></fims:revisionID>
        <fims:location></fims:location>
+       <!-- extensibility element(s) -->
+
       </clipInfo>
+      <!-- extensibility element(s) -->
+
      </clips>
+     <!-- extensibility element(s) -->
+
     </clips>
     <edlSequenceName></edlSequenceName>
+    <!-- extensibility element(s) -->
+
    </edlprovider:getEdlDoubleRequest>
 
  </SOAP-ENV:Body>

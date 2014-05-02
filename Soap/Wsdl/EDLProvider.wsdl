@@ -13,7 +13,7 @@
     <wsdl:types>
         <schema targetNamespace="http://temp/edlprovider" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <include schemaLocation="EDLProvider.xsd"/>
-            <element name="installedEdlsResponse" type="edlns:ArrayOfstring">
+            <element name="installedEdlsResponse" type="edlns:MapType">
                 <annotation>
                     <documentation source="urn:x-fims:description">
                         This element provides the list of edl types in the service.

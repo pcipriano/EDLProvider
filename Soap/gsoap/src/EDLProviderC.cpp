@@ -15,7 +15,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 
 #include "EDLProviderH.h"
 
-SOAP_SOURCE_STAMP("@(#) EDLProviderC.cpp ver 2.8.17r 2014-04-12 19:16:59 GMT")
+SOAP_SOURCE_STAMP("@(#) EDLProviderC.cpp ver 2.8.17r 2014-05-02 18:06:45 GMT")
 
 
 #ifndef WITH_NOGLOBAL
@@ -208,8 +208,6 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		return soap_in_unsignedLONG64(soap, NULL, NULL, "xsd:unsignedLong");
 	case SOAP_TYPE_time:
 		return soap_in_time(soap, NULL, NULL, "xsd:dateTime");
-	case SOAP_TYPE_bool:
-		return soap_in_bool(soap, NULL, NULL, "xsd:boolean");
 	case SOAP_TYPE__fims__QueryServiceDescriptionRequestType_responseType:
 		return soap_in__fims__QueryServiceDescriptionRequestType_responseType(soap, NULL, NULL, "fims:QueryServiceDescriptionRequestType-responseType");
 	case SOAP_TYPE_fims__JobInfoSelectionType:
@@ -240,22 +238,68 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		return soap_in_fims__QueueStatusType(soap, NULL, NULL, "fims:QueueStatusType");
 	case SOAP_TYPE_edlprovider__EDLProviderErrorCodeType:
 		return soap_in_edlprovider__EDLProviderErrorCodeType(soap, NULL, NULL, "edlprovider:EDLProviderErrorCodeType");
+	case SOAP_TYPE_bool:
+		return soap_in_bool(soap, NULL, NULL, "xsd:boolean");
+	case SOAP_TYPE_fims__JobInfoSelectionType_:
+		return soap_in_fims__JobInfoSelectionType_(soap, NULL, NULL, "fims:JobInfoSelectionType");
+	case SOAP_TYPE_fims__ErrorCodeType_:
+		return soap_in_fims__ErrorCodeType_(soap, NULL, NULL, "fims:ErrorCodeType");
+	case SOAP_TYPE_fims__BitRateModeType_:
+		return soap_in_fims__BitRateModeType_(soap, NULL, NULL, "fims:BitRateModeType");
+	case SOAP_TYPE_fims__ScanningOrderType_:
+		return soap_in_fims__ScanningOrderType_(soap, NULL, NULL, "fims:ScanningOrderType");
+	case SOAP_TYPE_fims__ScanningFormatType_:
+		return soap_in_fims__ScanningFormatType_(soap, NULL, NULL, "fims:ScanningFormatType");
+	case SOAP_TYPE_fims__AudioSampleType_:
+		return soap_in_fims__AudioSampleType_(soap, NULL, NULL, "fims:AudioSampleType");
+	case SOAP_TYPE_fims__JobStatusType_:
+		return soap_in_fims__JobStatusType_(soap, NULL, NULL, "fims:JobStatusType");
+	case SOAP_TYPE_fims__HashFunctionTypes_:
+		return soap_in_fims__HashFunctionTypes_(soap, NULL, NULL, "fims:HashFunctionTypes");
+	case SOAP_TYPE_fims__JobCommandType_:
+		return soap_in_fims__JobCommandType_(soap, NULL, NULL, "fims:JobCommandType");
+	case SOAP_TYPE_fims__QueueCommandType_:
+		return soap_in_fims__QueueCommandType_(soap, NULL, NULL, "fims:QueueCommandType");
+	case SOAP_TYPE_fims__StorageTypes_:
+		return soap_in_fims__StorageTypes_(soap, NULL, NULL, "fims:StorageTypes");
+	case SOAP_TYPE_fims__PriorityType_:
+		return soap_in_fims__PriorityType_(soap, NULL, NULL, "fims:PriorityType");
+	case SOAP_TYPE_fims__QueueStatusType_:
+		return soap_in_fims__QueueStatusType_(soap, NULL, NULL, "fims:QueueStatusType");
+	case SOAP_TYPE_fims__TimecodeDuration__:
+		return soap_in_fims__TimecodeDuration__(soap, NULL, NULL, "fims:TimecodeDuration");
 	case SOAP_TYPE_fims__TimecodeDuration:
 		return soap_in_fims__TimecodeDuration(soap, NULL, NULL, "fims:TimecodeDuration");
+	case SOAP_TYPE_fims__Timecode__:
+		return soap_in_fims__Timecode__(soap, NULL, NULL, "fims:Timecode");
 	case SOAP_TYPE_fims__Timecode:
 		return soap_in_fims__Timecode(soap, NULL, NULL, "fims:Timecode");
+	case SOAP_TYPE_fims__RevisionIDType__:
+		return soap_in_fims__RevisionIDType__(soap, NULL, NULL, "fims:RevisionIDType");
 	case SOAP_TYPE_fims__RevisionIDType:
 		return soap_in_fims__RevisionIDType(soap, NULL, NULL, "fims:RevisionIDType");
+	case SOAP_TYPE_fims__ResourceIDType__:
+		return soap_in_fims__ResourceIDType__(soap, NULL, NULL, "fims:ResourceIDType");
 	case SOAP_TYPE_fims__ResourceIDType:
 		return soap_in_fims__ResourceIDType(soap, NULL, NULL, "fims:ResourceIDType");
+	case SOAP_TYPE_fims__EmptyID__:
+		return soap_in_fims__EmptyID__(soap, NULL, NULL, "fims:EmptyID");
 	case SOAP_TYPE_fims__EmptyID:
 		return soap_in_fims__EmptyID(soap, NULL, NULL, "fims:EmptyID");
+	case SOAP_TYPE_fims__UL__:
+		return soap_in_fims__UL__(soap, NULL, NULL, "fims:UL");
 	case SOAP_TYPE_fims__UL:
 		return soap_in_fims__UL(soap, NULL, NULL, "fims:UL");
+	case SOAP_TYPE_fims__UMID__:
+		return soap_in_fims__UMID__(soap, NULL, NULL, "fims:UMID");
 	case SOAP_TYPE_fims__UMID:
 		return soap_in_fims__UMID(soap, NULL, NULL, "fims:UMID");
+	case SOAP_TYPE_fims__UUID__:
+		return soap_in_fims__UUID__(soap, NULL, NULL, "fims:UUID");
 	case SOAP_TYPE_fims__UUID:
 		return soap_in_fims__UUID(soap, NULL, NULL, "fims:UUID");
+	case SOAP_TYPE_edlprovider__EDLProviderErrorCodeType_:
+		return soap_in_edlprovider__EDLProviderErrorCodeType_(soap, NULL, NULL, "edlprovider:EDLProviderErrorCodeType");
 	case SOAP_TYPE_fims__UID:
 		return soap_in_fims__UID(soap, NULL, NULL, "fims:UID");
 	case SOAP_TYPE_fimsdescription__languageType:
@@ -464,30 +508,74 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		return soap_in_edlprovider__EdlCreateRequestType(soap, NULL, NULL, "edlprovider:EdlCreateRequestType");
 	case SOAP_TYPE_edlprovider__EdlCreateRequestBaseType:
 		return soap_in_edlprovider__EdlCreateRequestBaseType(soap, NULL, NULL, "edlprovider:EdlCreateRequestBaseType");
+	case SOAP_TYPE_edlprovider__MapItemType:
+		return soap_in_edlprovider__MapItemType(soap, NULL, NULL, "edlprovider:MapItemType");
+	case SOAP_TYPE_edlprovider__MapType:
+		return soap_in_edlprovider__MapType(soap, NULL, NULL, "edlprovider:MapType");
 	case SOAP_TYPE_edlprovider__ClipType:
 		return soap_in_edlprovider__ClipType(soap, NULL, NULL, "edlprovider:ClipType");
 	case SOAP_TYPE_edlprovider__ArrayOfClips:
 		return soap_in_edlprovider__ArrayOfClips(soap, NULL, NULL, "edlprovider:ArrayOfClips");
 	case SOAP_TYPE_edlprovider__ArrayOfstring:
 		return soap_in_edlprovider__ArrayOfstring(soap, NULL, NULL, "edlprovider:ArrayOfstring");
+	case SOAP_TYPE_xsd__unsignedLong:
+		return soap_in_xsd__unsignedLong(soap, NULL, NULL, "xsd:unsignedLong");
+	case SOAP_TYPE_xsd__time_:
+		return soap_in_xsd__time_(soap, NULL, NULL, "xsd:time");
 	case SOAP_TYPE_xsd__time:
 		return soap_in_xsd__time(soap, NULL, NULL, "xsd:time");
+	case SOAP_TYPE_xsd__string:
+		return soap_in_xsd__string(soap, NULL, NULL, "xsd:string");
+	case SOAP_TYPE_xsd__positiveInteger_:
+		return soap_in_xsd__positiveInteger_(soap, NULL, NULL, "xsd:positiveInteger");
 	case SOAP_TYPE_xsd__positiveInteger:
 		return soap_in_xsd__positiveInteger(soap, NULL, NULL, "xsd:positiveInteger");
+	case SOAP_TYPE_xsd__nonNegativeInteger_:
+		return soap_in_xsd__nonNegativeInteger_(soap, NULL, NULL, "xsd:nonNegativeInteger");
 	case SOAP_TYPE_xsd__nonNegativeInteger:
 		return soap_in_xsd__nonNegativeInteger(soap, NULL, NULL, "xsd:nonNegativeInteger");
+	case SOAP_TYPE_xsd__long:
+		return soap_in_xsd__long(soap, NULL, NULL, "xsd:long");
+	case SOAP_TYPE_xsd__language_:
+		return soap_in_xsd__language_(soap, NULL, NULL, "xsd:language");
 	case SOAP_TYPE_xsd__language:
 		return soap_in_xsd__language(soap, NULL, NULL, "xsd:language");
+	case SOAP_TYPE_xsd__integer_:
+		return soap_in_xsd__integer_(soap, NULL, NULL, "xsd:integer");
 	case SOAP_TYPE_xsd__integer:
 		return soap_in_xsd__integer(soap, NULL, NULL, "xsd:integer");
+	case SOAP_TYPE_xsd__hexBinary_:
+		return soap_in_xsd__hexBinary_(soap, NULL, NULL, "xsd:hexBinary");
+	case SOAP_TYPE_xsd__gYear_:
+		return soap_in_xsd__gYear_(soap, NULL, NULL, "xsd:gYear");
 	case SOAP_TYPE_xsd__gYear:
 		return soap_in_xsd__gYear(soap, NULL, NULL, "xsd:gYear");
+	case SOAP_TYPE_xsd__float:
+		return soap_in_xsd__float(soap, NULL, NULL, "xsd:float");
+	case SOAP_TYPE_xsd__duration_:
+		return soap_in_xsd__duration_(soap, NULL, NULL, "xsd:duration");
+	case SOAP_TYPE_xsd__double:
+		return soap_in_xsd__double(soap, NULL, NULL, "xsd:double");
+	case SOAP_TYPE_xsd__decimal_:
+		return soap_in_xsd__decimal_(soap, NULL, NULL, "xsd:decimal");
 	case SOAP_TYPE_xsd__decimal:
 		return soap_in_xsd__decimal(soap, NULL, NULL, "xsd:decimal");
+	case SOAP_TYPE_xsd__dateTime:
+		return soap_in_xsd__dateTime(soap, NULL, NULL, "xsd:dateTime");
+	case SOAP_TYPE_xsd__date_:
+		return soap_in_xsd__date_(soap, NULL, NULL, "xsd:date");
 	case SOAP_TYPE_xsd__date:
 		return soap_in_xsd__date(soap, NULL, NULL, "xsd:date");
+	case SOAP_TYPE_xsd__boolean:
+		return soap_in_xsd__boolean(soap, NULL, NULL, "xsd:boolean");
+	case SOAP_TYPE_xsd__base64Binary_:
+		return soap_in_xsd__base64Binary_(soap, NULL, NULL, "xsd:base64Binary");
+	case SOAP_TYPE_xsd__anyURI_:
+		return soap_in_xsd__anyURI_(soap, NULL, NULL, "xsd:anyURI");
 	case SOAP_TYPE_xsd__anyURI:
 		return soap_in_xsd__anyURI(soap, NULL, NULL, "xsd:anyURI");
+	case SOAP_TYPE_xsd__NMTOKEN_:
+		return soap_in_xsd__NMTOKEN_(soap, NULL, NULL, "xsd:NMTOKEN");
 	case SOAP_TYPE_xsd__NMTOKEN:
 		return soap_in_xsd__NMTOKEN(soap, NULL, NULL, "xsd:NMTOKEN");
 	case SOAP_TYPE_std__wstring:
@@ -496,14 +584,16 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		return soap_in_xsd__hexBinary(soap, NULL, NULL, "xsd:hexBinary");
 	case SOAP_TYPE_xsd__base64Binary:
 		return soap_in_xsd__base64Binary(soap, NULL, NULL, "xsd:base64Binary");
+	case SOAP_TYPE_xsd__anyType:
+		return soap_in_xsd__anyType(soap, NULL, NULL, "xsd:anyType");
 	case SOAP_TYPE_PointerToedlprovider__EdlCreateRequestDoubleType:
 		return soap_in_PointerToedlprovider__EdlCreateRequestDoubleType(soap, NULL, NULL, "edlprovider:EdlCreateRequestDoubleType");
 	case SOAP_TYPE_PointerToedlprovider__EdlCreateResponseType:
 		return soap_in_PointerToedlprovider__EdlCreateResponseType(soap, NULL, NULL, "edlprovider:EdlCreateResponseType");
 	case SOAP_TYPE_PointerToedlprovider__EdlCreateRequestType:
 		return soap_in_PointerToedlprovider__EdlCreateRequestType(soap, NULL, NULL, "edlprovider:EdlCreateRequestType");
-	case SOAP_TYPE_PointerToedlprovider__ArrayOfstring:
-		return soap_in_PointerToedlprovider__ArrayOfstring(soap, NULL, NULL, "edlprovider:ArrayOfstring");
+	case SOAP_TYPE_PointerToedlprovider__MapType:
+		return soap_in_PointerToedlprovider__MapType(soap, NULL, NULL, "edlprovider:MapType");
 	case SOAP_TYPE_PointerToedlprovider__EdlProviderFaultType:
 		return soap_in_PointerToedlprovider__EdlProviderFaultType(soap, NULL, NULL, "edlprovider:EdlProviderFaultType");
 	case SOAP_TYPE_PointerTo_fims__ContainerFormatType_containerFormat:
@@ -694,12 +784,18 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		return soap_in_PointerToxsd__anyURI(soap, NULL, NULL, "xsd:anyURI");
 	case SOAP_TYPE_PointerTofims__RevisionIDType:
 		return soap_in_PointerTofims__RevisionIDType(soap, NULL, NULL, "fims:RevisionIDType");
+	case SOAP_TYPE_PointerToedlprovider__MapItemType:
+		return soap_in_PointerToedlprovider__MapItemType(soap, NULL, NULL, "edlprovider:MapItemType");
 	case SOAP_TYPE_PointerToxsd__base64Binary:
 		return soap_in_PointerToxsd__base64Binary(soap, NULL, NULL, "xsd:base64Binary");
 	case SOAP_TYPE_PointerTostd__wstring:
 		return soap_in_PointerTostd__wstring(soap, NULL, NULL, "xsd:string");
 	case SOAP_TYPE_PointerToedlprovider__ArrayOfClips:
 		return soap_in_PointerToedlprovider__ArrayOfClips(soap, NULL, NULL, "edlprovider:ArrayOfClips");
+	case SOAP_TYPE_PointerToxsd__anyType:
+		return soap_in_PointerToxsd__anyType(soap, NULL, NULL, "xsd:anyType");
+	case SOAP_TYPE_PointerTo_edlprovider__Map:
+		return soap_in_PointerTo_edlprovider__Map(soap, NULL, NULL, "edlprovider:Map");
 	case SOAP_TYPE_PointerTofims__BMObjectType:
 		return soap_in_PointerTofims__BMObjectType(soap, NULL, NULL, "fims:BMObjectType");
 	case SOAP_TYPE_PointerTofims__TimeType:
@@ -725,37 +821,125 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 	{	const char *t = soap->type;
 		if (!*t)
 			t = soap->tag;
+		if (!soap_match_tag(soap, t, "fims:JobInfoSelectionType"))
+		{	*type = SOAP_TYPE_fims__JobInfoSelectionType_;
+			return soap_in_fims__JobInfoSelectionType_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:ErrorCodeType"))
+		{	*type = SOAP_TYPE_fims__ErrorCodeType_;
+			return soap_in_fims__ErrorCodeType_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:BitRateModeType"))
+		{	*type = SOAP_TYPE_fims__BitRateModeType_;
+			return soap_in_fims__BitRateModeType_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:ScanningOrderType"))
+		{	*type = SOAP_TYPE_fims__ScanningOrderType_;
+			return soap_in_fims__ScanningOrderType_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:ScanningFormatType"))
+		{	*type = SOAP_TYPE_fims__ScanningFormatType_;
+			return soap_in_fims__ScanningFormatType_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:AudioSampleType"))
+		{	*type = SOAP_TYPE_fims__AudioSampleType_;
+			return soap_in_fims__AudioSampleType_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:JobStatusType"))
+		{	*type = SOAP_TYPE_fims__JobStatusType_;
+			return soap_in_fims__JobStatusType_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:HashFunctionTypes"))
+		{	*type = SOAP_TYPE_fims__HashFunctionTypes_;
+			return soap_in_fims__HashFunctionTypes_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:JobCommandType"))
+		{	*type = SOAP_TYPE_fims__JobCommandType_;
+			return soap_in_fims__JobCommandType_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:QueueCommandType"))
+		{	*type = SOAP_TYPE_fims__QueueCommandType_;
+			return soap_in_fims__QueueCommandType_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:StorageTypes"))
+		{	*type = SOAP_TYPE_fims__StorageTypes_;
+			return soap_in_fims__StorageTypes_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:PriorityType"))
+		{	*type = SOAP_TYPE_fims__PriorityType_;
+			return soap_in_fims__PriorityType_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:QueueStatusType"))
+		{	*type = SOAP_TYPE_fims__QueueStatusType_;
+			return soap_in_fims__QueueStatusType_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:TimecodeDuration"))
+		{	*type = SOAP_TYPE_fims__TimecodeDuration__;
+			return soap_in_fims__TimecodeDuration__(soap, NULL, NULL, NULL);
+		}
 		if (!soap_match_tag(soap, t, "fims:TimecodeDuration"))
 		{	*type = SOAP_TYPE_fims__TimecodeDuration;
 			return soap_in_fims__TimecodeDuration(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:Timecode"))
+		{	*type = SOAP_TYPE_fims__Timecode__;
+			return soap_in_fims__Timecode__(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "fims:Timecode"))
 		{	*type = SOAP_TYPE_fims__Timecode;
 			return soap_in_fims__Timecode(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "fims:RevisionIDType"))
+		{	*type = SOAP_TYPE_fims__RevisionIDType__;
+			return soap_in_fims__RevisionIDType__(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:RevisionIDType"))
 		{	*type = SOAP_TYPE_fims__RevisionIDType;
 			return soap_in_fims__RevisionIDType(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:ResourceIDType"))
+		{	*type = SOAP_TYPE_fims__ResourceIDType__;
+			return soap_in_fims__ResourceIDType__(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "fims:ResourceIDType"))
 		{	*type = SOAP_TYPE_fims__ResourceIDType;
 			return soap_in_fims__ResourceIDType(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "fims:EmptyID"))
+		{	*type = SOAP_TYPE_fims__EmptyID__;
+			return soap_in_fims__EmptyID__(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:EmptyID"))
 		{	*type = SOAP_TYPE_fims__EmptyID;
 			return soap_in_fims__EmptyID(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:UL"))
+		{	*type = SOAP_TYPE_fims__UL__;
+			return soap_in_fims__UL__(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "fims:UL"))
 		{	*type = SOAP_TYPE_fims__UL;
 			return soap_in_fims__UL(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "fims:UMID"))
+		{	*type = SOAP_TYPE_fims__UMID__;
+			return soap_in_fims__UMID__(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:UMID"))
 		{	*type = SOAP_TYPE_fims__UMID;
 			return soap_in_fims__UMID(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "fims:UUID"))
+		{	*type = SOAP_TYPE_fims__UUID__;
+			return soap_in_fims__UUID__(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "fims:UUID"))
 		{	*type = SOAP_TYPE_fims__UUID;
 			return soap_in_fims__UUID(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "edlprovider:EDLProviderErrorCodeType"))
+		{	*type = SOAP_TYPE_edlprovider__EDLProviderErrorCodeType_;
+			return soap_in_edlprovider__EDLProviderErrorCodeType_(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "fims:UID"))
 		{	*type = SOAP_TYPE_fims__UID;
@@ -1173,6 +1357,14 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		{	*type = SOAP_TYPE_edlprovider__EdlCreateRequestBaseType;
 			return soap_in_edlprovider__EdlCreateRequestBaseType(soap, NULL, NULL, NULL);
 		}
+		if (!soap_match_tag(soap, t, "edlprovider:MapItemType"))
+		{	*type = SOAP_TYPE_edlprovider__MapItemType;
+			return soap_in_edlprovider__MapItemType(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "edlprovider:MapType"))
+		{	*type = SOAP_TYPE_edlprovider__MapType;
+			return soap_in_edlprovider__MapType(soap, NULL, NULL, NULL);
+		}
 		if (!soap_match_tag(soap, t, "edlprovider:ClipType"))
 		{	*type = SOAP_TYPE_edlprovider__ClipType;
 			return soap_in_edlprovider__ClipType(soap, NULL, NULL, NULL);
@@ -1185,41 +1377,121 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		{	*type = SOAP_TYPE_edlprovider__ArrayOfstring;
 			return soap_in_edlprovider__ArrayOfstring(soap, NULL, NULL, NULL);
 		}
+		if (!soap_match_tag(soap, t, "xsd:unsignedLong"))
+		{	*type = SOAP_TYPE_xsd__unsignedLong;
+			return soap_in_xsd__unsignedLong(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:time"))
+		{	*type = SOAP_TYPE_xsd__time_;
+			return soap_in_xsd__time_(soap, NULL, NULL, NULL);
+		}
 		if (!soap_match_tag(soap, t, "xsd:time"))
 		{	*type = SOAP_TYPE_xsd__time;
 			return soap_in_xsd__time(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:string"))
+		{	*type = SOAP_TYPE_xsd__string;
+			return soap_in_xsd__string(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:positiveInteger"))
+		{	*type = SOAP_TYPE_xsd__positiveInteger_;
+			return soap_in_xsd__positiveInteger_(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "xsd:positiveInteger"))
 		{	*type = SOAP_TYPE_xsd__positiveInteger;
 			return soap_in_xsd__positiveInteger(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "xsd:nonNegativeInteger"))
+		{	*type = SOAP_TYPE_xsd__nonNegativeInteger_;
+			return soap_in_xsd__nonNegativeInteger_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:nonNegativeInteger"))
 		{	*type = SOAP_TYPE_xsd__nonNegativeInteger;
 			return soap_in_xsd__nonNegativeInteger(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:long"))
+		{	*type = SOAP_TYPE_xsd__long;
+			return soap_in_xsd__long(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:language"))
+		{	*type = SOAP_TYPE_xsd__language_;
+			return soap_in_xsd__language_(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "xsd:language"))
 		{	*type = SOAP_TYPE_xsd__language;
 			return soap_in_xsd__language(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "xsd:integer"))
+		{	*type = SOAP_TYPE_xsd__integer_;
+			return soap_in_xsd__integer_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:integer"))
 		{	*type = SOAP_TYPE_xsd__integer;
 			return soap_in_xsd__integer(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:hexBinary"))
+		{	*type = SOAP_TYPE_xsd__hexBinary_;
+			return soap_in_xsd__hexBinary_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:gYear"))
+		{	*type = SOAP_TYPE_xsd__gYear_;
+			return soap_in_xsd__gYear_(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "xsd:gYear"))
 		{	*type = SOAP_TYPE_xsd__gYear;
 			return soap_in_xsd__gYear(soap, NULL, NULL, NULL);
 		}
+		if (!soap_match_tag(soap, t, "xsd:float"))
+		{	*type = SOAP_TYPE_xsd__float;
+			return soap_in_xsd__float(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:duration"))
+		{	*type = SOAP_TYPE_xsd__duration_;
+			return soap_in_xsd__duration_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:double"))
+		{	*type = SOAP_TYPE_xsd__double;
+			return soap_in_xsd__double(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:decimal"))
+		{	*type = SOAP_TYPE_xsd__decimal_;
+			return soap_in_xsd__decimal_(soap, NULL, NULL, NULL);
+		}
 		if (!soap_match_tag(soap, t, "xsd:decimal"))
 		{	*type = SOAP_TYPE_xsd__decimal;
 			return soap_in_xsd__decimal(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:dateTime"))
+		{	*type = SOAP_TYPE_xsd__dateTime;
+			return soap_in_xsd__dateTime(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:date"))
+		{	*type = SOAP_TYPE_xsd__date_;
+			return soap_in_xsd__date_(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "xsd:date"))
 		{	*type = SOAP_TYPE_xsd__date;
 			return soap_in_xsd__date(soap, NULL, NULL, NULL);
 		}
+		if (!soap_match_tag(soap, t, "xsd:boolean"))
+		{	*type = SOAP_TYPE_xsd__boolean;
+			return soap_in_xsd__boolean(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:base64Binary"))
+		{	*type = SOAP_TYPE_xsd__base64Binary_;
+			return soap_in_xsd__base64Binary_(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:anyURI"))
+		{	*type = SOAP_TYPE_xsd__anyURI_;
+			return soap_in_xsd__anyURI_(soap, NULL, NULL, NULL);
+		}
 		if (!soap_match_tag(soap, t, "xsd:anyURI"))
 		{	*type = SOAP_TYPE_xsd__anyURI;
 			return soap_in_xsd__anyURI(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:NMTOKEN"))
+		{	*type = SOAP_TYPE_xsd__NMTOKEN_;
+			return soap_in_xsd__NMTOKEN_(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "xsd:NMTOKEN"))
 		{	*type = SOAP_TYPE_xsd__NMTOKEN;
@@ -1236,6 +1508,10 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		if (!soap_match_tag(soap, t, "xsd:base64Binary"))
 		{	*type = SOAP_TYPE_xsd__base64Binary;
 			return soap_in_xsd__base64Binary(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:anyType"))
+		{	*type = SOAP_TYPE_xsd__anyType;
+			return soap_in_xsd__anyType(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "xsd:byte"))
 		{	*type = SOAP_TYPE_byte;
@@ -1276,10 +1552,6 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		if (!soap_match_tag(soap, t, "xsd:dateTime"))
 		{	*type = SOAP_TYPE_time;
 			return soap_in_time(soap, NULL, NULL, NULL);
-		}
-		if (!soap_match_tag(soap, t, "xsd:boolean"))
-		{	*type = SOAP_TYPE_bool;
-			return soap_in_bool(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "fims:QueryServiceDescriptionRequestType-responseType"))
 		{	*type = SOAP_TYPE__fims__QueryServiceDescriptionRequestType_responseType;
@@ -1340,6 +1612,10 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		if (!soap_match_tag(soap, t, "edlprovider:EDLProviderErrorCodeType"))
 		{	*type = SOAP_TYPE_edlprovider__EDLProviderErrorCodeType;
 			return soap_in_edlprovider__EDLProviderErrorCodeType(soap, NULL, NULL, NULL);
+		}
+		if (!soap_match_tag(soap, t, "xsd:boolean"))
+		{	*type = SOAP_TYPE_bool;
+			return soap_in_bool(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "xsd:QName"))
 		{	char **s;
@@ -1434,6 +1710,10 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		{	*type = SOAP_TYPE__fims__formatCollection;
 			return soap_in__fims__formatCollection(soap, NULL, NULL, NULL);
 		}
+		if (!soap_match_tag(soap, t, "edlprovider:Map"))
+		{	*type = SOAP_TYPE__edlprovider__Map;
+			return soap_in__edlprovider__Map(soap, NULL, NULL, NULL);
+		}
 		if (!soap_match_tag(soap, t, "xml:lang"))
 		{	*type = SOAP_TYPE__xml__lang;
 			return soap_in__xml__lang(soap, NULL, NULL, NULL);
@@ -1522,8 +1802,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return soap_out_unsignedLONG64(soap, tag, id, (const ULONG64 *)ptr, "xsd:unsignedLong");
 	case SOAP_TYPE_time:
 		return soap_out_time(soap, tag, id, (const time_t *)ptr, "xsd:dateTime");
-	case SOAP_TYPE_bool:
-		return soap_out_bool(soap, tag, id, (const bool *)ptr, "xsd:boolean");
 	case SOAP_TYPE__fims__QueryServiceDescriptionRequestType_responseType:
 		return soap_out__fims__QueryServiceDescriptionRequestType_responseType(soap, tag, id, (const enum _fims__QueryServiceDescriptionRequestType_responseType *)ptr, "fims:QueryServiceDescriptionRequestType-responseType");
 	case SOAP_TYPE_fims__JobInfoSelectionType:
@@ -1554,6 +1832,8 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return soap_out_fims__QueueStatusType(soap, tag, id, (const enum fims__QueueStatusType *)ptr, "fims:QueueStatusType");
 	case SOAP_TYPE_edlprovider__EDLProviderErrorCodeType:
 		return soap_out_edlprovider__EDLProviderErrorCodeType(soap, tag, id, (const enum edlprovider__EDLProviderErrorCodeType *)ptr, "edlprovider:EDLProviderErrorCodeType");
+	case SOAP_TYPE_bool:
+		return soap_out_bool(soap, tag, id, (const bool *)ptr, "xsd:boolean");
 	case SOAP_TYPE__fims__ContainerFormatType_containerFormat:
 		return ((_fims__ContainerFormatType_containerFormat *)ptr)->soap_out(soap, "fims:ContainerFormatType-containerFormat", id, NULL);
 	case SOAP_TYPE__fims__AudioFormatType_trackConfiguration:
@@ -1592,22 +1872,66 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return ((_fimsdescription__typeType_objectType *)ptr)->soap_out(soap, "fimsdescription:typeType-objectType", id, NULL);
 	case SOAP_TYPE__fimsdescription__typeType_genre:
 		return ((_fimsdescription__typeType_genre *)ptr)->soap_out(soap, "fimsdescription:typeType-genre", id, NULL);
+	case SOAP_TYPE_fims__JobInfoSelectionType_:
+		return ((fims__JobInfoSelectionType_ *)ptr)->soap_out(soap, tag, id, "fims:JobInfoSelectionType");
+	case SOAP_TYPE_fims__ErrorCodeType_:
+		return ((fims__ErrorCodeType_ *)ptr)->soap_out(soap, tag, id, "fims:ErrorCodeType");
+	case SOAP_TYPE_fims__BitRateModeType_:
+		return ((fims__BitRateModeType_ *)ptr)->soap_out(soap, tag, id, "fims:BitRateModeType");
+	case SOAP_TYPE_fims__ScanningOrderType_:
+		return ((fims__ScanningOrderType_ *)ptr)->soap_out(soap, tag, id, "fims:ScanningOrderType");
+	case SOAP_TYPE_fims__ScanningFormatType_:
+		return ((fims__ScanningFormatType_ *)ptr)->soap_out(soap, tag, id, "fims:ScanningFormatType");
+	case SOAP_TYPE_fims__AudioSampleType_:
+		return ((fims__AudioSampleType_ *)ptr)->soap_out(soap, tag, id, "fims:AudioSampleType");
+	case SOAP_TYPE_fims__JobStatusType_:
+		return ((fims__JobStatusType_ *)ptr)->soap_out(soap, tag, id, "fims:JobStatusType");
+	case SOAP_TYPE_fims__HashFunctionTypes_:
+		return ((fims__HashFunctionTypes_ *)ptr)->soap_out(soap, tag, id, "fims:HashFunctionTypes");
+	case SOAP_TYPE_fims__JobCommandType_:
+		return ((fims__JobCommandType_ *)ptr)->soap_out(soap, tag, id, "fims:JobCommandType");
+	case SOAP_TYPE_fims__QueueCommandType_:
+		return ((fims__QueueCommandType_ *)ptr)->soap_out(soap, tag, id, "fims:QueueCommandType");
+	case SOAP_TYPE_fims__StorageTypes_:
+		return ((fims__StorageTypes_ *)ptr)->soap_out(soap, tag, id, "fims:StorageTypes");
+	case SOAP_TYPE_fims__PriorityType_:
+		return ((fims__PriorityType_ *)ptr)->soap_out(soap, tag, id, "fims:PriorityType");
+	case SOAP_TYPE_fims__QueueStatusType_:
+		return ((fims__QueueStatusType_ *)ptr)->soap_out(soap, tag, id, "fims:QueueStatusType");
+	case SOAP_TYPE_fims__TimecodeDuration__:
+		return ((fims__TimecodeDuration__ *)ptr)->soap_out(soap, tag, id, "fims:TimecodeDuration");
 	case SOAP_TYPE_fims__TimecodeDuration:
 		return soap_out_fims__TimecodeDuration(soap, tag, id, (const std::wstring *)ptr, "fims:TimecodeDuration");
+	case SOAP_TYPE_fims__Timecode__:
+		return ((fims__Timecode__ *)ptr)->soap_out(soap, tag, id, "fims:Timecode");
 	case SOAP_TYPE_fims__Timecode:
 		return soap_out_fims__Timecode(soap, tag, id, (const std::wstring *)ptr, "fims:Timecode");
+	case SOAP_TYPE_fims__RevisionIDType__:
+		return ((fims__RevisionIDType__ *)ptr)->soap_out(soap, tag, id, "fims:RevisionIDType");
 	case SOAP_TYPE_fims__RevisionIDType:
 		return soap_out_fims__RevisionIDType(soap, tag, id, (const std::wstring *)ptr, "fims:RevisionIDType");
+	case SOAP_TYPE_fims__ResourceIDType__:
+		return ((fims__ResourceIDType__ *)ptr)->soap_out(soap, tag, id, "fims:ResourceIDType");
 	case SOAP_TYPE_fims__ResourceIDType:
 		return soap_out_fims__ResourceIDType(soap, tag, id, (const std::wstring *)ptr, "fims:ResourceIDType");
+	case SOAP_TYPE_fims__EmptyID__:
+		return ((fims__EmptyID__ *)ptr)->soap_out(soap, tag, id, "fims:EmptyID");
 	case SOAP_TYPE_fims__EmptyID:
 		return soap_out_fims__EmptyID(soap, tag, id, (const std::wstring *)ptr, "fims:EmptyID");
+	case SOAP_TYPE_fims__UL__:
+		return ((fims__UL__ *)ptr)->soap_out(soap, tag, id, "fims:UL");
 	case SOAP_TYPE_fims__UL:
 		return soap_out_fims__UL(soap, tag, id, (const std::wstring *)ptr, "fims:UL");
+	case SOAP_TYPE_fims__UMID__:
+		return ((fims__UMID__ *)ptr)->soap_out(soap, tag, id, "fims:UMID");
 	case SOAP_TYPE_fims__UMID:
 		return soap_out_fims__UMID(soap, tag, id, (const std::wstring *)ptr, "fims:UMID");
+	case SOAP_TYPE_fims__UUID__:
+		return ((fims__UUID__ *)ptr)->soap_out(soap, tag, id, "fims:UUID");
 	case SOAP_TYPE_fims__UUID:
 		return soap_out_fims__UUID(soap, tag, id, (const std::wstring *)ptr, "fims:UUID");
+	case SOAP_TYPE_edlprovider__EDLProviderErrorCodeType_:
+		return ((edlprovider__EDLProviderErrorCodeType_ *)ptr)->soap_out(soap, tag, id, "edlprovider:EDLProviderErrorCodeType");
 	case SOAP_TYPE_fims__UID:
 		return soap_out_fims__UID(soap, tag, id, (const std::wstring *)ptr, "fims:UID");
 	case SOAP_TYPE_fimsdescription__languageType:
@@ -1808,6 +2132,8 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return ((fims__ExtensionAttributes *)ptr)->soap_out(soap, tag, id, "fims:ExtensionAttributes");
 	case SOAP_TYPE_fims__ExtensionGroup:
 		return ((fims__ExtensionGroup *)ptr)->soap_out(soap, tag, id, "fims:ExtensionGroup");
+	case SOAP_TYPE__edlprovider__Map:
+		return ((_edlprovider__Map *)ptr)->soap_out(soap, "edlprovider:Map", id, NULL);
 	case SOAP_TYPE_edlprovider__EdlProviderFaultType:
 		return ((edlprovider__EdlProviderFaultType *)ptr)->soap_out(soap, tag, id, "edlprovider:EdlProviderFaultType");
 	case SOAP_TYPE_edlprovider__EdlCreateResponseType:
@@ -1818,6 +2144,10 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return ((edlprovider__EdlCreateRequestType *)ptr)->soap_out(soap, tag, id, "edlprovider:EdlCreateRequestType");
 	case SOAP_TYPE_edlprovider__EdlCreateRequestBaseType:
 		return ((edlprovider__EdlCreateRequestBaseType *)ptr)->soap_out(soap, tag, id, "edlprovider:EdlCreateRequestBaseType");
+	case SOAP_TYPE_edlprovider__MapItemType:
+		return ((edlprovider__MapItemType *)ptr)->soap_out(soap, tag, id, "edlprovider:MapItemType");
+	case SOAP_TYPE_edlprovider__MapType:
+		return ((edlprovider__MapType *)ptr)->soap_out(soap, tag, id, "edlprovider:MapType");
 	case SOAP_TYPE_edlprovider__ClipType:
 		return ((edlprovider__ClipType *)ptr)->soap_out(soap, tag, id, "edlprovider:ClipType");
 	case SOAP_TYPE_edlprovider__ArrayOfClips:
@@ -1826,24 +2156,64 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return ((edlprovider__ArrayOfstring *)ptr)->soap_out(soap, tag, id, "edlprovider:ArrayOfstring");
 	case SOAP_TYPE__xml__lang:
 		return soap_out__xml__lang(soap, "xml:lang", id, (const std::wstring *)ptr, NULL);
+	case SOAP_TYPE_xsd__unsignedLong:
+		return ((xsd__unsignedLong *)ptr)->soap_out(soap, tag, id, "xsd:unsignedLong");
+	case SOAP_TYPE_xsd__time_:
+		return ((xsd__time_ *)ptr)->soap_out(soap, tag, id, "xsd:time");
 	case SOAP_TYPE_xsd__time:
 		return soap_out_xsd__time(soap, tag, id, (const std::wstring *)ptr, "xsd:time");
+	case SOAP_TYPE_xsd__string:
+		return ((xsd__string *)ptr)->soap_out(soap, tag, id, "xsd:string");
+	case SOAP_TYPE_xsd__positiveInteger_:
+		return ((xsd__positiveInteger_ *)ptr)->soap_out(soap, tag, id, "xsd:positiveInteger");
 	case SOAP_TYPE_xsd__positiveInteger:
 		return soap_out_xsd__positiveInteger(soap, tag, id, (const std::wstring *)ptr, "xsd:positiveInteger");
+	case SOAP_TYPE_xsd__nonNegativeInteger_:
+		return ((xsd__nonNegativeInteger_ *)ptr)->soap_out(soap, tag, id, "xsd:nonNegativeInteger");
 	case SOAP_TYPE_xsd__nonNegativeInteger:
 		return soap_out_xsd__nonNegativeInteger(soap, tag, id, (const std::wstring *)ptr, "xsd:nonNegativeInteger");
+	case SOAP_TYPE_xsd__long:
+		return ((xsd__long *)ptr)->soap_out(soap, tag, id, "xsd:long");
+	case SOAP_TYPE_xsd__language_:
+		return ((xsd__language_ *)ptr)->soap_out(soap, tag, id, "xsd:language");
 	case SOAP_TYPE_xsd__language:
 		return soap_out_xsd__language(soap, tag, id, (const std::wstring *)ptr, "xsd:language");
+	case SOAP_TYPE_xsd__integer_:
+		return ((xsd__integer_ *)ptr)->soap_out(soap, tag, id, "xsd:integer");
 	case SOAP_TYPE_xsd__integer:
 		return soap_out_xsd__integer(soap, tag, id, (const std::wstring *)ptr, "xsd:integer");
+	case SOAP_TYPE_xsd__hexBinary_:
+		return ((xsd__hexBinary_ *)ptr)->soap_out(soap, tag, id, "xsd:hexBinary");
+	case SOAP_TYPE_xsd__gYear_:
+		return ((xsd__gYear_ *)ptr)->soap_out(soap, tag, id, "xsd:gYear");
 	case SOAP_TYPE_xsd__gYear:
 		return soap_out_xsd__gYear(soap, tag, id, (const std::wstring *)ptr, "xsd:gYear");
+	case SOAP_TYPE_xsd__float:
+		return ((xsd__float *)ptr)->soap_out(soap, tag, id, "xsd:float");
+	case SOAP_TYPE_xsd__duration_:
+		return ((xsd__duration_ *)ptr)->soap_out(soap, tag, id, "xsd:duration");
+	case SOAP_TYPE_xsd__double:
+		return ((xsd__double *)ptr)->soap_out(soap, tag, id, "xsd:double");
+	case SOAP_TYPE_xsd__decimal_:
+		return ((xsd__decimal_ *)ptr)->soap_out(soap, tag, id, "xsd:decimal");
 	case SOAP_TYPE_xsd__decimal:
 		return soap_out_xsd__decimal(soap, tag, id, (const std::wstring *)ptr, "xsd:decimal");
+	case SOAP_TYPE_xsd__dateTime:
+		return ((xsd__dateTime *)ptr)->soap_out(soap, tag, id, "xsd:dateTime");
+	case SOAP_TYPE_xsd__date_:
+		return ((xsd__date_ *)ptr)->soap_out(soap, tag, id, "xsd:date");
 	case SOAP_TYPE_xsd__date:
 		return soap_out_xsd__date(soap, tag, id, (const std::wstring *)ptr, "xsd:date");
+	case SOAP_TYPE_xsd__boolean:
+		return ((xsd__boolean *)ptr)->soap_out(soap, tag, id, "xsd:boolean");
+	case SOAP_TYPE_xsd__base64Binary_:
+		return ((xsd__base64Binary_ *)ptr)->soap_out(soap, tag, id, "xsd:base64Binary");
+	case SOAP_TYPE_xsd__anyURI_:
+		return ((xsd__anyURI_ *)ptr)->soap_out(soap, tag, id, "xsd:anyURI");
 	case SOAP_TYPE_xsd__anyURI:
 		return soap_out_xsd__anyURI(soap, tag, id, (const std::wstring *)ptr, "xsd:anyURI");
+	case SOAP_TYPE_xsd__NMTOKEN_:
+		return ((xsd__NMTOKEN_ *)ptr)->soap_out(soap, tag, id, "xsd:NMTOKEN");
 	case SOAP_TYPE_xsd__NMTOKEN:
 		return soap_out_xsd__NMTOKEN(soap, tag, id, (const std::wstring *)ptr, "xsd:NMTOKEN");
 	case SOAP_TYPE_std__wstring:
@@ -1852,14 +2222,16 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return ((xsd__hexBinary *)ptr)->soap_out(soap, tag, id, "xsd:hexBinary");
 	case SOAP_TYPE_xsd__base64Binary:
 		return ((xsd__base64Binary *)ptr)->soap_out(soap, tag, id, "xsd:base64Binary");
+	case SOAP_TYPE_xsd__anyType:
+		return ((xsd__anyType *)ptr)->soap_out(soap, tag, id, "xsd:anyType");
 	case SOAP_TYPE_PointerToedlprovider__EdlCreateRequestDoubleType:
 		return soap_out_PointerToedlprovider__EdlCreateRequestDoubleType(soap, tag, id, (edlprovider__EdlCreateRequestDoubleType *const*)ptr, "edlprovider:EdlCreateRequestDoubleType");
 	case SOAP_TYPE_PointerToedlprovider__EdlCreateResponseType:
 		return soap_out_PointerToedlprovider__EdlCreateResponseType(soap, tag, id, (edlprovider__EdlCreateResponseType *const*)ptr, "edlprovider:EdlCreateResponseType");
 	case SOAP_TYPE_PointerToedlprovider__EdlCreateRequestType:
 		return soap_out_PointerToedlprovider__EdlCreateRequestType(soap, tag, id, (edlprovider__EdlCreateRequestType *const*)ptr, "edlprovider:EdlCreateRequestType");
-	case SOAP_TYPE_PointerToedlprovider__ArrayOfstring:
-		return soap_out_PointerToedlprovider__ArrayOfstring(soap, tag, id, (edlprovider__ArrayOfstring *const*)ptr, "edlprovider:ArrayOfstring");
+	case SOAP_TYPE_PointerToedlprovider__MapType:
+		return soap_out_PointerToedlprovider__MapType(soap, tag, id, (edlprovider__MapType *const*)ptr, "edlprovider:MapType");
 	case SOAP_TYPE_PointerToedlprovider__EdlProviderFaultType:
 		return soap_out_PointerToedlprovider__EdlProviderFaultType(soap, tag, id, (edlprovider__EdlProviderFaultType *const*)ptr, "edlprovider:EdlProviderFaultType");
 	case SOAP_TYPE_PointerTo_fims__ContainerFormatType_containerFormat:
@@ -2050,12 +2422,18 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return soap_out_PointerToxsd__anyURI(soap, tag, id, (std::wstring *const*)ptr, "xsd:anyURI");
 	case SOAP_TYPE_PointerTofims__RevisionIDType:
 		return soap_out_PointerTofims__RevisionIDType(soap, tag, id, (std::wstring *const*)ptr, "fims:RevisionIDType");
+	case SOAP_TYPE_PointerToedlprovider__MapItemType:
+		return soap_out_PointerToedlprovider__MapItemType(soap, tag, id, (edlprovider__MapItemType *const*)ptr, "edlprovider:MapItemType");
 	case SOAP_TYPE_PointerToxsd__base64Binary:
 		return soap_out_PointerToxsd__base64Binary(soap, tag, id, (xsd__base64Binary *const*)ptr, "xsd:base64Binary");
 	case SOAP_TYPE_PointerTostd__wstring:
 		return soap_out_PointerTostd__wstring(soap, tag, id, (std::wstring *const*)ptr, "xsd:string");
 	case SOAP_TYPE_PointerToedlprovider__ArrayOfClips:
 		return soap_out_PointerToedlprovider__ArrayOfClips(soap, tag, id, (edlprovider__ArrayOfClips *const*)ptr, "edlprovider:ArrayOfClips");
+	case SOAP_TYPE_PointerToxsd__anyType:
+		return soap_out_PointerToxsd__anyType(soap, tag, id, (xsd__anyType *const*)ptr, "xsd:anyType");
+	case SOAP_TYPE_PointerTo_edlprovider__Map:
+		return soap_out_PointerTo_edlprovider__Map(soap, tag, id, (_edlprovider__Map *const*)ptr, "edlprovider:Map");
 	case SOAP_TYPE_PointerTofims__BMObjectType:
 		return soap_out_PointerTofims__BMObjectType(soap, tag, id, (fims__BMObjectType *const*)ptr, "fims:BMObjectType");
 	case SOAP_TYPE_PointerTofims__TimeType:
@@ -2170,29 +2548,95 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 	case SOAP_TYPE___fims__ResourcesType_sequence:
 		((__fims__ResourcesType_sequence *)ptr)->soap_serialize(soap);
 		break;
+	case SOAP_TYPE_fims__JobInfoSelectionType_:
+		((fims__JobInfoSelectionType_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_fims__ErrorCodeType_:
+		((fims__ErrorCodeType_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_fims__BitRateModeType_:
+		((fims__BitRateModeType_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_fims__ScanningOrderType_:
+		((fims__ScanningOrderType_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_fims__ScanningFormatType_:
+		((fims__ScanningFormatType_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_fims__AudioSampleType_:
+		((fims__AudioSampleType_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_fims__JobStatusType_:
+		((fims__JobStatusType_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_fims__HashFunctionTypes_:
+		((fims__HashFunctionTypes_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_fims__JobCommandType_:
+		((fims__JobCommandType_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_fims__QueueCommandType_:
+		((fims__QueueCommandType_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_fims__StorageTypes_:
+		((fims__StorageTypes_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_fims__PriorityType_:
+		((fims__PriorityType_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_fims__QueueStatusType_:
+		((fims__QueueStatusType_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_fims__TimecodeDuration__:
+		((fims__TimecodeDuration__ *)ptr)->soap_serialize(soap);
+		break;
 	case SOAP_TYPE_fims__TimecodeDuration:
 		soap_serialize_fims__TimecodeDuration(soap, (const std::wstring *)ptr);
+		break;
+	case SOAP_TYPE_fims__Timecode__:
+		((fims__Timecode__ *)ptr)->soap_serialize(soap);
 		break;
 	case SOAP_TYPE_fims__Timecode:
 		soap_serialize_fims__Timecode(soap, (const std::wstring *)ptr);
 		break;
+	case SOAP_TYPE_fims__RevisionIDType__:
+		((fims__RevisionIDType__ *)ptr)->soap_serialize(soap);
+		break;
 	case SOAP_TYPE_fims__RevisionIDType:
 		soap_serialize_fims__RevisionIDType(soap, (const std::wstring *)ptr);
+		break;
+	case SOAP_TYPE_fims__ResourceIDType__:
+		((fims__ResourceIDType__ *)ptr)->soap_serialize(soap);
 		break;
 	case SOAP_TYPE_fims__ResourceIDType:
 		soap_serialize_fims__ResourceIDType(soap, (const std::wstring *)ptr);
 		break;
+	case SOAP_TYPE_fims__EmptyID__:
+		((fims__EmptyID__ *)ptr)->soap_serialize(soap);
+		break;
 	case SOAP_TYPE_fims__EmptyID:
 		soap_serialize_fims__EmptyID(soap, (const std::wstring *)ptr);
+		break;
+	case SOAP_TYPE_fims__UL__:
+		((fims__UL__ *)ptr)->soap_serialize(soap);
 		break;
 	case SOAP_TYPE_fims__UL:
 		soap_serialize_fims__UL(soap, (const std::wstring *)ptr);
 		break;
+	case SOAP_TYPE_fims__UMID__:
+		((fims__UMID__ *)ptr)->soap_serialize(soap);
+		break;
 	case SOAP_TYPE_fims__UMID:
 		soap_serialize_fims__UMID(soap, (const std::wstring *)ptr);
 		break;
+	case SOAP_TYPE_fims__UUID__:
+		((fims__UUID__ *)ptr)->soap_serialize(soap);
+		break;
 	case SOAP_TYPE_fims__UUID:
 		soap_serialize_fims__UUID(soap, (const std::wstring *)ptr);
+		break;
+	case SOAP_TYPE_edlprovider__EDLProviderErrorCodeType_:
+		((edlprovider__EDLProviderErrorCodeType_ *)ptr)->soap_serialize(soap);
 		break;
 	case SOAP_TYPE_fims__UID:
 		soap_serialize_fims__UID(soap, (const std::wstring *)ptr);
@@ -2494,6 +2938,9 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 	case SOAP_TYPE_fims__ExtensionGroup:
 		((fims__ExtensionGroup *)ptr)->soap_serialize(soap);
 		break;
+	case SOAP_TYPE__edlprovider__Map:
+		((_edlprovider__Map *)ptr)->soap_serialize(soap);
+		break;
 	case SOAP_TYPE_edlprovider__EdlProviderFaultType:
 		((edlprovider__EdlProviderFaultType *)ptr)->soap_serialize(soap);
 		break;
@@ -2509,6 +2956,12 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 	case SOAP_TYPE_edlprovider__EdlCreateRequestBaseType:
 		((edlprovider__EdlCreateRequestBaseType *)ptr)->soap_serialize(soap);
 		break;
+	case SOAP_TYPE_edlprovider__MapItemType:
+		((edlprovider__MapItemType *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_edlprovider__MapType:
+		((edlprovider__MapType *)ptr)->soap_serialize(soap);
+		break;
 	case SOAP_TYPE_edlprovider__ClipType:
 		((edlprovider__ClipType *)ptr)->soap_serialize(soap);
 		break;
@@ -2521,32 +2974,92 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 	case SOAP_TYPE__xml__lang:
 		soap_serialize__xml__lang(soap, (const std::wstring *)ptr);
 		break;
+	case SOAP_TYPE_xsd__unsignedLong:
+		((xsd__unsignedLong *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_xsd__time_:
+		((xsd__time_ *)ptr)->soap_serialize(soap);
+		break;
 	case SOAP_TYPE_xsd__time:
 		soap_serialize_xsd__time(soap, (const std::wstring *)ptr);
+		break;
+	case SOAP_TYPE_xsd__string:
+		((xsd__string *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_xsd__positiveInteger_:
+		((xsd__positiveInteger_ *)ptr)->soap_serialize(soap);
 		break;
 	case SOAP_TYPE_xsd__positiveInteger:
 		soap_serialize_xsd__positiveInteger(soap, (const std::wstring *)ptr);
 		break;
+	case SOAP_TYPE_xsd__nonNegativeInteger_:
+		((xsd__nonNegativeInteger_ *)ptr)->soap_serialize(soap);
+		break;
 	case SOAP_TYPE_xsd__nonNegativeInteger:
 		soap_serialize_xsd__nonNegativeInteger(soap, (const std::wstring *)ptr);
+		break;
+	case SOAP_TYPE_xsd__long:
+		((xsd__long *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_xsd__language_:
+		((xsd__language_ *)ptr)->soap_serialize(soap);
 		break;
 	case SOAP_TYPE_xsd__language:
 		soap_serialize_xsd__language(soap, (const std::wstring *)ptr);
 		break;
+	case SOAP_TYPE_xsd__integer_:
+		((xsd__integer_ *)ptr)->soap_serialize(soap);
+		break;
 	case SOAP_TYPE_xsd__integer:
 		soap_serialize_xsd__integer(soap, (const std::wstring *)ptr);
+		break;
+	case SOAP_TYPE_xsd__hexBinary_:
+		((xsd__hexBinary_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_xsd__gYear_:
+		((xsd__gYear_ *)ptr)->soap_serialize(soap);
 		break;
 	case SOAP_TYPE_xsd__gYear:
 		soap_serialize_xsd__gYear(soap, (const std::wstring *)ptr);
 		break;
+	case SOAP_TYPE_xsd__float:
+		((xsd__float *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_xsd__duration_:
+		((xsd__duration_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_xsd__double:
+		((xsd__double *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_xsd__decimal_:
+		((xsd__decimal_ *)ptr)->soap_serialize(soap);
+		break;
 	case SOAP_TYPE_xsd__decimal:
 		soap_serialize_xsd__decimal(soap, (const std::wstring *)ptr);
+		break;
+	case SOAP_TYPE_xsd__dateTime:
+		((xsd__dateTime *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_xsd__date_:
+		((xsd__date_ *)ptr)->soap_serialize(soap);
 		break;
 	case SOAP_TYPE_xsd__date:
 		soap_serialize_xsd__date(soap, (const std::wstring *)ptr);
 		break;
+	case SOAP_TYPE_xsd__boolean:
+		((xsd__boolean *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_xsd__base64Binary_:
+		((xsd__base64Binary_ *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_xsd__anyURI_:
+		((xsd__anyURI_ *)ptr)->soap_serialize(soap);
+		break;
 	case SOAP_TYPE_xsd__anyURI:
 		soap_serialize_xsd__anyURI(soap, (const std::wstring *)ptr);
+		break;
+	case SOAP_TYPE_xsd__NMTOKEN_:
+		((xsd__NMTOKEN_ *)ptr)->soap_serialize(soap);
 		break;
 	case SOAP_TYPE_xsd__NMTOKEN:
 		soap_serialize_xsd__NMTOKEN(soap, (const std::wstring *)ptr);
@@ -2559,6 +3072,9 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 		break;
 	case SOAP_TYPE_xsd__base64Binary:
 		((xsd__base64Binary *)ptr)->soap_serialize(soap);
+		break;
+	case SOAP_TYPE_xsd__anyType:
+		((xsd__anyType *)ptr)->soap_serialize(soap);
 		break;
 	case SOAP_TYPE___edlprovider__getEdlDouble:
 		soap_serialize___edlprovider__getEdlDouble(soap, (const struct __edlprovider__getEdlDouble *)ptr);
@@ -2578,8 +3094,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 	case SOAP_TYPE_PointerToedlprovider__EdlCreateRequestType:
 		soap_serialize_PointerToedlprovider__EdlCreateRequestType(soap, (edlprovider__EdlCreateRequestType *const*)ptr);
 		break;
-	case SOAP_TYPE_PointerToedlprovider__ArrayOfstring:
-		soap_serialize_PointerToedlprovider__ArrayOfstring(soap, (edlprovider__ArrayOfstring *const*)ptr);
+	case SOAP_TYPE_PointerToedlprovider__MapType:
+		soap_serialize_PointerToedlprovider__MapType(soap, (edlprovider__MapType *const*)ptr);
 		break;
 	case SOAP_TYPE_PointerToedlprovider__EdlProviderFaultType:
 		soap_serialize_PointerToedlprovider__EdlProviderFaultType(soap, (edlprovider__EdlProviderFaultType *const*)ptr);
@@ -2866,6 +3382,9 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 	case SOAP_TYPE_PointerTofims__RevisionIDType:
 		soap_serialize_PointerTofims__RevisionIDType(soap, (std::wstring *const*)ptr);
 		break;
+	case SOAP_TYPE_PointerToedlprovider__MapItemType:
+		soap_serialize_PointerToedlprovider__MapItemType(soap, (edlprovider__MapItemType *const*)ptr);
+		break;
 	case SOAP_TYPE_PointerToxsd__base64Binary:
 		soap_serialize_PointerToxsd__base64Binary(soap, (xsd__base64Binary *const*)ptr);
 		break;
@@ -2874,6 +3393,12 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 		break;
 	case SOAP_TYPE_PointerToedlprovider__ArrayOfClips:
 		soap_serialize_PointerToedlprovider__ArrayOfClips(soap, (edlprovider__ArrayOfClips *const*)ptr);
+		break;
+	case SOAP_TYPE_PointerToxsd__anyType:
+		soap_serialize_PointerToxsd__anyType(soap, (xsd__anyType *const*)ptr);
+		break;
+	case SOAP_TYPE_PointerTo_edlprovider__Map:
+		soap_serialize_PointerTo_edlprovider__Map(soap, (_edlprovider__Map *const*)ptr);
 		break;
 	case SOAP_TYPE_PointerTofims__BMObjectType:
 		soap_serialize_PointerTofims__BMObjectType(soap, (fims__BMObjectType *const*)ptr);
@@ -2905,22 +3430,114 @@ SOAP_FMAC3 void * SOAP_FMAC4 EDLProvider_instantiate(struct soap *soap, int t, c
 {	(void)type;
 	switch (t)
 	{
+	case SOAP_TYPE_xsd__anyType:
+		return (void*)soap_instantiate_xsd__anyType(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_xsd__base64Binary:
 		return (void*)soap_instantiate_xsd__base64Binary(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_xsd__hexBinary:
 		return (void*)soap_instantiate_xsd__hexBinary(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_std__wstring:
 		return (void*)soap_instantiate_std__wstring(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__NMTOKEN_:
+		return (void*)soap_instantiate_xsd__NMTOKEN_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__anyURI_:
+		return (void*)soap_instantiate_xsd__anyURI_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__base64Binary_:
+		return (void*)soap_instantiate_xsd__base64Binary_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__boolean:
+		return (void*)soap_instantiate_xsd__boolean(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__date_:
+		return (void*)soap_instantiate_xsd__date_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__dateTime:
+		return (void*)soap_instantiate_xsd__dateTime(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__decimal_:
+		return (void*)soap_instantiate_xsd__decimal_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__double:
+		return (void*)soap_instantiate_xsd__double(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__duration_:
+		return (void*)soap_instantiate_xsd__duration_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__float:
+		return (void*)soap_instantiate_xsd__float(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__gYear_:
+		return (void*)soap_instantiate_xsd__gYear_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__hexBinary_:
+		return (void*)soap_instantiate_xsd__hexBinary_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__integer_:
+		return (void*)soap_instantiate_xsd__integer_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__language_:
+		return (void*)soap_instantiate_xsd__language_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__long:
+		return (void*)soap_instantiate_xsd__long(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__nonNegativeInteger_:
+		return (void*)soap_instantiate_xsd__nonNegativeInteger_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__positiveInteger_:
+		return (void*)soap_instantiate_xsd__positiveInteger_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__string:
+		return (void*)soap_instantiate_xsd__string(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__time_:
+		return (void*)soap_instantiate_xsd__time_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_xsd__unsignedLong:
+		return (void*)soap_instantiate_xsd__unsignedLong(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_edlprovider__EDLProviderErrorCodeType_:
+		return (void*)soap_instantiate_edlprovider__EDLProviderErrorCodeType_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__UUID__:
+		return (void*)soap_instantiate_fims__UUID__(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__UMID__:
+		return (void*)soap_instantiate_fims__UMID__(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__UL__:
+		return (void*)soap_instantiate_fims__UL__(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__EmptyID__:
+		return (void*)soap_instantiate_fims__EmptyID__(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__ResourceIDType__:
+		return (void*)soap_instantiate_fims__ResourceIDType__(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__RevisionIDType__:
+		return (void*)soap_instantiate_fims__RevisionIDType__(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__Timecode__:
+		return (void*)soap_instantiate_fims__Timecode__(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__TimecodeDuration__:
+		return (void*)soap_instantiate_fims__TimecodeDuration__(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__QueueStatusType_:
+		return (void*)soap_instantiate_fims__QueueStatusType_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__PriorityType_:
+		return (void*)soap_instantiate_fims__PriorityType_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__StorageTypes_:
+		return (void*)soap_instantiate_fims__StorageTypes_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__QueueCommandType_:
+		return (void*)soap_instantiate_fims__QueueCommandType_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__JobCommandType_:
+		return (void*)soap_instantiate_fims__JobCommandType_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__HashFunctionTypes_:
+		return (void*)soap_instantiate_fims__HashFunctionTypes_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__JobStatusType_:
+		return (void*)soap_instantiate_fims__JobStatusType_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__AudioSampleType_:
+		return (void*)soap_instantiate_fims__AudioSampleType_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__ScanningFormatType_:
+		return (void*)soap_instantiate_fims__ScanningFormatType_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__ScanningOrderType_:
+		return (void*)soap_instantiate_fims__ScanningOrderType_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__BitRateModeType_:
+		return (void*)soap_instantiate_fims__BitRateModeType_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__ErrorCodeType_:
+		return (void*)soap_instantiate_fims__ErrorCodeType_(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_fims__JobInfoSelectionType_:
+		return (void*)soap_instantiate_fims__JobInfoSelectionType_(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_edlprovider__ArrayOfstring:
 		return (void*)soap_instantiate_edlprovider__ArrayOfstring(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_edlprovider__ArrayOfClips:
 		return (void*)soap_instantiate_edlprovider__ArrayOfClips(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_edlprovider__ClipType:
 		return (void*)soap_instantiate_edlprovider__ClipType(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_edlprovider__MapType:
+		return (void*)soap_instantiate_edlprovider__MapType(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_edlprovider__MapItemType:
+		return (void*)soap_instantiate_edlprovider__MapItemType(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_edlprovider__EdlCreateRequestBaseType:
 		return (void*)soap_instantiate_edlprovider__EdlCreateRequestBaseType(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_edlprovider__EdlCreateResponseType:
 		return (void*)soap_instantiate_edlprovider__EdlCreateResponseType(soap, -1, type, arrayType, n);
+	case SOAP_TYPE__edlprovider__Map:
+		return (void*)soap_instantiate__edlprovider__Map(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_fims__ExtensionGroup:
 		return (void*)soap_instantiate_fims__ExtensionGroup(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_fims__ExtensionAttributes:
@@ -3327,6 +3944,8 @@ SOAP_FMAC3 void * SOAP_FMAC4 EDLProvider_instantiate(struct soap *soap, int t, c
 		return (void*)soap_instantiate_std__vectorTemplateOfPointerTofims__InnerFaultType(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_std__vectorTemplateOf_XML:
 		return (void*)soap_instantiate_std__vectorTemplateOf_XML(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_std__vectorTemplateOfPointerToedlprovider__MapItemType:
+		return (void*)soap_instantiate_std__vectorTemplateOfPointerToedlprovider__MapItemType(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_std__vectorTemplateOfPointerToedlprovider__ClipType:
 		return (void*)soap_instantiate_std__vectorTemplateOfPointerToedlprovider__ClipType(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_std__vectorTemplateOfstd__wstring:
@@ -3338,6 +3957,12 @@ SOAP_FMAC3 void * SOAP_FMAC4 EDLProvider_instantiate(struct soap *soap, int t, c
 SOAP_FMAC3 int SOAP_FMAC4 EDLProvider_fdelete(struct soap_clist *p)
 {	switch (p->type)
 	{
+	case SOAP_TYPE_xsd__anyType:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__anyType*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__anyType*)p->ptr);
+		break;
 	case SOAP_TYPE_xsd__base64Binary:
 		if (p->size < 0)
 			SOAP_DELETE((xsd__base64Binary*)p->ptr);
@@ -3355,6 +3980,258 @@ SOAP_FMAC3 int SOAP_FMAC4 EDLProvider_fdelete(struct soap_clist *p)
 			SOAP_DELETE((std::wstring*)p->ptr);
 		else
 			SOAP_DELETE_ARRAY((std::wstring*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__NMTOKEN_:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__NMTOKEN_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__NMTOKEN_*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__anyURI_:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__anyURI_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__anyURI_*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__base64Binary_:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__base64Binary_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__base64Binary_*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__boolean:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__boolean*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__boolean*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__date_:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__date_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__date_*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__dateTime:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__dateTime*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__dateTime*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__decimal_:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__decimal_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__decimal_*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__double:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__double*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__double*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__duration_:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__duration_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__duration_*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__float:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__float*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__float*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__gYear_:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__gYear_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__gYear_*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__hexBinary_:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__hexBinary_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__hexBinary_*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__integer_:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__integer_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__integer_*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__language_:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__language_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__language_*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__long:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__long*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__long*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__nonNegativeInteger_:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__nonNegativeInteger_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__nonNegativeInteger_*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__positiveInteger_:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__positiveInteger_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__positiveInteger_*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__string:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__string*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__string*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__time_:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__time_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__time_*)p->ptr);
+		break;
+	case SOAP_TYPE_xsd__unsignedLong:
+		if (p->size < 0)
+			SOAP_DELETE((xsd__unsignedLong*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((xsd__unsignedLong*)p->ptr);
+		break;
+	case SOAP_TYPE_edlprovider__EDLProviderErrorCodeType_:
+		if (p->size < 0)
+			SOAP_DELETE((edlprovider__EDLProviderErrorCodeType_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((edlprovider__EDLProviderErrorCodeType_*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__UUID__:
+		if (p->size < 0)
+			SOAP_DELETE((fims__UUID__*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__UUID__*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__UMID__:
+		if (p->size < 0)
+			SOAP_DELETE((fims__UMID__*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__UMID__*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__UL__:
+		if (p->size < 0)
+			SOAP_DELETE((fims__UL__*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__UL__*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__EmptyID__:
+		if (p->size < 0)
+			SOAP_DELETE((fims__EmptyID__*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__EmptyID__*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__ResourceIDType__:
+		if (p->size < 0)
+			SOAP_DELETE((fims__ResourceIDType__*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__ResourceIDType__*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__RevisionIDType__:
+		if (p->size < 0)
+			SOAP_DELETE((fims__RevisionIDType__*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__RevisionIDType__*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__Timecode__:
+		if (p->size < 0)
+			SOAP_DELETE((fims__Timecode__*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__Timecode__*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__TimecodeDuration__:
+		if (p->size < 0)
+			SOAP_DELETE((fims__TimecodeDuration__*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__TimecodeDuration__*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__QueueStatusType_:
+		if (p->size < 0)
+			SOAP_DELETE((fims__QueueStatusType_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__QueueStatusType_*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__PriorityType_:
+		if (p->size < 0)
+			SOAP_DELETE((fims__PriorityType_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__PriorityType_*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__StorageTypes_:
+		if (p->size < 0)
+			SOAP_DELETE((fims__StorageTypes_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__StorageTypes_*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__QueueCommandType_:
+		if (p->size < 0)
+			SOAP_DELETE((fims__QueueCommandType_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__QueueCommandType_*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__JobCommandType_:
+		if (p->size < 0)
+			SOAP_DELETE((fims__JobCommandType_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__JobCommandType_*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__HashFunctionTypes_:
+		if (p->size < 0)
+			SOAP_DELETE((fims__HashFunctionTypes_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__HashFunctionTypes_*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__JobStatusType_:
+		if (p->size < 0)
+			SOAP_DELETE((fims__JobStatusType_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__JobStatusType_*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__AudioSampleType_:
+		if (p->size < 0)
+			SOAP_DELETE((fims__AudioSampleType_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__AudioSampleType_*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__ScanningFormatType_:
+		if (p->size < 0)
+			SOAP_DELETE((fims__ScanningFormatType_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__ScanningFormatType_*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__ScanningOrderType_:
+		if (p->size < 0)
+			SOAP_DELETE((fims__ScanningOrderType_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__ScanningOrderType_*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__BitRateModeType_:
+		if (p->size < 0)
+			SOAP_DELETE((fims__BitRateModeType_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__BitRateModeType_*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__ErrorCodeType_:
+		if (p->size < 0)
+			SOAP_DELETE((fims__ErrorCodeType_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__ErrorCodeType_*)p->ptr);
+		break;
+	case SOAP_TYPE_fims__JobInfoSelectionType_:
+		if (p->size < 0)
+			SOAP_DELETE((fims__JobInfoSelectionType_*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((fims__JobInfoSelectionType_*)p->ptr);
 		break;
 	case SOAP_TYPE_edlprovider__ArrayOfstring:
 		if (p->size < 0)
@@ -3374,6 +4251,18 @@ SOAP_FMAC3 int SOAP_FMAC4 EDLProvider_fdelete(struct soap_clist *p)
 		else
 			SOAP_DELETE_ARRAY((edlprovider__ClipType*)p->ptr);
 		break;
+	case SOAP_TYPE_edlprovider__MapType:
+		if (p->size < 0)
+			SOAP_DELETE((edlprovider__MapType*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((edlprovider__MapType*)p->ptr);
+		break;
+	case SOAP_TYPE_edlprovider__MapItemType:
+		if (p->size < 0)
+			SOAP_DELETE((edlprovider__MapItemType*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((edlprovider__MapItemType*)p->ptr);
+		break;
 	case SOAP_TYPE_edlprovider__EdlCreateRequestBaseType:
 		if (p->size < 0)
 			SOAP_DELETE((edlprovider__EdlCreateRequestBaseType*)p->ptr);
@@ -3385,6 +4274,12 @@ SOAP_FMAC3 int SOAP_FMAC4 EDLProvider_fdelete(struct soap_clist *p)
 			SOAP_DELETE((edlprovider__EdlCreateResponseType*)p->ptr);
 		else
 			SOAP_DELETE_ARRAY((edlprovider__EdlCreateResponseType*)p->ptr);
+		break;
+	case SOAP_TYPE__edlprovider__Map:
+		if (p->size < 0)
+			SOAP_DELETE((_edlprovider__Map*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((_edlprovider__Map*)p->ptr);
 		break;
 	case SOAP_TYPE_fims__ExtensionGroup:
 		if (p->size < 0)
@@ -4584,6 +5479,12 @@ SOAP_FMAC3 int SOAP_FMAC4 EDLProvider_fdelete(struct soap_clist *p)
 		else
 			SOAP_DELETE_ARRAY((std::vector<char * >*)p->ptr);
 		break;
+	case SOAP_TYPE_std__vectorTemplateOfPointerToedlprovider__MapItemType:
+		if (p->size < 0)
+			SOAP_DELETE((std::vector<edlprovider__MapItemType * >*)p->ptr);
+		else
+			SOAP_DELETE_ARRAY((std::vector<edlprovider__MapItemType * >*)p->ptr);
+		break;
 	case SOAP_TYPE_std__vectorTemplateOfPointerToedlprovider__ClipType:
 		if (p->size < 0)
 			SOAP_DELETE((std::vector<edlprovider__ClipType * >*)p->ptr);
@@ -4777,6 +5678,10 @@ SOAP_FMAC3 void SOAP_FMAC4 EDLProvider_container_insert(struct soap *soap, int s
 	case SOAP_TYPE_std__vectorTemplateOf_XML:
 		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Container EDLProvider_container_insert type=%d in %d location=%p object=%p len=%lu\n", st, tt, p, q, (unsigned long)len));
 		(*(std::vector<char * >*)p)[len] = *(char **)q;
+		break;
+	case SOAP_TYPE_std__vectorTemplateOfPointerToedlprovider__MapItemType:
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Container EDLProvider_container_insert type=%d in %d location=%p object=%p len=%lu\n", st, tt, p, q, (unsigned long)len));
+		(*(std::vector<edlprovider__MapItemType * >*)p)[len] = *(edlprovider__MapItemType **)q;
 		break;
 	case SOAP_TYPE_std__vectorTemplateOfPointerToedlprovider__ClipType:
 		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Container EDLProvider_container_insert type=%d in %d location=%p object=%p len=%lu\n", st, tt, p, q, (unsigned long)len));
@@ -5138,90 +6043,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_put_time(struct soap *soap, const time_t *a, cons
 SOAP_FMAC3 time_t * SOAP_FMAC4 soap_get_time(struct soap *soap, time_t *p, const char *tag, const char *type)
 {
 	if ((p = soap_in_time(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_bool(struct soap *soap, bool *a)
-{
-	(void)soap; /* appease -Wall -Werror */
-#ifdef SOAP_DEFAULT_bool
-	*a = SOAP_DEFAULT_bool;
-#else
-	*a = (bool)0;
-#endif
-}
-
-static const struct soap_code_map soap_codes_bool[] =
-{	{ (long)false, "false" },
-	{ (long)true, "true" },
-	{ 0, NULL }
-};
-
-SOAP_FMAC3S const char* SOAP_FMAC4S soap_bool2s(struct soap *soap, bool n)
-{
-	(void)soap; /* appease -Wall -Werror */
-return soap_code_str(soap_codes_bool, n!=0);
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_bool(struct soap *soap, const char *tag, int id, const bool *a, const char *type)
-{	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_bool), type) || soap_send(soap, soap_bool2s(soap, *a)))
-		return soap->error;
-	return soap_element_end_out(soap, tag);
-}
-
-SOAP_FMAC3S int SOAP_FMAC4S soap_s2bool(struct soap *soap, const char *s, bool *a)
-{
-	const struct soap_code_map *map;
-	if (!s)
-		return soap->error;
-	map = soap_code(soap_codes_bool, s);
-	if (map)
-		*a = (bool)(map->code != 0);
-	else
-	{	long n;
-		if (soap_s2long(soap, s, &n) || n < 0 || n > 1)
-			return soap->error = SOAP_TYPE;
-		*a = (bool)(n != 0);
-	}
-	return SOAP_OK;
-}
-
-SOAP_FMAC3 bool * SOAP_FMAC4 soap_in_bool(struct soap *soap, const char *tag, bool *a, const char *type)
-{
-	if (soap_element_begin_in(soap, tag, 0, NULL))
-		return NULL;
-	if (*soap->type && soap_match_tag(soap, soap->type, type) && soap_match_tag(soap, soap->type, ":boolean"))
-	{	soap->error = SOAP_TYPE;
-		return NULL;
-	}
-	a = (bool *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_bool, sizeof(bool), 0, NULL, NULL, NULL);
-	if (!a)
-		return NULL;
-	if (soap->body && !*soap->href)
-	{	if (!a || soap_s2bool(soap, soap_value(soap), a) || soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (bool *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_bool, 0, sizeof(bool), 0, NULL);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_bool(struct soap *soap, const bool *a, const char *tag, const char *type)
-{
-	register int id = soap_embed(soap, (void*)a, NULL, 0, tag, SOAP_TYPE_bool);
-	if (soap_out_bool(soap, tag?tag:"boolean", id, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 bool * SOAP_FMAC4 soap_get_bool(struct soap *soap, bool *p, const char *tag, const char *type)
-{
-	if ((p = soap_in_bool(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
@@ -6498,6 +7319,90 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_put_edlprovider__EDLProviderErrorCodeType(struct 
 SOAP_FMAC3 enum edlprovider__EDLProviderErrorCodeType * SOAP_FMAC4 soap_get_edlprovider__EDLProviderErrorCodeType(struct soap *soap, enum edlprovider__EDLProviderErrorCodeType *p, const char *tag, const char *type)
 {
 	if ((p = soap_in_edlprovider__EDLProviderErrorCodeType(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_bool(struct soap *soap, bool *a)
+{
+	(void)soap; /* appease -Wall -Werror */
+#ifdef SOAP_DEFAULT_bool
+	*a = SOAP_DEFAULT_bool;
+#else
+	*a = (bool)0;
+#endif
+}
+
+static const struct soap_code_map soap_codes_bool[] =
+{	{ (long)false, "false" },
+	{ (long)true, "true" },
+	{ 0, NULL }
+};
+
+SOAP_FMAC3S const char* SOAP_FMAC4S soap_bool2s(struct soap *soap, bool n)
+{
+	(void)soap; /* appease -Wall -Werror */
+return soap_code_str(soap_codes_bool, n!=0);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_bool(struct soap *soap, const char *tag, int id, const bool *a, const char *type)
+{	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_bool), type) || soap_send(soap, soap_bool2s(soap, *a)))
+		return soap->error;
+	return soap_element_end_out(soap, tag);
+}
+
+SOAP_FMAC3S int SOAP_FMAC4S soap_s2bool(struct soap *soap, const char *s, bool *a)
+{
+	const struct soap_code_map *map;
+	if (!s)
+		return soap->error;
+	map = soap_code(soap_codes_bool, s);
+	if (map)
+		*a = (bool)(map->code != 0);
+	else
+	{	long n;
+		if (soap_s2long(soap, s, &n) || n < 0 || n > 1)
+			return soap->error = SOAP_TYPE;
+		*a = (bool)(n != 0);
+	}
+	return SOAP_OK;
+}
+
+SOAP_FMAC3 bool * SOAP_FMAC4 soap_in_bool(struct soap *soap, const char *tag, bool *a, const char *type)
+{
+	if (soap_element_begin_in(soap, tag, 0, NULL))
+		return NULL;
+	if (*soap->type && soap_match_tag(soap, soap->type, type) && soap_match_tag(soap, soap->type, ":boolean"))
+	{	soap->error = SOAP_TYPE;
+		return NULL;
+	}
+	a = (bool *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_bool, sizeof(bool), 0, NULL, NULL, NULL);
+	if (!a)
+		return NULL;
+	if (soap->body && !*soap->href)
+	{	if (!a || soap_s2bool(soap, soap_value(soap), a) || soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	else
+	{	a = (bool *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_bool, 0, sizeof(bool), 0, NULL);
+		if (soap->body && soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	return a;
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_bool(struct soap *soap, const bool *a, const char *tag, const char *type)
+{
+	register int id = soap_embed(soap, (void*)a, NULL, 0, tag, SOAP_TYPE_bool);
+	if (soap_out_bool(soap, tag?tag:"boolean", id, a, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+SOAP_FMAC3 bool * SOAP_FMAC4 soap_get_bool(struct soap *soap, bool *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_bool(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
@@ -11419,6 +12324,1485 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy___fims__ResourcesType_sequence(struct soap 
 	*(__fims__ResourcesType_sequence*)p = *(__fims__ResourcesType_sequence*)q;
 }
 
+void fims__JobInfoSelectionType_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__JobInfoSelectionType(soap, &this->fims__JobInfoSelectionType_::__item);
+}
+
+void fims__JobInfoSelectionType_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__JobInfoSelectionType_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__JobInfoSelectionType_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__JobInfoSelectionType_(struct soap *soap, const char *tag, int id, const fims__JobInfoSelectionType_ *a, const char *type)
+{
+	return soap_out_fims__JobInfoSelectionType(soap, tag, id, &(a->fims__JobInfoSelectionType_::__item), "fims:JobInfoSelectionType");
+}
+
+void *fims__JobInfoSelectionType_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__JobInfoSelectionType_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__JobInfoSelectionType_ * SOAP_FMAC4 soap_in_fims__JobInfoSelectionType_(struct soap *soap, const char *tag, fims__JobInfoSelectionType_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__JobInfoSelectionType_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__JobInfoSelectionType_, sizeof(fims__JobInfoSelectionType_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__JobInfoSelectionType_)
+			return (fims__JobInfoSelectionType_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__JobInfoSelectionType(soap, tag, &(a->fims__JobInfoSelectionType_::__item), "fims:JobInfoSelectionType"))
+		return NULL;
+	return a;
+}
+
+int fims__JobInfoSelectionType_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__JobInfoSelectionType_);
+	if (this->soap_out(soap, tag?tag:"fims:JobInfoSelectionType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__JobInfoSelectionType_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__JobInfoSelectionType_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__JobInfoSelectionType_ * SOAP_FMAC4 soap_get_fims__JobInfoSelectionType_(struct soap *soap, fims__JobInfoSelectionType_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__JobInfoSelectionType_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__JobInfoSelectionType_ * SOAP_FMAC2 soap_instantiate_fims__JobInfoSelectionType_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__JobInfoSelectionType_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__JobInfoSelectionType_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__JobInfoSelectionType_);
+		if (size)
+			*size = sizeof(fims__JobInfoSelectionType_);
+		((fims__JobInfoSelectionType_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__JobInfoSelectionType_, n);
+		if (size)
+			*size = n * sizeof(fims__JobInfoSelectionType_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__JobInfoSelectionType_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__JobInfoSelectionType_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__JobInfoSelectionType_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__JobInfoSelectionType_ %p -> %p\n", q, p));
+	*(fims__JobInfoSelectionType_*)p = *(fims__JobInfoSelectionType_*)q;
+}
+
+void fims__ErrorCodeType_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__ErrorCodeType(soap, &this->fims__ErrorCodeType_::__item);
+}
+
+void fims__ErrorCodeType_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__ErrorCodeType_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__ErrorCodeType_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ErrorCodeType_(struct soap *soap, const char *tag, int id, const fims__ErrorCodeType_ *a, const char *type)
+{
+	return soap_out_fims__ErrorCodeType(soap, tag, id, &(a->fims__ErrorCodeType_::__item), "fims:ErrorCodeType");
+}
+
+void *fims__ErrorCodeType_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__ErrorCodeType_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__ErrorCodeType_ * SOAP_FMAC4 soap_in_fims__ErrorCodeType_(struct soap *soap, const char *tag, fims__ErrorCodeType_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__ErrorCodeType_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__ErrorCodeType_, sizeof(fims__ErrorCodeType_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__ErrorCodeType_)
+			return (fims__ErrorCodeType_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__ErrorCodeType(soap, tag, &(a->fims__ErrorCodeType_::__item), "fims:ErrorCodeType"))
+		return NULL;
+	return a;
+}
+
+int fims__ErrorCodeType_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__ErrorCodeType_);
+	if (this->soap_out(soap, tag?tag:"fims:ErrorCodeType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__ErrorCodeType_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__ErrorCodeType_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__ErrorCodeType_ * SOAP_FMAC4 soap_get_fims__ErrorCodeType_(struct soap *soap, fims__ErrorCodeType_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__ErrorCodeType_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__ErrorCodeType_ * SOAP_FMAC2 soap_instantiate_fims__ErrorCodeType_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__ErrorCodeType_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__ErrorCodeType_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__ErrorCodeType_);
+		if (size)
+			*size = sizeof(fims__ErrorCodeType_);
+		((fims__ErrorCodeType_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ErrorCodeType_, n);
+		if (size)
+			*size = n * sizeof(fims__ErrorCodeType_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__ErrorCodeType_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__ErrorCodeType_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ErrorCodeType_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__ErrorCodeType_ %p -> %p\n", q, p));
+	*(fims__ErrorCodeType_*)p = *(fims__ErrorCodeType_*)q;
+}
+
+void fims__BitRateModeType_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__BitRateModeType(soap, &this->fims__BitRateModeType_::__item);
+}
+
+void fims__BitRateModeType_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->fims__BitRateModeType_::__item, SOAP_TYPE_fims__BitRateModeType);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__BitRateModeType_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__BitRateModeType_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__BitRateModeType_(struct soap *soap, const char *tag, int id, const fims__BitRateModeType_ *a, const char *type)
+{
+	return soap_out_fims__BitRateModeType(soap, tag, id, &(a->fims__BitRateModeType_::__item), "fims:BitRateModeType");
+}
+
+void *fims__BitRateModeType_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__BitRateModeType_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__BitRateModeType_ * SOAP_FMAC4 soap_in_fims__BitRateModeType_(struct soap *soap, const char *tag, fims__BitRateModeType_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__BitRateModeType_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__BitRateModeType_, sizeof(fims__BitRateModeType_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__BitRateModeType_)
+			return (fims__BitRateModeType_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__BitRateModeType(soap, tag, &(a->fims__BitRateModeType_::__item), "fims:BitRateModeType"))
+		return NULL;
+	return a;
+}
+
+int fims__BitRateModeType_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__BitRateModeType_);
+	if (this->soap_out(soap, tag?tag:"fims:BitRateModeType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__BitRateModeType_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__BitRateModeType_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__BitRateModeType_ * SOAP_FMAC4 soap_get_fims__BitRateModeType_(struct soap *soap, fims__BitRateModeType_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__BitRateModeType_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__BitRateModeType_ * SOAP_FMAC2 soap_instantiate_fims__BitRateModeType_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__BitRateModeType_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__BitRateModeType_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__BitRateModeType_);
+		if (size)
+			*size = sizeof(fims__BitRateModeType_);
+		((fims__BitRateModeType_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__BitRateModeType_, n);
+		if (size)
+			*size = n * sizeof(fims__BitRateModeType_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__BitRateModeType_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__BitRateModeType_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__BitRateModeType_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__BitRateModeType_ %p -> %p\n", q, p));
+	*(fims__BitRateModeType_*)p = *(fims__BitRateModeType_*)q;
+}
+
+void fims__ScanningOrderType_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__ScanningOrderType(soap, &this->fims__ScanningOrderType_::__item);
+}
+
+void fims__ScanningOrderType_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->fims__ScanningOrderType_::__item, SOAP_TYPE_fims__ScanningOrderType);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__ScanningOrderType_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__ScanningOrderType_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ScanningOrderType_(struct soap *soap, const char *tag, int id, const fims__ScanningOrderType_ *a, const char *type)
+{
+	return soap_out_fims__ScanningOrderType(soap, tag, id, &(a->fims__ScanningOrderType_::__item), "fims:ScanningOrderType");
+}
+
+void *fims__ScanningOrderType_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__ScanningOrderType_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__ScanningOrderType_ * SOAP_FMAC4 soap_in_fims__ScanningOrderType_(struct soap *soap, const char *tag, fims__ScanningOrderType_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__ScanningOrderType_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__ScanningOrderType_, sizeof(fims__ScanningOrderType_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__ScanningOrderType_)
+			return (fims__ScanningOrderType_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__ScanningOrderType(soap, tag, &(a->fims__ScanningOrderType_::__item), "fims:ScanningOrderType"))
+		return NULL;
+	return a;
+}
+
+int fims__ScanningOrderType_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__ScanningOrderType_);
+	if (this->soap_out(soap, tag?tag:"fims:ScanningOrderType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__ScanningOrderType_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__ScanningOrderType_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__ScanningOrderType_ * SOAP_FMAC4 soap_get_fims__ScanningOrderType_(struct soap *soap, fims__ScanningOrderType_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__ScanningOrderType_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__ScanningOrderType_ * SOAP_FMAC2 soap_instantiate_fims__ScanningOrderType_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__ScanningOrderType_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__ScanningOrderType_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__ScanningOrderType_);
+		if (size)
+			*size = sizeof(fims__ScanningOrderType_);
+		((fims__ScanningOrderType_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ScanningOrderType_, n);
+		if (size)
+			*size = n * sizeof(fims__ScanningOrderType_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__ScanningOrderType_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__ScanningOrderType_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ScanningOrderType_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__ScanningOrderType_ %p -> %p\n", q, p));
+	*(fims__ScanningOrderType_*)p = *(fims__ScanningOrderType_*)q;
+}
+
+void fims__ScanningFormatType_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__ScanningFormatType(soap, &this->fims__ScanningFormatType_::__item);
+}
+
+void fims__ScanningFormatType_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->fims__ScanningFormatType_::__item, SOAP_TYPE_fims__ScanningFormatType);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__ScanningFormatType_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__ScanningFormatType_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ScanningFormatType_(struct soap *soap, const char *tag, int id, const fims__ScanningFormatType_ *a, const char *type)
+{
+	return soap_out_fims__ScanningFormatType(soap, tag, id, &(a->fims__ScanningFormatType_::__item), "fims:ScanningFormatType");
+}
+
+void *fims__ScanningFormatType_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__ScanningFormatType_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__ScanningFormatType_ * SOAP_FMAC4 soap_in_fims__ScanningFormatType_(struct soap *soap, const char *tag, fims__ScanningFormatType_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__ScanningFormatType_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__ScanningFormatType_, sizeof(fims__ScanningFormatType_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__ScanningFormatType_)
+			return (fims__ScanningFormatType_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__ScanningFormatType(soap, tag, &(a->fims__ScanningFormatType_::__item), "fims:ScanningFormatType"))
+		return NULL;
+	return a;
+}
+
+int fims__ScanningFormatType_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__ScanningFormatType_);
+	if (this->soap_out(soap, tag?tag:"fims:ScanningFormatType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__ScanningFormatType_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__ScanningFormatType_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__ScanningFormatType_ * SOAP_FMAC4 soap_get_fims__ScanningFormatType_(struct soap *soap, fims__ScanningFormatType_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__ScanningFormatType_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__ScanningFormatType_ * SOAP_FMAC2 soap_instantiate_fims__ScanningFormatType_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__ScanningFormatType_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__ScanningFormatType_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__ScanningFormatType_);
+		if (size)
+			*size = sizeof(fims__ScanningFormatType_);
+		((fims__ScanningFormatType_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ScanningFormatType_, n);
+		if (size)
+			*size = n * sizeof(fims__ScanningFormatType_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__ScanningFormatType_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__ScanningFormatType_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ScanningFormatType_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__ScanningFormatType_ %p -> %p\n", q, p));
+	*(fims__ScanningFormatType_*)p = *(fims__ScanningFormatType_*)q;
+}
+
+void fims__AudioSampleType_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__AudioSampleType(soap, &this->fims__AudioSampleType_::__item);
+}
+
+void fims__AudioSampleType_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->fims__AudioSampleType_::__item, SOAP_TYPE_fims__AudioSampleType);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__AudioSampleType_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__AudioSampleType_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__AudioSampleType_(struct soap *soap, const char *tag, int id, const fims__AudioSampleType_ *a, const char *type)
+{
+	return soap_out_fims__AudioSampleType(soap, tag, id, &(a->fims__AudioSampleType_::__item), "fims:AudioSampleType");
+}
+
+void *fims__AudioSampleType_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__AudioSampleType_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__AudioSampleType_ * SOAP_FMAC4 soap_in_fims__AudioSampleType_(struct soap *soap, const char *tag, fims__AudioSampleType_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__AudioSampleType_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__AudioSampleType_, sizeof(fims__AudioSampleType_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__AudioSampleType_)
+			return (fims__AudioSampleType_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__AudioSampleType(soap, tag, &(a->fims__AudioSampleType_::__item), "fims:AudioSampleType"))
+		return NULL;
+	return a;
+}
+
+int fims__AudioSampleType_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__AudioSampleType_);
+	if (this->soap_out(soap, tag?tag:"fims:AudioSampleType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__AudioSampleType_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__AudioSampleType_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__AudioSampleType_ * SOAP_FMAC4 soap_get_fims__AudioSampleType_(struct soap *soap, fims__AudioSampleType_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__AudioSampleType_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__AudioSampleType_ * SOAP_FMAC2 soap_instantiate_fims__AudioSampleType_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__AudioSampleType_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__AudioSampleType_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__AudioSampleType_);
+		if (size)
+			*size = sizeof(fims__AudioSampleType_);
+		((fims__AudioSampleType_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__AudioSampleType_, n);
+		if (size)
+			*size = n * sizeof(fims__AudioSampleType_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__AudioSampleType_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__AudioSampleType_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__AudioSampleType_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__AudioSampleType_ %p -> %p\n", q, p));
+	*(fims__AudioSampleType_*)p = *(fims__AudioSampleType_*)q;
+}
+
+void fims__JobStatusType_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__JobStatusType(soap, &this->fims__JobStatusType_::__item);
+}
+
+void fims__JobStatusType_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->fims__JobStatusType_::__item, SOAP_TYPE_fims__JobStatusType);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__JobStatusType_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__JobStatusType_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__JobStatusType_(struct soap *soap, const char *tag, int id, const fims__JobStatusType_ *a, const char *type)
+{
+	return soap_out_fims__JobStatusType(soap, tag, id, &(a->fims__JobStatusType_::__item), "fims:JobStatusType");
+}
+
+void *fims__JobStatusType_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__JobStatusType_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__JobStatusType_ * SOAP_FMAC4 soap_in_fims__JobStatusType_(struct soap *soap, const char *tag, fims__JobStatusType_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__JobStatusType_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__JobStatusType_, sizeof(fims__JobStatusType_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__JobStatusType_)
+			return (fims__JobStatusType_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__JobStatusType(soap, tag, &(a->fims__JobStatusType_::__item), "fims:JobStatusType"))
+		return NULL;
+	return a;
+}
+
+int fims__JobStatusType_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__JobStatusType_);
+	if (this->soap_out(soap, tag?tag:"fims:JobStatusType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__JobStatusType_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__JobStatusType_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__JobStatusType_ * SOAP_FMAC4 soap_get_fims__JobStatusType_(struct soap *soap, fims__JobStatusType_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__JobStatusType_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__JobStatusType_ * SOAP_FMAC2 soap_instantiate_fims__JobStatusType_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__JobStatusType_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__JobStatusType_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__JobStatusType_);
+		if (size)
+			*size = sizeof(fims__JobStatusType_);
+		((fims__JobStatusType_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__JobStatusType_, n);
+		if (size)
+			*size = n * sizeof(fims__JobStatusType_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__JobStatusType_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__JobStatusType_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__JobStatusType_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__JobStatusType_ %p -> %p\n", q, p));
+	*(fims__JobStatusType_*)p = *(fims__JobStatusType_*)q;
+}
+
+void fims__HashFunctionTypes_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__HashFunctionTypes(soap, &this->fims__HashFunctionTypes_::__item);
+}
+
+void fims__HashFunctionTypes_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__HashFunctionTypes_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__HashFunctionTypes_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__HashFunctionTypes_(struct soap *soap, const char *tag, int id, const fims__HashFunctionTypes_ *a, const char *type)
+{
+	return soap_out_fims__HashFunctionTypes(soap, tag, id, &(a->fims__HashFunctionTypes_::__item), "fims:HashFunctionTypes");
+}
+
+void *fims__HashFunctionTypes_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__HashFunctionTypes_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__HashFunctionTypes_ * SOAP_FMAC4 soap_in_fims__HashFunctionTypes_(struct soap *soap, const char *tag, fims__HashFunctionTypes_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__HashFunctionTypes_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__HashFunctionTypes_, sizeof(fims__HashFunctionTypes_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__HashFunctionTypes_)
+			return (fims__HashFunctionTypes_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__HashFunctionTypes(soap, tag, &(a->fims__HashFunctionTypes_::__item), "fims:HashFunctionTypes"))
+		return NULL;
+	return a;
+}
+
+int fims__HashFunctionTypes_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__HashFunctionTypes_);
+	if (this->soap_out(soap, tag?tag:"fims:HashFunctionTypes", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__HashFunctionTypes_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__HashFunctionTypes_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__HashFunctionTypes_ * SOAP_FMAC4 soap_get_fims__HashFunctionTypes_(struct soap *soap, fims__HashFunctionTypes_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__HashFunctionTypes_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__HashFunctionTypes_ * SOAP_FMAC2 soap_instantiate_fims__HashFunctionTypes_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__HashFunctionTypes_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__HashFunctionTypes_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__HashFunctionTypes_);
+		if (size)
+			*size = sizeof(fims__HashFunctionTypes_);
+		((fims__HashFunctionTypes_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__HashFunctionTypes_, n);
+		if (size)
+			*size = n * sizeof(fims__HashFunctionTypes_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__HashFunctionTypes_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__HashFunctionTypes_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__HashFunctionTypes_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__HashFunctionTypes_ %p -> %p\n", q, p));
+	*(fims__HashFunctionTypes_*)p = *(fims__HashFunctionTypes_*)q;
+}
+
+void fims__JobCommandType_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__JobCommandType(soap, &this->fims__JobCommandType_::__item);
+}
+
+void fims__JobCommandType_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__JobCommandType_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__JobCommandType_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__JobCommandType_(struct soap *soap, const char *tag, int id, const fims__JobCommandType_ *a, const char *type)
+{
+	return soap_out_fims__JobCommandType(soap, tag, id, &(a->fims__JobCommandType_::__item), "fims:JobCommandType");
+}
+
+void *fims__JobCommandType_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__JobCommandType_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__JobCommandType_ * SOAP_FMAC4 soap_in_fims__JobCommandType_(struct soap *soap, const char *tag, fims__JobCommandType_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__JobCommandType_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__JobCommandType_, sizeof(fims__JobCommandType_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__JobCommandType_)
+			return (fims__JobCommandType_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__JobCommandType(soap, tag, &(a->fims__JobCommandType_::__item), "fims:JobCommandType"))
+		return NULL;
+	return a;
+}
+
+int fims__JobCommandType_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__JobCommandType_);
+	if (this->soap_out(soap, tag?tag:"fims:JobCommandType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__JobCommandType_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__JobCommandType_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__JobCommandType_ * SOAP_FMAC4 soap_get_fims__JobCommandType_(struct soap *soap, fims__JobCommandType_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__JobCommandType_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__JobCommandType_ * SOAP_FMAC2 soap_instantiate_fims__JobCommandType_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__JobCommandType_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__JobCommandType_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__JobCommandType_);
+		if (size)
+			*size = sizeof(fims__JobCommandType_);
+		((fims__JobCommandType_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__JobCommandType_, n);
+		if (size)
+			*size = n * sizeof(fims__JobCommandType_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__JobCommandType_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__JobCommandType_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__JobCommandType_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__JobCommandType_ %p -> %p\n", q, p));
+	*(fims__JobCommandType_*)p = *(fims__JobCommandType_*)q;
+}
+
+void fims__QueueCommandType_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__QueueCommandType(soap, &this->fims__QueueCommandType_::__item);
+}
+
+void fims__QueueCommandType_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__QueueCommandType_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__QueueCommandType_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__QueueCommandType_(struct soap *soap, const char *tag, int id, const fims__QueueCommandType_ *a, const char *type)
+{
+	return soap_out_fims__QueueCommandType(soap, tag, id, &(a->fims__QueueCommandType_::__item), "fims:QueueCommandType");
+}
+
+void *fims__QueueCommandType_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__QueueCommandType_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__QueueCommandType_ * SOAP_FMAC4 soap_in_fims__QueueCommandType_(struct soap *soap, const char *tag, fims__QueueCommandType_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__QueueCommandType_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__QueueCommandType_, sizeof(fims__QueueCommandType_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__QueueCommandType_)
+			return (fims__QueueCommandType_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__QueueCommandType(soap, tag, &(a->fims__QueueCommandType_::__item), "fims:QueueCommandType"))
+		return NULL;
+	return a;
+}
+
+int fims__QueueCommandType_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__QueueCommandType_);
+	if (this->soap_out(soap, tag?tag:"fims:QueueCommandType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__QueueCommandType_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__QueueCommandType_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__QueueCommandType_ * SOAP_FMAC4 soap_get_fims__QueueCommandType_(struct soap *soap, fims__QueueCommandType_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__QueueCommandType_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__QueueCommandType_ * SOAP_FMAC2 soap_instantiate_fims__QueueCommandType_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__QueueCommandType_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__QueueCommandType_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__QueueCommandType_);
+		if (size)
+			*size = sizeof(fims__QueueCommandType_);
+		((fims__QueueCommandType_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__QueueCommandType_, n);
+		if (size)
+			*size = n * sizeof(fims__QueueCommandType_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__QueueCommandType_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__QueueCommandType_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__QueueCommandType_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__QueueCommandType_ %p -> %p\n", q, p));
+	*(fims__QueueCommandType_*)p = *(fims__QueueCommandType_*)q;
+}
+
+void fims__StorageTypes_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__StorageTypes(soap, &this->fims__StorageTypes_::__item);
+}
+
+void fims__StorageTypes_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__StorageTypes_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__StorageTypes_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__StorageTypes_(struct soap *soap, const char *tag, int id, const fims__StorageTypes_ *a, const char *type)
+{
+	return soap_out_fims__StorageTypes(soap, tag, id, &(a->fims__StorageTypes_::__item), "fims:StorageTypes");
+}
+
+void *fims__StorageTypes_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__StorageTypes_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__StorageTypes_ * SOAP_FMAC4 soap_in_fims__StorageTypes_(struct soap *soap, const char *tag, fims__StorageTypes_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__StorageTypes_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__StorageTypes_, sizeof(fims__StorageTypes_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__StorageTypes_)
+			return (fims__StorageTypes_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__StorageTypes(soap, tag, &(a->fims__StorageTypes_::__item), "fims:StorageTypes"))
+		return NULL;
+	return a;
+}
+
+int fims__StorageTypes_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__StorageTypes_);
+	if (this->soap_out(soap, tag?tag:"fims:StorageTypes", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__StorageTypes_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__StorageTypes_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__StorageTypes_ * SOAP_FMAC4 soap_get_fims__StorageTypes_(struct soap *soap, fims__StorageTypes_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__StorageTypes_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__StorageTypes_ * SOAP_FMAC2 soap_instantiate_fims__StorageTypes_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__StorageTypes_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__StorageTypes_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__StorageTypes_);
+		if (size)
+			*size = sizeof(fims__StorageTypes_);
+		((fims__StorageTypes_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StorageTypes_, n);
+		if (size)
+			*size = n * sizeof(fims__StorageTypes_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__StorageTypes_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__StorageTypes_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__StorageTypes_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__StorageTypes_ %p -> %p\n", q, p));
+	*(fims__StorageTypes_*)p = *(fims__StorageTypes_*)q;
+}
+
+void fims__PriorityType_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__PriorityType(soap, &this->fims__PriorityType_::__item);
+}
+
+void fims__PriorityType_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->fims__PriorityType_::__item, SOAP_TYPE_fims__PriorityType);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__PriorityType_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__PriorityType_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__PriorityType_(struct soap *soap, const char *tag, int id, const fims__PriorityType_ *a, const char *type)
+{
+	return soap_out_fims__PriorityType(soap, tag, id, &(a->fims__PriorityType_::__item), "fims:PriorityType");
+}
+
+void *fims__PriorityType_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__PriorityType_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__PriorityType_ * SOAP_FMAC4 soap_in_fims__PriorityType_(struct soap *soap, const char *tag, fims__PriorityType_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__PriorityType_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__PriorityType_, sizeof(fims__PriorityType_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__PriorityType_)
+			return (fims__PriorityType_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__PriorityType(soap, tag, &(a->fims__PriorityType_::__item), "fims:PriorityType"))
+		return NULL;
+	return a;
+}
+
+int fims__PriorityType_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__PriorityType_);
+	if (this->soap_out(soap, tag?tag:"fims:PriorityType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__PriorityType_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__PriorityType_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__PriorityType_ * SOAP_FMAC4 soap_get_fims__PriorityType_(struct soap *soap, fims__PriorityType_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__PriorityType_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__PriorityType_ * SOAP_FMAC2 soap_instantiate_fims__PriorityType_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__PriorityType_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__PriorityType_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__PriorityType_);
+		if (size)
+			*size = sizeof(fims__PriorityType_);
+		((fims__PriorityType_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__PriorityType_, n);
+		if (size)
+			*size = n * sizeof(fims__PriorityType_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__PriorityType_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__PriorityType_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__PriorityType_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__PriorityType_ %p -> %p\n", q, p));
+	*(fims__PriorityType_*)p = *(fims__PriorityType_*)q;
+}
+
+void fims__QueueStatusType_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__QueueStatusType(soap, &this->fims__QueueStatusType_::__item);
+}
+
+void fims__QueueStatusType_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->fims__QueueStatusType_::__item, SOAP_TYPE_fims__QueueStatusType);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__QueueStatusType_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__QueueStatusType_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__QueueStatusType_(struct soap *soap, const char *tag, int id, const fims__QueueStatusType_ *a, const char *type)
+{
+	return soap_out_fims__QueueStatusType(soap, tag, id, &(a->fims__QueueStatusType_::__item), "fims:QueueStatusType");
+}
+
+void *fims__QueueStatusType_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__QueueStatusType_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__QueueStatusType_ * SOAP_FMAC4 soap_in_fims__QueueStatusType_(struct soap *soap, const char *tag, fims__QueueStatusType_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__QueueStatusType_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__QueueStatusType_, sizeof(fims__QueueStatusType_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__QueueStatusType_)
+			return (fims__QueueStatusType_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__QueueStatusType(soap, tag, &(a->fims__QueueStatusType_::__item), "fims:QueueStatusType"))
+		return NULL;
+	return a;
+}
+
+int fims__QueueStatusType_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__QueueStatusType_);
+	if (this->soap_out(soap, tag?tag:"fims:QueueStatusType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__QueueStatusType_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__QueueStatusType_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__QueueStatusType_ * SOAP_FMAC4 soap_get_fims__QueueStatusType_(struct soap *soap, fims__QueueStatusType_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__QueueStatusType_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__QueueStatusType_ * SOAP_FMAC2 soap_instantiate_fims__QueueStatusType_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__QueueStatusType_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__QueueStatusType_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__QueueStatusType_);
+		if (size)
+			*size = sizeof(fims__QueueStatusType_);
+		((fims__QueueStatusType_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__QueueStatusType_, n);
+		if (size)
+			*size = n * sizeof(fims__QueueStatusType_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__QueueStatusType_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__QueueStatusType_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__QueueStatusType_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__QueueStatusType_ %p -> %p\n", q, p));
+	*(fims__QueueStatusType_*)p = *(fims__QueueStatusType_*)q;
+}
+
+void fims__TimecodeDuration__::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__TimecodeDuration(soap, &this->fims__TimecodeDuration__::__item);
+}
+
+void fims__TimecodeDuration__::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->fims__TimecodeDuration__::__item, SOAP_TYPE_fims__TimecodeDuration);
+	soap_serialize_fims__TimecodeDuration(soap, &this->fims__TimecodeDuration__::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__TimecodeDuration__::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__TimecodeDuration__(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__TimecodeDuration__(struct soap *soap, const char *tag, int id, const fims__TimecodeDuration__ *a, const char *type)
+{
+	return soap_out_fims__TimecodeDuration(soap, tag, id, &(a->fims__TimecodeDuration__::__item), "fims:TimecodeDuration");
+}
+
+void *fims__TimecodeDuration__::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__TimecodeDuration__(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__TimecodeDuration__ * SOAP_FMAC4 soap_in_fims__TimecodeDuration__(struct soap *soap, const char *tag, fims__TimecodeDuration__ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__TimecodeDuration__ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__TimecodeDuration__, sizeof(fims__TimecodeDuration__), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__TimecodeDuration__)
+			return (fims__TimecodeDuration__ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__TimecodeDuration(soap, tag, &(a->fims__TimecodeDuration__::__item), "fims:TimecodeDuration"))
+		return NULL;
+	return a;
+}
+
+int fims__TimecodeDuration__::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__TimecodeDuration__);
+	if (this->soap_out(soap, tag?tag:"fims:TimecodeDuration", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__TimecodeDuration__::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__TimecodeDuration__(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__TimecodeDuration__ * SOAP_FMAC4 soap_get_fims__TimecodeDuration__(struct soap *soap, fims__TimecodeDuration__ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__TimecodeDuration__(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__TimecodeDuration__ * SOAP_FMAC2 soap_instantiate_fims__TimecodeDuration__(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__TimecodeDuration__(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__TimecodeDuration__, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__TimecodeDuration__);
+		if (size)
+			*size = sizeof(fims__TimecodeDuration__);
+		((fims__TimecodeDuration__*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__TimecodeDuration__, n);
+		if (size)
+			*size = n * sizeof(fims__TimecodeDuration__);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__TimecodeDuration__*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__TimecodeDuration__*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__TimecodeDuration__(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__TimecodeDuration__ %p -> %p\n", q, p));
+	*(fims__TimecodeDuration__*)p = *(fims__TimecodeDuration__*)q;
+}
+
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_fims__TimecodeDuration(struct soap *soap, const std::wstring *a)
 {	(void)soap; (void)a; /* appease -Wall -Werror */
 }
@@ -11471,6 +13855,113 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_fims__TimecodeDuration(struct soap
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
+}
+
+void fims__Timecode__::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__Timecode(soap, &this->fims__Timecode__::__item);
+}
+
+void fims__Timecode__::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->fims__Timecode__::__item, SOAP_TYPE_fims__Timecode);
+	soap_serialize_fims__Timecode(soap, &this->fims__Timecode__::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__Timecode__::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__Timecode__(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__Timecode__(struct soap *soap, const char *tag, int id, const fims__Timecode__ *a, const char *type)
+{
+	return soap_out_fims__Timecode(soap, tag, id, &(a->fims__Timecode__::__item), "fims:Timecode");
+}
+
+void *fims__Timecode__::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__Timecode__(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__Timecode__ * SOAP_FMAC4 soap_in_fims__Timecode__(struct soap *soap, const char *tag, fims__Timecode__ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__Timecode__ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__Timecode__, sizeof(fims__Timecode__), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__Timecode__)
+			return (fims__Timecode__ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__Timecode(soap, tag, &(a->fims__Timecode__::__item), "fims:Timecode"))
+		return NULL;
+	return a;
+}
+
+int fims__Timecode__::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__Timecode__);
+	if (this->soap_out(soap, tag?tag:"fims:Timecode", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__Timecode__::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__Timecode__(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__Timecode__ * SOAP_FMAC4 soap_get_fims__Timecode__(struct soap *soap, fims__Timecode__ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__Timecode__(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__Timecode__ * SOAP_FMAC2 soap_instantiate_fims__Timecode__(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__Timecode__(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__Timecode__, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__Timecode__);
+		if (size)
+			*size = sizeof(fims__Timecode__);
+		((fims__Timecode__*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__Timecode__, n);
+		if (size)
+			*size = n * sizeof(fims__Timecode__);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__Timecode__*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__Timecode__*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__Timecode__(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__Timecode__ %p -> %p\n", q, p));
+	*(fims__Timecode__*)p = *(fims__Timecode__*)q;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_fims__Timecode(struct soap *soap, const std::wstring *a)
@@ -11527,6 +14018,113 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_fims__Timecode(struct soap *soap, 
 	return p;
 }
 
+void fims__RevisionIDType__::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__RevisionIDType(soap, &this->fims__RevisionIDType__::__item);
+}
+
+void fims__RevisionIDType__::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->fims__RevisionIDType__::__item, SOAP_TYPE_fims__RevisionIDType);
+	soap_serialize_fims__RevisionIDType(soap, &this->fims__RevisionIDType__::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__RevisionIDType__::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__RevisionIDType__(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__RevisionIDType__(struct soap *soap, const char *tag, int id, const fims__RevisionIDType__ *a, const char *type)
+{
+	return soap_out_fims__RevisionIDType(soap, tag, id, &(a->fims__RevisionIDType__::__item), "fims:RevisionIDType");
+}
+
+void *fims__RevisionIDType__::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__RevisionIDType__(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__RevisionIDType__ * SOAP_FMAC4 soap_in_fims__RevisionIDType__(struct soap *soap, const char *tag, fims__RevisionIDType__ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__RevisionIDType__ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__RevisionIDType__, sizeof(fims__RevisionIDType__), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__RevisionIDType__)
+			return (fims__RevisionIDType__ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__RevisionIDType(soap, tag, &(a->fims__RevisionIDType__::__item), "fims:RevisionIDType"))
+		return NULL;
+	return a;
+}
+
+int fims__RevisionIDType__::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__RevisionIDType__);
+	if (this->soap_out(soap, tag?tag:"fims:RevisionIDType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__RevisionIDType__::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__RevisionIDType__(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__RevisionIDType__ * SOAP_FMAC4 soap_get_fims__RevisionIDType__(struct soap *soap, fims__RevisionIDType__ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__RevisionIDType__(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__RevisionIDType__ * SOAP_FMAC2 soap_instantiate_fims__RevisionIDType__(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__RevisionIDType__(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__RevisionIDType__, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__RevisionIDType__);
+		if (size)
+			*size = sizeof(fims__RevisionIDType__);
+		((fims__RevisionIDType__*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__RevisionIDType__, n);
+		if (size)
+			*size = n * sizeof(fims__RevisionIDType__);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__RevisionIDType__*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__RevisionIDType__*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__RevisionIDType__(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__RevisionIDType__ %p -> %p\n", q, p));
+	*(fims__RevisionIDType__*)p = *(fims__RevisionIDType__*)q;
+}
+
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_fims__RevisionIDType(struct soap *soap, const std::wstring *a)
 {	(void)soap; (void)a; /* appease -Wall -Werror */
 }
@@ -11579,6 +14177,112 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_fims__RevisionIDType(struct soap *
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
+}
+
+void fims__ResourceIDType__::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__ResourceIDType(soap, &this->fims__ResourceIDType__::__item);
+}
+
+void fims__ResourceIDType__::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_serialize_fims__ResourceIDType(soap, &this->fims__ResourceIDType__::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__ResourceIDType__::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__ResourceIDType__(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ResourceIDType__(struct soap *soap, const char *tag, int id, const fims__ResourceIDType__ *a, const char *type)
+{
+	return soap_out_fims__ResourceIDType(soap, tag, id, &(a->fims__ResourceIDType__::__item), "fims:ResourceIDType");
+}
+
+void *fims__ResourceIDType__::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__ResourceIDType__(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__ResourceIDType__ * SOAP_FMAC4 soap_in_fims__ResourceIDType__(struct soap *soap, const char *tag, fims__ResourceIDType__ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__ResourceIDType__ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__ResourceIDType__, sizeof(fims__ResourceIDType__), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__ResourceIDType__)
+			return (fims__ResourceIDType__ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__ResourceIDType(soap, tag, &(a->fims__ResourceIDType__::__item), "fims:ResourceIDType"))
+		return NULL;
+	return a;
+}
+
+int fims__ResourceIDType__::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__ResourceIDType__);
+	if (this->soap_out(soap, tag?tag:"fims:ResourceIDType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__ResourceIDType__::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__ResourceIDType__(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__ResourceIDType__ * SOAP_FMAC4 soap_get_fims__ResourceIDType__(struct soap *soap, fims__ResourceIDType__ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__ResourceIDType__(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__ResourceIDType__ * SOAP_FMAC2 soap_instantiate_fims__ResourceIDType__(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__ResourceIDType__(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__ResourceIDType__, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__ResourceIDType__);
+		if (size)
+			*size = sizeof(fims__ResourceIDType__);
+		((fims__ResourceIDType__*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ResourceIDType__, n);
+		if (size)
+			*size = n * sizeof(fims__ResourceIDType__);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__ResourceIDType__*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__ResourceIDType__*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ResourceIDType__(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__ResourceIDType__ %p -> %p\n", q, p));
+	*(fims__ResourceIDType__*)p = *(fims__ResourceIDType__*)q;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_fims__ResourceIDType(struct soap *soap, const std::wstring *a)
@@ -11635,6 +14339,112 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_fims__ResourceIDType(struct soap *
 	return p;
 }
 
+void fims__EmptyID__::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__EmptyID(soap, &this->fims__EmptyID__::__item);
+}
+
+void fims__EmptyID__::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_serialize_fims__EmptyID(soap, &this->fims__EmptyID__::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__EmptyID__::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__EmptyID__(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__EmptyID__(struct soap *soap, const char *tag, int id, const fims__EmptyID__ *a, const char *type)
+{
+	return soap_out_fims__EmptyID(soap, tag, id, &(a->fims__EmptyID__::__item), "fims:EmptyID");
+}
+
+void *fims__EmptyID__::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__EmptyID__(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__EmptyID__ * SOAP_FMAC4 soap_in_fims__EmptyID__(struct soap *soap, const char *tag, fims__EmptyID__ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__EmptyID__ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__EmptyID__, sizeof(fims__EmptyID__), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__EmptyID__)
+			return (fims__EmptyID__ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__EmptyID(soap, tag, &(a->fims__EmptyID__::__item), "fims:EmptyID"))
+		return NULL;
+	return a;
+}
+
+int fims__EmptyID__::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__EmptyID__);
+	if (this->soap_out(soap, tag?tag:"fims:EmptyID", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__EmptyID__::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__EmptyID__(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__EmptyID__ * SOAP_FMAC4 soap_get_fims__EmptyID__(struct soap *soap, fims__EmptyID__ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__EmptyID__(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__EmptyID__ * SOAP_FMAC2 soap_instantiate_fims__EmptyID__(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__EmptyID__(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__EmptyID__, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__EmptyID__);
+		if (size)
+			*size = sizeof(fims__EmptyID__);
+		((fims__EmptyID__*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__EmptyID__, n);
+		if (size)
+			*size = n * sizeof(fims__EmptyID__);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__EmptyID__*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__EmptyID__*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__EmptyID__(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__EmptyID__ %p -> %p\n", q, p));
+	*(fims__EmptyID__*)p = *(fims__EmptyID__*)q;
+}
+
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_fims__EmptyID(struct soap *soap, const std::wstring *a)
 {	(void)soap; (void)a; /* appease -Wall -Werror */
 }
@@ -11687,6 +14497,112 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_fims__EmptyID(struct soap *soap, s
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
+}
+
+void fims__UL__::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__UL(soap, &this->fims__UL__::__item);
+}
+
+void fims__UL__::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_serialize_fims__UL(soap, &this->fims__UL__::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__UL__::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__UL__(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__UL__(struct soap *soap, const char *tag, int id, const fims__UL__ *a, const char *type)
+{
+	return soap_out_fims__UL(soap, tag, id, &(a->fims__UL__::__item), "fims:UL");
+}
+
+void *fims__UL__::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__UL__(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__UL__ * SOAP_FMAC4 soap_in_fims__UL__(struct soap *soap, const char *tag, fims__UL__ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__UL__ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__UL__, sizeof(fims__UL__), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__UL__)
+			return (fims__UL__ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__UL(soap, tag, &(a->fims__UL__::__item), "fims:UL"))
+		return NULL;
+	return a;
+}
+
+int fims__UL__::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__UL__);
+	if (this->soap_out(soap, tag?tag:"fims:UL", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__UL__::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__UL__(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__UL__ * SOAP_FMAC4 soap_get_fims__UL__(struct soap *soap, fims__UL__ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__UL__(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__UL__ * SOAP_FMAC2 soap_instantiate_fims__UL__(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__UL__(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__UL__, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__UL__);
+		if (size)
+			*size = sizeof(fims__UL__);
+		((fims__UL__*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__UL__, n);
+		if (size)
+			*size = n * sizeof(fims__UL__);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__UL__*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__UL__*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__UL__(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__UL__ %p -> %p\n", q, p));
+	*(fims__UL__*)p = *(fims__UL__*)q;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_fims__UL(struct soap *soap, const std::wstring *a)
@@ -11743,6 +14659,112 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_fims__UL(struct soap *soap, std::w
 	return p;
 }
 
+void fims__UMID__::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__UMID(soap, &this->fims__UMID__::__item);
+}
+
+void fims__UMID__::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_serialize_fims__UMID(soap, &this->fims__UMID__::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__UMID__::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__UMID__(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__UMID__(struct soap *soap, const char *tag, int id, const fims__UMID__ *a, const char *type)
+{
+	return soap_out_fims__UMID(soap, tag, id, &(a->fims__UMID__::__item), "fims:UMID");
+}
+
+void *fims__UMID__::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__UMID__(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__UMID__ * SOAP_FMAC4 soap_in_fims__UMID__(struct soap *soap, const char *tag, fims__UMID__ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__UMID__ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__UMID__, sizeof(fims__UMID__), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__UMID__)
+			return (fims__UMID__ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__UMID(soap, tag, &(a->fims__UMID__::__item), "fims:UMID"))
+		return NULL;
+	return a;
+}
+
+int fims__UMID__::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__UMID__);
+	if (this->soap_out(soap, tag?tag:"fims:UMID", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__UMID__::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__UMID__(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__UMID__ * SOAP_FMAC4 soap_get_fims__UMID__(struct soap *soap, fims__UMID__ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__UMID__(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__UMID__ * SOAP_FMAC2 soap_instantiate_fims__UMID__(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__UMID__(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__UMID__, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__UMID__);
+		if (size)
+			*size = sizeof(fims__UMID__);
+		((fims__UMID__*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__UMID__, n);
+		if (size)
+			*size = n * sizeof(fims__UMID__);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__UMID__*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__UMID__*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__UMID__(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__UMID__ %p -> %p\n", q, p));
+	*(fims__UMID__*)p = *(fims__UMID__*)q;
+}
+
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_fims__UMID(struct soap *soap, const std::wstring *a)
 {	(void)soap; (void)a; /* appease -Wall -Werror */
 }
@@ -11797,6 +14819,112 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_fims__UMID(struct soap *soap, std:
 	return p;
 }
 
+void fims__UUID__::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_fims__UUID(soap, &this->fims__UUID__::__item);
+}
+
+void fims__UUID__::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_serialize_fims__UUID(soap, &this->fims__UUID__::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int fims__UUID__::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_fims__UUID__(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__UUID__(struct soap *soap, const char *tag, int id, const fims__UUID__ *a, const char *type)
+{
+	return soap_out_fims__UUID(soap, tag, id, &(a->fims__UUID__::__item), "fims:UUID");
+}
+
+void *fims__UUID__::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_fims__UUID__(soap, tag, this, type);
+}
+
+SOAP_FMAC3 fims__UUID__ * SOAP_FMAC4 soap_in_fims__UUID__(struct soap *soap, const char *tag, fims__UUID__ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (fims__UUID__ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__UUID__, sizeof(fims__UUID__), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__UUID__)
+			return (fims__UUID__ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_fims__UUID(soap, tag, &(a->fims__UUID__::__item), "fims:UUID"))
+		return NULL;
+	return a;
+}
+
+int fims__UUID__::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_fims__UUID__);
+	if (this->soap_out(soap, tag?tag:"fims:UUID", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *fims__UUID__::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_fims__UUID__(soap, this, tag, type);
+}
+
+SOAP_FMAC3 fims__UUID__ * SOAP_FMAC4 soap_get_fims__UUID__(struct soap *soap, fims__UUID__ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_fims__UUID__(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 fims__UUID__ * SOAP_FMAC2 soap_instantiate_fims__UUID__(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_fims__UUID__(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_fims__UUID__, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(fims__UUID__);
+		if (size)
+			*size = sizeof(fims__UUID__);
+		((fims__UUID__*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__UUID__, n);
+		if (size)
+			*size = n * sizeof(fims__UUID__);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((fims__UUID__*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (fims__UUID__*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__UUID__(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying fims__UUID__ %p -> %p\n", q, p));
+	*(fims__UUID__*)p = *(fims__UUID__*)q;
+}
+
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_fims__UUID(struct soap *soap, const std::wstring *a)
 {	(void)soap; (void)a; /* appease -Wall -Werror */
 }
@@ -11849,6 +14977,112 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_fims__UUID(struct soap *soap, std:
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
+}
+
+void edlprovider__EDLProviderErrorCodeType_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_edlprovider__EDLProviderErrorCodeType(soap, &this->edlprovider__EDLProviderErrorCodeType_::__item);
+}
+
+void edlprovider__EDLProviderErrorCodeType_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->edlprovider__EDLProviderErrorCodeType_::__item, SOAP_TYPE_edlprovider__EDLProviderErrorCodeType);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int edlprovider__EDLProviderErrorCodeType_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_edlprovider__EDLProviderErrorCodeType_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__EDLProviderErrorCodeType_(struct soap *soap, const char *tag, int id, const edlprovider__EDLProviderErrorCodeType_ *a, const char *type)
+{
+	return soap_out_edlprovider__EDLProviderErrorCodeType(soap, tag, id, &(a->edlprovider__EDLProviderErrorCodeType_::__item), "edlprovider:EDLProviderErrorCodeType");
+}
+
+void *edlprovider__EDLProviderErrorCodeType_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_edlprovider__EDLProviderErrorCodeType_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 edlprovider__EDLProviderErrorCodeType_ * SOAP_FMAC4 soap_in_edlprovider__EDLProviderErrorCodeType_(struct soap *soap, const char *tag, edlprovider__EDLProviderErrorCodeType_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (edlprovider__EDLProviderErrorCodeType_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_edlprovider__EDLProviderErrorCodeType_, sizeof(edlprovider__EDLProviderErrorCodeType_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_edlprovider__EDLProviderErrorCodeType_)
+			return (edlprovider__EDLProviderErrorCodeType_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_edlprovider__EDLProviderErrorCodeType(soap, tag, &(a->edlprovider__EDLProviderErrorCodeType_::__item), "edlprovider:EDLProviderErrorCodeType"))
+		return NULL;
+	return a;
+}
+
+int edlprovider__EDLProviderErrorCodeType_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_edlprovider__EDLProviderErrorCodeType_);
+	if (this->soap_out(soap, tag?tag:"edlprovider:EDLProviderErrorCodeType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *edlprovider__EDLProviderErrorCodeType_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_edlprovider__EDLProviderErrorCodeType_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 edlprovider__EDLProviderErrorCodeType_ * SOAP_FMAC4 soap_get_edlprovider__EDLProviderErrorCodeType_(struct soap *soap, edlprovider__EDLProviderErrorCodeType_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_edlprovider__EDLProviderErrorCodeType_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 edlprovider__EDLProviderErrorCodeType_ * SOAP_FMAC2 soap_instantiate_edlprovider__EDLProviderErrorCodeType_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_edlprovider__EDLProviderErrorCodeType_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_edlprovider__EDLProviderErrorCodeType_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(edlprovider__EDLProviderErrorCodeType_);
+		if (size)
+			*size = sizeof(edlprovider__EDLProviderErrorCodeType_);
+		((edlprovider__EDLProviderErrorCodeType_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(edlprovider__EDLProviderErrorCodeType_, n);
+		if (size)
+			*size = n * sizeof(edlprovider__EDLProviderErrorCodeType_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((edlprovider__EDLProviderErrorCodeType_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (edlprovider__EDLProviderErrorCodeType_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__EDLProviderErrorCodeType_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying edlprovider__EDLProviderErrorCodeType_ %p -> %p\n", q, p));
+	*(edlprovider__EDLProviderErrorCodeType_*)p = *(edlprovider__EDLProviderErrorCodeType_*)q;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_fims__UID(struct soap *soap, const std::wstring *a)
@@ -11908,19 +15142,19 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_fims__UID(struct soap *soap, std::
 void fimsdescription__languageType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fimsdescription__languageType::xml__lang = NULL;
 	this->fimsdescription__languageType::typeLabel = NULL;
 	this->fimsdescription__languageType::typeDefinition = NULL;
 	this->fimsdescription__languageType::typeLink = NULL;
 	this->fimsdescription__languageType::typeLanguage = NULL;
-	/* transient soap skipped */
 }
 
 void fimsdescription__languageType::soap_serialize(struct soap *soap) const
 {
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -11941,10 +15175,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__languageType(struct soap *so
 		soap_set_attr(soap, "typeLink", soap_wchar2s(soap, ((fimsdescription__languageType*)a)->typeLink->c_str()), 2);
 	if (((fimsdescription__languageType*)a)->typeLanguage)
 		soap_set_attr(soap, "typeLanguage", soap_wchar2s(soap, ((fimsdescription__languageType*)a)->typeLanguage->c_str()), 2);
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__languageType), type))
-		return soap->error;
-	/* transient soap skipped */
-	return soap_element_end_out(soap, tag);
+	return soap_outliteral(soap, tag, &(a->xsd__anyType::__item), "fimsdescription:languageType");
 }
 
 void *fimsdescription__languageType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -11954,18 +15185,18 @@ void *fimsdescription__languageType::soap_in(struct soap *soap, const char *tag,
 SOAP_FMAC3 fimsdescription__languageType * SOAP_FMAC4 soap_in_fimsdescription__languageType(struct soap *soap, const char *tag, fimsdescription__languageType *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_in(soap, tag, 0, NULL))
+	if (soap_element_begin_in(soap, tag, 1, NULL))
 		return NULL;
-	a = (fimsdescription__languageType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fimsdescription__languageType, sizeof(fimsdescription__languageType), soap->type, soap->arrayType);
-	if (!a)
+	if (!(a = (fimsdescription__languageType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fimsdescription__languageType, sizeof(fimsdescription__languageType), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
 		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
 	if (soap->alloced)
 	{	a->soap_default(soap);
 		if (soap->clist->type != SOAP_TYPE_fimsdescription__languageType)
-		{	soap_revert(soap);
-			*soap->id = '\0';
 			return (fimsdescription__languageType *)a->soap_in(soap, tag, type);
-		}
 	}
 	{	const char *t = soap_attr_value(soap, "xml:lang", 0);
 		if (t)
@@ -12057,26 +15288,8 @@ SOAP_FMAC3 fimsdescription__languageType * SOAP_FMAC4 soap_in_fimsdescription__l
 		else if (soap->error)
 			return NULL;
 	}
-	if (soap->body && !*soap->href)
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			/* transient soap skipped */
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (fimsdescription__languageType *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_fimsdescription__languageType, 0, sizeof(fimsdescription__languageType), 0, soap_copy_fimsdescription__languageType);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
+	if (!soap_inliteral(soap, tag, &(a->xsd__anyType::__item)))
+		return NULL;
 	return a;
 }
 
@@ -12138,12 +15351,12 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fimsdescription__languageType(struct soap *
 void fimsdescription__addressType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOfPointerTofimsdescription__textElementType(soap, &this->fimsdescription__addressType::addressLine);
 	this->fimsdescription__addressType::addressTownCity = NULL;
 	this->fimsdescription__addressType::addressCountyState = NULL;
 	this->fimsdescription__addressType::addressDeliveryCode = NULL;
 	this->fimsdescription__addressType::country = NULL;
-	/* transient soap skipped */
 }
 
 void fimsdescription__addressType::soap_serialize(struct soap *soap) const
@@ -12155,7 +15368,7 @@ void fimsdescription__addressType::soap_serialize(struct soap *soap) const
 	soap_serialize_PointerTofimsdescription__textElementType(soap, &this->fimsdescription__addressType::addressCountyState);
 	soap_serialize_PointerTostd__wstring(soap, &this->fimsdescription__addressType::addressDeliveryCode);
 	soap_serialize_PointerTo_fimsdescription__addressType_country(soap, &this->fimsdescription__addressType::country);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -12166,8 +15379,9 @@ int fimsdescription__addressType::soap_out(struct soap *soap, const char *tag, i
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__addressType(struct soap *soap, const char *tag, int id, const fimsdescription__addressType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__addressType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__addressType), "fimsdescription:addressType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_std__vectorTemplateOfPointerTofimsdescription__textElementType(soap, "fimsdescription:addressLine", -1, &(a->fimsdescription__addressType::addressLine), ""))
 		return soap->error;
 	if (soap_out_PointerTofimsdescription__textElementType(soap, "fimsdescription:addressTownCity", -1, &(a->fimsdescription__addressType::addressTownCity), ""))
@@ -12178,7 +15392,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__addressType(struct soap *soa
 		return soap->error;
 	if (soap_out_PointerTo_fimsdescription__addressType_country(soap, "fimsdescription:country", -1, &(a->fimsdescription__addressType::country), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -12202,6 +15415,7 @@ SOAP_FMAC3 fimsdescription__addressType * SOAP_FMAC4 soap_in_fimsdescription__ad
 			return (fimsdescription__addressType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_addressTownCity1 = 1;
 	size_t soap_flag_addressCountyState1 = 1;
 	size_t soap_flag_addressDeliveryCode1 = 1;
@@ -12210,6 +15424,7 @@ SOAP_FMAC3 fimsdescription__addressType * SOAP_FMAC4 soap_in_fimsdescription__ad
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofimsdescription__textElementType(soap, "fimsdescription:addressLine", &(a->fimsdescription__addressType::addressLine), "fimsdescription:textElementType"))
 					continue;
@@ -12233,7 +15448,11 @@ SOAP_FMAC3 fimsdescription__addressType * SOAP_FMAC4 soap_in_fimsdescription__ad
 				{	soap_flag_country1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -12310,6 +15529,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fimsdescription__addressType(struct soap *s
 void fimsdescription__detailsType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOfstd__wstring(soap, &this->fimsdescription__detailsType::emailAddress);
 	this->fimsdescription__detailsType::webAddress = NULL;
 	this->fimsdescription__detailsType::address = NULL;
@@ -12319,7 +15539,6 @@ void fimsdescription__detailsType::soap_default(struct soap *soap)
 	this->fimsdescription__detailsType::typeDefinition = NULL;
 	this->fimsdescription__detailsType::typeLink = NULL;
 	this->fimsdescription__detailsType::typeLanguage = NULL;
-	/* transient soap skipped */
 }
 
 void fimsdescription__detailsType::soap_serialize(struct soap *soap) const
@@ -12331,7 +15550,7 @@ void fimsdescription__detailsType::soap_serialize(struct soap *soap) const
 	soap_serialize_PointerTofimsdescription__addressType(soap, &this->fimsdescription__detailsType::address);
 	soap_serialize_PointerTostd__wstring(soap, &this->fimsdescription__detailsType::telephoneNumber);
 	soap_serialize_PointerTostd__wstring(soap, &this->fimsdescription__detailsType::mobileTelephoneNumber);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -12350,8 +15569,9 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__detailsType(struct soap *soa
 		soap_set_attr(soap, "typeLink", soap_wchar2s(soap, ((fimsdescription__detailsType*)a)->typeLink->c_str()), 2);
 	if (((fimsdescription__detailsType*)a)->typeLanguage)
 		soap_set_attr(soap, "typeLanguage", soap_wchar2s(soap, ((fimsdescription__detailsType*)a)->typeLanguage->c_str()), 2);
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__detailsType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__detailsType), "fimsdescription:detailsType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_std__vectorTemplateOfstd__wstring(soap, "fimsdescription:emailAddress", -1, &(a->fimsdescription__detailsType::emailAddress), ""))
 		return soap->error;
 	if (soap_out_PointerTostd__wstring(soap, "fimsdescription:webAddress", -1, &(a->fimsdescription__detailsType::webAddress), ""))
@@ -12362,7 +15582,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__detailsType(struct soap *soa
 		return soap->error;
 	if (soap_out_PointerTostd__wstring(soap, "fimsdescription:mobileTelephoneNumber", -1, &(a->fimsdescription__detailsType::mobileTelephoneNumber), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -12458,6 +15677,7 @@ SOAP_FMAC3 fimsdescription__detailsType * SOAP_FMAC4 soap_in_fimsdescription__de
 		else if (soap->error)
 			return NULL;
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_webAddress1 = 1;
 	size_t soap_flag_address1 = 1;
 	size_t soap_flag_telephoneNumber1 = 1;
@@ -12466,6 +15686,7 @@ SOAP_FMAC3 fimsdescription__detailsType * SOAP_FMAC4 soap_in_fimsdescription__de
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfstd__wstring(soap, "fimsdescription:emailAddress", &(a->fimsdescription__detailsType::emailAddress), "xsd:string"))
 					continue;
@@ -12489,7 +15710,11 @@ SOAP_FMAC3 fimsdescription__detailsType * SOAP_FMAC4 soap_in_fimsdescription__de
 				{	soap_flag_mobileTelephoneNumber1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -12566,6 +15791,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fimsdescription__detailsType(struct soap *s
 void fimsdescription__organisationDetailsType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOfPointerTofimsdescription__textElementType(soap, &this->fimsdescription__organisationDetailsType::organisationName);
 	soap_default_std__vectorTemplateOfxsd__anyURI(soap, &this->fimsdescription__organisationDetailsType::organisationCode);
 	this->fimsdescription__organisationDetailsType::organisationDepartment = NULL;
@@ -12576,7 +15802,6 @@ void fimsdescription__organisationDetailsType::soap_default(struct soap *soap)
 	this->fimsdescription__organisationDetailsType::typeDefinition = NULL;
 	this->fimsdescription__organisationDetailsType::typeLink = NULL;
 	this->fimsdescription__organisationDetailsType::typeLanguage = NULL;
-	/* transient soap skipped */
 }
 
 void fimsdescription__organisationDetailsType::soap_serialize(struct soap *soap) const
@@ -12588,7 +15813,7 @@ void fimsdescription__organisationDetailsType::soap_serialize(struct soap *soap)
 	soap_serialize_PointerTo_fimsdescription__organisationDetailsType_organisationDepartment(soap, &this->fimsdescription__organisationDetailsType::organisationDepartment);
 	soap_serialize_std__vectorTemplateOfPointerTofimsdescription__detailsType(soap, &this->fimsdescription__organisationDetailsType::details);
 	soap_serialize_std__vectorTemplateOfPointerTofimsdescription__entityType(soap, &this->fimsdescription__organisationDetailsType::contacts);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -12609,8 +15834,9 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__organisationDetailsType(stru
 		soap_set_attr(soap, "typeLink", soap_wchar2s(soap, ((fimsdescription__organisationDetailsType*)a)->typeLink->c_str()), 2);
 	if (((fimsdescription__organisationDetailsType*)a)->typeLanguage)
 		soap_set_attr(soap, "typeLanguage", soap_wchar2s(soap, ((fimsdescription__organisationDetailsType*)a)->typeLanguage->c_str()), 2);
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__organisationDetailsType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__organisationDetailsType), "fimsdescription:organisationDetailsType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_std__vectorTemplateOfPointerTofimsdescription__textElementType(soap, "fimsdescription:organisationName", -1, &(a->fimsdescription__organisationDetailsType::organisationName), ""))
 		return soap->error;
 	if (soap_out_std__vectorTemplateOfxsd__anyURI(soap, "fimsdescription:organisationCode", -1, &(a->fimsdescription__organisationDetailsType::organisationCode), ""))
@@ -12621,7 +15847,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__organisationDetailsType(stru
 		return soap->error;
 	if (soap_out_std__vectorTemplateOfPointerTofimsdescription__entityType(soap, "fimsdescription:contacts", -1, &(a->fimsdescription__organisationDetailsType::contacts), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -12735,11 +15960,13 @@ SOAP_FMAC3 fimsdescription__organisationDetailsType * SOAP_FMAC4 soap_in_fimsdes
 		else if (soap->error)
 			return NULL;
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_organisationDepartment1 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofimsdescription__textElementType(soap, "fimsdescription:organisationName", &(a->fimsdescription__organisationDetailsType::organisationName), "fimsdescription:textElementType"))
 					continue;
@@ -12757,7 +15984,11 @@ SOAP_FMAC3 fimsdescription__organisationDetailsType * SOAP_FMAC4 soap_in_fimsdes
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofimsdescription__entityType(soap, "fimsdescription:contacts", &(a->fimsdescription__organisationDetailsType::contacts), "fimsdescription:entityType"))
 					continue;
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -12834,6 +16065,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fimsdescription__organisationDetailsType(st
 void fimsdescription__contactDetailsType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fimsdescription__contactDetailsType::name = NULL;
 	this->fimsdescription__contactDetailsType::givenName = NULL;
 	this->fimsdescription__contactDetailsType::familyName = NULL;
@@ -12850,7 +16082,6 @@ void fimsdescription__contactDetailsType::soap_default(struct soap *soap)
 	this->fimsdescription__contactDetailsType::typeDefinition = NULL;
 	this->fimsdescription__contactDetailsType::typeLink = NULL;
 	this->fimsdescription__contactDetailsType::typeLanguage = NULL;
-	/* transient soap skipped */
 }
 
 void fimsdescription__contactDetailsType::soap_serialize(struct soap *soap) const
@@ -12868,7 +16099,7 @@ void fimsdescription__contactDetailsType::soap_serialize(struct soap *soap) cons
 	soap_serialize_std__vectorTemplateOfPointerTofimsdescription__detailsType(soap, &this->fimsdescription__contactDetailsType::details);
 	soap_serialize_std__vectorTemplateOfPointerTofimsdescription__textElementType(soap, &this->fimsdescription__contactDetailsType::stageName);
 	soap_serialize_std__vectorTemplateOfPointerTofimsdescription__entityType(soap, &this->fimsdescription__contactDetailsType::relatedContacts);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -12889,8 +16120,9 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__contactDetailsType(struct so
 		soap_set_attr(soap, "typeLink", soap_wchar2s(soap, ((fimsdescription__contactDetailsType*)a)->typeLink->c_str()), 2);
 	if (((fimsdescription__contactDetailsType*)a)->typeLanguage)
 		soap_set_attr(soap, "typeLanguage", soap_wchar2s(soap, ((fimsdescription__contactDetailsType*)a)->typeLanguage->c_str()), 2);
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__contactDetailsType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__contactDetailsType), "fimsdescription:contactDetailsType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_PointerTostd__wstring(soap, "fimsdescription:name", -1, &(a->fimsdescription__contactDetailsType::name), ""))
 		return soap->error;
 	if (soap_out_PointerTostd__wstring(soap, "fimsdescription:givenName", -1, &(a->fimsdescription__contactDetailsType::givenName), ""))
@@ -12913,7 +16145,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__contactDetailsType(struct so
 		return soap->error;
 	if (soap_out_std__vectorTemplateOfPointerTofimsdescription__entityType(soap, "fimsdescription:relatedContacts", -1, &(a->fimsdescription__contactDetailsType::relatedContacts), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -13027,6 +16258,7 @@ SOAP_FMAC3 fimsdescription__contactDetailsType * SOAP_FMAC4 soap_in_fimsdescript
 		else if (soap->error)
 			return NULL;
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_name1 = 1;
 	size_t soap_flag_givenName1 = 1;
 	size_t soap_flag_familyName1 = 1;
@@ -13037,6 +16269,7 @@ SOAP_FMAC3 fimsdescription__contactDetailsType * SOAP_FMAC4 soap_in_fimsdescript
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_name1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_PointerTostd__wstring(soap, "fimsdescription:name", &(a->fimsdescription__contactDetailsType::name), "xsd:string"))
 				{	soap_flag_name1--;
@@ -13082,7 +16315,11 @@ SOAP_FMAC3 fimsdescription__contactDetailsType * SOAP_FMAC4 soap_in_fimsdescript
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofimsdescription__entityType(soap, "fimsdescription:relatedContacts", &(a->fimsdescription__contactDetailsType::relatedContacts), "fimsdescription:entityType"))
 					continue;
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -13159,11 +16396,11 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fimsdescription__contactDetailsType(struct 
 void fimsdescription__entityType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOfPointerTofimsdescription__contactDetailsType(soap, &this->fimsdescription__entityType::contactDetails);
 	soap_default_std__vectorTemplateOfPointerTofimsdescription__organisationDetailsType(soap, &this->fimsdescription__entityType::organisationDetails);
 	this->fimsdescription__entityType::role = NULL;
 	this->fimsdescription__entityType::entityId = NULL;
-	/* transient soap skipped */
 }
 
 void fimsdescription__entityType::soap_serialize(struct soap *soap) const
@@ -13173,7 +16410,7 @@ void fimsdescription__entityType::soap_serialize(struct soap *soap) const
 	soap_serialize_std__vectorTemplateOfPointerTofimsdescription__contactDetailsType(soap, &this->fimsdescription__entityType::contactDetails);
 	soap_serialize_std__vectorTemplateOfPointerTofimsdescription__organisationDetailsType(soap, &this->fimsdescription__entityType::organisationDetails);
 	soap_serialize_PointerTostd__vectorTemplateOf_fimsdescription__entityType_role(soap, &this->fimsdescription__entityType::role);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -13186,15 +16423,15 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__entityType(struct soap *soap
 {
 	if (((fimsdescription__entityType*)a)->entityId)
 		soap_set_attr(soap, "entityId", soap_wchar2s(soap, ((fimsdescription__entityType*)a)->entityId->c_str()), 2);
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__entityType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__entityType), "fimsdescription:entityType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_std__vectorTemplateOfPointerTofimsdescription__contactDetailsType(soap, "fimsdescription:contactDetails", -1, &(a->fimsdescription__entityType::contactDetails), ""))
 		return soap->error;
 	if (soap_out_std__vectorTemplateOfPointerTofimsdescription__organisationDetailsType(soap, "fimsdescription:organisationDetails", -1, &(a->fimsdescription__entityType::organisationDetails), ""))
 		return soap->error;
 	if (soap_out_PointerTostd__vectorTemplateOf_fimsdescription__entityType_role(soap, "fimsdescription:role", -1, &(a->fimsdescription__entityType::role), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -13236,10 +16473,12 @@ SOAP_FMAC3 fimsdescription__entityType * SOAP_FMAC4 soap_in_fimsdescription__ent
 		else if (soap->error)
 			return NULL;
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofimsdescription__contactDetailsType(soap, "fimsdescription:contactDetails", &(a->fimsdescription__entityType::contactDetails), "fimsdescription:contactDetailsType"))
 					continue;
@@ -13249,7 +16488,11 @@ SOAP_FMAC3 fimsdescription__entityType * SOAP_FMAC4 soap_in_fimsdescription__ent
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTostd__vectorTemplateOf_fimsdescription__entityType_role(soap, "fimsdescription:role", &(a->fimsdescription__entityType::role), ""))
 					continue;
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -13326,11 +16569,11 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fimsdescription__entityType(struct soap *so
 void fimsdescription__dateType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fimsdescription__dateType::created = NULL;
 	this->fimsdescription__dateType::modified = NULL;
 	this->fimsdescription__dateType::issued = NULL;
 	this->fimsdescription__dateType::alternative = NULL;
-	/* transient soap skipped */
 }
 
 void fimsdescription__dateType::soap_serialize(struct soap *soap) const
@@ -13341,7 +16584,7 @@ void fimsdescription__dateType::soap_serialize(struct soap *soap) const
 	soap_serialize_PointerTo_fimsdescription__dateType_modified(soap, &this->fimsdescription__dateType::modified);
 	soap_serialize_PointerTo_fimsdescription__dateType_issued(soap, &this->fimsdescription__dateType::issued);
 	soap_serialize_PointerTo_fimsdescription__dateType_alternative(soap, &this->fimsdescription__dateType::alternative);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -13352,8 +16595,9 @@ int fimsdescription__dateType::soap_out(struct soap *soap, const char *tag, int 
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__dateType(struct soap *soap, const char *tag, int id, const fimsdescription__dateType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__dateType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__dateType), "fimsdescription:dateType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_PointerTo_fimsdescription__dateType_created(soap, "fimsdescription:created", -1, &(a->fimsdescription__dateType::created), ""))
 		return soap->error;
 	if (soap_out_PointerTo_fimsdescription__dateType_modified(soap, "fimsdescription:modified", -1, &(a->fimsdescription__dateType::modified), ""))
@@ -13362,7 +16606,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__dateType(struct soap *soap, 
 		return soap->error;
 	if (soap_out_PointerTo_fimsdescription__dateType_alternative(soap, "fimsdescription:alternative", -1, &(a->fimsdescription__dateType::alternative), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -13386,6 +16629,7 @@ SOAP_FMAC3 fimsdescription__dateType * SOAP_FMAC4 soap_in_fimsdescription__dateT
 			return (fimsdescription__dateType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_created1 = 1;
 	size_t soap_flag_modified1 = 1;
 	size_t soap_flag_issued1 = 1;
@@ -13394,6 +16638,7 @@ SOAP_FMAC3 fimsdescription__dateType * SOAP_FMAC4 soap_in_fimsdescription__dateT
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_created1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTo_fimsdescription__dateType_created(soap, "fimsdescription:created", &(a->fimsdescription__dateType::created), ""))
 				{	soap_flag_created1--;
@@ -13414,7 +16659,11 @@ SOAP_FMAC3 fimsdescription__dateType * SOAP_FMAC4 soap_in_fimsdescription__dateT
 				{	soap_flag_alternative1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -13491,9 +16740,9 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fimsdescription__dateType(struct soap *soap
 void fimsdescription__textElementType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__wstring(soap, &this->fimsdescription__textElementType::__item);
 	this->fimsdescription__textElementType::xml__lang = NULL;
-	/* transient soap skipped */
 }
 
 void fimsdescription__textElementType::soap_serialize(struct soap *soap) const
@@ -13502,7 +16751,7 @@ void fimsdescription__textElementType::soap_serialize(struct soap *soap) const
 	(void)soap; /* appease -Wall -Werror */
 	soap_embedded(soap, &this->fimsdescription__textElementType::__item, SOAP_TYPE_std__wstring);
 	soap_serialize_std__wstring(soap, &this->fimsdescription__textElementType::__item);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -13515,7 +16764,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__textElementType(struct soap 
 {
 	if (((fimsdescription__textElementType*)a)->xml__lang)
 		soap_set_attr(soap, "xml:lang", soap_wchar2s(soap, ((fimsdescription__textElementType*)a)->xml__lang->c_str()), 2);
-	return soap_out_std__wstring(soap, tag, id, &a->fimsdescription__textElementType::__item, "");
+	return soap_out_std__wstring(soap, tag, id, &(a->fimsdescription__textElementType::__item), "fimsdescription:textElementType");
 }
 
 void *fimsdescription__textElementType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -13682,6 +16931,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fimsdescription__textElementType(struct soa
 void fimsdescription__rightsType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOfPointerTofimsdescription__textElementType(soap, &this->fimsdescription__rightsType::rightsExpression);
 	this->fimsdescription__rightsType::rightsLink = NULL;
 	this->fimsdescription__rightsType::rightsHolder = NULL;
@@ -13695,7 +16945,6 @@ void fimsdescription__rightsType::soap_default(struct soap *soap)
 	this->fimsdescription__rightsType::typeDefinition = NULL;
 	this->fimsdescription__rightsType::typeLink = NULL;
 	this->fimsdescription__rightsType::typeLanguage = NULL;
-	/* transient soap skipped */
 }
 
 void fimsdescription__rightsType::soap_serialize(struct soap *soap) const
@@ -13711,7 +16960,7 @@ void fimsdescription__rightsType::soap_serialize(struct soap *soap) const
 	soap_serialize_std__vectorTemplateOfPointerTofimsdescription__textElementType(soap, &this->fimsdescription__rightsType::disclaimer);
 	soap_serialize_std__vectorTemplateOfPointerTofimsdescription__identifierType(soap, &this->fimsdescription__rightsType::rightsId);
 	soap_serialize_std__vectorTemplateOfPointerTofimsdescription__contactDetailsType(soap, &this->fimsdescription__rightsType::contactDetails);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -13730,8 +16979,9 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__rightsType(struct soap *soap
 		soap_set_attr(soap, "typeLink", soap_wchar2s(soap, ((fimsdescription__rightsType*)a)->typeLink->c_str()), 2);
 	if (((fimsdescription__rightsType*)a)->typeLanguage)
 		soap_set_attr(soap, "typeLanguage", soap_wchar2s(soap, ((fimsdescription__rightsType*)a)->typeLanguage->c_str()), 2);
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__rightsType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__rightsType), "fimsdescription:rightsType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_std__vectorTemplateOfPointerTofimsdescription__textElementType(soap, "fimsdescription:rightsExpression", -1, &(a->fimsdescription__rightsType::rightsExpression), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fimsdescription:rightsLink", -1, &(a->fimsdescription__rightsType::rightsLink), ""))
@@ -13750,7 +17000,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__rightsType(struct soap *soap
 		return soap->error;
 	if (soap_out_std__vectorTemplateOfPointerTofimsdescription__contactDetailsType(soap, "fimsdescription:contactDetails", -1, &(a->fimsdescription__rightsType::contactDetails), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -13846,6 +17095,7 @@ SOAP_FMAC3 fimsdescription__rightsType * SOAP_FMAC4 soap_in_fimsdescription__rig
 		else if (soap->error)
 			return NULL;
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_rightsLink1 = 1;
 	size_t soap_flag_rightsHolder1 = 1;
 	size_t soap_flag_exploitationIssues1 = 1;
@@ -13855,6 +17105,7 @@ SOAP_FMAC3 fimsdescription__rightsType * SOAP_FMAC4 soap_in_fimsdescription__rig
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofimsdescription__textElementType(soap, "fimsdescription:rightsExpression", &(a->fimsdescription__rightsType::rightsExpression), "fimsdescription:textElementType"))
 					continue;
@@ -13892,7 +17143,11 @@ SOAP_FMAC3 fimsdescription__rightsType * SOAP_FMAC4 soap_in_fimsdescription__rig
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofimsdescription__contactDetailsType(soap, "fimsdescription:contactDetails", &(a->fimsdescription__rightsType::contactDetails), "fimsdescription:contactDetailsType"))
 					continue;
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -13969,9 +17224,9 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fimsdescription__rightsType(struct soap *so
 void fimsdescription__coverageType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fimsdescription__coverageType::temporal = NULL;
 	this->fimsdescription__coverageType::spatial = NULL;
-	/* transient soap skipped */
 }
 
 void fimsdescription__coverageType::soap_serialize(struct soap *soap) const
@@ -13980,7 +17235,7 @@ void fimsdescription__coverageType::soap_serialize(struct soap *soap) const
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_PointerTo_fimsdescription__coverageType_temporal(soap, &this->fimsdescription__coverageType::temporal);
 	soap_serialize_PointerTo_fimsdescription__coverageType_spatial(soap, &this->fimsdescription__coverageType::spatial);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -13991,13 +17246,13 @@ int fimsdescription__coverageType::soap_out(struct soap *soap, const char *tag, 
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__coverageType(struct soap *soap, const char *tag, int id, const fimsdescription__coverageType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__coverageType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__coverageType), "fimsdescription:coverageType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_PointerTo_fimsdescription__coverageType_temporal(soap, "fimsdescription:temporal", -1, &(a->fimsdescription__coverageType::temporal), ""))
 		return soap->error;
 	if (soap_out_PointerTo_fimsdescription__coverageType_spatial(soap, "fimsdescription:spatial", -1, &(a->fimsdescription__coverageType::spatial), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -14021,12 +17276,14 @@ SOAP_FMAC3 fimsdescription__coverageType * SOAP_FMAC4 soap_in_fimsdescription__c
 			return (fimsdescription__coverageType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_temporal1 = 1;
 	size_t soap_flag_spatial1 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_temporal1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTo_fimsdescription__coverageType_temporal(soap, "fimsdescription:temporal", &(a->fimsdescription__coverageType::temporal), ""))
 				{	soap_flag_temporal1--;
@@ -14037,7 +17294,11 @@ SOAP_FMAC3 fimsdescription__coverageType * SOAP_FMAC4 soap_in_fimsdescription__c
 				{	soap_flag_spatial1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -14322,10 +17583,10 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fimsdescription__descriptionType(struct soa
 void fimsdescription__typeType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fimsdescription__typeType::genre = NULL;
 	this->fimsdescription__typeType::objectType = NULL;
 	this->fimsdescription__typeType::targetAudience = NULL;
-	/* transient soap skipped */
 }
 
 void fimsdescription__typeType::soap_serialize(struct soap *soap) const
@@ -14335,7 +17596,7 @@ void fimsdescription__typeType::soap_serialize(struct soap *soap) const
 	soap_serialize_PointerTostd__vectorTemplateOf_fimsdescription__typeType_genre(soap, &this->fimsdescription__typeType::genre);
 	soap_serialize_PointerTostd__vectorTemplateOf_fimsdescription__typeType_objectType(soap, &this->fimsdescription__typeType::objectType);
 	soap_serialize_PointerTostd__vectorTemplateOf_fimsdescription__typeType_targetAudience(soap, &this->fimsdescription__typeType::targetAudience);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -14346,15 +17607,15 @@ int fimsdescription__typeType::soap_out(struct soap *soap, const char *tag, int 
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__typeType(struct soap *soap, const char *tag, int id, const fimsdescription__typeType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__typeType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__typeType), "fimsdescription:typeType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_PointerTostd__vectorTemplateOf_fimsdescription__typeType_genre(soap, "fimsdescription:genre", -1, &(a->fimsdescription__typeType::genre), ""))
 		return soap->error;
 	if (soap_out_PointerTostd__vectorTemplateOf_fimsdescription__typeType_objectType(soap, "fimsdescription:objectType", -1, &(a->fimsdescription__typeType::objectType), ""))
 		return soap->error;
 	if (soap_out_PointerTostd__vectorTemplateOf_fimsdescription__typeType_targetAudience(soap, "fimsdescription:targetAudience", -1, &(a->fimsdescription__typeType::targetAudience), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -14378,10 +17639,12 @@ SOAP_FMAC3 fimsdescription__typeType * SOAP_FMAC4 soap_in_fimsdescription__typeT
 			return (fimsdescription__typeType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTostd__vectorTemplateOf_fimsdescription__typeType_genre(soap, "fimsdescription:genre", &(a->fimsdescription__typeType::genre), ""))
 					continue;
@@ -14391,7 +17654,11 @@ SOAP_FMAC3 fimsdescription__typeType * SOAP_FMAC4 soap_in_fimsdescription__typeT
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTostd__vectorTemplateOf_fimsdescription__typeType_targetAudience(soap, "fimsdescription:targetAudience", &(a->fimsdescription__typeType::targetAudience), ""))
 					continue;
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -14676,6 +17943,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fimsdescription__subjectType(struct soap *s
 void fimsdescription__identifierType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__wstring(soap, &this->fimsdescription__identifierType::__item);
 	this->fimsdescription__identifierType::typeLabel = NULL;
 	this->fimsdescription__identifierType::typeDefinition = NULL;
@@ -14685,7 +17953,6 @@ void fimsdescription__identifierType::soap_default(struct soap *soap)
 	this->fimsdescription__identifierType::formatDefinition = NULL;
 	this->fimsdescription__identifierType::formatLink = NULL;
 	this->fimsdescription__identifierType::formatLanguage = NULL;
-	/* transient soap skipped */
 }
 
 void fimsdescription__identifierType::soap_serialize(struct soap *soap) const
@@ -14694,7 +17961,7 @@ void fimsdescription__identifierType::soap_serialize(struct soap *soap) const
 	(void)soap; /* appease -Wall -Werror */
 	soap_embedded(soap, &this->fimsdescription__identifierType::__item, SOAP_TYPE_std__wstring);
 	soap_serialize_std__wstring(soap, &this->fimsdescription__identifierType::__item);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -14721,7 +17988,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__identifierType(struct soap *
 		soap_set_attr(soap, "formatLink", soap_wchar2s(soap, ((fimsdescription__identifierType*)a)->formatLink->c_str()), 2);
 	if (((fimsdescription__identifierType*)a)->formatLanguage)
 		soap_set_attr(soap, "formatLanguage", soap_wchar2s(soap, ((fimsdescription__identifierType*)a)->formatLanguage->c_str()), 2);
-	return soap_out_std__wstring(soap, tag, id, &a->fimsdescription__identifierType::__item, "");
+	return soap_out_std__wstring(soap, tag, id, &(a->fimsdescription__identifierType::__item), "fimsdescription:identifierType");
 }
 
 void *fimsdescription__identifierType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -15159,6 +18426,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fimsdescription__titleType(struct soap *soa
 void fimsdescription__bmContentDescriptionType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOfPointerTofimsdescription__textElementType(soap, &this->fimsdescription__bmContentDescriptionType::title);
 	soap_default_std__vectorTemplateOfPointerTofimsdescription__titleType(soap, &this->fimsdescription__bmContentDescriptionType::alternativeTitle);
 	soap_default_std__vectorTemplateOfPointerTofimsdescription__entityType(soap, &this->fimsdescription__bmContentDescriptionType::creator);
@@ -15174,7 +18442,6 @@ void fimsdescription__bmContentDescriptionType::soap_default(struct soap *soap)
 	soap_default_std__vectorTemplateOfPointerTofimsdescription__rightsType(soap, &this->fimsdescription__bmContentDescriptionType::rights);
 	this->fimsdescription__bmContentDescriptionType::version = NULL;
 	this->fimsdescription__bmContentDescriptionType::xml__lang = NULL;
-	/* transient soap skipped */
 }
 
 void fimsdescription__bmContentDescriptionType::soap_serialize(struct soap *soap) const
@@ -15195,7 +18462,7 @@ void fimsdescription__bmContentDescriptionType::soap_serialize(struct soap *soap
 	soap_serialize_std__vectorTemplateOfPointerTofimsdescription__coverageType(soap, &this->fimsdescription__bmContentDescriptionType::coverage);
 	soap_serialize_std__vectorTemplateOfPointerTofimsdescription__rightsType(soap, &this->fimsdescription__bmContentDescriptionType::rights);
 	soap_serialize_PointerTostd__wstring(soap, &this->fimsdescription__bmContentDescriptionType::version);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -15208,8 +18475,9 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__bmContentDescriptionType(str
 {
 	if (((fimsdescription__bmContentDescriptionType*)a)->xml__lang)
 		soap_set_attr(soap, "xml:lang", soap_wchar2s(soap, ((fimsdescription__bmContentDescriptionType*)a)->xml__lang->c_str()), 2);
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__bmContentDescriptionType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fimsdescription__bmContentDescriptionType), "fimsdescription:bmContentDescriptionType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_std__vectorTemplateOfPointerTofimsdescription__textElementType(soap, "fimsdescription:title", -1, &(a->fimsdescription__bmContentDescriptionType::title), ""))
 		return soap->error;
 	if (soap_out_std__vectorTemplateOfPointerTofimsdescription__titleType(soap, "fimsdescription:alternativeTitle", -1, &(a->fimsdescription__bmContentDescriptionType::alternativeTitle), ""))
@@ -15238,7 +18506,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fimsdescription__bmContentDescriptionType(str
 		return soap->error;
 	if (soap_out_PointerTostd__wstring(soap, "fimsdescription:version", -1, &(a->fimsdescription__bmContentDescriptionType::version), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -15280,11 +18547,13 @@ SOAP_FMAC3 fimsdescription__bmContentDescriptionType * SOAP_FMAC4 soap_in_fimsde
 		else if (soap->error)
 			return NULL;
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_version1 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofimsdescription__textElementType(soap, "fimsdescription:title", &(a->fimsdescription__bmContentDescriptionType::title), "fimsdescription:textElementType"))
 					continue;
@@ -15329,7 +18598,11 @@ SOAP_FMAC3 fimsdescription__bmContentDescriptionType * SOAP_FMAC4 soap_in_fimsde
 				{	soap_flag_version1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -15571,8 +18844,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy__fims__formatCollection(struct soap *soap, 
 void fims__DescriptionsType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOfPointerTofims__DescriptionType(soap, &this->fims__DescriptionsType::description);
-	/* transient soap skipped */
 }
 
 void fims__DescriptionsType::soap_serialize(struct soap *soap) const
@@ -15580,7 +18853,7 @@ void fims__DescriptionsType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOfPointerTofims__DescriptionType(soap, &this->fims__DescriptionsType::description);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -15591,11 +18864,11 @@ int fims__DescriptionsType::soap_out(struct soap *soap, const char *tag, int id,
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__DescriptionsType(struct soap *soap, const char *tag, int id, const fims__DescriptionsType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__DescriptionsType), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOfPointerTofims__DescriptionType(soap, "fims:description", -1, &(a->fims__DescriptionsType::description), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__DescriptionsType), "fims:DescriptionsType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOfPointerTofims__DescriptionType(soap, "fims:description", -1, &(a->fims__DescriptionsType::description), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -15619,14 +18892,20 @@ SOAP_FMAC3 fims__DescriptionsType * SOAP_FMAC4 soap_in_fims__DescriptionsType(st
 			return (fims__DescriptionsType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofims__DescriptionType(soap, "fims:description", &(a->fims__DescriptionsType::description), "fims:DescriptionType"))
 					continue;
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -15707,8 +18986,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__DescriptionsType(struct soap *soap, i
 void fims__BMEssenceLocatorsType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOfPointerTofims__BMEssenceLocatorType(soap, &this->fims__BMEssenceLocatorsType::bmEssenceLocator);
-	/* transient soap skipped */
 }
 
 void fims__BMEssenceLocatorsType::soap_serialize(struct soap *soap) const
@@ -15716,7 +18995,7 @@ void fims__BMEssenceLocatorsType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOfPointerTofims__BMEssenceLocatorType(soap, &this->fims__BMEssenceLocatorsType::bmEssenceLocator);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -15727,11 +19006,11 @@ int fims__BMEssenceLocatorsType::soap_out(struct soap *soap, const char *tag, in
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__BMEssenceLocatorsType(struct soap *soap, const char *tag, int id, const fims__BMEssenceLocatorsType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__BMEssenceLocatorsType), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOfPointerTofims__BMEssenceLocatorType(soap, "fims:bmEssenceLocator", -1, &(a->fims__BMEssenceLocatorsType::bmEssenceLocator), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__BMEssenceLocatorsType), "fims:BMEssenceLocatorsType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOfPointerTofims__BMEssenceLocatorType(soap, "fims:bmEssenceLocator", -1, &(a->fims__BMEssenceLocatorsType::bmEssenceLocator), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -15755,14 +19034,20 @@ SOAP_FMAC3 fims__BMEssenceLocatorsType * SOAP_FMAC4 soap_in_fims__BMEssenceLocat
 			return (fims__BMEssenceLocatorsType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofims__BMEssenceLocatorType(soap, "fims:bmEssenceLocator", &(a->fims__BMEssenceLocatorsType::bmEssenceLocator), "fims:BMEssenceLocatorType"))
 					continue;
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -15843,8 +19128,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__BMEssenceLocatorsType(struct soap *so
 void fims__BMContentFormatsType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOfPointerTofims__BMContentFormatType(soap, &this->fims__BMContentFormatsType::bmContentFormat);
-	/* transient soap skipped */
 }
 
 void fims__BMContentFormatsType::soap_serialize(struct soap *soap) const
@@ -15852,7 +19137,7 @@ void fims__BMContentFormatsType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOfPointerTofims__BMContentFormatType(soap, &this->fims__BMContentFormatsType::bmContentFormat);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -15863,11 +19148,11 @@ int fims__BMContentFormatsType::soap_out(struct soap *soap, const char *tag, int
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__BMContentFormatsType(struct soap *soap, const char *tag, int id, const fims__BMContentFormatsType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__BMContentFormatsType), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOfPointerTofims__BMContentFormatType(soap, "fims:bmContentFormat", -1, &(a->fims__BMContentFormatsType::bmContentFormat), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__BMContentFormatsType), "fims:BMContentFormatsType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOfPointerTofims__BMContentFormatType(soap, "fims:bmContentFormat", -1, &(a->fims__BMContentFormatsType::bmContentFormat), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -15891,14 +19176,20 @@ SOAP_FMAC3 fims__BMContentFormatsType * SOAP_FMAC4 soap_in_fims__BMContentFormat
 			return (fims__BMContentFormatsType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofims__BMContentFormatType(soap, "fims:bmContentFormat", &(a->fims__BMContentFormatsType::bmContentFormat), "fims:BMContentFormatType"))
 					continue;
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -15979,8 +19270,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__BMContentFormatsType(struct soap *soa
 void fims__BMContentsType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOfPointerTofims__BMContentType(soap, &this->fims__BMContentsType::bmContent);
-	/* transient soap skipped */
 }
 
 void fims__BMContentsType::soap_serialize(struct soap *soap) const
@@ -15988,7 +19279,7 @@ void fims__BMContentsType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOfPointerTofims__BMContentType(soap, &this->fims__BMContentsType::bmContent);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -15999,11 +19290,11 @@ int fims__BMContentsType::soap_out(struct soap *soap, const char *tag, int id, c
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__BMContentsType(struct soap *soap, const char *tag, int id, const fims__BMContentsType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__BMContentsType), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOfPointerTofims__BMContentType(soap, "fims:bmContent", -1, &(a->fims__BMContentsType::bmContent), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__BMContentsType), "fims:BMContentsType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOfPointerTofims__BMContentType(soap, "fims:bmContent", -1, &(a->fims__BMContentsType::bmContent), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -16027,14 +19318,20 @@ SOAP_FMAC3 fims__BMContentsType * SOAP_FMAC4 soap_in_fims__BMContentsType(struct
 			return (fims__BMContentsType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofims__BMContentType(soap, "fims:bmContent", &(a->fims__BMContentsType::bmContent), "fims:BMContentType"))
 					continue;
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -16115,8 +19412,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__BMContentsType(struct soap *soap, int
 void fims__BMObjectsType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOfPointerTofims__BMObjectType(soap, &this->fims__BMObjectsType::bmObject);
-	/* transient soap skipped */
 }
 
 void fims__BMObjectsType::soap_serialize(struct soap *soap) const
@@ -16124,7 +19421,7 @@ void fims__BMObjectsType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOfPointerTofims__BMObjectType(soap, &this->fims__BMObjectsType::bmObject);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -16135,11 +19432,11 @@ int fims__BMObjectsType::soap_out(struct soap *soap, const char *tag, int id, co
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__BMObjectsType(struct soap *soap, const char *tag, int id, const fims__BMObjectsType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__BMObjectsType), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOfPointerTofims__BMObjectType(soap, "fims:bmObject", -1, &(a->fims__BMObjectsType::bmObject), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__BMObjectsType), "fims:BMObjectsType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOfPointerTofims__BMObjectType(soap, "fims:bmObject", -1, &(a->fims__BMObjectsType::bmObject), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -16163,14 +19460,20 @@ SOAP_FMAC3 fims__BMObjectsType * SOAP_FMAC4 soap_in_fims__BMObjectsType(struct s
 			return (fims__BMObjectsType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofims__BMObjectType(soap, "fims:bmObject", &(a->fims__BMObjectsType::bmObject), "fims:BMObjectType"))
 					continue;
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -16251,8 +19554,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__BMObjectsType(struct soap *soap, int 
 void fims__DataFormatsType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOf__fims__DataFormatsType_sequence(soap, &this->fims__DataFormatsType::__DataFormatsType_sequence);
-	/* transient soap skipped */
 }
 
 void fims__DataFormatsType::soap_serialize(struct soap *soap) const
@@ -16260,7 +19563,7 @@ void fims__DataFormatsType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOf__fims__DataFormatsType_sequence(soap, &this->fims__DataFormatsType::__DataFormatsType_sequence);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -16271,11 +19574,11 @@ int fims__DataFormatsType::soap_out(struct soap *soap, const char *tag, int id, 
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__DataFormatsType(struct soap *soap, const char *tag, int id, const fims__DataFormatsType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__DataFormatsType), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOf__fims__DataFormatsType_sequence(soap, "-DataFormatsType-sequence", -1, &(a->fims__DataFormatsType::__DataFormatsType_sequence), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__DataFormatsType), "fims:DataFormatsType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOf__fims__DataFormatsType_sequence(soap, "-DataFormatsType-sequence", -1, &(a->fims__DataFormatsType::__DataFormatsType_sequence), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -16299,6 +19602,7 @@ SOAP_FMAC3 fims__DataFormatsType * SOAP_FMAC4 soap_in_fims__DataFormatsType(stru
 			return (fims__DataFormatsType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
@@ -16307,6 +19611,11 @@ SOAP_FMAC3 fims__DataFormatsType * SOAP_FMAC4 soap_in_fims__DataFormatsType(stru
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOf__fims__DataFormatsType_sequence(soap, "-DataFormatsType-sequence", &(a->fims__DataFormatsType::__DataFormatsType_sequence), "-fims:DataFormatsType-sequence"))
 					continue;
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -16387,8 +19696,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__DataFormatsType(struct soap *soap, in
 void fims__ContainerFormatsType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOf__fims__ContainerFormatsType_sequence(soap, &this->fims__ContainerFormatsType::__ContainerFormatsType_sequence);
-	/* transient soap skipped */
 }
 
 void fims__ContainerFormatsType::soap_serialize(struct soap *soap) const
@@ -16396,7 +19705,7 @@ void fims__ContainerFormatsType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOf__fims__ContainerFormatsType_sequence(soap, &this->fims__ContainerFormatsType::__ContainerFormatsType_sequence);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -16407,11 +19716,11 @@ int fims__ContainerFormatsType::soap_out(struct soap *soap, const char *tag, int
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ContainerFormatsType(struct soap *soap, const char *tag, int id, const fims__ContainerFormatsType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ContainerFormatsType), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOf__fims__ContainerFormatsType_sequence(soap, "-ContainerFormatsType-sequence", -1, &(a->fims__ContainerFormatsType::__ContainerFormatsType_sequence), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ContainerFormatsType), "fims:ContainerFormatsType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOf__fims__ContainerFormatsType_sequence(soap, "-ContainerFormatsType-sequence", -1, &(a->fims__ContainerFormatsType::__ContainerFormatsType_sequence), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -16435,6 +19744,7 @@ SOAP_FMAC3 fims__ContainerFormatsType * SOAP_FMAC4 soap_in_fims__ContainerFormat
 			return (fims__ContainerFormatsType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
@@ -16443,6 +19753,11 @@ SOAP_FMAC3 fims__ContainerFormatsType * SOAP_FMAC4 soap_in_fims__ContainerFormat
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOf__fims__ContainerFormatsType_sequence(soap, "-ContainerFormatsType-sequence", &(a->fims__ContainerFormatsType::__ContainerFormatsType_sequence), "-fims:ContainerFormatsType-sequence"))
 					continue;
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -16523,8 +19838,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ContainerFormatsType(struct soap *soa
 void fims__AudioFormatsType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOf__fims__AudioFormatsType_sequence(soap, &this->fims__AudioFormatsType::__AudioFormatsType_sequence);
-	/* transient soap skipped */
 }
 
 void fims__AudioFormatsType::soap_serialize(struct soap *soap) const
@@ -16532,7 +19847,7 @@ void fims__AudioFormatsType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOf__fims__AudioFormatsType_sequence(soap, &this->fims__AudioFormatsType::__AudioFormatsType_sequence);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -16543,11 +19858,11 @@ int fims__AudioFormatsType::soap_out(struct soap *soap, const char *tag, int id,
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__AudioFormatsType(struct soap *soap, const char *tag, int id, const fims__AudioFormatsType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__AudioFormatsType), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOf__fims__AudioFormatsType_sequence(soap, "-AudioFormatsType-sequence", -1, &(a->fims__AudioFormatsType::__AudioFormatsType_sequence), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__AudioFormatsType), "fims:AudioFormatsType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOf__fims__AudioFormatsType_sequence(soap, "-AudioFormatsType-sequence", -1, &(a->fims__AudioFormatsType::__AudioFormatsType_sequence), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -16571,6 +19886,7 @@ SOAP_FMAC3 fims__AudioFormatsType * SOAP_FMAC4 soap_in_fims__AudioFormatsType(st
 			return (fims__AudioFormatsType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
@@ -16579,6 +19895,11 @@ SOAP_FMAC3 fims__AudioFormatsType * SOAP_FMAC4 soap_in_fims__AudioFormatsType(st
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOf__fims__AudioFormatsType_sequence(soap, "-AudioFormatsType-sequence", &(a->fims__AudioFormatsType::__AudioFormatsType_sequence), "-fims:AudioFormatsType-sequence"))
 					continue;
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -16659,8 +19980,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__AudioFormatsType(struct soap *soap, i
 void fims__VideoFormatsType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOf__fims__VideoFormatsType_sequence(soap, &this->fims__VideoFormatsType::__VideoFormatsType_sequence);
-	/* transient soap skipped */
 }
 
 void fims__VideoFormatsType::soap_serialize(struct soap *soap) const
@@ -16668,7 +19989,7 @@ void fims__VideoFormatsType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOf__fims__VideoFormatsType_sequence(soap, &this->fims__VideoFormatsType::__VideoFormatsType_sequence);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -16679,11 +20000,11 @@ int fims__VideoFormatsType::soap_out(struct soap *soap, const char *tag, int id,
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__VideoFormatsType(struct soap *soap, const char *tag, int id, const fims__VideoFormatsType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__VideoFormatsType), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOf__fims__VideoFormatsType_sequence(soap, "-VideoFormatsType-sequence", -1, &(a->fims__VideoFormatsType::__VideoFormatsType_sequence), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__VideoFormatsType), "fims:VideoFormatsType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOf__fims__VideoFormatsType_sequence(soap, "-VideoFormatsType-sequence", -1, &(a->fims__VideoFormatsType::__VideoFormatsType_sequence), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -16707,6 +20028,7 @@ SOAP_FMAC3 fims__VideoFormatsType * SOAP_FMAC4 soap_in_fims__VideoFormatsType(st
 			return (fims__VideoFormatsType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
@@ -16715,6 +20037,11 @@ SOAP_FMAC3 fims__VideoFormatsType * SOAP_FMAC4 soap_in_fims__VideoFormatsType(st
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOf__fims__VideoFormatsType_sequence(soap, "-VideoFormatsType-sequence", &(a->fims__VideoFormatsType::__VideoFormatsType_sequence), "-fims:VideoFormatsType-sequence"))
 					continue;
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -16795,8 +20122,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__VideoFormatsType(struct soap *soap, i
 void fims__JobsType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOf__fims__JobsType_sequence(soap, &this->fims__JobsType::__JobsType_sequence);
-	/* transient soap skipped */
 }
 
 void fims__JobsType::soap_serialize(struct soap *soap) const
@@ -16804,7 +20131,7 @@ void fims__JobsType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOf__fims__JobsType_sequence(soap, &this->fims__JobsType::__JobsType_sequence);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -16815,11 +20142,11 @@ int fims__JobsType::soap_out(struct soap *soap, const char *tag, int id, const c
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__JobsType(struct soap *soap, const char *tag, int id, const fims__JobsType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__JobsType), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOf__fims__JobsType_sequence(soap, "-JobsType-sequence", -1, &(a->fims__JobsType::__JobsType_sequence), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__JobsType), "fims:JobsType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOf__fims__JobsType_sequence(soap, "-JobsType-sequence", -1, &(a->fims__JobsType::__JobsType_sequence), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -16843,6 +20170,7 @@ SOAP_FMAC3 fims__JobsType * SOAP_FMAC4 soap_in_fims__JobsType(struct soap *soap,
 			return (fims__JobsType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
@@ -16851,6 +20179,11 @@ SOAP_FMAC3 fims__JobsType * SOAP_FMAC4 soap_in_fims__JobsType(struct soap *soap,
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOf__fims__JobsType_sequence(soap, "-JobsType-sequence", &(a->fims__JobsType::__JobsType_sequence), "-fims:JobsType-sequence"))
 					continue;
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -16931,8 +20264,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__JobsType(struct soap *soap, int st, i
 void fims__QueuesType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOf__fims__QueuesType_sequence(soap, &this->fims__QueuesType::__QueuesType_sequence);
-	/* transient soap skipped */
 }
 
 void fims__QueuesType::soap_serialize(struct soap *soap) const
@@ -16940,7 +20273,7 @@ void fims__QueuesType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOf__fims__QueuesType_sequence(soap, &this->fims__QueuesType::__QueuesType_sequence);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -16951,11 +20284,11 @@ int fims__QueuesType::soap_out(struct soap *soap, const char *tag, int id, const
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__QueuesType(struct soap *soap, const char *tag, int id, const fims__QueuesType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__QueuesType), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOf__fims__QueuesType_sequence(soap, "-QueuesType-sequence", -1, &(a->fims__QueuesType::__QueuesType_sequence), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__QueuesType), "fims:QueuesType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOf__fims__QueuesType_sequence(soap, "-QueuesType-sequence", -1, &(a->fims__QueuesType::__QueuesType_sequence), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -16979,6 +20312,7 @@ SOAP_FMAC3 fims__QueuesType * SOAP_FMAC4 soap_in_fims__QueuesType(struct soap *s
 			return (fims__QueuesType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
@@ -16987,6 +20321,11 @@ SOAP_FMAC3 fims__QueuesType * SOAP_FMAC4 soap_in_fims__QueuesType(struct soap *s
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOf__fims__QueuesType_sequence(soap, "-QueuesType-sequence", &(a->fims__QueuesType::__QueuesType_sequence), "-fims:QueuesType-sequence"))
 					continue;
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -17067,8 +20406,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__QueuesType(struct soap *soap, int st,
 void fims__ServicesType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOf__fims__ServicesType_sequence(soap, &this->fims__ServicesType::__ServicesType_sequence);
-	/* transient soap skipped */
 }
 
 void fims__ServicesType::soap_serialize(struct soap *soap) const
@@ -17076,7 +20415,7 @@ void fims__ServicesType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOf__fims__ServicesType_sequence(soap, &this->fims__ServicesType::__ServicesType_sequence);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -17087,11 +20426,11 @@ int fims__ServicesType::soap_out(struct soap *soap, const char *tag, int id, con
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ServicesType(struct soap *soap, const char *tag, int id, const fims__ServicesType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ServicesType), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOf__fims__ServicesType_sequence(soap, "-ServicesType-sequence", -1, &(a->fims__ServicesType::__ServicesType_sequence), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ServicesType), "fims:ServicesType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOf__fims__ServicesType_sequence(soap, "-ServicesType-sequence", -1, &(a->fims__ServicesType::__ServicesType_sequence), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -17115,6 +20454,7 @@ SOAP_FMAC3 fims__ServicesType * SOAP_FMAC4 soap_in_fims__ServicesType(struct soa
 			return (fims__ServicesType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
@@ -17123,6 +20463,11 @@ SOAP_FMAC3 fims__ServicesType * SOAP_FMAC4 soap_in_fims__ServicesType(struct soa
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOf__fims__ServicesType_sequence(soap, "-ServicesType-sequence", &(a->fims__ServicesType::__ServicesType_sequence), "-fims:ServicesType-sequence"))
 					continue;
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -17203,8 +20548,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ServicesType(struct soap *soap, int s
 void fims__ProfilesType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOf__fims__ProfilesType_sequence(soap, &this->fims__ProfilesType::__ProfilesType_sequence);
-	/* transient soap skipped */
 }
 
 void fims__ProfilesType::soap_serialize(struct soap *soap) const
@@ -17212,7 +20557,7 @@ void fims__ProfilesType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOf__fims__ProfilesType_sequence(soap, &this->fims__ProfilesType::__ProfilesType_sequence);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -17223,11 +20568,11 @@ int fims__ProfilesType::soap_out(struct soap *soap, const char *tag, int id, con
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ProfilesType(struct soap *soap, const char *tag, int id, const fims__ProfilesType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ProfilesType), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOf__fims__ProfilesType_sequence(soap, "-ProfilesType-sequence", -1, &(a->fims__ProfilesType::__ProfilesType_sequence), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ProfilesType), "fims:ProfilesType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOf__fims__ProfilesType_sequence(soap, "-ProfilesType-sequence", -1, &(a->fims__ProfilesType::__ProfilesType_sequence), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -17251,6 +20596,7 @@ SOAP_FMAC3 fims__ProfilesType * SOAP_FMAC4 soap_in_fims__ProfilesType(struct soa
 			return (fims__ProfilesType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
@@ -17259,6 +20605,11 @@ SOAP_FMAC3 fims__ProfilesType * SOAP_FMAC4 soap_in_fims__ProfilesType(struct soa
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOf__fims__ProfilesType_sequence(soap, "-ProfilesType-sequence", &(a->fims__ProfilesType::__ProfilesType_sequence), "-fims:ProfilesType-sequence"))
 					continue;
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -17339,8 +20690,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ProfilesType(struct soap *soap, int s
 void fims__ResourcesType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOf__fims__ResourcesType_sequence(soap, &this->fims__ResourcesType::__ResourcesType_sequence);
-	/* transient soap skipped */
 }
 
 void fims__ResourcesType::soap_serialize(struct soap *soap) const
@@ -17348,7 +20699,7 @@ void fims__ResourcesType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOf__fims__ResourcesType_sequence(soap, &this->fims__ResourcesType::__ResourcesType_sequence);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -17359,11 +20710,11 @@ int fims__ResourcesType::soap_out(struct soap *soap, const char *tag, int id, co
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ResourcesType(struct soap *soap, const char *tag, int id, const fims__ResourcesType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ResourcesType), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOf__fims__ResourcesType_sequence(soap, "-ResourcesType-sequence", -1, &(a->fims__ResourcesType::__ResourcesType_sequence), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ResourcesType), "fims:ResourcesType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOf__fims__ResourcesType_sequence(soap, "-ResourcesType-sequence", -1, &(a->fims__ResourcesType::__ResourcesType_sequence), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -17387,6 +20738,7 @@ SOAP_FMAC3 fims__ResourcesType * SOAP_FMAC4 soap_in_fims__ResourcesType(struct s
 			return (fims__ResourcesType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
@@ -17395,6 +20747,11 @@ SOAP_FMAC3 fims__ResourcesType * SOAP_FMAC4 soap_in_fims__ResourcesType(struct s
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOf__fims__ResourcesType_sequence(soap, "-ResourcesType-sequence", &(a->fims__ResourcesType::__ResourcesType_sequence), "-fims:ResourcesType-sequence"))
 					continue;
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -17475,10 +20832,10 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ResourcesType(struct soap *soap, int 
 void fims__InnerFaultType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__wstring(soap, &this->fims__InnerFaultType::code);
 	this->fims__InnerFaultType::description = NULL;
 	this->fims__InnerFaultType::detail = NULL;
-	/* transient soap skipped */
 }
 
 void fims__InnerFaultType::soap_serialize(struct soap *soap) const
@@ -17489,7 +20846,7 @@ void fims__InnerFaultType::soap_serialize(struct soap *soap) const
 	soap_serialize_std__wstring(soap, &this->fims__InnerFaultType::code);
 	soap_serialize_PointerTostd__wstring(soap, &this->fims__InnerFaultType::description);
 	soap_serialize_PointerTostd__wstring(soap, &this->fims__InnerFaultType::detail);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -17500,15 +20857,15 @@ int fims__InnerFaultType::soap_out(struct soap *soap, const char *tag, int id, c
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__InnerFaultType(struct soap *soap, const char *tag, int id, const fims__InnerFaultType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__InnerFaultType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__InnerFaultType), "fims:InnerFaultType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_std__wstring(soap, "fims:code", -1, &(a->fims__InnerFaultType::code), ""))
 		return soap->error;
 	if (soap_out_PointerTostd__wstring(soap, "fims:description", -1, &(a->fims__InnerFaultType::description), ""))
 		return soap->error;
 	if (soap_out_PointerTostd__wstring(soap, "fims:detail", -1, &(a->fims__InnerFaultType::detail), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -17532,6 +20889,7 @@ SOAP_FMAC3 fims__InnerFaultType * SOAP_FMAC4 soap_in_fims__InnerFaultType(struct
 			return (fims__InnerFaultType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_code1 = 1;
 	size_t soap_flag_description1 = 1;
 	size_t soap_flag_detail1 = 1;
@@ -17539,6 +20897,7 @@ SOAP_FMAC3 fims__InnerFaultType * SOAP_FMAC4 soap_in_fims__InnerFaultType(struct
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_code1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_std__wstring(soap, "fims:code", &(a->fims__InnerFaultType::code), "xsd:string"))
 				{	soap_flag_code1--;
@@ -17554,7 +20913,11 @@ SOAP_FMAC3 fims__InnerFaultType * SOAP_FMAC4 soap_in_fims__InnerFaultType(struct
 				{	soap_flag_detail1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -17635,11 +20998,11 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__InnerFaultType(struct soap *soap, int
 void fims__FaultType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_fims__ErrorCodeType(soap, &this->fims__FaultType::code);
 	this->fims__FaultType::description = NULL;
 	this->fims__FaultType::detail = NULL;
 	soap_default_std__vectorTemplateOfPointerTofims__InnerFaultType(soap, &this->fims__FaultType::innerFault);
-	/* transient soap skipped */
 }
 
 void fims__FaultType::soap_serialize(struct soap *soap) const
@@ -17649,7 +21012,7 @@ void fims__FaultType::soap_serialize(struct soap *soap) const
 	soap_serialize_PointerTostd__wstring(soap, &this->fims__FaultType::description);
 	soap_serialize_PointerTostd__wstring(soap, &this->fims__FaultType::detail);
 	soap_serialize_std__vectorTemplateOfPointerTofims__InnerFaultType(soap, &this->fims__FaultType::innerFault);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -17660,8 +21023,9 @@ int fims__FaultType::soap_out(struct soap *soap, const char *tag, int id, const 
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__FaultType(struct soap *soap, const char *tag, int id, const fims__FaultType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__FaultType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__FaultType), "fims:FaultType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ErrorCodeType(soap, "fims:code", -1, &(a->fims__FaultType::code), ""))
 		return soap->error;
 	if (soap_out_PointerTostd__wstring(soap, "fims:description", -1, &(a->fims__FaultType::description), ""))
@@ -17670,7 +21034,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__FaultType(struct soap *soap, const char
 		return soap->error;
 	if (soap_out_std__vectorTemplateOfPointerTofims__InnerFaultType(soap, "fims:innerFault", -1, &(a->fims__FaultType::innerFault), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -17694,6 +21057,7 @@ SOAP_FMAC3 fims__FaultType * SOAP_FMAC4 soap_in_fims__FaultType(struct soap *soa
 			return (fims__FaultType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_code1 = 1;
 	size_t soap_flag_description1 = 1;
 	size_t soap_flag_detail1 = 1;
@@ -17701,6 +21065,7 @@ SOAP_FMAC3 fims__FaultType * SOAP_FMAC4 soap_in_fims__FaultType(struct soap *soa
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_code1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_fims__ErrorCodeType(soap, "fims:code", &(a->fims__FaultType::code), "fims:ErrorCodeType"))
 				{	soap_flag_code1--;
@@ -17719,7 +21084,11 @@ SOAP_FMAC3 fims__FaultType * SOAP_FMAC4 soap_in_fims__FaultType(struct soap *soa
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofims__InnerFaultType(soap, "fims:innerFault", &(a->fims__FaultType::innerFault), "fims:InnerFaultType"))
 					continue;
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -17821,6 +21190,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__FaultType(struct soap *soap, int st, 
 void fims__ListFilterType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__ListFilterType::fromDate = NULL;
 	this->fims__ListFilterType::toDate = NULL;
 	soap_default_bool(soap, &this->fims__ListFilterType::includeQueued);
@@ -17828,7 +21198,6 @@ void fims__ListFilterType::soap_default(struct soap *soap)
 	soap_default_bool(soap, &this->fims__ListFilterType::includeFinished);
 	soap_default_bool(soap, &this->fims__ListFilterType::includeFailed);
 	this->fims__ListFilterType::maxNumberResults = NULL;
-	/* transient soap skipped */
 }
 
 void fims__ListFilterType::soap_serialize(struct soap *soap) const
@@ -17842,7 +21211,7 @@ void fims__ListFilterType::soap_serialize(struct soap *soap) const
 	soap_embedded(soap, &this->fims__ListFilterType::includeFinished, SOAP_TYPE_bool);
 	soap_embedded(soap, &this->fims__ListFilterType::includeFailed, SOAP_TYPE_bool);
 	soap_serialize_PointerToxsd__nonNegativeInteger(soap, &this->fims__ListFilterType::maxNumberResults);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -17853,8 +21222,9 @@ int fims__ListFilterType::soap_out(struct soap *soap, const char *tag, int id, c
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ListFilterType(struct soap *soap, const char *tag, int id, const fims__ListFilterType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ListFilterType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ListFilterType), "fims:ListFilterType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:fromDate", -1, &(a->fims__ListFilterType::fromDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:toDate", -1, &(a->fims__ListFilterType::toDate), ""))
@@ -17869,7 +21239,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ListFilterType(struct soap *soap, const
 		return soap->error;
 	if (soap_out_PointerToxsd__nonNegativeInteger(soap, "fims:maxNumberResults", -1, &(a->fims__ListFilterType::maxNumberResults), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -17893,6 +21262,7 @@ SOAP_FMAC3 fims__ListFilterType * SOAP_FMAC4 soap_in_fims__ListFilterType(struct
 			return (fims__ListFilterType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_fromDate1 = 1;
 	size_t soap_flag_toDate1 = 1;
 	size_t soap_flag_includeQueued1 = 1;
@@ -17904,6 +21274,7 @@ SOAP_FMAC3 fims__ListFilterType * SOAP_FMAC4 soap_in_fims__ListFilterType(struct
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_fromDate1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:fromDate", &(a->fims__ListFilterType::fromDate), "xsd:dateTime"))
 				{	soap_flag_fromDate1--;
@@ -17939,7 +21310,11 @@ SOAP_FMAC3 fims__ListFilterType * SOAP_FMAC4 soap_in_fims__ListFilterType(struct
 				{	soap_flag_maxNumberResults1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -18020,8 +21395,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ListFilterType(struct soap *soap, int
 void fims__QueryServiceDescriptionResponseType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__QueryServiceDescriptionResponseType::service = NULL;
-	/* transient soap skipped */
 }
 
 void fims__QueryServiceDescriptionResponseType::soap_serialize(struct soap *soap) const
@@ -18029,7 +21404,7 @@ void fims__QueryServiceDescriptionResponseType::soap_serialize(struct soap *soap
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_PointerTofims__ServiceType(soap, &this->fims__QueryServiceDescriptionResponseType::service);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -18040,15 +21415,15 @@ int fims__QueryServiceDescriptionResponseType::soap_out(struct soap *soap, const
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__QueryServiceDescriptionResponseType(struct soap *soap, const char *tag, int id, const fims__QueryServiceDescriptionResponseType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__QueryServiceDescriptionResponseType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__QueryServiceDescriptionResponseType), "fims:QueryServiceDescriptionResponseType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (a->fims__QueryServiceDescriptionResponseType::service)
 	{	if (soap_out_PointerTofims__ServiceType(soap, "fims:service", -1, &a->fims__QueryServiceDescriptionResponseType::service, ""))
 			return soap->error;
 	}
 	else if (soap_element_nil(soap, "fims:service"))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -18072,17 +21447,23 @@ SOAP_FMAC3 fims__QueryServiceDescriptionResponseType * SOAP_FMAC4 soap_in_fims__
 			return (fims__QueryServiceDescriptionResponseType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_service1 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_service1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__ServiceType(soap, "fims:service", &(a->fims__QueryServiceDescriptionResponseType::service), "fims:ServiceType"))
 				{	soap_flag_service1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -18163,15 +21544,15 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__QueryServiceDescriptionResponseType(s
 void fims__QueryServiceDescriptionRequestType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__QueryServiceDescriptionRequestType::responseType = (enum _fims__QueryServiceDescriptionRequestType_responseType)1;
-	/* transient soap skipped */
 }
 
 void fims__QueryServiceDescriptionRequestType::soap_serialize(struct soap *soap) const
 {
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -18183,10 +21564,7 @@ int fims__QueryServiceDescriptionRequestType::soap_out(struct soap *soap, const 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__QueryServiceDescriptionRequestType(struct soap *soap, const char *tag, int id, const fims__QueryServiceDescriptionRequestType *a, const char *type)
 {
 	soap_set_attr(soap, "responseType", soap__fims__QueryServiceDescriptionRequestType_responseType2s(soap, ((fims__QueryServiceDescriptionRequestType*)a)->responseType), 1);
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__QueryServiceDescriptionRequestType), type))
-		return soap->error;
-	/* transient soap skipped */
-	return soap_element_end_out(soap, tag);
+	return soap_outliteral(soap, tag, &(a->xsd__anyType::__item), "fims:QueryServiceDescriptionRequestType");
 }
 
 void *fims__QueryServiceDescriptionRequestType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -18196,41 +21574,23 @@ void *fims__QueryServiceDescriptionRequestType::soap_in(struct soap *soap, const
 SOAP_FMAC3 fims__QueryServiceDescriptionRequestType * SOAP_FMAC4 soap_in_fims__QueryServiceDescriptionRequestType(struct soap *soap, const char *tag, fims__QueryServiceDescriptionRequestType *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_in(soap, tag, 0, NULL))
+	if (soap_element_begin_in(soap, tag, 1, NULL))
 		return NULL;
-	a = (fims__QueryServiceDescriptionRequestType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__QueryServiceDescriptionRequestType, sizeof(fims__QueryServiceDescriptionRequestType), soap->type, soap->arrayType);
-	if (!a)
+	if (!(a = (fims__QueryServiceDescriptionRequestType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__QueryServiceDescriptionRequestType, sizeof(fims__QueryServiceDescriptionRequestType), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
 		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
 	if (soap->alloced)
 	{	a->soap_default(soap);
 		if (soap->clist->type != SOAP_TYPE_fims__QueryServiceDescriptionRequestType)
-		{	soap_revert(soap);
-			*soap->id = '\0';
 			return (fims__QueryServiceDescriptionRequestType *)a->soap_in(soap, tag, type);
-		}
 	}
 	if (soap_s2_fims__QueryServiceDescriptionRequestType_responseType(soap, soap_attr_value(soap, "responseType", 0), &((fims__QueryServiceDescriptionRequestType*)a)->responseType))
 		return NULL;
-	if (soap->body && !*soap->href)
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			/* transient soap skipped */
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (fims__QueryServiceDescriptionRequestType *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_fims__QueryServiceDescriptionRequestType, 0, sizeof(fims__QueryServiceDescriptionRequestType), 0, soap_copy_fims__QueryServiceDescriptionRequestType);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
+	if (!soap_inliteral(soap, tag, &(a->xsd__anyType::__item)))
+		return NULL;
 	return a;
 }
 
@@ -18292,11 +21652,11 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__QueryServiceDescriptionRequestType(st
 void fims__QueryJobResponseType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__QueryJobResponseType::jobs = NULL;
 	this->fims__QueryJobResponseType::notReportedResultsNumber = NULL;
 	this->fims__QueryJobResponseType::ExtensionGroup = NULL;
 	this->fims__QueryJobResponseType::ExtensionAttributes = NULL;
-	/* transient soap skipped */
 }
 
 void fims__QueryJobResponseType::soap_serialize(struct soap *soap) const
@@ -18307,7 +21667,7 @@ void fims__QueryJobResponseType::soap_serialize(struct soap *soap) const
 	soap_serialize_PointerToxsd__nonNegativeInteger(soap, &this->fims__QueryJobResponseType::notReportedResultsNumber);
 	soap_serialize_PointerTofims__ExtensionGroup(soap, &this->fims__QueryJobResponseType::ExtensionGroup);
 	soap_serialize_PointerTofims__ExtensionAttributes(soap, &this->fims__QueryJobResponseType::ExtensionAttributes);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -18318,8 +21678,9 @@ int fims__QueryJobResponseType::soap_out(struct soap *soap, const char *tag, int
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__QueryJobResponseType(struct soap *soap, const char *tag, int id, const fims__QueryJobResponseType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__QueryJobResponseType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__QueryJobResponseType), "fims:QueryJobResponseType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_PointerTofims__JobsType(soap, "fims:jobs", -1, &(a->fims__QueryJobResponseType::jobs), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__nonNegativeInteger(soap, "fims:notReportedResultsNumber", -1, &(a->fims__QueryJobResponseType::notReportedResultsNumber), ""))
@@ -18328,7 +21689,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__QueryJobResponseType(struct soap *soap,
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionAttributes(soap, "fims:ExtensionAttributes", -1, &(a->fims__QueryJobResponseType::ExtensionAttributes), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -18352,6 +21712,7 @@ SOAP_FMAC3 fims__QueryJobResponseType * SOAP_FMAC4 soap_in_fims__QueryJobRespons
 			return (fims__QueryJobResponseType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_jobs1 = 1;
 	size_t soap_flag_notReportedResultsNumber1 = 1;
 	size_t soap_flag_ExtensionGroup1 = 1;
@@ -18360,6 +21721,7 @@ SOAP_FMAC3 fims__QueryJobResponseType * SOAP_FMAC4 soap_in_fims__QueryJobRespons
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_jobs1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__JobsType(soap, "fims:jobs", &(a->fims__QueryJobResponseType::jobs), "fims:JobsType"))
 				{	soap_flag_jobs1--;
@@ -18380,7 +21742,11 @@ SOAP_FMAC3 fims__QueryJobResponseType * SOAP_FMAC4 soap_in_fims__QueryJobRespons
 				{	soap_flag_ExtensionAttributes1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -18479,13 +21845,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__QueryJobRequestByFilterType(struct soap
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__QueryJobRequestByFilterType), "fims:QueryJobRequestByFilterType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__JobInfoSelectionType(soap, "fims:jobInfoSelection", -1, &(a->fims__QueryJobRequestType::jobInfoSelection), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionGroup(soap, "fims:ExtensionGroup", -1, &(a->fims__QueryJobRequestType::ExtensionGroup), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionAttributes(soap, "fims:ExtensionAttributes", -1, &(a->fims__QueryJobRequestType::ExtensionAttributes), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (a->fims__QueryJobRequestByFilterType::listFilter)
 	{	if (soap_out_PointerTofims__ListFilterType(soap, "fims:listFilter", -1, &a->fims__QueryJobRequestByFilterType::listFilter, ""))
 			return soap->error;
@@ -18515,6 +21881,7 @@ SOAP_FMAC3 fims__QueryJobRequestByFilterType * SOAP_FMAC4 soap_in_fims__QueryJob
 			return (fims__QueryJobRequestByFilterType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_jobInfoSelection2 = 1;
 	size_t soap_flag_ExtensionGroup2 = 1;
 	size_t soap_flag_ExtensionAttributes2 = 1;
@@ -18523,6 +21890,7 @@ SOAP_FMAC3 fims__QueryJobRequestByFilterType * SOAP_FMAC4 soap_in_fims__QueryJob
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_jobInfoSelection2 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_fims__JobInfoSelectionType(soap, "fims:jobInfoSelection", &(a->fims__QueryJobRequestType::jobInfoSelection), "fims:JobInfoSelectionType"))
 				{	soap_flag_jobInfoSelection2--;
@@ -18538,10 +21906,14 @@ SOAP_FMAC3 fims__QueryJobRequestByFilterType * SOAP_FMAC4 soap_in_fims__QueryJob
 				{	soap_flag_ExtensionAttributes2--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_listFilter1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__ListFilterType(soap, "fims:listFilter", &(a->fims__QueryJobRequestByFilterType::listFilter), "fims:ListFilterType"))
 				{	soap_flag_listFilter1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -18646,13 +22018,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__QueryJobRequestByIDType(struct soap *so
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__QueryJobRequestByIDType), "fims:QueryJobRequestByIDType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__JobInfoSelectionType(soap, "fims:jobInfoSelection", -1, &(a->fims__QueryJobRequestType::jobInfoSelection), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionGroup(soap, "fims:ExtensionGroup", -1, &(a->fims__QueryJobRequestType::ExtensionGroup), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionAttributes(soap, "fims:ExtensionAttributes", -1, &(a->fims__QueryJobRequestType::ExtensionAttributes), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_std__vectorTemplateOffims__UID(soap, "fims:jobID", -1, &(a->fims__QueryJobRequestByIDType::jobID), ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
@@ -18678,6 +22050,7 @@ SOAP_FMAC3 fims__QueryJobRequestByIDType * SOAP_FMAC4 soap_in_fims__QueryJobRequ
 			return (fims__QueryJobRequestByIDType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_jobInfoSelection2 = 1;
 	size_t soap_flag_ExtensionGroup2 = 1;
 	size_t soap_flag_ExtensionAttributes2 = 1;
@@ -18685,6 +22058,7 @@ SOAP_FMAC3 fims__QueryJobRequestByIDType * SOAP_FMAC4 soap_in_fims__QueryJobRequ
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_jobInfoSelection2 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_fims__JobInfoSelectionType(soap, "fims:jobInfoSelection", &(a->fims__QueryJobRequestType::jobInfoSelection), "fims:JobInfoSelectionType"))
 				{	soap_flag_jobInfoSelection2--;
@@ -18700,10 +22074,14 @@ SOAP_FMAC3 fims__QueryJobRequestByIDType * SOAP_FMAC4 soap_in_fims__QueryJobRequ
 				{	soap_flag_ExtensionAttributes2--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOffims__UID(soap, "fims:jobID", &(a->fims__QueryJobRequestByIDType::jobID), "fims:UID"))
 					continue;
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -18784,10 +22162,10 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__QueryJobRequestByIDType(struct soap *
 void fims__QueryJobRequestType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_fims__JobInfoSelectionType(soap, &this->fims__QueryJobRequestType::jobInfoSelection);
 	this->fims__QueryJobRequestType::ExtensionGroup = NULL;
 	this->fims__QueryJobRequestType::ExtensionAttributes = NULL;
-	/* transient soap skipped */
 }
 
 void fims__QueryJobRequestType::soap_serialize(struct soap *soap) const
@@ -18796,7 +22174,7 @@ void fims__QueryJobRequestType::soap_serialize(struct soap *soap) const
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_PointerTofims__ExtensionGroup(soap, &this->fims__QueryJobRequestType::ExtensionGroup);
 	soap_serialize_PointerTofims__ExtensionAttributes(soap, &this->fims__QueryJobRequestType::ExtensionAttributes);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -18807,15 +22185,15 @@ int fims__QueryJobRequestType::soap_out(struct soap *soap, const char *tag, int 
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__QueryJobRequestType(struct soap *soap, const char *tag, int id, const fims__QueryJobRequestType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__QueryJobRequestType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__QueryJobRequestType), "fims:QueryJobRequestType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__JobInfoSelectionType(soap, "fims:jobInfoSelection", -1, &(a->fims__QueryJobRequestType::jobInfoSelection), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionGroup(soap, "fims:ExtensionGroup", -1, &(a->fims__QueryJobRequestType::ExtensionGroup), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionAttributes(soap, "fims:ExtensionAttributes", -1, &(a->fims__QueryJobRequestType::ExtensionAttributes), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -18839,6 +22217,7 @@ SOAP_FMAC3 fims__QueryJobRequestType * SOAP_FMAC4 soap_in_fims__QueryJobRequestT
 			return (fims__QueryJobRequestType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_jobInfoSelection1 = 1;
 	size_t soap_flag_ExtensionGroup1 = 1;
 	size_t soap_flag_ExtensionAttributes1 = 1;
@@ -18846,6 +22225,7 @@ SOAP_FMAC3 fims__QueryJobRequestType * SOAP_FMAC4 soap_in_fims__QueryJobRequestT
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_jobInfoSelection1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_fims__JobInfoSelectionType(soap, "fims:jobInfoSelection", &(a->fims__QueryJobRequestType::jobInfoSelection), "fims:JobInfoSelectionType"))
 				{	soap_flag_jobInfoSelection1--;
@@ -18861,7 +22241,11 @@ SOAP_FMAC3 fims__QueryJobRequestType * SOAP_FMAC4 soap_in_fims__QueryJobRequestT
 				{	soap_flag_ExtensionAttributes1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -18984,10 +22368,10 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__QueryJobRequestType(struct soap *soap
 void fims__ManageQueueResponseType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__ManageQueueResponseType::queue = NULL;
 	this->fims__ManageQueueResponseType::ExtensionGroup = NULL;
 	this->fims__ManageQueueResponseType::ExtensionAttributes = NULL;
-	/* transient soap skipped */
 }
 
 void fims__ManageQueueResponseType::soap_serialize(struct soap *soap) const
@@ -18997,7 +22381,7 @@ void fims__ManageQueueResponseType::soap_serialize(struct soap *soap) const
 	soap_serialize_PointerTofims__QueueType(soap, &this->fims__ManageQueueResponseType::queue);
 	soap_serialize_PointerTofims__ExtensionGroup(soap, &this->fims__ManageQueueResponseType::ExtensionGroup);
 	soap_serialize_PointerTofims__ExtensionAttributes(soap, &this->fims__ManageQueueResponseType::ExtensionAttributes);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -19008,8 +22392,9 @@ int fims__ManageQueueResponseType::soap_out(struct soap *soap, const char *tag, 
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ManageQueueResponseType(struct soap *soap, const char *tag, int id, const fims__ManageQueueResponseType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ManageQueueResponseType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ManageQueueResponseType), "fims:ManageQueueResponseType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (a->fims__ManageQueueResponseType::queue)
 	{	if (soap_out_PointerTofims__QueueType(soap, "fims:queue", -1, &a->fims__ManageQueueResponseType::queue, ""))
 			return soap->error;
@@ -19020,7 +22405,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ManageQueueResponseType(struct soap *so
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionAttributes(soap, "fims:ExtensionAttributes", -1, &(a->fims__ManageQueueResponseType::ExtensionAttributes), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -19044,6 +22428,7 @@ SOAP_FMAC3 fims__ManageQueueResponseType * SOAP_FMAC4 soap_in_fims__ManageQueueR
 			return (fims__ManageQueueResponseType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_queue1 = 1;
 	size_t soap_flag_ExtensionGroup1 = 1;
 	size_t soap_flag_ExtensionAttributes1 = 1;
@@ -19051,6 +22436,7 @@ SOAP_FMAC3 fims__ManageQueueResponseType * SOAP_FMAC4 soap_in_fims__ManageQueueR
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_queue1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__QueueType(soap, "fims:queue", &(a->fims__ManageQueueResponseType::queue), "fims:QueueType"))
 				{	soap_flag_queue1--;
@@ -19066,7 +22452,11 @@ SOAP_FMAC3 fims__ManageQueueResponseType * SOAP_FMAC4 soap_in_fims__ManageQueueR
 				{	soap_flag_ExtensionAttributes1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -19147,11 +22537,11 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ManageQueueResponseType(struct soap *
 void fims__ManageQueueRequestType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__ManageQueueRequestType::queueID = NULL;
 	soap_default_fims__QueueCommandType(soap, &this->fims__ManageQueueRequestType::queueCommand);
 	this->fims__ManageQueueRequestType::ExtensionGroup = NULL;
 	this->fims__ManageQueueRequestType::ExtensionAttributes = NULL;
-	/* transient soap skipped */
 }
 
 void fims__ManageQueueRequestType::soap_serialize(struct soap *soap) const
@@ -19161,7 +22551,7 @@ void fims__ManageQueueRequestType::soap_serialize(struct soap *soap) const
 	soap_serialize_PointerTofims__UID(soap, &this->fims__ManageQueueRequestType::queueID);
 	soap_serialize_PointerTofims__ExtensionGroup(soap, &this->fims__ManageQueueRequestType::ExtensionGroup);
 	soap_serialize_PointerTofims__ExtensionAttributes(soap, &this->fims__ManageQueueRequestType::ExtensionAttributes);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -19172,8 +22562,9 @@ int fims__ManageQueueRequestType::soap_out(struct soap *soap, const char *tag, i
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ManageQueueRequestType(struct soap *soap, const char *tag, int id, const fims__ManageQueueRequestType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ManageQueueRequestType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ManageQueueRequestType), "fims:ManageQueueRequestType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_PointerTofims__UID(soap, "fims:queueID", -1, &(a->fims__ManageQueueRequestType::queueID), ""))
 		return soap->error;
 	if (soap_out_fims__QueueCommandType(soap, "fims:queueCommand", -1, &(a->fims__ManageQueueRequestType::queueCommand), ""))
@@ -19182,7 +22573,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ManageQueueRequestType(struct soap *soa
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionAttributes(soap, "fims:ExtensionAttributes", -1, &(a->fims__ManageQueueRequestType::ExtensionAttributes), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -19206,6 +22596,7 @@ SOAP_FMAC3 fims__ManageQueueRequestType * SOAP_FMAC4 soap_in_fims__ManageQueueRe
 			return (fims__ManageQueueRequestType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_queueID1 = 1;
 	size_t soap_flag_queueCommand1 = 1;
 	size_t soap_flag_ExtensionGroup1 = 1;
@@ -19214,6 +22605,7 @@ SOAP_FMAC3 fims__ManageQueueRequestType * SOAP_FMAC4 soap_in_fims__ManageQueueRe
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_queueID1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_PointerTofims__UID(soap, "fims:queueID", &(a->fims__ManageQueueRequestType::queueID), "fims:UID"))
 				{	soap_flag_queueID1--;
@@ -19234,7 +22626,11 @@ SOAP_FMAC3 fims__ManageQueueRequestType * SOAP_FMAC4 soap_in_fims__ManageQueueRe
 				{	soap_flag_ExtensionAttributes1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -19315,10 +22711,10 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ManageQueueRequestType(struct soap *s
 void fims__ManageJobResponseType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__ManageJobResponseType::job = NULL;
 	this->fims__ManageJobResponseType::ExtensionGroup = NULL;
 	this->fims__ManageJobResponseType::ExtensionAttributes = NULL;
-	/* transient soap skipped */
 }
 
 void fims__ManageJobResponseType::soap_serialize(struct soap *soap) const
@@ -19328,7 +22724,7 @@ void fims__ManageJobResponseType::soap_serialize(struct soap *soap) const
 	soap_serialize_PointerTofims__JobType(soap, &this->fims__ManageJobResponseType::job);
 	soap_serialize_PointerTofims__ExtensionGroup(soap, &this->fims__ManageJobResponseType::ExtensionGroup);
 	soap_serialize_PointerTofims__ExtensionAttributes(soap, &this->fims__ManageJobResponseType::ExtensionAttributes);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -19339,8 +22735,9 @@ int fims__ManageJobResponseType::soap_out(struct soap *soap, const char *tag, in
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ManageJobResponseType(struct soap *soap, const char *tag, int id, const fims__ManageJobResponseType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ManageJobResponseType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ManageJobResponseType), "fims:ManageJobResponseType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (a->fims__ManageJobResponseType::job)
 	{	if (soap_out_PointerTofims__JobType(soap, "fims:job", -1, &a->fims__ManageJobResponseType::job, ""))
 			return soap->error;
@@ -19351,7 +22748,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ManageJobResponseType(struct soap *soap
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionAttributes(soap, "fims:ExtensionAttributes", -1, &(a->fims__ManageJobResponseType::ExtensionAttributes), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -19375,6 +22771,7 @@ SOAP_FMAC3 fims__ManageJobResponseType * SOAP_FMAC4 soap_in_fims__ManageJobRespo
 			return (fims__ManageJobResponseType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_job1 = 1;
 	size_t soap_flag_ExtensionGroup1 = 1;
 	size_t soap_flag_ExtensionAttributes1 = 1;
@@ -19382,6 +22779,7 @@ SOAP_FMAC3 fims__ManageJobResponseType * SOAP_FMAC4 soap_in_fims__ManageJobRespo
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_job1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__JobType(soap, "fims:job", &(a->fims__ManageJobResponseType::job), "fims:JobType"))
 				{	soap_flag_job1--;
@@ -19397,7 +22795,11 @@ SOAP_FMAC3 fims__ManageJobResponseType * SOAP_FMAC4 soap_in_fims__ManageJobRespo
 				{	soap_flag_ExtensionAttributes1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -19478,12 +22880,12 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ManageJobResponseType(struct soap *so
 void fims__ManageJobRequestType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_fims__UID(soap, &this->fims__ManageJobRequestType::jobID);
 	soap_default_fims__JobCommandType(soap, &this->fims__ManageJobRequestType::jobCommand);
 	this->fims__ManageJobRequestType::priority = NULL;
 	this->fims__ManageJobRequestType::ExtensionGroup = NULL;
 	this->fims__ManageJobRequestType::ExtensionAttributes = NULL;
-	/* transient soap skipped */
 }
 
 void fims__ManageJobRequestType::soap_serialize(struct soap *soap) const
@@ -19495,7 +22897,7 @@ void fims__ManageJobRequestType::soap_serialize(struct soap *soap) const
 	soap_serialize_PointerTofims__PriorityType(soap, &this->fims__ManageJobRequestType::priority);
 	soap_serialize_PointerTofims__ExtensionGroup(soap, &this->fims__ManageJobRequestType::ExtensionGroup);
 	soap_serialize_PointerTofims__ExtensionAttributes(soap, &this->fims__ManageJobRequestType::ExtensionAttributes);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -19506,8 +22908,9 @@ int fims__ManageJobRequestType::soap_out(struct soap *soap, const char *tag, int
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ManageJobRequestType(struct soap *soap, const char *tag, int id, const fims__ManageJobRequestType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ManageJobRequestType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ManageJobRequestType), "fims:ManageJobRequestType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__UID(soap, "fims:jobID", -1, &(a->fims__ManageJobRequestType::jobID), ""))
 		return soap->error;
 	if (soap_out_fims__JobCommandType(soap, "fims:jobCommand", -1, &(a->fims__ManageJobRequestType::jobCommand), ""))
@@ -19518,7 +22921,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ManageJobRequestType(struct soap *soap,
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionAttributes(soap, "fims:ExtensionAttributes", -1, &(a->fims__ManageJobRequestType::ExtensionAttributes), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -19542,6 +22944,7 @@ SOAP_FMAC3 fims__ManageJobRequestType * SOAP_FMAC4 soap_in_fims__ManageJobReques
 			return (fims__ManageJobRequestType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_jobID1 = 1;
 	size_t soap_flag_jobCommand1 = 1;
 	size_t soap_flag_priority1 = 1;
@@ -19551,6 +22954,7 @@ SOAP_FMAC3 fims__ManageJobRequestType * SOAP_FMAC4 soap_in_fims__ManageJobReques
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_jobID1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__UID(soap, "fims:jobID", &(a->fims__ManageJobRequestType::jobID), "fims:UID"))
 				{	soap_flag_jobID1--;
@@ -19576,7 +22980,11 @@ SOAP_FMAC3 fims__ManageJobRequestType * SOAP_FMAC4 soap_in_fims__ManageJobReques
 				{	soap_flag_ExtensionAttributes1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -19675,10 +23083,7 @@ int fims__StartJobByLatestType::soap_out(struct soap *soap, const char *tag, int
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__StartJobByLatestType(struct soap *soap, const char *tag, int id, const fims__StartJobByLatestType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__StartJobByLatestType), "fims:StartJobByLatestType"))
-		return soap->error;
-	/* transient soap skipped */
-	return soap_element_end_out(soap, tag);
+	return soap_outliteral(soap, tag, &(a->xsd__anyType::__item), "fims:StartJobByLatestType");
 }
 
 void *fims__StartJobByLatestType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -19688,39 +23093,21 @@ void *fims__StartJobByLatestType::soap_in(struct soap *soap, const char *tag, co
 SOAP_FMAC3 fims__StartJobByLatestType * SOAP_FMAC4 soap_in_fims__StartJobByLatestType(struct soap *soap, const char *tag, fims__StartJobByLatestType *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_in(soap, tag, 0, NULL))
+	if (soap_element_begin_in(soap, tag, 1, NULL))
 		return NULL;
-	a = (fims__StartJobByLatestType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__StartJobByLatestType, sizeof(fims__StartJobByLatestType), soap->type, soap->arrayType);
-	if (!a)
+	if (!(a = (fims__StartJobByLatestType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__StartJobByLatestType, sizeof(fims__StartJobByLatestType), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
 		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
 	if (soap->alloced)
 	{	a->soap_default(soap);
 		if (soap->clist->type != SOAP_TYPE_fims__StartJobByLatestType)
-		{	soap_revert(soap);
-			*soap->id = '\0';
 			return (fims__StartJobByLatestType *)a->soap_in(soap, tag, type);
-		}
 	}
-	if (soap->body && !*soap->href)
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			/* transient soap skipped */
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (fims__StartJobByLatestType *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_fims__StartJobByLatestType, 0, sizeof(fims__StartJobByLatestType), 0, soap_copy_fims__StartJobByLatestType);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
+	if (!soap_inliteral(soap, tag, &(a->xsd__anyType::__item)))
+		return NULL;
 	return a;
 }
 
@@ -19830,6 +23217,7 @@ SOAP_FMAC3 fims__StartJobByTimeType * SOAP_FMAC4 soap_in_fims__StartJobByTimeTyp
 			return (fims__StartJobByTimeType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_time1 = 1;
 	if (soap->body && !*soap->href)
 	{
@@ -19839,6 +23227,11 @@ SOAP_FMAC3 fims__StartJobByTimeType * SOAP_FMAC4 soap_in_fims__StartJobByTimeTyp
 			if (soap_flag_time1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_time(soap, "fims:time", &(a->fims__StartJobByTimeType::time), "xsd:dateTime"))
 				{	soap_flag_time1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -19939,10 +23332,7 @@ int fims__StartJobByNoWaitType::soap_out(struct soap *soap, const char *tag, int
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__StartJobByNoWaitType(struct soap *soap, const char *tag, int id, const fims__StartJobByNoWaitType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__StartJobByNoWaitType), "fims:StartJobByNoWaitType"))
-		return soap->error;
-	/* transient soap skipped */
-	return soap_element_end_out(soap, tag);
+	return soap_outliteral(soap, tag, &(a->xsd__anyType::__item), "fims:StartJobByNoWaitType");
 }
 
 void *fims__StartJobByNoWaitType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -19952,39 +23342,21 @@ void *fims__StartJobByNoWaitType::soap_in(struct soap *soap, const char *tag, co
 SOAP_FMAC3 fims__StartJobByNoWaitType * SOAP_FMAC4 soap_in_fims__StartJobByNoWaitType(struct soap *soap, const char *tag, fims__StartJobByNoWaitType *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_in(soap, tag, 0, NULL))
+	if (soap_element_begin_in(soap, tag, 1, NULL))
 		return NULL;
-	a = (fims__StartJobByNoWaitType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__StartJobByNoWaitType, sizeof(fims__StartJobByNoWaitType), soap->type, soap->arrayType);
-	if (!a)
+	if (!(a = (fims__StartJobByNoWaitType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__StartJobByNoWaitType, sizeof(fims__StartJobByNoWaitType), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
 		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
 	if (soap->alloced)
 	{	a->soap_default(soap);
 		if (soap->clist->type != SOAP_TYPE_fims__StartJobByNoWaitType)
-		{	soap_revert(soap);
-			*soap->id = '\0';
 			return (fims__StartJobByNoWaitType *)a->soap_in(soap, tag, type);
-		}
 	}
-	if (soap->body && !*soap->href)
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			/* transient soap skipped */
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (fims__StartJobByNoWaitType *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_fims__StartJobByNoWaitType, 0, sizeof(fims__StartJobByNoWaitType), 0, soap_copy_fims__StartJobByNoWaitType);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
+	if (!soap_inliteral(soap, tag, &(a->xsd__anyType::__item)))
+		return NULL;
 	return a;
 }
 
@@ -20046,14 +23418,14 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__StartJobByNoWaitType(struct soap *soa
 void fims__StartJobType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
-	/* transient soap skipped */
+	this->xsd__anyType::soap_default(soap);
 }
 
 void fims__StartJobType::soap_serialize(struct soap *soap) const
 {
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -20064,10 +23436,7 @@ int fims__StartJobType::soap_out(struct soap *soap, const char *tag, int id, con
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__StartJobType(struct soap *soap, const char *tag, int id, const fims__StartJobType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__StartJobType), type))
-		return soap->error;
-	/* transient soap skipped */
-	return soap_element_end_out(soap, tag);
+	return soap_outliteral(soap, tag, &(a->xsd__anyType::__item), "fims:StartJobType");
 }
 
 void *fims__StartJobType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -20077,39 +23446,21 @@ void *fims__StartJobType::soap_in(struct soap *soap, const char *tag, const char
 SOAP_FMAC3 fims__StartJobType * SOAP_FMAC4 soap_in_fims__StartJobType(struct soap *soap, const char *tag, fims__StartJobType *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_in(soap, tag, 0, NULL))
+	if (soap_element_begin_in(soap, tag, 1, NULL))
 		return NULL;
-	a = (fims__StartJobType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__StartJobType, sizeof(fims__StartJobType), soap->type, soap->arrayType);
-	if (!a)
+	if (!(a = (fims__StartJobType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__StartJobType, sizeof(fims__StartJobType), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
 		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
 	if (soap->alloced)
 	{	a->soap_default(soap);
 		if (soap->clist->type != SOAP_TYPE_fims__StartJobType)
-		{	soap_revert(soap);
-			*soap->id = '\0';
 			return (fims__StartJobType *)a->soap_in(soap, tag, type);
-		}
 	}
-	if (soap->body && !*soap->href)
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			/* transient soap skipped */
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (fims__StartJobType *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_fims__StartJobType, 0, sizeof(fims__StartJobType), 0, soap_copy_fims__StartJobType);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
+	if (!soap_inliteral(soap, tag, &(a->xsd__anyType::__item)))
+		return NULL;
 	return a;
 }
 
@@ -20286,6 +23637,7 @@ SOAP_FMAC3 fims__StopProcessByOpenEndType * SOAP_FMAC4 soap_in_fims__StopProcess
 			return (fims__StopProcessByOpenEndType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_actualStopTime1 = 1;
 	size_t soap_flag_actualStopMark1 = 1;
 	if (soap->body && !*soap->href)
@@ -20301,6 +23653,11 @@ SOAP_FMAC3 fims__StopProcessByOpenEndType * SOAP_FMAC4 soap_in_fims__StopProcess
 			if (soap_flag_actualStopMark1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__TimeType(soap, "fims:actualStopMark", &(a->fims__StopProcessByOpenEndType::actualStopMark), "fims:TimeType"))
 				{	soap_flag_actualStopMark1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -20431,6 +23788,7 @@ SOAP_FMAC3 fims__StopProcessByServiceDefinedTimeType * SOAP_FMAC4 soap_in_fims__
 			return (fims__StopProcessByServiceDefinedTimeType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_actualStopTime1 = 1;
 	size_t soap_flag_actualStopMark1 = 1;
 	if (soap->body && !*soap->href)
@@ -20446,6 +23804,11 @@ SOAP_FMAC3 fims__StopProcessByServiceDefinedTimeType * SOAP_FMAC4 soap_in_fims__
 			if (soap_flag_actualStopMark1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__TimeType(soap, "fims:actualStopMark", &(a->fims__StopProcessByServiceDefinedTimeType::actualStopMark), "fims:TimeType"))
 				{	soap_flag_actualStopMark1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -20576,6 +23939,7 @@ SOAP_FMAC3 fims__StopProcessByTimeMarkType * SOAP_FMAC4 soap_in_fims__StopProces
 			return (fims__StopProcessByTimeMarkType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_timeMark1 = 1;
 	if (soap->body && !*soap->href)
 	{
@@ -20585,6 +23949,11 @@ SOAP_FMAC3 fims__StopProcessByTimeMarkType * SOAP_FMAC4 soap_in_fims__StopProces
 			if (soap_flag_timeMark1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__TimeType(soap, "fims:timeMark", &(a->fims__StopProcessByTimeMarkType::timeMark), "fims:TimeType"))
 				{	soap_flag_timeMark1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -20719,6 +24088,7 @@ SOAP_FMAC3 fims__StopProcessByDurationType * SOAP_FMAC4 soap_in_fims__StopProces
 			return (fims__StopProcessByDurationType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_duration1 = 1;
 	if (soap->body && !*soap->href)
 	{
@@ -20728,6 +24098,11 @@ SOAP_FMAC3 fims__StopProcessByDurationType * SOAP_FMAC4 soap_in_fims__StopProces
 			if (soap_flag_duration1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__DurationType(soap, "fims:duration", &(a->fims__StopProcessByDurationType::duration), "fims:DurationType"))
 				{	soap_flag_duration1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -20858,6 +24233,7 @@ SOAP_FMAC3 fims__StopProcessByTimeType * SOAP_FMAC4 soap_in_fims__StopProcessByT
 			return (fims__StopProcessByTimeType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_time1 = 1;
 	if (soap->body && !*soap->href)
 	{
@@ -20867,6 +24243,11 @@ SOAP_FMAC3 fims__StopProcessByTimeType * SOAP_FMAC4 soap_in_fims__StopProcessByT
 			if (soap_flag_time1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_time(soap, "fims:time", &(a->fims__StopProcessByTimeType::time), "xsd:dateTime"))
 				{	soap_flag_time1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -20949,14 +24330,14 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__StopProcessByTimeType(struct soap *so
 void fims__StopProcessType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
-	/* transient soap skipped */
+	this->xsd__anyType::soap_default(soap);
 }
 
 void fims__StopProcessType::soap_serialize(struct soap *soap) const
 {
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -20967,10 +24348,7 @@ int fims__StopProcessType::soap_out(struct soap *soap, const char *tag, int id, 
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__StopProcessType(struct soap *soap, const char *tag, int id, const fims__StopProcessType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__StopProcessType), type))
-		return soap->error;
-	/* transient soap skipped */
-	return soap_element_end_out(soap, tag);
+	return soap_outliteral(soap, tag, &(a->xsd__anyType::__item), "fims:StopProcessType");
 }
 
 void *fims__StopProcessType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -20980,39 +24358,21 @@ void *fims__StopProcessType::soap_in(struct soap *soap, const char *tag, const c
 SOAP_FMAC3 fims__StopProcessType * SOAP_FMAC4 soap_in_fims__StopProcessType(struct soap *soap, const char *tag, fims__StopProcessType *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_in(soap, tag, 0, NULL))
+	if (soap_element_begin_in(soap, tag, 1, NULL))
 		return NULL;
-	a = (fims__StopProcessType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__StopProcessType, sizeof(fims__StopProcessType), soap->type, soap->arrayType);
-	if (!a)
+	if (!(a = (fims__StopProcessType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__StopProcessType, sizeof(fims__StopProcessType), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
 		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
 	if (soap->alloced)
 	{	a->soap_default(soap);
 		if (soap->clist->type != SOAP_TYPE_fims__StopProcessType)
-		{	soap_revert(soap);
-			*soap->id = '\0';
 			return (fims__StopProcessType *)a->soap_in(soap, tag, type);
-		}
 	}
-	if (soap->body && !*soap->href)
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			/* transient soap skipped */
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (fims__StopProcessType *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_fims__StopProcessType, 0, sizeof(fims__StopProcessType), 0, soap_copy_fims__StopProcessType);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
+	if (!soap_inliteral(soap, tag, &(a->xsd__anyType::__item)))
+		return NULL;
 	return a;
 }
 
@@ -21231,6 +24591,7 @@ SOAP_FMAC3 fims__StartProcessByServiceDefinedTimeType * SOAP_FMAC4 soap_in_fims_
 			return (fims__StartProcessByServiceDefinedTimeType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_actualStartTime1 = 1;
 	size_t soap_flag_actualStartMark1 = 1;
 	if (soap->body && !*soap->href)
@@ -21246,6 +24607,11 @@ SOAP_FMAC3 fims__StartProcessByServiceDefinedTimeType * SOAP_FMAC4 soap_in_fims_
 			if (soap_flag_actualStartMark1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__TimeType(soap, "fims:actualStartMark", &(a->fims__StartProcessByServiceDefinedTimeType::actualStartMark), "fims:TimeType"))
 				{	soap_flag_actualStartMark1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -21376,6 +24742,7 @@ SOAP_FMAC3 fims__StartProcessByTimeMarkType * SOAP_FMAC4 soap_in_fims__StartProc
 			return (fims__StartProcessByTimeMarkType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_timeMark1 = 1;
 	if (soap->body && !*soap->href)
 	{
@@ -21385,6 +24752,11 @@ SOAP_FMAC3 fims__StartProcessByTimeMarkType * SOAP_FMAC4 soap_in_fims__StartProc
 			if (soap_flag_timeMark1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__TimeType(soap, "fims:timeMark", &(a->fims__StartProcessByTimeMarkType::timeMark), "fims:TimeType"))
 				{	soap_flag_timeMark1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -21515,6 +24887,7 @@ SOAP_FMAC3 fims__StartProcessByTimeType * SOAP_FMAC4 soap_in_fims__StartProcessB
 			return (fims__StartProcessByTimeType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_time1 = 1;
 	if (soap->body && !*soap->href)
 	{
@@ -21524,6 +24897,11 @@ SOAP_FMAC3 fims__StartProcessByTimeType * SOAP_FMAC4 soap_in_fims__StartProcessB
 			if (soap_flag_time1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_time(soap, "fims:time", &(a->fims__StartProcessByTimeType::time), "xsd:dateTime"))
 				{	soap_flag_time1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -21658,6 +25036,7 @@ SOAP_FMAC3 fims__StartProcessByNoWaitType * SOAP_FMAC4 soap_in_fims__StartProces
 			return (fims__StartProcessByNoWaitType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_actualStartTime1 = 1;
 	size_t soap_flag_actualStartMark1 = 1;
 	if (soap->body && !*soap->href)
@@ -21673,6 +25052,11 @@ SOAP_FMAC3 fims__StartProcessByNoWaitType * SOAP_FMAC4 soap_in_fims__StartProces
 			if (soap_flag_actualStartMark1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__TimeType(soap, "fims:actualStartMark", &(a->fims__StartProcessByNoWaitType::actualStartMark), "fims:TimeType"))
 				{	soap_flag_actualStartMark1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -21751,14 +25135,14 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__StartProcessByNoWaitType(struct soap 
 void fims__StartProcessType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
-	/* transient soap skipped */
+	this->xsd__anyType::soap_default(soap);
 }
 
 void fims__StartProcessType::soap_serialize(struct soap *soap) const
 {
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -21769,10 +25153,7 @@ int fims__StartProcessType::soap_out(struct soap *soap, const char *tag, int id,
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__StartProcessType(struct soap *soap, const char *tag, int id, const fims__StartProcessType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__StartProcessType), type))
-		return soap->error;
-	/* transient soap skipped */
-	return soap_element_end_out(soap, tag);
+	return soap_outliteral(soap, tag, &(a->xsd__anyType::__item), "fims:StartProcessType");
 }
 
 void *fims__StartProcessType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -21782,39 +25163,21 @@ void *fims__StartProcessType::soap_in(struct soap *soap, const char *tag, const 
 SOAP_FMAC3 fims__StartProcessType * SOAP_FMAC4 soap_in_fims__StartProcessType(struct soap *soap, const char *tag, fims__StartProcessType *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_in(soap, tag, 0, NULL))
+	if (soap_element_begin_in(soap, tag, 1, NULL))
 		return NULL;
-	a = (fims__StartProcessType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__StartProcessType, sizeof(fims__StartProcessType), soap->type, soap->arrayType);
-	if (!a)
+	if (!(a = (fims__StartProcessType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__StartProcessType, sizeof(fims__StartProcessType), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
 		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
 	if (soap->alloced)
 	{	a->soap_default(soap);
 		if (soap->clist->type != SOAP_TYPE_fims__StartProcessType)
-		{	soap_revert(soap);
-			*soap->id = '\0';
 			return (fims__StartProcessType *)a->soap_in(soap, tag, type);
-		}
 	}
-	if (soap->body && !*soap->href)
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			/* transient soap skipped */
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (fims__StartProcessType *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_fims__StartProcessType, 0, sizeof(fims__StartProcessType), 0, soap_copy_fims__StartProcessType);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
+	if (!soap_inliteral(soap, tag, &(a->xsd__anyType::__item)))
+		return NULL;
 	return a;
 }
 
@@ -21960,19 +25323,19 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__StartProcessType(struct soap *soap, i
 void fims__HashFunctionType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_fims__HashFunctionTypes(soap, &this->fims__HashFunctionType::__item);
 	this->fims__HashFunctionType::typeLabel = NULL;
 	this->fims__HashFunctionType::typeDefinition = NULL;
 	this->fims__HashFunctionType::typeLink = NULL;
 	this->fims__HashFunctionType::__anyAttribute = NULL;
-	/* transient soap skipped */
 }
 
 void fims__HashFunctionType::soap_serialize(struct soap *soap) const
 {
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -21991,7 +25354,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__HashFunctionType(struct soap *soap, con
 		soap_set_attr(soap, "typeLink", soap_wchar2s(soap, ((fims__HashFunctionType*)a)->typeLink->c_str()), 2);
 	if (((fims__HashFunctionType*)a)->__anyAttribute)
 		soap_set_attr(soap, "-anyAttribute", ((fims__HashFunctionType*)a)->__anyAttribute, 1);
-	return soap_out_fims__HashFunctionTypes(soap, tag, id, &a->fims__HashFunctionType::__item, "");
+	return soap_out_fims__HashFunctionTypes(soap, tag, id, &(a->fims__HashFunctionType::__item), "fims:HashFunctionType");
 }
 
 void *fims__HashFunctionType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -22133,19 +25496,19 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__HashFunctionType(struct soap *soap, i
 void fims__StorageType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_fims__StorageTypes(soap, &this->fims__StorageType::__item);
 	this->fims__StorageType::typeLabel = NULL;
 	this->fims__StorageType::typeDefinition = NULL;
 	this->fims__StorageType::typeLink = NULL;
 	this->fims__StorageType::__anyAttribute = NULL;
-	/* transient soap skipped */
 }
 
 void fims__StorageType::soap_serialize(struct soap *soap) const
 {
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -22164,7 +25527,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__StorageType(struct soap *soap, const ch
 		soap_set_attr(soap, "typeLink", soap_wchar2s(soap, ((fims__StorageType*)a)->typeLink->c_str()), 2);
 	if (((fims__StorageType*)a)->__anyAttribute)
 		soap_set_attr(soap, "-anyAttribute", ((fims__StorageType*)a)->__anyAttribute, 1);
-	return soap_out_fims__StorageTypes(soap, tag, id, &a->fims__StorageType::__item, "");
+	return soap_out_fims__StorageTypes(soap, tag, id, &(a->fims__StorageType::__item), "fims:StorageType");
 }
 
 void *fims__StorageType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -22306,8 +25669,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__StorageType(struct soap *soap, int st
 void fims__TimeType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__TimeType::__union_TimeType = 0;
-	/* transient soap skipped */
 }
 
 void fims__TimeType::soap_serialize(struct soap *soap) const
@@ -22315,7 +25678,7 @@ void fims__TimeType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize__fims__union_TimeType(soap, this->fims__TimeType::__union_TimeType, &this->fims__TimeType::union_TimeType);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -22326,11 +25689,11 @@ int fims__TimeType::soap_out(struct soap *soap, const char *tag, int id, const c
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__TimeType(struct soap *soap, const char *tag, int id, const fims__TimeType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__TimeType), type))
-		return soap->error;
-	if (soap_out__fims__union_TimeType(soap, a->fims__TimeType::__union_TimeType, &a->fims__TimeType::union_TimeType))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__TimeType), "fims:TimeType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out__fims__union_TimeType(soap, a->fims__TimeType::__union_TimeType, &a->fims__TimeType::union_TimeType))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -22346,11 +25709,38 @@ SOAP_FMAC3 fims__TimeType * SOAP_FMAC4 soap_in_fims__TimeType(struct soap *soap,
 	a = (fims__TimeType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__TimeType, sizeof(fims__TimeType), soap->type, soap->arrayType);
 	if (!a)
 		return NULL;
-	a->soap_default(soap);
-	if (!tag || *tag == '-' || (soap->body && !*soap->href))
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__TimeType)
+		{	soap_revert(soap);
+			*soap->id = '\0';
+			return (fims__TimeType *)a->soap_in(soap, tag, type);
+		}
+	}
+	size_t soap_flag___item2 = 1;
+	size_t soap_flag_union_TimeType1 = 1;
+	if (soap->body && !*soap->href)
 	{
-		if (!soap_in__fims__union_TimeType(soap, &a->__union_TimeType, &a->union_TimeType))
-			return NULL;
+		for (;;)
+		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
+			if (soap_flag_union_TimeType1 && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in__fims__union_TimeType(soap, &a->fims__TimeType::__union_TimeType, &a->fims__TimeType::union_TimeType))
+				{	soap_flag_union_TimeType1 = 0;
+					continue;
+				}
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
+			if (soap->error == SOAP_TAG_MISMATCH)
+				soap->error = soap_ignore_element(soap);
+			if (soap->error == SOAP_NO_TAG)
+				break;
+			if (soap->error)
+				return NULL;
+		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
 	}
@@ -22358,6 +25748,10 @@ SOAP_FMAC3 fims__TimeType * SOAP_FMAC4 soap_in_fims__TimeType(struct soap *soap,
 	{	a = (fims__TimeType *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_fims__TimeType, 0, sizeof(fims__TimeType), 0, soap_copy_fims__TimeType);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
+	}
+	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_union_TimeType1))
+	{	soap->error = SOAP_OCCURS;
+		return NULL;
 	}
 	return a;
 }
@@ -22420,8 +25814,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__TimeType(struct soap *soap, int st, i
 void fims__DurationType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__DurationType::__union_DurationType = 0;
-	/* transient soap skipped */
 }
 
 void fims__DurationType::soap_serialize(struct soap *soap) const
@@ -22429,7 +25823,7 @@ void fims__DurationType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize__fims__union_DurationType(soap, this->fims__DurationType::__union_DurationType, &this->fims__DurationType::union_DurationType);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -22440,11 +25834,11 @@ int fims__DurationType::soap_out(struct soap *soap, const char *tag, int id, con
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__DurationType(struct soap *soap, const char *tag, int id, const fims__DurationType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__DurationType), type))
-		return soap->error;
-	if (soap_out__fims__union_DurationType(soap, a->fims__DurationType::__union_DurationType, &a->fims__DurationType::union_DurationType))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__DurationType), "fims:DurationType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out__fims__union_DurationType(soap, a->fims__DurationType::__union_DurationType, &a->fims__DurationType::union_DurationType))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -22460,11 +25854,38 @@ SOAP_FMAC3 fims__DurationType * SOAP_FMAC4 soap_in_fims__DurationType(struct soa
 	a = (fims__DurationType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__DurationType, sizeof(fims__DurationType), soap->type, soap->arrayType);
 	if (!a)
 		return NULL;
-	a->soap_default(soap);
-	if (!tag || *tag == '-' || (soap->body && !*soap->href))
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_fims__DurationType)
+		{	soap_revert(soap);
+			*soap->id = '\0';
+			return (fims__DurationType *)a->soap_in(soap, tag, type);
+		}
+	}
+	size_t soap_flag___item2 = 1;
+	size_t soap_flag_union_DurationType1 = 1;
+	if (soap->body && !*soap->href)
 	{
-		if (!soap_in__fims__union_DurationType(soap, &a->__union_DurationType, &a->union_DurationType))
-			return NULL;
+		for (;;)
+		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
+			if (soap_flag_union_DurationType1 && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in__fims__union_DurationType(soap, &a->fims__DurationType::__union_DurationType, &a->fims__DurationType::union_DurationType))
+				{	soap_flag_union_DurationType1 = 0;
+					continue;
+				}
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
+			if (soap->error == SOAP_TAG_MISMATCH)
+				soap->error = soap_ignore_element(soap);
+			if (soap->error == SOAP_NO_TAG)
+				break;
+			if (soap->error)
+				return NULL;
+		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
 	}
@@ -22472,6 +25893,10 @@ SOAP_FMAC3 fims__DurationType * SOAP_FMAC4 soap_in_fims__DurationType(struct soa
 	{	a = (fims__DurationType *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_fims__DurationType, 0, sizeof(fims__DurationType), 0, soap_copy_fims__DurationType);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
+	}
+	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_union_DurationType1))
+	{	soap->error = SOAP_OCCURS;
+		return NULL;
 	}
 	return a;
 }
@@ -22557,9 +25982,9 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ProcessedInfoByFramesType(struct soap *
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ProcessedInfoByFramesType), "fims:ProcessedInfoByFramesType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_xsd__nonNegativeInteger(soap, "fims:percentageProcessedCompleted", -1, &(a->fims__ProcessedInfoType::percentageProcessedCompleted), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_xsd__nonNegativeInteger(soap, "fims:processedFramesCount", -1, &(a->fims__ProcessedInfoByFramesType::processedFramesCount), ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
@@ -22585,21 +26010,27 @@ SOAP_FMAC3 fims__ProcessedInfoByFramesType * SOAP_FMAC4 soap_in_fims__ProcessedI
 			return (fims__ProcessedInfoByFramesType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_percentageProcessedCompleted2 = 1;
 	size_t soap_flag_processedFramesCount1 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_percentageProcessedCompleted2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_xsd__nonNegativeInteger(soap, "fims:percentageProcessedCompleted", &(a->fims__ProcessedInfoType::percentageProcessedCompleted), "xsd:nonNegativeInteger"))
 				{	soap_flag_percentageProcessedCompleted2--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_processedFramesCount1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_xsd__nonNegativeInteger(soap, "fims:processedFramesCount", &(a->fims__ProcessedInfoByFramesType::processedFramesCount), "xsd:nonNegativeInteger"))
 				{	soap_flag_processedFramesCount1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -22704,9 +26135,9 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ProcessedInfoByBytesType(struct soap *s
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ProcessedInfoByBytesType), "fims:ProcessedInfoByBytesType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_xsd__nonNegativeInteger(soap, "fims:percentageProcessedCompleted", -1, &(a->fims__ProcessedInfoType::percentageProcessedCompleted), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_unsignedLONG64(soap, "fims:processedBytesCount", -1, &(a->fims__ProcessedInfoByBytesType::processedBytesCount), ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
@@ -22732,21 +26163,27 @@ SOAP_FMAC3 fims__ProcessedInfoByBytesType * SOAP_FMAC4 soap_in_fims__ProcessedIn
 			return (fims__ProcessedInfoByBytesType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_percentageProcessedCompleted2 = 1;
 	size_t soap_flag_processedBytesCount1 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_percentageProcessedCompleted2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_xsd__nonNegativeInteger(soap, "fims:percentageProcessedCompleted", &(a->fims__ProcessedInfoType::percentageProcessedCompleted), "xsd:nonNegativeInteger"))
 				{	soap_flag_percentageProcessedCompleted2--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_processedBytesCount1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_unsignedLONG64(soap, "fims:processedBytesCount", &(a->fims__ProcessedInfoByBytesType::processedBytesCount), "xsd:unsignedLong"))
 				{	soap_flag_processedBytesCount1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -22829,8 +26266,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ProcessedInfoByBytesType(struct soap 
 void fims__ProcessedInfoType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_xsd__nonNegativeInteger(soap, &this->fims__ProcessedInfoType::percentageProcessedCompleted);
-	/* transient soap skipped */
 }
 
 void fims__ProcessedInfoType::soap_serialize(struct soap *soap) const
@@ -22839,7 +26276,7 @@ void fims__ProcessedInfoType::soap_serialize(struct soap *soap) const
 	(void)soap; /* appease -Wall -Werror */
 	soap_embedded(soap, &this->fims__ProcessedInfoType::percentageProcessedCompleted, SOAP_TYPE_xsd__nonNegativeInteger);
 	soap_serialize_xsd__nonNegativeInteger(soap, &this->fims__ProcessedInfoType::percentageProcessedCompleted);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -22850,11 +26287,11 @@ int fims__ProcessedInfoType::soap_out(struct soap *soap, const char *tag, int id
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ProcessedInfoType(struct soap *soap, const char *tag, int id, const fims__ProcessedInfoType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ProcessedInfoType), type))
-		return soap->error;
-	if (soap_out_xsd__nonNegativeInteger(soap, "fims:percentageProcessedCompleted", -1, &(a->fims__ProcessedInfoType::percentageProcessedCompleted), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ProcessedInfoType), "fims:ProcessedInfoType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_xsd__nonNegativeInteger(soap, "fims:percentageProcessedCompleted", -1, &(a->fims__ProcessedInfoType::percentageProcessedCompleted), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -22878,17 +26315,23 @@ SOAP_FMAC3 fims__ProcessedInfoType * SOAP_FMAC4 soap_in_fims__ProcessedInfoType(
 			return (fims__ProcessedInfoType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_percentageProcessedCompleted1 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_percentageProcessedCompleted1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_xsd__nonNegativeInteger(soap, "fims:percentageProcessedCompleted", &(a->fims__ProcessedInfoType::percentageProcessedCompleted), "xsd:nonNegativeInteger"))
 				{	soap_flag_percentageProcessedCompleted1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -23011,18 +26454,18 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ProcessedInfoType(struct soap *soap, 
 void fims__EditUnitNumberType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_LONG64(soap, &this->fims__EditUnitNumberType::__item);
 	soap_default_xsd__positiveInteger(soap, &this->fims__EditUnitNumberType::editRate);
 	soap_default_xsd__positiveInteger(soap, &this->fims__EditUnitNumberType::factorNumerator);
 	soap_default_xsd__positiveInteger(soap, &this->fims__EditUnitNumberType::factorDenominator);
-	/* transient soap skipped */
 }
 
 void fims__EditUnitNumberType::soap_serialize(struct soap *soap) const
 {
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -23036,7 +26479,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__EditUnitNumberType(struct soap *soap, c
 	soap_set_attr(soap, "editRate", soap_wchar2s(soap, ((fims__EditUnitNumberType*)a)->editRate.c_str()), 2);
 	soap_set_attr(soap, "factorNumerator", soap_wchar2s(soap, ((fims__EditUnitNumberType*)a)->factorNumerator.c_str()), 2);
 	soap_set_attr(soap, "factorDenominator", soap_wchar2s(soap, ((fims__EditUnitNumberType*)a)->factorDenominator.c_str()), 2);
-	return soap_out_LONG64(soap, tag, id, &a->fims__EditUnitNumberType::__item, "");
+	return soap_out_LONG64(soap, tag, id, &(a->fims__EditUnitNumberType::__item), "fims:EditUnitNumberType");
 }
 
 void *fims__EditUnitNumberType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -23152,9 +26595,9 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__EditUnitNumberType(struct soap *soap,
 void fims__HashType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__HashType::hashFunction = NULL;
 	this->fims__HashType::value.xsd__hexBinary::soap_default(soap);
-	/* transient soap skipped */
 }
 
 void fims__HashType::soap_serialize(struct soap *soap) const
@@ -23163,7 +26606,7 @@ void fims__HashType::soap_serialize(struct soap *soap) const
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_PointerTofims__HashFunctionType(soap, &this->fims__HashType::hashFunction);
 	this->fims__HashType::value.soap_serialize(soap);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -23174,8 +26617,9 @@ int fims__HashType::soap_out(struct soap *soap, const char *tag, int id, const c
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__HashType(struct soap *soap, const char *tag, int id, const fims__HashType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__HashType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__HashType), "fims:HashType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (a->fims__HashType::hashFunction)
 	{	if (soap_out_PointerTofims__HashFunctionType(soap, "fims:hashFunction", -1, &a->fims__HashType::hashFunction, ""))
 			return soap->error;
@@ -23184,7 +26628,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__HashType(struct soap *soap, const char 
 		return soap->error;
 	if ((a->fims__HashType::value).soap_out(soap, "fims:value", -1, ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -23208,12 +26651,14 @@ SOAP_FMAC3 fims__HashType * SOAP_FMAC4 soap_in_fims__HashType(struct soap *soap,
 			return (fims__HashType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_hashFunction1 = 1;
 	size_t soap_flag_value1 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_hashFunction1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__HashFunctionType(soap, "fims:hashFunction", &(a->fims__HashType::hashFunction), "fims:HashFunctionType"))
 				{	soap_flag_hashFunction1--;
@@ -23224,7 +26669,11 @@ SOAP_FMAC3 fims__HashType * SOAP_FMAC4 soap_in_fims__HashType(struct soap *soap,
 				{	soap_flag_value1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -23305,17 +26754,17 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__HashType(struct soap *soap, int st, i
 void fims__RationalType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_LONG64(soap, &this->fims__RationalType::__item);
 	soap_default_xsd__positiveInteger(soap, &this->fims__RationalType::numerator);
 	soap_default_xsd__positiveInteger(soap, &this->fims__RationalType::denominator);
-	/* transient soap skipped */
 }
 
 void fims__RationalType::soap_serialize(struct soap *soap) const
 {
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -23328,7 +26777,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__RationalType(struct soap *soap, const c
 {
 	soap_set_attr(soap, "numerator", soap_wchar2s(soap, ((fims__RationalType*)a)->numerator.c_str()), 2);
 	soap_set_attr(soap, "denominator", soap_wchar2s(soap, ((fims__RationalType*)a)->denominator.c_str()), 2);
-	return soap_out_LONG64(soap, tag, id, &a->fims__RationalType::__item, "");
+	return soap_out_LONG64(soap, tag, id, &(a->fims__RationalType::__item), "fims:RationalType");
 }
 
 void *fims__RationalType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -23434,9 +26883,9 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__RationalType(struct soap *soap, int s
 void fims__LengthType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_xsd__nonNegativeInteger(soap, &this->fims__LengthType::__item);
 	this->fims__LengthType::unit = NULL;
-	/* transient soap skipped */
 }
 
 void fims__LengthType::soap_serialize(struct soap *soap) const
@@ -23445,7 +26894,7 @@ void fims__LengthType::soap_serialize(struct soap *soap) const
 	(void)soap; /* appease -Wall -Werror */
 	soap_embedded(soap, &this->fims__LengthType::__item, SOAP_TYPE_xsd__nonNegativeInteger);
 	soap_serialize_xsd__nonNegativeInteger(soap, &this->fims__LengthType::__item);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -23458,7 +26907,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__LengthType(struct soap *soap, const cha
 {
 	if (((fims__LengthType*)a)->unit)
 		soap_set_attr(soap, "unit", soap_wchar2s(soap, ((fims__LengthType*)a)->unit->c_str()), 2);
-	return soap_out_xsd__nonNegativeInteger(soap, tag, id, &a->fims__LengthType::__item, "");
+	return soap_out_xsd__nonNegativeInteger(soap, tag, id, &(a->fims__LengthType::__item), "fims:LengthType");
 }
 
 void *fims__LengthType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -23562,6 +27011,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__LengthType(struct soap *soap, int st,
 void fims__TechnicalAttributeType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__wstring(soap, &this->fims__TechnicalAttributeType::__item);
 	this->fims__TechnicalAttributeType::typeLabel = NULL;
 	this->fims__TechnicalAttributeType::typeDefinition = NULL;
@@ -23569,7 +27019,6 @@ void fims__TechnicalAttributeType::soap_default(struct soap *soap)
 	this->fims__TechnicalAttributeType::formatLabel = NULL;
 	this->fims__TechnicalAttributeType::formatDefinition = NULL;
 	this->fims__TechnicalAttributeType::formatLink = NULL;
-	/* transient soap skipped */
 }
 
 void fims__TechnicalAttributeType::soap_serialize(struct soap *soap) const
@@ -23578,7 +27027,7 @@ void fims__TechnicalAttributeType::soap_serialize(struct soap *soap) const
 	(void)soap; /* appease -Wall -Werror */
 	soap_embedded(soap, &this->fims__TechnicalAttributeType::__item, SOAP_TYPE_std__wstring);
 	soap_serialize_std__wstring(soap, &this->fims__TechnicalAttributeType::__item);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -23601,7 +27050,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__TechnicalAttributeType(struct soap *soa
 		soap_set_attr(soap, "formatDefinition", soap_wchar2s(soap, ((fims__TechnicalAttributeType*)a)->formatDefinition->c_str()), 2);
 	if (((fims__TechnicalAttributeType*)a)->formatLink)
 		soap_set_attr(soap, "formatLink", soap_wchar2s(soap, ((fims__TechnicalAttributeType*)a)->formatLink->c_str()), 2);
-	return soap_out_std__wstring(soap, tag, id, &a->fims__TechnicalAttributeType::__item, "");
+	return soap_out_std__wstring(soap, tag, id, &(a->fims__TechnicalAttributeType::__item), "fims:TechnicalAttributeType");
 }
 
 void *fims__TechnicalAttributeType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -23795,12 +27244,12 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__TechnicalAttributeType(struct soap *s
 void fims__TransformAtomType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__TransformAtomType::videoFormat = NULL;
 	this->fims__TransformAtomType::audioFormat = NULL;
 	this->fims__TransformAtomType::containerFormat = NULL;
 	this->fims__TransformAtomType::ExtensionGroup = NULL;
 	this->fims__TransformAtomType::ExtensionAttributes = NULL;
-	/* transient soap skipped */
 }
 
 void fims__TransformAtomType::soap_serialize(struct soap *soap) const
@@ -23812,7 +27261,7 @@ void fims__TransformAtomType::soap_serialize(struct soap *soap) const
 	soap_serialize_PointerTofims__ContainerFormatType(soap, &this->fims__TransformAtomType::containerFormat);
 	soap_serialize_PointerTofims__ExtensionGroup(soap, &this->fims__TransformAtomType::ExtensionGroup);
 	soap_serialize_PointerTofims__ExtensionAttributes(soap, &this->fims__TransformAtomType::ExtensionAttributes);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -23823,8 +27272,9 @@ int fims__TransformAtomType::soap_out(struct soap *soap, const char *tag, int id
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__TransformAtomType(struct soap *soap, const char *tag, int id, const fims__TransformAtomType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__TransformAtomType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__TransformAtomType), "fims:TransformAtomType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_PointerTofims__VideoFormatType(soap, "fims:videoFormat", -1, &(a->fims__TransformAtomType::videoFormat), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__AudioFormatType(soap, "fims:audioFormat", -1, &(a->fims__TransformAtomType::audioFormat), ""))
@@ -23835,7 +27285,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__TransformAtomType(struct soap *soap, co
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionAttributes(soap, "fims:ExtensionAttributes", -1, &(a->fims__TransformAtomType::ExtensionAttributes), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -23859,6 +27308,7 @@ SOAP_FMAC3 fims__TransformAtomType * SOAP_FMAC4 soap_in_fims__TransformAtomType(
 			return (fims__TransformAtomType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_videoFormat1 = 1;
 	size_t soap_flag_audioFormat1 = 1;
 	size_t soap_flag_containerFormat1 = 1;
@@ -23868,6 +27318,7 @@ SOAP_FMAC3 fims__TransformAtomType * SOAP_FMAC4 soap_in_fims__TransformAtomType(
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_videoFormat1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__VideoFormatType(soap, "fims:videoFormat", &(a->fims__TransformAtomType::videoFormat), "fims:VideoFormatType"))
 				{	soap_flag_videoFormat1--;
@@ -23893,7 +27344,11 @@ SOAP_FMAC3 fims__TransformAtomType * SOAP_FMAC4 soap_in_fims__TransformAtomType(
 				{	soap_flag_ExtensionAttributes1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -23970,10 +27425,10 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__TransformAtomType(struct soap *soap, 
 void fims__TransferAtomType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_xsd__anyURI(soap, &this->fims__TransferAtomType::destination);
 	this->fims__TransferAtomType::ExtensionGroup = NULL;
 	this->fims__TransferAtomType::ExtensionAttributes = NULL;
-	/* transient soap skipped */
 }
 
 void fims__TransferAtomType::soap_serialize(struct soap *soap) const
@@ -23984,7 +27439,7 @@ void fims__TransferAtomType::soap_serialize(struct soap *soap) const
 	soap_serialize_xsd__anyURI(soap, &this->fims__TransferAtomType::destination);
 	soap_serialize_PointerTofims__ExtensionGroup(soap, &this->fims__TransferAtomType::ExtensionGroup);
 	soap_serialize_PointerTofims__ExtensionAttributes(soap, &this->fims__TransferAtomType::ExtensionAttributes);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -23995,15 +27450,15 @@ int fims__TransferAtomType::soap_out(struct soap *soap, const char *tag, int id,
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__TransferAtomType(struct soap *soap, const char *tag, int id, const fims__TransferAtomType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__TransferAtomType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__TransferAtomType), "fims:TransferAtomType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_xsd__anyURI(soap, "fims:destination", -1, &(a->fims__TransferAtomType::destination), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionGroup(soap, "fims:ExtensionGroup", -1, &(a->fims__TransferAtomType::ExtensionGroup), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionAttributes(soap, "fims:ExtensionAttributes", -1, &(a->fims__TransferAtomType::ExtensionAttributes), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -24027,6 +27482,7 @@ SOAP_FMAC3 fims__TransferAtomType * SOAP_FMAC4 soap_in_fims__TransferAtomType(st
 			return (fims__TransferAtomType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_destination1 = 1;
 	size_t soap_flag_ExtensionGroup1 = 1;
 	size_t soap_flag_ExtensionAttributes1 = 1;
@@ -24034,6 +27490,7 @@ SOAP_FMAC3 fims__TransferAtomType * SOAP_FMAC4 soap_in_fims__TransferAtomType(st
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_destination1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_xsd__anyURI(soap, "fims:destination", &(a->fims__TransferAtomType::destination), "xsd:anyURI"))
 				{	soap_flag_destination1--;
@@ -24049,7 +27506,11 @@ SOAP_FMAC3 fims__TransferAtomType * SOAP_FMAC4 soap_in_fims__TransferAtomType(st
 				{	soap_flag_ExtensionAttributes1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -24152,13 +27613,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__FolderLocatorType(struct soap *soap, co
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__FolderLocatorType), "fims:FolderLocatorType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -24200,6 +27661,7 @@ SOAP_FMAC3 fims__FolderLocatorType * SOAP_FMAC4 soap_in_fims__FolderLocatorType(
 			return (fims__FolderLocatorType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item5 = 1;
 	size_t soap_flag_resourceID4 = 1;
 	size_t soap_flag_revisionID4 = 1;
 	size_t soap_flag_location4 = 1;
@@ -24216,6 +27678,7 @@ SOAP_FMAC3 fims__FolderLocatorType * SOAP_FMAC4 soap_in_fims__FolderLocatorType(
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID4--;
@@ -24231,7 +27694,6 @@ SOAP_FMAC3 fims__FolderLocatorType * SOAP_FMAC4 soap_in_fims__FolderLocatorType(
 				{	soap_flag_location4--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate3 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate3--;
@@ -24275,6 +27737,11 @@ SOAP_FMAC3 fims__FolderLocatorType * SOAP_FMAC4 soap_in_fims__FolderLocatorType(
 			if (soap_flag_folder1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_PointerToxsd__anyURI(soap, "fims:folder", &(a->fims__FolderLocatorType::folder), "xsd:anyURI"))
 				{	soap_flag_folder1--;
+					continue;
+				}
+			if (soap_flag___item5 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item5--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -24379,13 +27846,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ListFileLocatorType(struct soap *soap, 
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ListFileLocatorType), "fims:ListFileLocatorType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -24427,6 +27894,7 @@ SOAP_FMAC3 fims__ListFileLocatorType * SOAP_FMAC4 soap_in_fims__ListFileLocatorT
 			return (fims__ListFileLocatorType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item5 = 1;
 	size_t soap_flag_resourceID4 = 1;
 	size_t soap_flag_revisionID4 = 1;
 	size_t soap_flag_location4 = 1;
@@ -24442,6 +27910,7 @@ SOAP_FMAC3 fims__ListFileLocatorType * SOAP_FMAC4 soap_in_fims__ListFileLocatorT
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID4--;
@@ -24457,7 +27926,6 @@ SOAP_FMAC3 fims__ListFileLocatorType * SOAP_FMAC4 soap_in_fims__ListFileLocatorT
 				{	soap_flag_location4--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate3 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate3--;
@@ -24501,6 +27969,11 @@ SOAP_FMAC3 fims__ListFileLocatorType * SOAP_FMAC4 soap_in_fims__ListFileLocatorT
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfxsd__anyURI(soap, "fims:file", &(a->fims__ListFileLocatorType::file), "xsd:anyURI"))
 					continue;
+			if (soap_flag___item5 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item5--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -24603,13 +28076,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__SimpleFileLocatorType(struct soap *soap
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__SimpleFileLocatorType), "fims:SimpleFileLocatorType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -24651,6 +28124,7 @@ SOAP_FMAC3 fims__SimpleFileLocatorType * SOAP_FMAC4 soap_in_fims__SimpleFileLoca
 			return (fims__SimpleFileLocatorType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item5 = 1;
 	size_t soap_flag_resourceID4 = 1;
 	size_t soap_flag_revisionID4 = 1;
 	size_t soap_flag_location4 = 1;
@@ -24667,6 +28141,7 @@ SOAP_FMAC3 fims__SimpleFileLocatorType * SOAP_FMAC4 soap_in_fims__SimpleFileLoca
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID4--;
@@ -24682,7 +28157,6 @@ SOAP_FMAC3 fims__SimpleFileLocatorType * SOAP_FMAC4 soap_in_fims__SimpleFileLoca
 				{	soap_flag_location4--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate3 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate3--;
@@ -24726,6 +28200,11 @@ SOAP_FMAC3 fims__SimpleFileLocatorType * SOAP_FMAC4 soap_in_fims__SimpleFileLoca
 			if (soap_flag_file1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_PointerToxsd__anyURI(soap, "fims:file", &(a->fims__SimpleFileLocatorType::file), "xsd:anyURI"))
 				{	soap_flag_file1--;
+					continue;
+				}
+			if (soap_flag___item5 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item5--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -24834,13 +28313,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__BMEssenceLocatorType(struct soap *soap,
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__BMEssenceLocatorType), "fims:BMEssenceLocatorType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -24880,6 +28359,7 @@ SOAP_FMAC3 fims__BMEssenceLocatorType * SOAP_FMAC4 soap_in_fims__BMEssenceLocato
 			return (fims__BMEssenceLocatorType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item4 = 1;
 	size_t soap_flag_resourceID3 = 1;
 	size_t soap_flag_revisionID3 = 1;
 	size_t soap_flag_location3 = 1;
@@ -24895,6 +28375,7 @@ SOAP_FMAC3 fims__BMEssenceLocatorType * SOAP_FMAC4 soap_in_fims__BMEssenceLocato
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID3--;
@@ -24910,7 +28391,6 @@ SOAP_FMAC3 fims__BMEssenceLocatorType * SOAP_FMAC4 soap_in_fims__BMEssenceLocato
 				{	soap_flag_location3--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate2 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate2--;
@@ -24949,6 +28429,11 @@ SOAP_FMAC3 fims__BMEssenceLocatorType * SOAP_FMAC4 soap_in_fims__BMEssenceLocato
 			if (soap_flag_containerMimeType1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTo_fims__BMEssenceLocatorType_containerMimeType(soap, "fims:containerMimeType", &(a->fims__BMEssenceLocatorType::containerMimeType), ""))
 				{	soap_flag_containerMimeType1--;
+					continue;
+				}
+			if (soap_flag___item4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item4--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -25126,13 +28611,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__BMContentFormatType(struct soap *soap, 
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__BMContentFormatType), "fims:BMContentFormatType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -25178,6 +28663,7 @@ SOAP_FMAC3 fims__BMContentFormatType * SOAP_FMAC4 soap_in_fims__BMContentFormatT
 			return (fims__BMContentFormatType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item4 = 1;
 	size_t soap_flag_resourceID3 = 1;
 	size_t soap_flag_revisionID3 = 1;
 	size_t soap_flag_location3 = 1;
@@ -25196,6 +28682,7 @@ SOAP_FMAC3 fims__BMContentFormatType * SOAP_FMAC4 soap_in_fims__BMContentFormatT
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID3--;
@@ -25211,7 +28698,6 @@ SOAP_FMAC3 fims__BMContentFormatType * SOAP_FMAC4 soap_in_fims__BMContentFormatT
 				{	soap_flag_location3--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate2 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate2--;
@@ -25265,6 +28751,11 @@ SOAP_FMAC3 fims__BMContentFormatType * SOAP_FMAC4 soap_in_fims__BMContentFormatT
 			if (soap_flag_mimeType1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTo_fims__BMContentFormatType_mimeType(soap, "fims:mimeType", &(a->fims__BMContentFormatType::mimeType), ""))
 				{	soap_flag_mimeType1--;
+					continue;
+				}
+			if (soap_flag___item4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item4--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -25369,13 +28860,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__DescriptionType(struct soap *soap, cons
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__DescriptionType), "fims:DescriptionType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -25411,6 +28902,7 @@ SOAP_FMAC3 fims__DescriptionType * SOAP_FMAC4 soap_in_fims__DescriptionType(stru
 			return (fims__DescriptionType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item4 = 1;
 	size_t soap_flag_resourceID3 = 1;
 	size_t soap_flag_revisionID3 = 1;
 	size_t soap_flag_location3 = 1;
@@ -25424,6 +28916,7 @@ SOAP_FMAC3 fims__DescriptionType * SOAP_FMAC4 soap_in_fims__DescriptionType(stru
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID3--;
@@ -25439,7 +28932,6 @@ SOAP_FMAC3 fims__DescriptionType * SOAP_FMAC4 soap_in_fims__DescriptionType(stru
 				{	soap_flag_location3--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate2 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate2--;
@@ -25468,6 +28960,11 @@ SOAP_FMAC3 fims__DescriptionType * SOAP_FMAC4 soap_in_fims__DescriptionType(stru
 			if (soap_flag_fimsdescription__bmContentDescription1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofimsdescription__bmContentDescriptionType(soap, "fimsdescription:bmContentDescription", &(a->fims__DescriptionType::fimsdescription__bmContentDescription), "fimsdescription:bmContentDescriptionType"))
 				{	soap_flag_fimsdescription__bmContentDescription1--;
+					continue;
+				}
+			if (soap_flag___item4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item4--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -25574,13 +29071,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__BMContentType(struct soap *soap, const 
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__BMContentType), "fims:BMContentType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -25618,6 +29115,7 @@ SOAP_FMAC3 fims__BMContentType * SOAP_FMAC4 soap_in_fims__BMContentType(struct s
 			return (fims__BMContentType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item4 = 1;
 	size_t soap_flag_resourceID3 = 1;
 	size_t soap_flag_revisionID3 = 1;
 	size_t soap_flag_location3 = 1;
@@ -25632,6 +29130,7 @@ SOAP_FMAC3 fims__BMContentType * SOAP_FMAC4 soap_in_fims__BMContentType(struct s
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID3--;
@@ -25647,7 +29146,6 @@ SOAP_FMAC3 fims__BMContentType * SOAP_FMAC4 soap_in_fims__BMContentType(struct s
 				{	soap_flag_location3--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate2 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate2--;
@@ -25681,6 +29179,11 @@ SOAP_FMAC3 fims__BMContentType * SOAP_FMAC4 soap_in_fims__BMContentType(struct s
 			if (soap_flag_descriptions1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__DescriptionsType(soap, "fims:descriptions", &(a->fims__BMContentType::descriptions), "fims:DescriptionsType"))
 				{	soap_flag_descriptions1--;
+					continue;
+				}
+			if (soap_flag___item4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item4--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -25785,13 +29288,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__BMObjectType(struct soap *soap, const c
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__BMObjectType), "fims:BMObjectType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -25827,6 +29330,7 @@ SOAP_FMAC3 fims__BMObjectType * SOAP_FMAC4 soap_in_fims__BMObjectType(struct soa
 			return (fims__BMObjectType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item4 = 1;
 	size_t soap_flag_resourceID3 = 1;
 	size_t soap_flag_revisionID3 = 1;
 	size_t soap_flag_location3 = 1;
@@ -25840,6 +29344,7 @@ SOAP_FMAC3 fims__BMObjectType * SOAP_FMAC4 soap_in_fims__BMObjectType(struct soa
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID3--;
@@ -25855,7 +29360,6 @@ SOAP_FMAC3 fims__BMObjectType * SOAP_FMAC4 soap_in_fims__BMObjectType(struct soa
 				{	soap_flag_location3--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate2 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate2--;
@@ -25884,6 +29388,11 @@ SOAP_FMAC3 fims__BMObjectType * SOAP_FMAC4 soap_in_fims__BMObjectType(struct soa
 			if (soap_flag_bmContents1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__BMContentsType(soap, "fims:bmContents", &(a->fims__BMObjectType::bmContents), "fims:BMContentsType"))
 				{	soap_flag_bmContents1--;
+					continue;
+				}
+			if (soap_flag___item4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item4--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -25966,6 +29475,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__BMObjectType(struct soap *soap, int s
 void fims__CodecType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__CodecType::name = NULL;
 	this->fims__CodecType::vendor = NULL;
 	this->fims__CodecType::version = NULL;
@@ -25973,7 +29483,6 @@ void fims__CodecType::soap_default(struct soap *soap)
 	this->fims__CodecType::typeLabel = NULL;
 	this->fims__CodecType::typeDefinition = NULL;
 	this->fims__CodecType::typeLink = NULL;
-	/* transient soap skipped */
 }
 
 void fims__CodecType::soap_serialize(struct soap *soap) const
@@ -25984,7 +29493,7 @@ void fims__CodecType::soap_serialize(struct soap *soap) const
 	soap_serialize_PointerTostd__wstring(soap, &this->fims__CodecType::vendor);
 	soap_serialize_PointerTostd__wstring(soap, &this->fims__CodecType::version);
 	soap_serialize_PointerTostd__wstring(soap, &this->fims__CodecType::family);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -26001,8 +29510,9 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__CodecType(struct soap *soap, const char
 		soap_set_attr(soap, "typeDefinition", soap_wchar2s(soap, ((fims__CodecType*)a)->typeDefinition->c_str()), 2);
 	if (((fims__CodecType*)a)->typeLink)
 		soap_set_attr(soap, "typeLink", soap_wchar2s(soap, ((fims__CodecType*)a)->typeLink->c_str()), 2);
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__CodecType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__CodecType), "fims:CodecType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_PointerTostd__wstring(soap, "fims:name", -1, &(a->fims__CodecType::name), ""))
 		return soap->error;
 	if (soap_out_PointerTostd__wstring(soap, "fims:vendor", -1, &(a->fims__CodecType::vendor), ""))
@@ -26011,7 +29521,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__CodecType(struct soap *soap, const char
 		return soap->error;
 	if (soap_out_PointerTostd__wstring(soap, "fims:family", -1, &(a->fims__CodecType::family), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -26089,6 +29598,7 @@ SOAP_FMAC3 fims__CodecType * SOAP_FMAC4 soap_in_fims__CodecType(struct soap *soa
 		else if (soap->error)
 			return NULL;
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_name1 = 1;
 	size_t soap_flag_vendor1 = 1;
 	size_t soap_flag_version1 = 1;
@@ -26097,6 +29607,7 @@ SOAP_FMAC3 fims__CodecType * SOAP_FMAC4 soap_in_fims__CodecType(struct soap *soa
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_name1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_PointerTostd__wstring(soap, "fims:name", &(a->fims__CodecType::name), "xsd:string"))
 				{	soap_flag_name1--;
@@ -26117,7 +29628,11 @@ SOAP_FMAC3 fims__CodecType * SOAP_FMAC4 soap_in_fims__CodecType(struct soap *soa
 				{	soap_flag_family1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -26194,6 +29709,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__CodecType(struct soap *soap, int st, 
 void fims__BMTrackType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__BMTrackType::ExtensionGroup = NULL;
 	this->fims__BMTrackType::ExtensionAttributes = NULL;
 	this->fims__BMTrackType::trackID = NULL;
@@ -26202,7 +29718,6 @@ void fims__BMTrackType::soap_default(struct soap *soap)
 	this->fims__BMTrackType::typeLabel = NULL;
 	this->fims__BMTrackType::typeDefinition = NULL;
 	this->fims__BMTrackType::typeLink = NULL;
-	/* transient soap skipped */
 }
 
 void fims__BMTrackType::soap_serialize(struct soap *soap) const
@@ -26211,7 +29726,7 @@ void fims__BMTrackType::soap_serialize(struct soap *soap) const
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_PointerTofims__ExtensionGroup(soap, &this->fims__BMTrackType::ExtensionGroup);
 	soap_serialize_PointerTofims__ExtensionAttributes(soap, &this->fims__BMTrackType::ExtensionAttributes);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -26234,13 +29749,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__BMTrackType(struct soap *soap, const ch
 		soap_set_attr(soap, "typeDefinition", soap_wchar2s(soap, ((fims__BMTrackType*)a)->typeDefinition->c_str()), 2);
 	if (((fims__BMTrackType*)a)->typeLink)
 		soap_set_attr(soap, "typeLink", soap_wchar2s(soap, ((fims__BMTrackType*)a)->typeLink->c_str()), 2);
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__BMTrackType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__BMTrackType), "fims:BMTrackType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_PointerTofims__ExtensionGroup(soap, "fims:ExtensionGroup", -1, &(a->fims__BMTrackType::ExtensionGroup), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionAttributes(soap, "fims:ExtensionAttributes", -1, &(a->fims__BMTrackType::ExtensionAttributes), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -26372,12 +29887,14 @@ SOAP_FMAC3 fims__BMTrackType * SOAP_FMAC4 soap_in_fims__BMTrackType(struct soap 
 		else if (soap->error)
 			return NULL;
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_ExtensionGroup1 = 1;
 	size_t soap_flag_ExtensionAttributes1 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_ExtensionGroup1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__ExtensionGroup(soap, "fims:ExtensionGroup", &(a->fims__BMTrackType::ExtensionGroup), "fims:ExtensionGroup"))
 				{	soap_flag_ExtensionGroup1--;
@@ -26388,7 +29905,11 @@ SOAP_FMAC3 fims__BMTrackType * SOAP_FMAC4 soap_in_fims__BMTrackType(struct soap 
 				{	soap_flag_ExtensionAttributes1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -26487,13 +30008,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ContainerFormatType(struct soap *soap, 
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ContainerFormatType), "fims:ContainerFormatType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -26531,6 +30052,7 @@ SOAP_FMAC3 fims__ContainerFormatType * SOAP_FMAC4 soap_in_fims__ContainerFormatT
 			return (fims__ContainerFormatType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item5 = 1;
 	size_t soap_flag_resourceID4 = 1;
 	size_t soap_flag_revisionID4 = 1;
 	size_t soap_flag_location4 = 1;
@@ -26544,6 +30066,7 @@ SOAP_FMAC3 fims__ContainerFormatType * SOAP_FMAC4 soap_in_fims__ContainerFormatT
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID4--;
@@ -26559,7 +30082,6 @@ SOAP_FMAC3 fims__ContainerFormatType * SOAP_FMAC4 soap_in_fims__ContainerFormatT
 				{	soap_flag_location4--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate3 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate3--;
@@ -26591,6 +30113,11 @@ SOAP_FMAC3 fims__ContainerFormatType * SOAP_FMAC4 soap_in_fims__ContainerFormatT
 			if (soap_flag_containerFormat1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTo_fims__ContainerFormatType_containerFormat(soap, "fims:containerFormat", &(a->fims__ContainerFormatType::containerFormat), ""))
 				{	soap_flag_containerFormat1--;
+					continue;
+				}
+			if (soap_flag___item5 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item5--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -26673,13 +30200,13 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ContainerFormatType(struct soap *soap
 void fims__AncillaryDataFormatType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__AncillaryDataFormatType::DID = NULL;
 	this->fims__AncillaryDataFormatType::SDID = NULL;
 	this->fims__AncillaryDataFormatType::lineNumber = NULL;
 	this->fims__AncillaryDataFormatType::wrappingType = NULL;
 	this->fims__AncillaryDataFormatType::ExtensionGroup = NULL;
 	this->fims__AncillaryDataFormatType::ExtensionAttributes = NULL;
-	/* transient soap skipped */
 }
 
 void fims__AncillaryDataFormatType::soap_serialize(struct soap *soap) const
@@ -26692,7 +30219,7 @@ void fims__AncillaryDataFormatType::soap_serialize(struct soap *soap) const
 	soap_serialize_PointerToxsd__integer(soap, &this->fims__AncillaryDataFormatType::wrappingType);
 	soap_serialize_PointerTofims__ExtensionGroup(soap, &this->fims__AncillaryDataFormatType::ExtensionGroup);
 	soap_serialize_PointerTofims__ExtensionAttributes(soap, &this->fims__AncillaryDataFormatType::ExtensionAttributes);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -26703,8 +30230,9 @@ int fims__AncillaryDataFormatType::soap_out(struct soap *soap, const char *tag, 
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__AncillaryDataFormatType(struct soap *soap, const char *tag, int id, const fims__AncillaryDataFormatType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__AncillaryDataFormatType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__AncillaryDataFormatType), "fims:AncillaryDataFormatType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_PointerToxsd__integer(soap, "fims:DID", -1, &(a->fims__AncillaryDataFormatType::DID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__integer(soap, "fims:SDID", -1, &(a->fims__AncillaryDataFormatType::SDID), ""))
@@ -26717,7 +30245,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__AncillaryDataFormatType(struct soap *so
 		return soap->error;
 	if (soap_out_PointerTofims__ExtensionAttributes(soap, "fims:ExtensionAttributes", -1, &(a->fims__AncillaryDataFormatType::ExtensionAttributes), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -26741,6 +30268,7 @@ SOAP_FMAC3 fims__AncillaryDataFormatType * SOAP_FMAC4 soap_in_fims__AncillaryDat
 			return (fims__AncillaryDataFormatType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_DID1 = 1;
 	size_t soap_flag_SDID1 = 1;
 	size_t soap_flag_lineNumber1 = 1;
@@ -26751,6 +30279,7 @@ SOAP_FMAC3 fims__AncillaryDataFormatType * SOAP_FMAC4 soap_in_fims__AncillaryDat
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_DID1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_PointerToxsd__integer(soap, "fims:DID", &(a->fims__AncillaryDataFormatType::DID), "xsd:integer"))
 				{	soap_flag_DID1--;
@@ -26781,7 +30310,11 @@ SOAP_FMAC3 fims__AncillaryDataFormatType * SOAP_FMAC4 soap_in_fims__AncillaryDat
 				{	soap_flag_ExtensionAttributes1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -26858,6 +30391,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__AncillaryDataFormatType(struct soap *
 void fims__CaptioningFormatType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__wstring(soap, &this->fims__CaptioningFormatType::__item);
 	this->fims__CaptioningFormatType::captioningSourceUri = NULL;
 	this->fims__CaptioningFormatType::language = NULL;
@@ -26865,7 +30399,6 @@ void fims__CaptioningFormatType::soap_default(struct soap *soap)
 	this->fims__CaptioningFormatType::formatDefinition = NULL;
 	this->fims__CaptioningFormatType::formatLink = NULL;
 	this->fims__CaptioningFormatType::__anyAttribute = NULL;
-	/* transient soap skipped */
 }
 
 void fims__CaptioningFormatType::soap_serialize(struct soap *soap) const
@@ -26874,7 +30407,7 @@ void fims__CaptioningFormatType::soap_serialize(struct soap *soap) const
 	(void)soap; /* appease -Wall -Werror */
 	soap_embedded(soap, &this->fims__CaptioningFormatType::__item, SOAP_TYPE_std__wstring);
 	soap_serialize_std__wstring(soap, &this->fims__CaptioningFormatType::__item);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -26897,7 +30430,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__CaptioningFormatType(struct soap *soap,
 		soap_set_attr(soap, "formatLink", soap_wchar2s(soap, ((fims__CaptioningFormatType*)a)->formatLink->c_str()), 2);
 	if (((fims__CaptioningFormatType*)a)->__anyAttribute)
 		soap_set_attr(soap, "-anyAttribute", ((fims__CaptioningFormatType*)a)->__anyAttribute, 1);
-	return soap_out_std__wstring(soap, tag, id, &a->fims__CaptioningFormatType::__item, "");
+	return soap_out_std__wstring(soap, tag, id, &(a->fims__CaptioningFormatType::__item), "fims:CaptioningFormatType");
 }
 
 void *fims__CaptioningFormatType::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -27099,13 +30632,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__DataFormatType(struct soap *soap, const
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__DataFormatType), "fims:DataFormatType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -27145,6 +30678,7 @@ SOAP_FMAC3 fims__DataFormatType * SOAP_FMAC4 soap_in_fims__DataFormatType(struct
 			return (fims__DataFormatType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item5 = 1;
 	size_t soap_flag_resourceID4 = 1;
 	size_t soap_flag_revisionID4 = 1;
 	size_t soap_flag_location4 = 1;
@@ -27157,6 +30691,7 @@ SOAP_FMAC3 fims__DataFormatType * SOAP_FMAC4 soap_in_fims__DataFormatType(struct
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID4--;
@@ -27172,7 +30707,6 @@ SOAP_FMAC3 fims__DataFormatType * SOAP_FMAC4 soap_in_fims__DataFormatType(struct
 				{	soap_flag_location4--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate3 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate3--;
@@ -27207,6 +30741,11 @@ SOAP_FMAC3 fims__DataFormatType * SOAP_FMAC4 soap_in_fims__DataFormatType(struct
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofims__AncillaryDataFormatType(soap, "fims:ancillaryDataFormat", &(a->fims__DataFormatType::ancillaryDataFormat), "fims:AncillaryDataFormatType"))
 					continue;
+			if (soap_flag___item5 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item5--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -27325,13 +30864,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__AudioFormatType(struct soap *soap, cons
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__AudioFormatType), "fims:AudioFormatType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -27385,6 +30924,7 @@ SOAP_FMAC3 fims__AudioFormatType * SOAP_FMAC4 soap_in_fims__AudioFormatType(stru
 			return (fims__AudioFormatType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item5 = 1;
 	size_t soap_flag_resourceID4 = 1;
 	size_t soap_flag_revisionID4 = 1;
 	size_t soap_flag_location4 = 1;
@@ -27405,6 +30945,7 @@ SOAP_FMAC3 fims__AudioFormatType * SOAP_FMAC4 soap_in_fims__AudioFormatType(stru
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID4--;
@@ -27420,7 +30961,6 @@ SOAP_FMAC3 fims__AudioFormatType * SOAP_FMAC4 soap_in_fims__AudioFormatType(stru
 				{	soap_flag_location4--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate3 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate3--;
@@ -27490,6 +31030,11 @@ SOAP_FMAC3 fims__AudioFormatType * SOAP_FMAC4 soap_in_fims__AudioFormatType(stru
 			if (soap_flag_sampleType1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__AudioSampleType(soap, "fims:sampleType", &(a->fims__AudioFormatType::sampleType), "fims:AudioSampleType"))
 				{	soap_flag_sampleType1--;
+					continue;
+				}
+			if (soap_flag___item5 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item5--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -27616,13 +31161,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__VideoFormatType(struct soap *soap, cons
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__VideoFormatType), "fims:VideoFormatType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -27682,6 +31227,7 @@ SOAP_FMAC3 fims__VideoFormatType * SOAP_FMAC4 soap_in_fims__VideoFormatType(stru
 			return (fims__VideoFormatType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item5 = 1;
 	size_t soap_flag_resourceID4 = 1;
 	size_t soap_flag_revisionID4 = 1;
 	size_t soap_flag_location4 = 1;
@@ -27705,6 +31251,7 @@ SOAP_FMAC3 fims__VideoFormatType * SOAP_FMAC4 soap_in_fims__VideoFormatType(stru
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID4--;
@@ -27720,7 +31267,6 @@ SOAP_FMAC3 fims__VideoFormatType * SOAP_FMAC4 soap_in_fims__VideoFormatType(stru
 				{	soap_flag_location4--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate3 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate3--;
@@ -27805,6 +31351,11 @@ SOAP_FMAC3 fims__VideoFormatType * SOAP_FMAC4 soap_in_fims__VideoFormatType(stru
 			if (soap_flag_noiseFilter1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTobool(soap, "fims:noiseFilter", &(a->fims__VideoFormatType::noiseFilter), "xsd:boolean"))
 				{	soap_flag_noiseFilter1--;
+					continue;
+				}
+			if (soap_flag___item5 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item5--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -27909,13 +31460,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__FormatType(struct soap *soap, const cha
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__FormatType), "fims:FormatType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -27951,6 +31502,7 @@ SOAP_FMAC3 fims__FormatType * SOAP_FMAC4 soap_in_fims__FormatType(struct soap *s
 			return (fims__FormatType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item4 = 1;
 	size_t soap_flag_resourceID3 = 1;
 	size_t soap_flag_revisionID3 = 1;
 	size_t soap_flag_location3 = 1;
@@ -27963,6 +31515,7 @@ SOAP_FMAC3 fims__FormatType * SOAP_FMAC4 soap_in_fims__FormatType(struct soap *s
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID3--;
@@ -27978,7 +31531,6 @@ SOAP_FMAC3 fims__FormatType * SOAP_FMAC4 soap_in_fims__FormatType(struct soap *s
 				{	soap_flag_location3--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate2 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate2--;
@@ -28007,6 +31559,11 @@ SOAP_FMAC3 fims__FormatType * SOAP_FMAC4 soap_in_fims__FormatType(struct soap *s
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofims__TechnicalAttributeType(soap, "fims:technicalAttribute", &(a->fims__FormatType::technicalAttribute), "fims:TechnicalAttributeType"))
 					continue;
+			if (soap_flag___item4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item4--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -28223,13 +31780,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__JobType(struct soap *soap, const char *
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__JobType), "fims:JobType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -28295,6 +31852,7 @@ SOAP_FMAC3 fims__JobType * SOAP_FMAC4 soap_in_fims__JobType(struct soap *soap, c
 			return (fims__JobType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item4 = 1;
 	size_t soap_flag_resourceID3 = 1;
 	size_t soap_flag_revisionID3 = 1;
 	size_t soap_flag_location3 = 1;
@@ -28323,6 +31881,7 @@ SOAP_FMAC3 fims__JobType * SOAP_FMAC4 soap_in_fims__JobType(struct soap *soap, c
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID3--;
@@ -28338,7 +31897,6 @@ SOAP_FMAC3 fims__JobType * SOAP_FMAC4 soap_in_fims__JobType(struct soap *soap, c
 				{	soap_flag_location3--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate2 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate2--;
@@ -28442,6 +32000,11 @@ SOAP_FMAC3 fims__JobType * SOAP_FMAC4 soap_in_fims__JobType(struct soap *soap, c
 			if (soap_flag_processed1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__ProcessedInfoType(soap, "fims:processed", &(a->fims__JobType::processed), "fims:ProcessedInfoType"))
 				{	soap_flag_processed1--;
+					continue;
+				}
+			if (soap_flag___item4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item4--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -28556,13 +32119,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__QueueType(struct soap *soap, const char
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__QueueType), "fims:QueueType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -28608,6 +32171,7 @@ SOAP_FMAC3 fims__QueueType * SOAP_FMAC4 soap_in_fims__QueueType(struct soap *soa
 			return (fims__QueueType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item4 = 1;
 	size_t soap_flag_resourceID3 = 1;
 	size_t soap_flag_revisionID3 = 1;
 	size_t soap_flag_location3 = 1;
@@ -28626,6 +32190,7 @@ SOAP_FMAC3 fims__QueueType * SOAP_FMAC4 soap_in_fims__QueueType(struct soap *soa
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID3--;
@@ -28641,7 +32206,6 @@ SOAP_FMAC3 fims__QueueType * SOAP_FMAC4 soap_in_fims__QueueType(struct soap *soa
 				{	soap_flag_location3--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate2 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate2--;
@@ -28695,6 +32259,11 @@ SOAP_FMAC3 fims__QueueType * SOAP_FMAC4 soap_in_fims__QueueType(struct soap *soa
 			if (soap_flag_jobs1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__JobsType(soap, "fims:jobs", &(a->fims__QueueType::jobs), "fims:JobsType"))
 				{	soap_flag_jobs1--;
+					continue;
+				}
+			if (soap_flag___item4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item4--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -28805,13 +32374,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ProfileType(struct soap *soap, const ch
 		soap_set_attr(soap, "description", soap_wchar2s(soap, ((fims__ProfileType*)a)->description->c_str()), 2);
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ProfileType), "fims:ProfileType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -28883,6 +32452,7 @@ SOAP_FMAC3 fims__ProfileType * SOAP_FMAC4 soap_in_fims__ProfileType(struct soap 
 		else if (soap->error)
 			return NULL;
 	}
+	size_t soap_flag___item4 = 1;
 	size_t soap_flag_resourceID3 = 1;
 	size_t soap_flag_revisionID3 = 1;
 	size_t soap_flag_location3 = 1;
@@ -28896,6 +32466,7 @@ SOAP_FMAC3 fims__ProfileType * SOAP_FMAC4 soap_in_fims__ProfileType(struct soap 
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID3--;
@@ -28911,7 +32482,6 @@ SOAP_FMAC3 fims__ProfileType * SOAP_FMAC4 soap_in_fims__ProfileType(struct soap 
 				{	soap_flag_location3--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate2 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate2--;
@@ -28940,6 +32510,11 @@ SOAP_FMAC3 fims__ProfileType * SOAP_FMAC4 soap_in_fims__ProfileType(struct soap 
 			if (soap_flag_service1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__ServiceType(soap, "fims:service", &(a->fims__ProfileType::service), "fims:ServiceType"))
 				{	soap_flag_service1--;
+					continue;
+				}
+			if (soap_flag___item4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item4--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -29048,13 +32623,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ServiceType(struct soap *soap, const ch
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ServiceType), "fims:ServiceType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -29094,6 +32669,7 @@ SOAP_FMAC3 fims__ServiceType * SOAP_FMAC4 soap_in_fims__ServiceType(struct soap 
 			return (fims__ServiceType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item4 = 1;
 	size_t soap_flag_resourceID3 = 1;
 	size_t soap_flag_revisionID3 = 1;
 	size_t soap_flag_location3 = 1;
@@ -29109,6 +32685,7 @@ SOAP_FMAC3 fims__ServiceType * SOAP_FMAC4 soap_in_fims__ServiceType(struct soap 
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID3--;
@@ -29124,7 +32701,6 @@ SOAP_FMAC3 fims__ServiceType * SOAP_FMAC4 soap_in_fims__ServiceType(struct soap 
 				{	soap_flag_location3--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate2 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate2--;
@@ -29163,6 +32739,11 @@ SOAP_FMAC3 fims__ServiceType * SOAP_FMAC4 soap_in_fims__ServiceType(struct soap 
 			if (soap_flag_serviceDescription1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTo_fims__ServiceType_serviceDescription(soap, "fims:serviceDescription", &(a->fims__ServiceType::serviceDescription), ""))
 				{	soap_flag_serviceDescription1--;
+					continue;
+				}
+			if (soap_flag___item4 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item4--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -29245,9 +32826,9 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ServiceType(struct soap *soap, int st
 void fims__AsyncEndpointType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_xsd__anyURI(soap, &this->fims__AsyncEndpointType::replyTo);
 	soap_default_xsd__anyURI(soap, &this->fims__AsyncEndpointType::faultTo);
-	/* transient soap skipped */
 }
 
 void fims__AsyncEndpointType::soap_serialize(struct soap *soap) const
@@ -29258,7 +32839,7 @@ void fims__AsyncEndpointType::soap_serialize(struct soap *soap) const
 	soap_serialize_xsd__anyURI(soap, &this->fims__AsyncEndpointType::replyTo);
 	soap_embedded(soap, &this->fims__AsyncEndpointType::faultTo, SOAP_TYPE_xsd__anyURI);
 	soap_serialize_xsd__anyURI(soap, &this->fims__AsyncEndpointType::faultTo);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -29269,13 +32850,13 @@ int fims__AsyncEndpointType::soap_out(struct soap *soap, const char *tag, int id
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__AsyncEndpointType(struct soap *soap, const char *tag, int id, const fims__AsyncEndpointType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__AsyncEndpointType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__AsyncEndpointType), "fims:AsyncEndpointType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_xsd__anyURI(soap, "fims:replyTo", -1, &(a->fims__AsyncEndpointType::replyTo), ""))
 		return soap->error;
 	if (soap_out_xsd__anyURI(soap, "fims:faultTo", -1, &(a->fims__AsyncEndpointType::faultTo), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -29299,12 +32880,14 @@ SOAP_FMAC3 fims__AsyncEndpointType * SOAP_FMAC4 soap_in_fims__AsyncEndpointType(
 			return (fims__AsyncEndpointType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_replyTo1 = 1;
 	size_t soap_flag_faultTo1 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_replyTo1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_xsd__anyURI(soap, "fims:replyTo", &(a->fims__AsyncEndpointType::replyTo), "xsd:anyURI"))
 				{	soap_flag_replyTo1--;
@@ -29315,7 +32898,11 @@ SOAP_FMAC3 fims__AsyncEndpointType * SOAP_FMAC4 soap_in_fims__AsyncEndpointType(
 				{	soap_flag_faultTo1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -29426,13 +33013,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ResourceType(struct soap *soap, const c
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ResourceType), "fims:ResourceType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerTotime(soap, "fims:resourceCreationDate", -1, &(a->fims__ResourceType::resourceCreationDate), ""))
 		return soap->error;
 	if (soap_out_PointerTotime(soap, "fims:resourceModifiedDate", -1, &(a->fims__ResourceType::resourceModifiedDate), ""))
@@ -29466,6 +33053,7 @@ SOAP_FMAC3 fims__ResourceType * SOAP_FMAC4 soap_in_fims__ResourceType(struct soa
 			return (fims__ResourceType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_resourceID2 = 1;
 	size_t soap_flag_revisionID2 = 1;
 	size_t soap_flag_location2 = 1;
@@ -29478,6 +33066,7 @@ SOAP_FMAC3 fims__ResourceType * SOAP_FMAC4 soap_in_fims__ResourceType(struct soa
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID2--;
@@ -29493,7 +33082,6 @@ SOAP_FMAC3 fims__ResourceType * SOAP_FMAC4 soap_in_fims__ResourceType(struct soa
 				{	soap_flag_location2--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_resourceCreationDate1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTotime(soap, "fims:resourceCreationDate", &(a->fims__ResourceType::resourceCreationDate), "xsd:dateTime"))
 				{	soap_flag_resourceCreationDate1--;
@@ -29517,6 +33105,11 @@ SOAP_FMAC3 fims__ResourceType * SOAP_FMAC4 soap_in_fims__ResourceType(struct soa
 			if (soap_flag_ExtensionAttributes1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__ExtensionAttributes(soap, "fims:ExtensionAttributes", &(a->fims__ResourceType::ExtensionAttributes), "fims:ExtensionAttributes"))
 				{	soap_flag_ExtensionAttributes1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -29956,10 +33549,10 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ResourceType(struct soap *soap, int s
 void fims__ResourceReferenceType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_fims__ResourceIDType(soap, &this->fims__ResourceReferenceType::resourceID);
 	this->fims__ResourceReferenceType::revisionID = NULL;
 	this->fims__ResourceReferenceType::location = NULL;
-	/* transient soap skipped */
 }
 
 void fims__ResourceReferenceType::soap_serialize(struct soap *soap) const
@@ -29969,7 +33562,7 @@ void fims__ResourceReferenceType::soap_serialize(struct soap *soap) const
 	soap_serialize_fims__ResourceIDType(soap, &this->fims__ResourceReferenceType::resourceID);
 	soap_serialize_PointerTofims__RevisionIDType(soap, &this->fims__ResourceReferenceType::revisionID);
 	soap_serialize_PointerToxsd__anyURI(soap, &this->fims__ResourceReferenceType::location);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -29980,15 +33573,15 @@ int fims__ResourceReferenceType::soap_out(struct soap *soap, const char *tag, in
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ResourceReferenceType(struct soap *soap, const char *tag, int id, const fims__ResourceReferenceType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ResourceReferenceType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ResourceReferenceType), "fims:ResourceReferenceType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ResourceIDType(soap, "fims:resourceID", -1, &(a->fims__ResourceReferenceType::resourceID), ""))
 		return soap->error;
 	if (soap_out_PointerTofims__RevisionIDType(soap, "fims:revisionID", -1, &(a->fims__ResourceReferenceType::revisionID), ""))
 		return soap->error;
 	if (soap_out_PointerToxsd__anyURI(soap, "fims:location", -1, &(a->fims__ResourceReferenceType::location), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -30012,6 +33605,7 @@ SOAP_FMAC3 fims__ResourceReferenceType * SOAP_FMAC4 soap_in_fims__ResourceRefere
 			return (fims__ResourceReferenceType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_resourceID1 = 1;
 	size_t soap_flag_revisionID1 = 1;
 	size_t soap_flag_location1 = 1;
@@ -30019,6 +33613,7 @@ SOAP_FMAC3 fims__ResourceReferenceType * SOAP_FMAC4 soap_in_fims__ResourceRefere
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_resourceID1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_fims__ResourceIDType(soap, "fims:resourceID", &(a->fims__ResourceReferenceType::resourceID), "fims:ResourceIDType"))
 				{	soap_flag_resourceID1--;
@@ -30034,7 +33629,11 @@ SOAP_FMAC3 fims__ResourceReferenceType * SOAP_FMAC4 soap_in_fims__ResourceRefere
 				{	soap_flag_location1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -30493,15 +34092,15 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ResourceReferenceType(struct soap *so
 void fims__ExtensionAttributes::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->fims__ExtensionAttributes::__anyAttribute = NULL;
-	/* transient soap skipped */
 }
 
 void fims__ExtensionAttributes::soap_serialize(struct soap *soap) const
 {
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -30514,10 +34113,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ExtensionAttributes(struct soap *soap, 
 {
 	if (((fims__ExtensionAttributes*)a)->__anyAttribute)
 		soap_set_attr(soap, "-anyAttribute", ((fims__ExtensionAttributes*)a)->__anyAttribute, 1);
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ExtensionAttributes), type))
-		return soap->error;
-	/* transient soap skipped */
-	return soap_element_end_out(soap, tag);
+	return soap_outliteral(soap, tag, &(a->xsd__anyType::__item), "fims:ExtensionAttributes");
 }
 
 void *fims__ExtensionAttributes::soap_in(struct soap *soap, const char *tag, const char *type)
@@ -30527,41 +34123,23 @@ void *fims__ExtensionAttributes::soap_in(struct soap *soap, const char *tag, con
 SOAP_FMAC3 fims__ExtensionAttributes * SOAP_FMAC4 soap_in_fims__ExtensionAttributes(struct soap *soap, const char *tag, fims__ExtensionAttributes *a, const char *type)
 {
 	(void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_in(soap, tag, 0, NULL))
+	if (soap_element_begin_in(soap, tag, 1, NULL))
 		return NULL;
-	a = (fims__ExtensionAttributes *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__ExtensionAttributes, sizeof(fims__ExtensionAttributes), soap->type, soap->arrayType);
-	if (!a)
+	if (!(a = (fims__ExtensionAttributes *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_fims__ExtensionAttributes, sizeof(fims__ExtensionAttributes), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
 		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
 	if (soap->alloced)
 	{	a->soap_default(soap);
 		if (soap->clist->type != SOAP_TYPE_fims__ExtensionAttributes)
-		{	soap_revert(soap);
-			*soap->id = '\0';
 			return (fims__ExtensionAttributes *)a->soap_in(soap, tag, type);
-		}
 	}
 	if (soap_s2string(soap, soap_attr_value(soap, "-anyAttribute", 0), &((fims__ExtensionAttributes*)a)->__anyAttribute, 0, -1))
 		return NULL;
-	if (soap->body && !*soap->href)
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			/* transient soap skipped */
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (fims__ExtensionAttributes *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_fims__ExtensionAttributes, 0, sizeof(fims__ExtensionAttributes), 0, soap_copy_fims__ExtensionAttributes);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
+	if (!soap_inliteral(soap, tag, &(a->xsd__anyType::__item)))
+		return NULL;
 	return a;
 }
 
@@ -30623,8 +34201,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ExtensionAttributes(struct soap *soap
 void fims__ExtensionGroup::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOf_XML(soap, &this->fims__ExtensionGroup::__any);
-	/* transient soap skipped */
 }
 
 void fims__ExtensionGroup::soap_serialize(struct soap *soap) const
@@ -30632,7 +34210,7 @@ void fims__ExtensionGroup::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOf_XML(soap, &this->fims__ExtensionGroup::__any);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -30643,11 +34221,11 @@ int fims__ExtensionGroup::soap_out(struct soap *soap, const char *tag, int id, c
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_fims__ExtensionGroup(struct soap *soap, const char *tag, int id, const fims__ExtensionGroup *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ExtensionGroup), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOf_XML(soap, "-any", -1, &(a->fims__ExtensionGroup::__any), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_fims__ExtensionGroup), "fims:ExtensionGroup"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOf_XML(soap, "-any", -1, &(a->fims__ExtensionGroup::__any), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -30671,6 +34249,7 @@ SOAP_FMAC3 fims__ExtensionGroup * SOAP_FMAC4 soap_in_fims__ExtensionGroup(struct
 			return (fims__ExtensionGroup *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
@@ -30679,6 +34258,11 @@ SOAP_FMAC3 fims__ExtensionGroup * SOAP_FMAC4 soap_in_fims__ExtensionGroup(struct
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOf_XML(soap, "-any", &(a->fims__ExtensionGroup::__any), ""))
 					continue;
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -30752,6 +34336,138 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_fims__ExtensionGroup(struct soap *soap, int
 	*(fims__ExtensionGroup*)p = *(fims__ExtensionGroup*)q;
 }
 
+void _edlprovider__Map::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	soap_default_std__vectorTemplateOfPointerToedlprovider__MapItemType(soap, &this->_edlprovider__Map::item);
+	/* transient soap skipped */
+}
+
+void _edlprovider__Map::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_serialize_std__vectorTemplateOfPointerToedlprovider__MapItemType(soap, &this->_edlprovider__Map::item);
+	/* transient soap skipped */
+#endif
+}
+
+int _edlprovider__Map::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out__edlprovider__Map(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out__edlprovider__Map(struct soap *soap, const char *tag, int id, const _edlprovider__Map *a, const char *type)
+{
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE__edlprovider__Map), type))
+		return soap->error;
+	if (soap_out_std__vectorTemplateOfPointerToedlprovider__MapItemType(soap, "item", -1, &(a->_edlprovider__Map::item), ""))
+		return soap->error;
+	/* transient soap skipped */
+	return soap_element_end_out(soap, tag);
+}
+
+void *_edlprovider__Map::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in__edlprovider__Map(soap, tag, this, type);
+}
+
+SOAP_FMAC3 _edlprovider__Map * SOAP_FMAC4 soap_in__edlprovider__Map(struct soap *soap, const char *tag, _edlprovider__Map *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 0, NULL))
+		return NULL;
+	a = (_edlprovider__Map *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE__edlprovider__Map, sizeof(_edlprovider__Map), soap->type, soap->arrayType);
+	if (!a)
+		return NULL;
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE__edlprovider__Map)
+		{	soap_revert(soap);
+			*soap->id = '\0';
+			return (_edlprovider__Map *)a->soap_in(soap, tag, type);
+		}
+	}
+	if (soap->body && !*soap->href)
+	{
+		for (;;)
+		{	soap->error = SOAP_TAG_MISMATCH;
+			if (soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_std__vectorTemplateOfPointerToedlprovider__MapItemType(soap, "item", &(a->_edlprovider__Map::item), "edlprovider:MapItemType"))
+					continue;
+			/* transient soap skipped */
+			if (soap->error == SOAP_TAG_MISMATCH)
+				soap->error = soap_ignore_element(soap);
+			if (soap->error == SOAP_NO_TAG)
+				break;
+			if (soap->error)
+				return NULL;
+		}
+		if (soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	else
+	{	a = (_edlprovider__Map *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE__edlprovider__Map, 0, sizeof(_edlprovider__Map), 0, soap_copy__edlprovider__Map);
+		if (soap->body && soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	return a;
+}
+
+int _edlprovider__Map::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE__edlprovider__Map);
+	if (this->soap_out(soap, tag?tag:"edlprovider:Map", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *_edlprovider__Map::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get__edlprovider__Map(soap, this, tag, type);
+}
+
+SOAP_FMAC3 _edlprovider__Map * SOAP_FMAC4 soap_get__edlprovider__Map(struct soap *soap, _edlprovider__Map *p, const char *tag, const char *type)
+{
+	if ((p = soap_in__edlprovider__Map(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 _edlprovider__Map * SOAP_FMAC2 soap_instantiate__edlprovider__Map(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate__edlprovider__Map(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE__edlprovider__Map, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(_edlprovider__Map);
+		if (size)
+			*size = sizeof(_edlprovider__Map);
+		((_edlprovider__Map*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(_edlprovider__Map, n);
+		if (size)
+			*size = n * sizeof(_edlprovider__Map);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((_edlprovider__Map*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (_edlprovider__Map*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy__edlprovider__Map(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying _edlprovider__Map %p -> %p\n", q, p));
+	*(_edlprovider__Map*)p = *(_edlprovider__Map*)q;
+}
+
 void edlprovider__EdlProviderFaultType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
@@ -30777,6 +34493,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__EdlProviderFaultType(struct soap
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__EdlProviderFaultType), "edlprovider:EdlProviderFaultType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_fims__ErrorCodeType(soap, "fims:code", -1, &(a->fims__FaultType::code), ""))
 		return soap->error;
 	if (soap_out_PointerTostd__wstring(soap, "fims:description", -1, &(a->fims__FaultType::description), ""))
@@ -30785,7 +34502,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__EdlProviderFaultType(struct soap
 		return soap->error;
 	if (soap_out_std__vectorTemplateOfPointerTofims__InnerFaultType(soap, "fims:innerFault", -1, &(a->fims__FaultType::innerFault), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_PointerToedlprovider__EDLProviderErrorCodeType(soap, "extendedCode", -1, &(a->edlprovider__EdlProviderFaultType::extendedCode), ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
@@ -30811,6 +34527,7 @@ SOAP_FMAC3 edlprovider__EdlProviderFaultType * SOAP_FMAC4 soap_in_edlprovider__E
 			return (edlprovider__EdlProviderFaultType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_code2 = 1;
 	size_t soap_flag_description2 = 1;
 	size_t soap_flag_detail2 = 1;
@@ -30819,6 +34536,7 @@ SOAP_FMAC3 edlprovider__EdlProviderFaultType * SOAP_FMAC4 soap_in_edlprovider__E
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_code2 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_fims__ErrorCodeType(soap, "fims:code", &(a->fims__FaultType::code), "fims:ErrorCodeType"))
 				{	soap_flag_code2--;
@@ -30837,10 +34555,14 @@ SOAP_FMAC3 edlprovider__EdlProviderFaultType * SOAP_FMAC4 soap_in_edlprovider__E
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerTofims__InnerFaultType(soap, "fims:innerFault", &(a->fims__FaultType::innerFault), "fims:InnerFaultType"))
 					continue;
-			/* transient soap skipped */
 			if (soap_flag_extendedCode1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerToedlprovider__EDLProviderErrorCodeType(soap, "extendedCode", &(a->edlprovider__EdlProviderFaultType::extendedCode), "edlprovider:EDLProviderErrorCodeType"))
 				{	soap_flag_extendedCode1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -30923,8 +34645,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__EdlProviderFaultType(struct so
 void edlprovider__EdlCreateResponseType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->edlprovider__EdlCreateResponseType::getEdlResult = NULL;
-	/* transient soap skipped */
 }
 
 void edlprovider__EdlCreateResponseType::soap_serialize(struct soap *soap) const
@@ -30932,7 +34654,7 @@ void edlprovider__EdlCreateResponseType::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_PointerToxsd__base64Binary(soap, &this->edlprovider__EdlCreateResponseType::getEdlResult);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -30943,11 +34665,11 @@ int edlprovider__EdlCreateResponseType::soap_out(struct soap *soap, const char *
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__EdlCreateResponseType(struct soap *soap, const char *tag, int id, const edlprovider__EdlCreateResponseType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__EdlCreateResponseType), type))
-		return soap->error;
-	if (soap_out_PointerToxsd__base64Binary(soap, "getEdlResult", -1, &(a->edlprovider__EdlCreateResponseType::getEdlResult), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__EdlCreateResponseType), "edlprovider:EdlCreateResponseType"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_PointerToxsd__base64Binary(soap, "getEdlResult", -1, &(a->edlprovider__EdlCreateResponseType::getEdlResult), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -30971,17 +34693,23 @@ SOAP_FMAC3 edlprovider__EdlCreateResponseType * SOAP_FMAC4 soap_in_edlprovider__
 			return (edlprovider__EdlCreateResponseType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_getEdlResult1 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_getEdlResult1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerToxsd__base64Binary(soap, "getEdlResult", &(a->edlprovider__EdlCreateResponseType::getEdlResult), "xsd:base64Binary"))
 				{	soap_flag_getEdlResult1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -31079,13 +34807,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__EdlCreateRequestDoubleType(struc
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__EdlCreateRequestDoubleType), "edlprovider:EdlCreateRequestDoubleType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_std__wstring(soap, "edlType", -1, &(a->edlprovider__EdlCreateRequestBaseType::edlType), ""))
 		return soap->error;
 	if (soap_out_PointerToedlprovider__ArrayOfClips(soap, "clips", -1, &(a->edlprovider__EdlCreateRequestBaseType::clips), ""))
 		return soap->error;
 	if (soap_out_PointerTostd__wstring(soap, "edlSequenceName", -1, &(a->edlprovider__EdlCreateRequestBaseType::edlSequenceName), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (soap_out_double(soap, "edlFramesPerSecond", -1, &(a->edlprovider__EdlCreateRequestDoubleType::edlFramesPerSecond), ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
@@ -31111,6 +34839,7 @@ SOAP_FMAC3 edlprovider__EdlCreateRequestDoubleType * SOAP_FMAC4 soap_in_edlprovi
 			return (edlprovider__EdlCreateRequestDoubleType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_edlType2 = 1;
 	size_t soap_flag_clips2 = 1;
 	size_t soap_flag_edlSequenceName2 = 1;
@@ -31119,6 +34848,7 @@ SOAP_FMAC3 edlprovider__EdlCreateRequestDoubleType * SOAP_FMAC4 soap_in_edlprovi
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_edlType2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_std__wstring(soap, "edlType", &(a->edlprovider__EdlCreateRequestBaseType::edlType), "xsd:string"))
 				{	soap_flag_edlType2--;
@@ -31134,10 +34864,14 @@ SOAP_FMAC3 edlprovider__EdlCreateRequestDoubleType * SOAP_FMAC4 soap_in_edlprovi
 				{	soap_flag_edlSequenceName2--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_edlFramesPerSecond1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_double(soap, "edlFramesPerSecond", &(a->edlprovider__EdlCreateRequestDoubleType::edlFramesPerSecond), "xsd:double"))
 				{	soap_flag_edlFramesPerSecond1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -31242,13 +34976,13 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__EdlCreateRequestType(struct soap
 {
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__EdlCreateRequestType), "edlprovider:EdlCreateRequestType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_std__wstring(soap, "edlType", -1, &(a->edlprovider__EdlCreateRequestBaseType::edlType), ""))
 		return soap->error;
 	if (soap_out_PointerToedlprovider__ArrayOfClips(soap, "clips", -1, &(a->edlprovider__EdlCreateRequestBaseType::clips), ""))
 		return soap->error;
 	if (soap_out_PointerTostd__wstring(soap, "edlSequenceName", -1, &(a->edlprovider__EdlCreateRequestBaseType::edlSequenceName), ""))
 		return soap->error;
-	/* transient soap skipped */
 	if (a->edlprovider__EdlCreateRequestType::edlFramesPerSecond)
 	{	if (soap_out_PointerTofims__RationalType(soap, "edlFramesPerSecond", -1, &a->edlprovider__EdlCreateRequestType::edlFramesPerSecond, ""))
 			return soap->error;
@@ -31278,6 +35012,7 @@ SOAP_FMAC3 edlprovider__EdlCreateRequestType * SOAP_FMAC4 soap_in_edlprovider__E
 			return (edlprovider__EdlCreateRequestType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item3 = 1;
 	size_t soap_flag_edlType2 = 1;
 	size_t soap_flag_clips2 = 1;
 	size_t soap_flag_edlSequenceName2 = 1;
@@ -31286,6 +35021,7 @@ SOAP_FMAC3 edlprovider__EdlCreateRequestType * SOAP_FMAC4 soap_in_edlprovider__E
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_edlType2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_std__wstring(soap, "edlType", &(a->edlprovider__EdlCreateRequestBaseType::edlType), "xsd:string"))
 				{	soap_flag_edlType2--;
@@ -31301,10 +35037,14 @@ SOAP_FMAC3 edlprovider__EdlCreateRequestType * SOAP_FMAC4 soap_in_edlprovider__E
 				{	soap_flag_edlSequenceName2--;
 					continue;
 				}
-			/* transient soap skipped */
 			if (soap_flag_edlFramesPerSecond1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__RationalType(soap, "edlFramesPerSecond", &(a->edlprovider__EdlCreateRequestType::edlFramesPerSecond), "fims:RationalType"))
 				{	soap_flag_edlFramesPerSecond1--;
+					continue;
+				}
+			if (soap_flag___item3 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item3--;
 					continue;
 				}
 			if (soap->error == SOAP_TAG_MISMATCH)
@@ -31387,10 +35127,10 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__EdlCreateRequestType(struct so
 void edlprovider__EdlCreateRequestBaseType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__wstring(soap, &this->edlprovider__EdlCreateRequestBaseType::edlType);
 	this->edlprovider__EdlCreateRequestBaseType::clips = NULL;
 	this->edlprovider__EdlCreateRequestBaseType::edlSequenceName = NULL;
-	/* transient soap skipped */
 }
 
 void edlprovider__EdlCreateRequestBaseType::soap_serialize(struct soap *soap) const
@@ -31401,7 +35141,7 @@ void edlprovider__EdlCreateRequestBaseType::soap_serialize(struct soap *soap) co
 	soap_serialize_std__wstring(soap, &this->edlprovider__EdlCreateRequestBaseType::edlType);
 	soap_serialize_PointerToedlprovider__ArrayOfClips(soap, &this->edlprovider__EdlCreateRequestBaseType::clips);
 	soap_serialize_PointerTostd__wstring(soap, &this->edlprovider__EdlCreateRequestBaseType::edlSequenceName);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -31412,15 +35152,15 @@ int edlprovider__EdlCreateRequestBaseType::soap_out(struct soap *soap, const cha
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__EdlCreateRequestBaseType(struct soap *soap, const char *tag, int id, const edlprovider__EdlCreateRequestBaseType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__EdlCreateRequestBaseType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__EdlCreateRequestBaseType), "edlprovider:EdlCreateRequestBaseType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (soap_out_std__wstring(soap, "edlType", -1, &(a->edlprovider__EdlCreateRequestBaseType::edlType), ""))
 		return soap->error;
 	if (soap_out_PointerToedlprovider__ArrayOfClips(soap, "clips", -1, &(a->edlprovider__EdlCreateRequestBaseType::clips), ""))
 		return soap->error;
 	if (soap_out_PointerTostd__wstring(soap, "edlSequenceName", -1, &(a->edlprovider__EdlCreateRequestBaseType::edlSequenceName), ""))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -31444,6 +35184,7 @@ SOAP_FMAC3 edlprovider__EdlCreateRequestBaseType * SOAP_FMAC4 soap_in_edlprovide
 			return (edlprovider__EdlCreateRequestBaseType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_edlType1 = 1;
 	size_t soap_flag_clips1 = 1;
 	size_t soap_flag_edlSequenceName1 = 1;
@@ -31451,6 +35192,7 @@ SOAP_FMAC3 edlprovider__EdlCreateRequestBaseType * SOAP_FMAC4 soap_in_edlprovide
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_edlType1 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 				if (soap_in_std__wstring(soap, "edlType", &(a->edlprovider__EdlCreateRequestBaseType::edlType), "xsd:string"))
 				{	soap_flag_edlType1--;
@@ -31466,7 +35208,11 @@ SOAP_FMAC3 edlprovider__EdlCreateRequestBaseType * SOAP_FMAC4 soap_in_edlprovide
 				{	soap_flag_edlSequenceName1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -31586,13 +35332,328 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__EdlCreateRequestBaseType(struc
 	*(edlprovider__EdlCreateRequestBaseType*)p = *(edlprovider__EdlCreateRequestBaseType*)q;
 }
 
+void edlprovider__MapItemType::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	this->edlprovider__MapItemType::key = NULL;
+	this->edlprovider__MapItemType::value = NULL;
+}
+
+void edlprovider__MapItemType::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_serialize_PointerToxsd__anyType(soap, &this->edlprovider__MapItemType::key);
+	soap_serialize_PointerToxsd__anyType(soap, &this->edlprovider__MapItemType::value);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int edlprovider__MapItemType::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_edlprovider__MapItemType(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__MapItemType(struct soap *soap, const char *tag, int id, const edlprovider__MapItemType *a, const char *type)
+{
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__MapItemType), "edlprovider:MapItemType"))
+		return soap->error;
+	/* transient soap skipped */
+	if (a->edlprovider__MapItemType::key)
+	{	if (soap_out_PointerToxsd__anyType(soap, "key", -1, &a->edlprovider__MapItemType::key, ""))
+			return soap->error;
+	}
+	else if (soap_element_nil(soap, "key"))
+		return soap->error;
+	if (a->edlprovider__MapItemType::value)
+	{	if (soap_out_PointerToxsd__anyType(soap, "value", -1, &a->edlprovider__MapItemType::value, ""))
+			return soap->error;
+	}
+	else if (soap_element_nil(soap, "value"))
+		return soap->error;
+	return soap_element_end_out(soap, tag);
+}
+
+void *edlprovider__MapItemType::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_edlprovider__MapItemType(soap, tag, this, type);
+}
+
+SOAP_FMAC3 edlprovider__MapItemType * SOAP_FMAC4 soap_in_edlprovider__MapItemType(struct soap *soap, const char *tag, edlprovider__MapItemType *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 0, NULL))
+		return NULL;
+	a = (edlprovider__MapItemType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_edlprovider__MapItemType, sizeof(edlprovider__MapItemType), soap->type, soap->arrayType);
+	if (!a)
+		return NULL;
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_edlprovider__MapItemType)
+		{	soap_revert(soap);
+			*soap->id = '\0';
+			return (edlprovider__MapItemType *)a->soap_in(soap, tag, type);
+		}
+	}
+	size_t soap_flag___item2 = 1;
+	size_t soap_flag_key1 = 1;
+	size_t soap_flag_value1 = 1;
+	if (soap->body && !*soap->href)
+	{
+		for (;;)
+		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
+			if (soap_flag_key1 && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_PointerToxsd__anyType(soap, "key", &(a->edlprovider__MapItemType::key), "xsd:anyType"))
+				{	soap_flag_key1--;
+					continue;
+				}
+			if (soap_flag_value1 && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_PointerToxsd__anyType(soap, "value", &(a->edlprovider__MapItemType::value), "xsd:anyType"))
+				{	soap_flag_value1--;
+					continue;
+				}
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
+			if (soap->error == SOAP_TAG_MISMATCH)
+				soap->error = soap_ignore_element(soap);
+			if (soap->error == SOAP_NO_TAG)
+				break;
+			if (soap->error)
+				return NULL;
+		}
+		if (soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	else
+	{	a = (edlprovider__MapItemType *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_edlprovider__MapItemType, 0, sizeof(edlprovider__MapItemType), 0, soap_copy_edlprovider__MapItemType);
+		if (soap->body && soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_key1 > 0 || soap_flag_value1 > 0))
+	{	soap->error = SOAP_OCCURS;
+		return NULL;
+	}
+	return a;
+}
+
+int edlprovider__MapItemType::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_edlprovider__MapItemType);
+	if (this->soap_out(soap, tag?tag:"edlprovider:MapItemType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *edlprovider__MapItemType::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_edlprovider__MapItemType(soap, this, tag, type);
+}
+
+SOAP_FMAC3 edlprovider__MapItemType * SOAP_FMAC4 soap_get_edlprovider__MapItemType(struct soap *soap, edlprovider__MapItemType *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_edlprovider__MapItemType(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 edlprovider__MapItemType * SOAP_FMAC2 soap_instantiate_edlprovider__MapItemType(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_edlprovider__MapItemType(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_edlprovider__MapItemType, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(edlprovider__MapItemType);
+		if (size)
+			*size = sizeof(edlprovider__MapItemType);
+		((edlprovider__MapItemType*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(edlprovider__MapItemType, n);
+		if (size)
+			*size = n * sizeof(edlprovider__MapItemType);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((edlprovider__MapItemType*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (edlprovider__MapItemType*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__MapItemType(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying edlprovider__MapItemType %p -> %p\n", q, p));
+	*(edlprovider__MapItemType*)p = *(edlprovider__MapItemType*)q;
+}
+
+void edlprovider__MapType::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	this->edlprovider__MapType::edlprovider__Map = NULL;
+}
+
+void edlprovider__MapType::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_serialize_PointerTo_edlprovider__Map(soap, &this->edlprovider__MapType::edlprovider__Map);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int edlprovider__MapType::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_edlprovider__MapType(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__MapType(struct soap *soap, const char *tag, int id, const edlprovider__MapType *a, const char *type)
+{
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__MapType), "edlprovider:MapType"))
+		return soap->error;
+	/* transient soap skipped */
+	if (a->edlprovider__Map)
+		soap_element_result(soap, "edlprovider:Map");
+	if (a->edlprovider__MapType::edlprovider__Map)
+	{	if (soap_out_PointerTo_edlprovider__Map(soap, "edlprovider:Map", -1, &a->edlprovider__MapType::edlprovider__Map, ""))
+			return soap->error;
+	}
+	else if (soap_element_nil(soap, "edlprovider:Map"))
+		return soap->error;
+	return soap_element_end_out(soap, tag);
+}
+
+void *edlprovider__MapType::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_edlprovider__MapType(soap, tag, this, type);
+}
+
+SOAP_FMAC3 edlprovider__MapType * SOAP_FMAC4 soap_in_edlprovider__MapType(struct soap *soap, const char *tag, edlprovider__MapType *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 0, NULL))
+		return NULL;
+	a = (edlprovider__MapType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_edlprovider__MapType, sizeof(edlprovider__MapType), soap->type, soap->arrayType);
+	if (!a)
+		return NULL;
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_edlprovider__MapType)
+		{	soap_revert(soap);
+			*soap->id = '\0';
+			return (edlprovider__MapType *)a->soap_in(soap, tag, type);
+		}
+	}
+	size_t soap_flag___item2 = 1;
+	size_t soap_flag_edlprovider__Map1 = 1;
+	if (soap->body && !*soap->href)
+	{
+		for (;;)
+		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
+			if (soap_flag_edlprovider__Map1 && soap->error == SOAP_TAG_MISMATCH)
+				if (soap_in_PointerTo_edlprovider__Map(soap, "edlprovider:Map", &(a->edlprovider__MapType::edlprovider__Map), ""))
+				{	soap_flag_edlprovider__Map1--;
+					continue;
+				}
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
+			soap_check_result(soap, "edlprovider:Map");
+			if (soap->error == SOAP_TAG_MISMATCH)
+				soap->error = soap_ignore_element(soap);
+			if (soap->error == SOAP_NO_TAG)
+				break;
+			if (soap->error)
+				return NULL;
+		}
+		if (soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	else
+	{	a = (edlprovider__MapType *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_edlprovider__MapType, 0, sizeof(edlprovider__MapType), 0, soap_copy_edlprovider__MapType);
+		if (soap->body && soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_edlprovider__Map1 > 0))
+	{	soap->error = SOAP_OCCURS;
+		return NULL;
+	}
+	return a;
+}
+
+int edlprovider__MapType::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_edlprovider__MapType);
+	if (this->soap_out(soap, tag?tag:"edlprovider:MapType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *edlprovider__MapType::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_edlprovider__MapType(soap, this, tag, type);
+}
+
+SOAP_FMAC3 edlprovider__MapType * SOAP_FMAC4 soap_get_edlprovider__MapType(struct soap *soap, edlprovider__MapType *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_edlprovider__MapType(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 edlprovider__MapType * SOAP_FMAC2 soap_instantiate_edlprovider__MapType(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_edlprovider__MapType(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_edlprovider__MapType, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(edlprovider__MapType);
+		if (size)
+			*size = sizeof(edlprovider__MapType);
+		((edlprovider__MapType*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(edlprovider__MapType, n);
+		if (size)
+			*size = n * sizeof(edlprovider__MapType);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((edlprovider__MapType*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (edlprovider__MapType*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__MapType(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying edlprovider__MapType %p -> %p\n", q, p));
+	*(edlprovider__MapType*)p = *(edlprovider__MapType*)q;
+}
+
 void edlprovider__ClipType::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	this->edlprovider__ClipType::markIn = NULL;
 	this->edlprovider__ClipType::markOut = NULL;
 	this->edlprovider__ClipType::clipInfo = NULL;
-	/* transient soap skipped */
 }
 
 void edlprovider__ClipType::soap_serialize(struct soap *soap) const
@@ -31602,7 +35663,7 @@ void edlprovider__ClipType::soap_serialize(struct soap *soap) const
 	soap_serialize_PointerTofims__TimeType(soap, &this->edlprovider__ClipType::markIn);
 	soap_serialize_PointerTofims__TimeType(soap, &this->edlprovider__ClipType::markOut);
 	soap_serialize_PointerTofims__BMObjectType(soap, &this->edlprovider__ClipType::clipInfo);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -31613,8 +35674,9 @@ int edlprovider__ClipType::soap_out(struct soap *soap, const char *tag, int id, 
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__ClipType(struct soap *soap, const char *tag, int id, const edlprovider__ClipType *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__ClipType), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__ClipType), "edlprovider:ClipType"))
 		return soap->error;
+	/* transient soap skipped */
 	if (a->edlprovider__ClipType::markIn)
 	{	if (soap_out_PointerTofims__TimeType(soap, "markIn", -1, &a->edlprovider__ClipType::markIn, ""))
 			return soap->error;
@@ -31633,7 +35695,6 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__ClipType(struct soap *soap, cons
 	}
 	else if (soap_element_nil(soap, "clipInfo"))
 		return soap->error;
-	/* transient soap skipped */
 	return soap_element_end_out(soap, tag);
 }
 
@@ -31657,6 +35718,7 @@ SOAP_FMAC3 edlprovider__ClipType * SOAP_FMAC4 soap_in_edlprovider__ClipType(stru
 			return (edlprovider__ClipType *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	size_t soap_flag_markIn1 = 1;
 	size_t soap_flag_markOut1 = 1;
 	size_t soap_flag_clipInfo1 = 1;
@@ -31664,6 +35726,7 @@ SOAP_FMAC3 edlprovider__ClipType * SOAP_FMAC4 soap_in_edlprovider__ClipType(stru
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap_flag_markIn1 && soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_PointerTofims__TimeType(soap, "markIn", &(a->edlprovider__ClipType::markIn), "fims:TimeType"))
 				{	soap_flag_markIn1--;
@@ -31679,7 +35742,11 @@ SOAP_FMAC3 edlprovider__ClipType * SOAP_FMAC4 soap_in_edlprovider__ClipType(stru
 				{	soap_flag_clipInfo1--;
 					continue;
 				}
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -31760,8 +35827,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__ClipType(struct soap *soap, in
 void edlprovider__ArrayOfClips::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOfPointerToedlprovider__ClipType(soap, &this->edlprovider__ArrayOfClips::clips);
-	/* transient soap skipped */
 }
 
 void edlprovider__ArrayOfClips::soap_serialize(struct soap *soap) const
@@ -31769,7 +35836,7 @@ void edlprovider__ArrayOfClips::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOfPointerToedlprovider__ClipType(soap, &this->edlprovider__ArrayOfClips::clips);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -31780,11 +35847,11 @@ int edlprovider__ArrayOfClips::soap_out(struct soap *soap, const char *tag, int 
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__ArrayOfClips(struct soap *soap, const char *tag, int id, const edlprovider__ArrayOfClips *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__ArrayOfClips), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOfPointerToedlprovider__ClipType(soap, "clips", -1, &(a->edlprovider__ArrayOfClips::clips), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__ArrayOfClips), "edlprovider:ArrayOfClips"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOfPointerToedlprovider__ClipType(soap, "clips", -1, &(a->edlprovider__ArrayOfClips::clips), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -31808,14 +35875,20 @@ SOAP_FMAC3 edlprovider__ArrayOfClips * SOAP_FMAC4 soap_in_edlprovider__ArrayOfCl
 			return (edlprovider__ArrayOfClips *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfPointerToedlprovider__ClipType(soap, "clips", &(a->edlprovider__ArrayOfClips::clips), "edlprovider:ClipType"))
 					continue;
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -31892,8 +35965,8 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__ArrayOfClips(struct soap *soap
 void edlprovider__ArrayOfstring::soap_default(struct soap *soap)
 {
 	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
 	soap_default_std__vectorTemplateOfstd__wstring(soap, &this->edlprovider__ArrayOfstring::string);
-	/* transient soap skipped */
 }
 
 void edlprovider__ArrayOfstring::soap_serialize(struct soap *soap) const
@@ -31901,7 +35974,7 @@ void edlprovider__ArrayOfstring::soap_serialize(struct soap *soap) const
 #ifndef WITH_NOIDREF
 	(void)soap; /* appease -Wall -Werror */
 	soap_serialize_std__vectorTemplateOfstd__wstring(soap, &this->edlprovider__ArrayOfstring::string);
-	/* transient soap skipped */
+	this->xsd__anyType::soap_serialize(soap);
 #endif
 }
 
@@ -31912,11 +35985,11 @@ int edlprovider__ArrayOfstring::soap_out(struct soap *soap, const char *tag, int
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__ArrayOfstring(struct soap *soap, const char *tag, int id, const edlprovider__ArrayOfstring *a, const char *type)
 {
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__ArrayOfstring), type))
-		return soap->error;
-	if (soap_out_std__vectorTemplateOfstd__wstring(soap, "string", -1, &(a->edlprovider__ArrayOfstring::string), ""))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_edlprovider__ArrayOfstring), "edlprovider:ArrayOfstring"))
 		return soap->error;
 	/* transient soap skipped */
+	if (soap_out_std__vectorTemplateOfstd__wstring(soap, "string", -1, &(a->edlprovider__ArrayOfstring::string), ""))
+		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
@@ -31940,14 +36013,20 @@ SOAP_FMAC3 edlprovider__ArrayOfstring * SOAP_FMAC4 soap_in_edlprovider__ArrayOfs
 			return (edlprovider__ArrayOfstring *)a->soap_in(soap, tag, type);
 		}
 	}
+	size_t soap_flag___item2 = 1;
 	if (soap->body && !*soap->href)
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
+			/* transient soap skipped */
 			if (soap->error == SOAP_TAG_MISMATCH)
 				if (soap_in_std__vectorTemplateOfstd__wstring(soap, "string", &(a->edlprovider__ArrayOfstring::string), "xsd:string"))
 					continue;
-			/* transient soap skipped */
+			if (soap_flag___item2 && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+				if (soap_inliteral(soap, "-item", &(a->xsd__anyType::__item)))
+				{	soap_flag___item2--;
+					continue;
+				}
 			if (soap->error == SOAP_TAG_MISMATCH)
 				soap->error = soap_ignore_element(soap);
 			if (soap->error == SOAP_NO_TAG)
@@ -32021,6 +36100,219 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__ArrayOfstring(struct soap *soa
 	*(edlprovider__ArrayOfstring*)p = *(edlprovider__ArrayOfstring*)q;
 }
 
+void xsd__unsignedLong::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_unsignedLONG64(soap, &this->xsd__unsignedLong::__item);
+}
+
+void xsd__unsignedLong::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->xsd__unsignedLong::__item, SOAP_TYPE_unsignedLONG64);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__unsignedLong::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__unsignedLong(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__unsignedLong(struct soap *soap, const char *tag, int id, const xsd__unsignedLong *a, const char *type)
+{
+	return soap_out_unsignedLONG64(soap, tag, id, &(a->xsd__unsignedLong::__item), "xsd:unsignedLong");
+}
+
+void *xsd__unsignedLong::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__unsignedLong(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__unsignedLong * SOAP_FMAC4 soap_in_xsd__unsignedLong(struct soap *soap, const char *tag, xsd__unsignedLong *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__unsignedLong *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__unsignedLong, sizeof(xsd__unsignedLong), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__unsignedLong)
+			return (xsd__unsignedLong *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_unsignedLONG64(soap, tag, &(a->xsd__unsignedLong::__item), "xsd:unsignedLong"))
+		return NULL;
+	return a;
+}
+
+int xsd__unsignedLong::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__unsignedLong);
+	if (this->soap_out(soap, tag?tag:"xsd:unsignedLong", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__unsignedLong::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__unsignedLong(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__unsignedLong * SOAP_FMAC4 soap_get_xsd__unsignedLong(struct soap *soap, xsd__unsignedLong *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__unsignedLong(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__unsignedLong * SOAP_FMAC2 soap_instantiate_xsd__unsignedLong(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__unsignedLong(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__unsignedLong, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__unsignedLong);
+		if (size)
+			*size = sizeof(xsd__unsignedLong);
+		((xsd__unsignedLong*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__unsignedLong, n);
+		if (size)
+			*size = n * sizeof(xsd__unsignedLong);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__unsignedLong*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__unsignedLong*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__unsignedLong(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__unsignedLong %p -> %p\n", q, p));
+	*(xsd__unsignedLong*)p = *(xsd__unsignedLong*)q;
+}
+
+void xsd__time_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_xsd__time(soap, &this->xsd__time_::__item);
+}
+
+void xsd__time_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->xsd__time_::__item, SOAP_TYPE_xsd__time);
+	soap_serialize_xsd__time(soap, &this->xsd__time_::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__time_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__time_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__time_(struct soap *soap, const char *tag, int id, const xsd__time_ *a, const char *type)
+{
+	return soap_out_xsd__time(soap, tag, id, &(a->xsd__time_::__item), "xsd:time");
+}
+
+void *xsd__time_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__time_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__time_ * SOAP_FMAC4 soap_in_xsd__time_(struct soap *soap, const char *tag, xsd__time_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__time_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__time_, sizeof(xsd__time_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__time_)
+			return (xsd__time_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_xsd__time(soap, tag, &(a->xsd__time_::__item), "xsd:time"))
+		return NULL;
+	return a;
+}
+
+int xsd__time_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__time_);
+	if (this->soap_out(soap, tag?tag:"xsd:time", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__time_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__time_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__time_ * SOAP_FMAC4 soap_get_xsd__time_(struct soap *soap, xsd__time_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__time_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__time_ * SOAP_FMAC2 soap_instantiate_xsd__time_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__time_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__time_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__time_);
+		if (size)
+			*size = sizeof(xsd__time_);
+		((xsd__time_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__time_, n);
+		if (size)
+			*size = n * sizeof(xsd__time_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__time_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__time_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__time_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__time_ %p -> %p\n", q, p));
+	*(xsd__time_*)p = *(xsd__time_*)q;
+}
+
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_xsd__time(struct soap *soap, const std::wstring *a)
 {	(void)soap; (void)a; /* appease -Wall -Werror */
 }
@@ -32073,6 +36365,219 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_xsd__time(struct soap *soap, std::
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
+}
+
+void xsd__string::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_std__wstring(soap, &this->xsd__string::__item);
+}
+
+void xsd__string::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->xsd__string::__item, SOAP_TYPE_std__wstring);
+	soap_serialize_std__wstring(soap, &this->xsd__string::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__string::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__string(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__string(struct soap *soap, const char *tag, int id, const xsd__string *a, const char *type)
+{
+	return soap_out_std__wstring(soap, tag, id, &(a->xsd__string::__item), "xsd:string");
+}
+
+void *xsd__string::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__string(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__string * SOAP_FMAC4 soap_in_xsd__string(struct soap *soap, const char *tag, xsd__string *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__string *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__string, sizeof(xsd__string), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__string)
+			return (xsd__string *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_std__wstring(soap, tag, &(a->xsd__string::__item), "xsd:string"))
+		return NULL;
+	return a;
+}
+
+int xsd__string::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__string);
+	if (this->soap_out(soap, tag?tag:"xsd:string", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__string::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__string(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__string * SOAP_FMAC4 soap_get_xsd__string(struct soap *soap, xsd__string *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__string(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__string * SOAP_FMAC2 soap_instantiate_xsd__string(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__string(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__string, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__string);
+		if (size)
+			*size = sizeof(xsd__string);
+		((xsd__string*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__string, n);
+		if (size)
+			*size = n * sizeof(xsd__string);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__string*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__string*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__string(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__string %p -> %p\n", q, p));
+	*(xsd__string*)p = *(xsd__string*)q;
+}
+
+void xsd__positiveInteger_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_xsd__positiveInteger(soap, &this->xsd__positiveInteger_::__item);
+}
+
+void xsd__positiveInteger_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_serialize_xsd__positiveInteger(soap, &this->xsd__positiveInteger_::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__positiveInteger_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__positiveInteger_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__positiveInteger_(struct soap *soap, const char *tag, int id, const xsd__positiveInteger_ *a, const char *type)
+{
+	return soap_out_xsd__positiveInteger(soap, tag, id, &(a->xsd__positiveInteger_::__item), "xsd:positiveInteger");
+}
+
+void *xsd__positiveInteger_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__positiveInteger_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__positiveInteger_ * SOAP_FMAC4 soap_in_xsd__positiveInteger_(struct soap *soap, const char *tag, xsd__positiveInteger_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__positiveInteger_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__positiveInteger_, sizeof(xsd__positiveInteger_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__positiveInteger_)
+			return (xsd__positiveInteger_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_xsd__positiveInteger(soap, tag, &(a->xsd__positiveInteger_::__item), "xsd:positiveInteger"))
+		return NULL;
+	return a;
+}
+
+int xsd__positiveInteger_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__positiveInteger_);
+	if (this->soap_out(soap, tag?tag:"xsd:positiveInteger", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__positiveInteger_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__positiveInteger_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__positiveInteger_ * SOAP_FMAC4 soap_get_xsd__positiveInteger_(struct soap *soap, xsd__positiveInteger_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__positiveInteger_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__positiveInteger_ * SOAP_FMAC2 soap_instantiate_xsd__positiveInteger_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__positiveInteger_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__positiveInteger_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__positiveInteger_);
+		if (size)
+			*size = sizeof(xsd__positiveInteger_);
+		((xsd__positiveInteger_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__positiveInteger_, n);
+		if (size)
+			*size = n * sizeof(xsd__positiveInteger_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__positiveInteger_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__positiveInteger_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__positiveInteger_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__positiveInteger_ %p -> %p\n", q, p));
+	*(xsd__positiveInteger_*)p = *(xsd__positiveInteger_*)q;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_xsd__positiveInteger(struct soap *soap, const std::wstring *a)
@@ -32129,6 +36634,113 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_xsd__positiveInteger(struct soap *
 	return p;
 }
 
+void xsd__nonNegativeInteger_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_xsd__nonNegativeInteger(soap, &this->xsd__nonNegativeInteger_::__item);
+}
+
+void xsd__nonNegativeInteger_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->xsd__nonNegativeInteger_::__item, SOAP_TYPE_xsd__nonNegativeInteger);
+	soap_serialize_xsd__nonNegativeInteger(soap, &this->xsd__nonNegativeInteger_::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__nonNegativeInteger_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__nonNegativeInteger_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__nonNegativeInteger_(struct soap *soap, const char *tag, int id, const xsd__nonNegativeInteger_ *a, const char *type)
+{
+	return soap_out_xsd__nonNegativeInteger(soap, tag, id, &(a->xsd__nonNegativeInteger_::__item), "xsd:nonNegativeInteger");
+}
+
+void *xsd__nonNegativeInteger_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__nonNegativeInteger_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__nonNegativeInteger_ * SOAP_FMAC4 soap_in_xsd__nonNegativeInteger_(struct soap *soap, const char *tag, xsd__nonNegativeInteger_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__nonNegativeInteger_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__nonNegativeInteger_, sizeof(xsd__nonNegativeInteger_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__nonNegativeInteger_)
+			return (xsd__nonNegativeInteger_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_xsd__nonNegativeInteger(soap, tag, &(a->xsd__nonNegativeInteger_::__item), "xsd:nonNegativeInteger"))
+		return NULL;
+	return a;
+}
+
+int xsd__nonNegativeInteger_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__nonNegativeInteger_);
+	if (this->soap_out(soap, tag?tag:"xsd:nonNegativeInteger", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__nonNegativeInteger_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__nonNegativeInteger_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__nonNegativeInteger_ * SOAP_FMAC4 soap_get_xsd__nonNegativeInteger_(struct soap *soap, xsd__nonNegativeInteger_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__nonNegativeInteger_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__nonNegativeInteger_ * SOAP_FMAC2 soap_instantiate_xsd__nonNegativeInteger_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__nonNegativeInteger_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__nonNegativeInteger_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__nonNegativeInteger_);
+		if (size)
+			*size = sizeof(xsd__nonNegativeInteger_);
+		((xsd__nonNegativeInteger_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__nonNegativeInteger_, n);
+		if (size)
+			*size = n * sizeof(xsd__nonNegativeInteger_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__nonNegativeInteger_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__nonNegativeInteger_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__nonNegativeInteger_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__nonNegativeInteger_ %p -> %p\n", q, p));
+	*(xsd__nonNegativeInteger_*)p = *(xsd__nonNegativeInteger_*)q;
+}
+
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_xsd__nonNegativeInteger(struct soap *soap, const std::wstring *a)
 {	(void)soap; (void)a; /* appease -Wall -Werror */
 }
@@ -32181,6 +36793,218 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_xsd__nonNegativeInteger(struct soa
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
+}
+
+void xsd__long::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_LONG64(soap, &this->xsd__long::__item);
+}
+
+void xsd__long::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__long::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__long(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__long(struct soap *soap, const char *tag, int id, const xsd__long *a, const char *type)
+{
+	return soap_out_LONG64(soap, tag, id, &(a->xsd__long::__item), "xsd:long");
+}
+
+void *xsd__long::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__long(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__long * SOAP_FMAC4 soap_in_xsd__long(struct soap *soap, const char *tag, xsd__long *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__long *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__long, sizeof(xsd__long), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__long)
+			return (xsd__long *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_LONG64(soap, tag, &(a->xsd__long::__item), "xsd:long"))
+		return NULL;
+	return a;
+}
+
+int xsd__long::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__long);
+	if (this->soap_out(soap, tag?tag:"xsd:long", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__long::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__long(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__long * SOAP_FMAC4 soap_get_xsd__long(struct soap *soap, xsd__long *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__long(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__long * SOAP_FMAC2 soap_instantiate_xsd__long(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__long(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__long, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__long);
+		if (size)
+			*size = sizeof(xsd__long);
+		((xsd__long*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__long, n);
+		if (size)
+			*size = n * sizeof(xsd__long);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__long*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__long*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__long(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__long %p -> %p\n", q, p));
+	*(xsd__long*)p = *(xsd__long*)q;
+}
+
+void xsd__language_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_xsd__language(soap, &this->xsd__language_::__item);
+}
+
+void xsd__language_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->xsd__language_::__item, SOAP_TYPE_xsd__language);
+	soap_serialize_xsd__language(soap, &this->xsd__language_::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__language_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__language_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__language_(struct soap *soap, const char *tag, int id, const xsd__language_ *a, const char *type)
+{
+	return soap_out_xsd__language(soap, tag, id, &(a->xsd__language_::__item), "xsd:language");
+}
+
+void *xsd__language_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__language_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__language_ * SOAP_FMAC4 soap_in_xsd__language_(struct soap *soap, const char *tag, xsd__language_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__language_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__language_, sizeof(xsd__language_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__language_)
+			return (xsd__language_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_xsd__language(soap, tag, &(a->xsd__language_::__item), "xsd:language"))
+		return NULL;
+	return a;
+}
+
+int xsd__language_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__language_);
+	if (this->soap_out(soap, tag?tag:"xsd:language", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__language_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__language_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__language_ * SOAP_FMAC4 soap_get_xsd__language_(struct soap *soap, xsd__language_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__language_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__language_ * SOAP_FMAC2 soap_instantiate_xsd__language_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__language_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__language_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__language_);
+		if (size)
+			*size = sizeof(xsd__language_);
+		((xsd__language_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__language_, n);
+		if (size)
+			*size = n * sizeof(xsd__language_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__language_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__language_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__language_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__language_ %p -> %p\n", q, p));
+	*(xsd__language_*)p = *(xsd__language_*)q;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_xsd__language(struct soap *soap, const std::wstring *a)
@@ -32237,6 +37061,113 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_xsd__language(struct soap *soap, s
 	return p;
 }
 
+void xsd__integer_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_xsd__integer(soap, &this->xsd__integer_::__item);
+}
+
+void xsd__integer_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->xsd__integer_::__item, SOAP_TYPE_xsd__integer);
+	soap_serialize_xsd__integer(soap, &this->xsd__integer_::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__integer_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__integer_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__integer_(struct soap *soap, const char *tag, int id, const xsd__integer_ *a, const char *type)
+{
+	return soap_out_xsd__integer(soap, tag, id, &(a->xsd__integer_::__item), "xsd:integer");
+}
+
+void *xsd__integer_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__integer_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__integer_ * SOAP_FMAC4 soap_in_xsd__integer_(struct soap *soap, const char *tag, xsd__integer_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__integer_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__integer_, sizeof(xsd__integer_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__integer_)
+			return (xsd__integer_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_xsd__integer(soap, tag, &(a->xsd__integer_::__item), "xsd:integer"))
+		return NULL;
+	return a;
+}
+
+int xsd__integer_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__integer_);
+	if (this->soap_out(soap, tag?tag:"xsd:integer", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__integer_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__integer_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__integer_ * SOAP_FMAC4 soap_get_xsd__integer_(struct soap *soap, xsd__integer_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__integer_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__integer_ * SOAP_FMAC2 soap_instantiate_xsd__integer_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__integer_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__integer_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__integer_);
+		if (size)
+			*size = sizeof(xsd__integer_);
+		((xsd__integer_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__integer_, n);
+		if (size)
+			*size = n * sizeof(xsd__integer_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__integer_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__integer_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__integer_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__integer_ %p -> %p\n", q, p));
+	*(xsd__integer_*)p = *(xsd__integer_*)q;
+}
+
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_xsd__integer(struct soap *soap, const std::wstring *a)
 {	(void)soap; (void)a; /* appease -Wall -Werror */
 }
@@ -32289,6 +37220,219 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_xsd__integer(struct soap *soap, st
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
+}
+
+void xsd__hexBinary_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	this->xsd__hexBinary_::__item.xsd__hexBinary::soap_default(soap);
+}
+
+void xsd__hexBinary_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	this->xsd__hexBinary_::__item.soap_serialize(soap);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__hexBinary_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__hexBinary_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__hexBinary_(struct soap *soap, const char *tag, int id, const xsd__hexBinary_ *a, const char *type)
+{
+	return (a->xsd__hexBinary_::__item).soap_out(soap, tag, id, "xsd:hexBinary");
+}
+
+void *xsd__hexBinary_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__hexBinary_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__hexBinary_ * SOAP_FMAC4 soap_in_xsd__hexBinary_(struct soap *soap, const char *tag, xsd__hexBinary_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__hexBinary_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__hexBinary_, sizeof(xsd__hexBinary_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__hexBinary_)
+			return (xsd__hexBinary_ *)a->soap_in(soap, tag, type);
+	}
+	if (!(a->xsd__hexBinary_::__item).soap_in(soap, tag, "xsd:hexBinary"))
+		return NULL;
+	return a;
+}
+
+int xsd__hexBinary_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__hexBinary_);
+	if (this->soap_out(soap, tag?tag:"xsd:hexBinary", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__hexBinary_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__hexBinary_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__hexBinary_ * SOAP_FMAC4 soap_get_xsd__hexBinary_(struct soap *soap, xsd__hexBinary_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__hexBinary_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__hexBinary_ * SOAP_FMAC2 soap_instantiate_xsd__hexBinary_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__hexBinary_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__hexBinary_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__hexBinary_);
+		if (size)
+			*size = sizeof(xsd__hexBinary_);
+		((xsd__hexBinary_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__hexBinary_, n);
+		if (size)
+			*size = n * sizeof(xsd__hexBinary_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__hexBinary_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__hexBinary_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__hexBinary_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__hexBinary_ %p -> %p\n", q, p));
+	*(xsd__hexBinary_*)p = *(xsd__hexBinary_*)q;
+}
+
+void xsd__gYear_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_xsd__gYear(soap, &this->xsd__gYear_::__item);
+}
+
+void xsd__gYear_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->xsd__gYear_::__item, SOAP_TYPE_xsd__gYear);
+	soap_serialize_xsd__gYear(soap, &this->xsd__gYear_::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__gYear_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__gYear_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__gYear_(struct soap *soap, const char *tag, int id, const xsd__gYear_ *a, const char *type)
+{
+	return soap_out_xsd__gYear(soap, tag, id, &(a->xsd__gYear_::__item), "xsd:gYear");
+}
+
+void *xsd__gYear_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__gYear_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__gYear_ * SOAP_FMAC4 soap_in_xsd__gYear_(struct soap *soap, const char *tag, xsd__gYear_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__gYear_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__gYear_, sizeof(xsd__gYear_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__gYear_)
+			return (xsd__gYear_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_xsd__gYear(soap, tag, &(a->xsd__gYear_::__item), "xsd:gYear"))
+		return NULL;
+	return a;
+}
+
+int xsd__gYear_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__gYear_);
+	if (this->soap_out(soap, tag?tag:"xsd:gYear", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__gYear_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__gYear_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__gYear_ * SOAP_FMAC4 soap_get_xsd__gYear_(struct soap *soap, xsd__gYear_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__gYear_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__gYear_ * SOAP_FMAC2 soap_instantiate_xsd__gYear_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__gYear_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__gYear_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__gYear_);
+		if (size)
+			*size = sizeof(xsd__gYear_);
+		((xsd__gYear_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__gYear_, n);
+		if (size)
+			*size = n * sizeof(xsd__gYear_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__gYear_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__gYear_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__gYear_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__gYear_ %p -> %p\n", q, p));
+	*(xsd__gYear_*)p = *(xsd__gYear_*)q;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_xsd__gYear(struct soap *soap, const std::wstring *a)
@@ -32345,6 +37489,429 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_xsd__gYear(struct soap *soap, std:
 	return p;
 }
 
+void xsd__float::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_float(soap, &this->xsd__float::__item);
+}
+
+void xsd__float::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__float::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__float(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__float(struct soap *soap, const char *tag, int id, const xsd__float *a, const char *type)
+{
+	return soap_out_float(soap, tag, id, &(a->xsd__float::__item), "xsd:float");
+}
+
+void *xsd__float::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__float(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__float * SOAP_FMAC4 soap_in_xsd__float(struct soap *soap, const char *tag, xsd__float *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__float *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__float, sizeof(xsd__float), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__float)
+			return (xsd__float *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_float(soap, tag, &(a->xsd__float::__item), "xsd:float"))
+		return NULL;
+	return a;
+}
+
+int xsd__float::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__float);
+	if (this->soap_out(soap, tag?tag:"xsd:float", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__float::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__float(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__float * SOAP_FMAC4 soap_get_xsd__float(struct soap *soap, xsd__float *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__float(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__float * SOAP_FMAC2 soap_instantiate_xsd__float(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__float(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__float, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__float);
+		if (size)
+			*size = sizeof(xsd__float);
+		((xsd__float*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__float, n);
+		if (size)
+			*size = n * sizeof(xsd__float);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__float*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__float*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__float(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__float %p -> %p\n", q, p));
+	*(xsd__float*)p = *(xsd__float*)q;
+}
+
+void xsd__duration_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_xsd__duration(soap, &this->xsd__duration_::__item);
+}
+
+void xsd__duration_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->xsd__duration_::__item, SOAP_TYPE_xsd__duration);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__duration_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__duration_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__duration_(struct soap *soap, const char *tag, int id, const xsd__duration_ *a, const char *type)
+{
+	return soap_out_xsd__duration(soap, tag, id, &(a->xsd__duration_::__item), "xsd:duration");
+}
+
+void *xsd__duration_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__duration_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__duration_ * SOAP_FMAC4 soap_in_xsd__duration_(struct soap *soap, const char *tag, xsd__duration_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__duration_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__duration_, sizeof(xsd__duration_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__duration_)
+			return (xsd__duration_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_xsd__duration(soap, tag, &(a->xsd__duration_::__item), "xsd:duration"))
+		return NULL;
+	return a;
+}
+
+int xsd__duration_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__duration_);
+	if (this->soap_out(soap, tag?tag:"xsd:duration", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__duration_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__duration_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__duration_ * SOAP_FMAC4 soap_get_xsd__duration_(struct soap *soap, xsd__duration_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__duration_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__duration_ * SOAP_FMAC2 soap_instantiate_xsd__duration_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__duration_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__duration_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__duration_);
+		if (size)
+			*size = sizeof(xsd__duration_);
+		((xsd__duration_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__duration_, n);
+		if (size)
+			*size = n * sizeof(xsd__duration_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__duration_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__duration_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__duration_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__duration_ %p -> %p\n", q, p));
+	*(xsd__duration_*)p = *(xsd__duration_*)q;
+}
+
+void xsd__double::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_double(soap, &this->xsd__double::__item);
+}
+
+void xsd__double::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__double::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__double(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__double(struct soap *soap, const char *tag, int id, const xsd__double *a, const char *type)
+{
+	return soap_out_double(soap, tag, id, &(a->xsd__double::__item), "xsd:double");
+}
+
+void *xsd__double::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__double(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__double * SOAP_FMAC4 soap_in_xsd__double(struct soap *soap, const char *tag, xsd__double *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__double *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__double, sizeof(xsd__double), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__double)
+			return (xsd__double *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_double(soap, tag, &(a->xsd__double::__item), "xsd:double"))
+		return NULL;
+	return a;
+}
+
+int xsd__double::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__double);
+	if (this->soap_out(soap, tag?tag:"xsd:double", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__double::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__double(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__double * SOAP_FMAC4 soap_get_xsd__double(struct soap *soap, xsd__double *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__double(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__double * SOAP_FMAC2 soap_instantiate_xsd__double(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__double(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__double, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__double);
+		if (size)
+			*size = sizeof(xsd__double);
+		((xsd__double*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__double, n);
+		if (size)
+			*size = n * sizeof(xsd__double);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__double*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__double*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__double(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__double %p -> %p\n", q, p));
+	*(xsd__double*)p = *(xsd__double*)q;
+}
+
+void xsd__decimal_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_xsd__decimal(soap, &this->xsd__decimal_::__item);
+}
+
+void xsd__decimal_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->xsd__decimal_::__item, SOAP_TYPE_xsd__decimal);
+	soap_serialize_xsd__decimal(soap, &this->xsd__decimal_::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__decimal_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__decimal_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__decimal_(struct soap *soap, const char *tag, int id, const xsd__decimal_ *a, const char *type)
+{
+	return soap_out_xsd__decimal(soap, tag, id, &(a->xsd__decimal_::__item), "xsd:decimal");
+}
+
+void *xsd__decimal_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__decimal_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__decimal_ * SOAP_FMAC4 soap_in_xsd__decimal_(struct soap *soap, const char *tag, xsd__decimal_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__decimal_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__decimal_, sizeof(xsd__decimal_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__decimal_)
+			return (xsd__decimal_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_xsd__decimal(soap, tag, &(a->xsd__decimal_::__item), "xsd:decimal"))
+		return NULL;
+	return a;
+}
+
+int xsd__decimal_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__decimal_);
+	if (this->soap_out(soap, tag?tag:"xsd:decimal", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__decimal_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__decimal_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__decimal_ * SOAP_FMAC4 soap_get_xsd__decimal_(struct soap *soap, xsd__decimal_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__decimal_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__decimal_ * SOAP_FMAC2 soap_instantiate_xsd__decimal_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__decimal_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__decimal_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__decimal_);
+		if (size)
+			*size = sizeof(xsd__decimal_);
+		((xsd__decimal_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__decimal_, n);
+		if (size)
+			*size = n * sizeof(xsd__decimal_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__decimal_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__decimal_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__decimal_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__decimal_ %p -> %p\n", q, p));
+	*(xsd__decimal_*)p = *(xsd__decimal_*)q;
+}
+
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_xsd__decimal(struct soap *soap, const std::wstring *a)
 {	(void)soap; (void)a; /* appease -Wall -Werror */
 }
@@ -32397,6 +37964,219 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_xsd__decimal(struct soap *soap, st
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
+}
+
+void xsd__dateTime::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_time(soap, &this->xsd__dateTime::__item);
+}
+
+void xsd__dateTime::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->xsd__dateTime::__item, SOAP_TYPE_time);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__dateTime::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__dateTime(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__dateTime(struct soap *soap, const char *tag, int id, const xsd__dateTime *a, const char *type)
+{
+	return soap_out_time(soap, tag, id, &(a->xsd__dateTime::__item), "xsd:dateTime");
+}
+
+void *xsd__dateTime::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__dateTime(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__dateTime * SOAP_FMAC4 soap_in_xsd__dateTime(struct soap *soap, const char *tag, xsd__dateTime *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__dateTime *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__dateTime, sizeof(xsd__dateTime), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__dateTime)
+			return (xsd__dateTime *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_time(soap, tag, &(a->xsd__dateTime::__item), "xsd:dateTime"))
+		return NULL;
+	return a;
+}
+
+int xsd__dateTime::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__dateTime);
+	if (this->soap_out(soap, tag?tag:"xsd:dateTime", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__dateTime::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__dateTime(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__dateTime * SOAP_FMAC4 soap_get_xsd__dateTime(struct soap *soap, xsd__dateTime *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__dateTime(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__dateTime * SOAP_FMAC2 soap_instantiate_xsd__dateTime(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__dateTime(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__dateTime, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__dateTime);
+		if (size)
+			*size = sizeof(xsd__dateTime);
+		((xsd__dateTime*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__dateTime, n);
+		if (size)
+			*size = n * sizeof(xsd__dateTime);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__dateTime*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__dateTime*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__dateTime(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__dateTime %p -> %p\n", q, p));
+	*(xsd__dateTime*)p = *(xsd__dateTime*)q;
+}
+
+void xsd__date_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_xsd__date(soap, &this->xsd__date_::__item);
+}
+
+void xsd__date_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->xsd__date_::__item, SOAP_TYPE_xsd__date);
+	soap_serialize_xsd__date(soap, &this->xsd__date_::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__date_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__date_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__date_(struct soap *soap, const char *tag, int id, const xsd__date_ *a, const char *type)
+{
+	return soap_out_xsd__date(soap, tag, id, &(a->xsd__date_::__item), "xsd:date");
+}
+
+void *xsd__date_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__date_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__date_ * SOAP_FMAC4 soap_in_xsd__date_(struct soap *soap, const char *tag, xsd__date_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__date_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__date_, sizeof(xsd__date_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__date_)
+			return (xsd__date_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_xsd__date(soap, tag, &(a->xsd__date_::__item), "xsd:date"))
+		return NULL;
+	return a;
+}
+
+int xsd__date_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__date_);
+	if (this->soap_out(soap, tag?tag:"xsd:date", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__date_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__date_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__date_ * SOAP_FMAC4 soap_get_xsd__date_(struct soap *soap, xsd__date_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__date_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__date_ * SOAP_FMAC2 soap_instantiate_xsd__date_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__date_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__date_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__date_);
+		if (size)
+			*size = sizeof(xsd__date_);
+		((xsd__date_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__date_, n);
+		if (size)
+			*size = n * sizeof(xsd__date_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__date_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__date_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__date_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__date_ %p -> %p\n", q, p));
+	*(xsd__date_*)p = *(xsd__date_*)q;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_xsd__date(struct soap *soap, const std::wstring *a)
@@ -32453,6 +38233,326 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_xsd__date(struct soap *soap, std::
 	return p;
 }
 
+void xsd__boolean::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_bool(soap, &this->xsd__boolean::__item);
+}
+
+void xsd__boolean::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->xsd__boolean::__item, SOAP_TYPE_bool);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__boolean::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__boolean(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__boolean(struct soap *soap, const char *tag, int id, const xsd__boolean *a, const char *type)
+{
+	return soap_out_bool(soap, tag, id, &(a->xsd__boolean::__item), "xsd:boolean");
+}
+
+void *xsd__boolean::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__boolean(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__boolean * SOAP_FMAC4 soap_in_xsd__boolean(struct soap *soap, const char *tag, xsd__boolean *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__boolean *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__boolean, sizeof(xsd__boolean), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__boolean)
+			return (xsd__boolean *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_bool(soap, tag, &(a->xsd__boolean::__item), "xsd:boolean"))
+		return NULL;
+	return a;
+}
+
+int xsd__boolean::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__boolean);
+	if (this->soap_out(soap, tag?tag:"xsd:boolean", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__boolean::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__boolean(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__boolean * SOAP_FMAC4 soap_get_xsd__boolean(struct soap *soap, xsd__boolean *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__boolean(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__boolean * SOAP_FMAC2 soap_instantiate_xsd__boolean(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__boolean(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__boolean, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__boolean);
+		if (size)
+			*size = sizeof(xsd__boolean);
+		((xsd__boolean*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__boolean, n);
+		if (size)
+			*size = n * sizeof(xsd__boolean);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__boolean*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__boolean*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__boolean(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__boolean %p -> %p\n", q, p));
+	*(xsd__boolean*)p = *(xsd__boolean*)q;
+}
+
+void xsd__base64Binary_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	this->xsd__base64Binary_::__item.xsd__base64Binary::soap_default(soap);
+}
+
+void xsd__base64Binary_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->xsd__base64Binary_::__item, SOAP_TYPE_xsd__base64Binary);
+	this->xsd__base64Binary_::__item.soap_serialize(soap);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__base64Binary_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__base64Binary_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__base64Binary_(struct soap *soap, const char *tag, int id, const xsd__base64Binary_ *a, const char *type)
+{
+	return (a->xsd__base64Binary_::__item).soap_out(soap, tag, id, "xsd:base64Binary");
+}
+
+void *xsd__base64Binary_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__base64Binary_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__base64Binary_ * SOAP_FMAC4 soap_in_xsd__base64Binary_(struct soap *soap, const char *tag, xsd__base64Binary_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__base64Binary_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__base64Binary_, sizeof(xsd__base64Binary_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__base64Binary_)
+			return (xsd__base64Binary_ *)a->soap_in(soap, tag, type);
+	}
+	if (!(a->xsd__base64Binary_::__item).soap_in(soap, tag, "xsd:base64Binary"))
+		return NULL;
+	return a;
+}
+
+int xsd__base64Binary_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__base64Binary_);
+	if (this->soap_out(soap, tag?tag:"xsd:base64Binary", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__base64Binary_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__base64Binary_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__base64Binary_ * SOAP_FMAC4 soap_get_xsd__base64Binary_(struct soap *soap, xsd__base64Binary_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__base64Binary_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__base64Binary_ * SOAP_FMAC2 soap_instantiate_xsd__base64Binary_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__base64Binary_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__base64Binary_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__base64Binary_);
+		if (size)
+			*size = sizeof(xsd__base64Binary_);
+		((xsd__base64Binary_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__base64Binary_, n);
+		if (size)
+			*size = n * sizeof(xsd__base64Binary_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__base64Binary_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__base64Binary_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__base64Binary_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__base64Binary_ %p -> %p\n", q, p));
+	*(xsd__base64Binary_*)p = *(xsd__base64Binary_*)q;
+}
+
+void xsd__anyURI_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_xsd__anyURI(soap, &this->xsd__anyURI_::__item);
+}
+
+void xsd__anyURI_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_embedded(soap, &this->xsd__anyURI_::__item, SOAP_TYPE_xsd__anyURI);
+	soap_serialize_xsd__anyURI(soap, &this->xsd__anyURI_::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__anyURI_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__anyURI_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__anyURI_(struct soap *soap, const char *tag, int id, const xsd__anyURI_ *a, const char *type)
+{
+	return soap_out_xsd__anyURI(soap, tag, id, &(a->xsd__anyURI_::__item), "xsd:anyURI");
+}
+
+void *xsd__anyURI_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__anyURI_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__anyURI_ * SOAP_FMAC4 soap_in_xsd__anyURI_(struct soap *soap, const char *tag, xsd__anyURI_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__anyURI_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__anyURI_, sizeof(xsd__anyURI_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__anyURI_)
+			return (xsd__anyURI_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_xsd__anyURI(soap, tag, &(a->xsd__anyURI_::__item), "xsd:anyURI"))
+		return NULL;
+	return a;
+}
+
+int xsd__anyURI_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__anyURI_);
+	if (this->soap_out(soap, tag?tag:"xsd:anyURI", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__anyURI_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__anyURI_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__anyURI_ * SOAP_FMAC4 soap_get_xsd__anyURI_(struct soap *soap, xsd__anyURI_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__anyURI_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__anyURI_ * SOAP_FMAC2 soap_instantiate_xsd__anyURI_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__anyURI_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__anyURI_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__anyURI_);
+		if (size)
+			*size = sizeof(xsd__anyURI_);
+		((xsd__anyURI_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__anyURI_, n);
+		if (size)
+			*size = n * sizeof(xsd__anyURI_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__anyURI_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__anyURI_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__anyURI_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__anyURI_ %p -> %p\n", q, p));
+	*(xsd__anyURI_*)p = *(xsd__anyURI_*)q;
+}
+
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_xsd__anyURI(struct soap *soap, const std::wstring *a)
 {	(void)soap; (void)a; /* appease -Wall -Werror */
 }
@@ -32505,6 +38605,112 @@ SOAP_FMAC3 std::wstring * SOAP_FMAC4 soap_get_xsd__anyURI(struct soap *soap, std
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
+}
+
+void xsd__NMTOKEN_::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::soap_default(soap);
+	soap_default_xsd__NMTOKEN(soap, &this->xsd__NMTOKEN_::__item);
+}
+
+void xsd__NMTOKEN_::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	soap_serialize_xsd__NMTOKEN(soap, &this->xsd__NMTOKEN_::__item);
+	this->xsd__anyType::soap_serialize(soap);
+#endif
+}
+
+int xsd__NMTOKEN_::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__NMTOKEN_(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__NMTOKEN_(struct soap *soap, const char *tag, int id, const xsd__NMTOKEN_ *a, const char *type)
+{
+	return soap_out_xsd__NMTOKEN(soap, tag, id, &(a->xsd__NMTOKEN_::__item), "xsd:NMTOKEN");
+}
+
+void *xsd__NMTOKEN_::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__NMTOKEN_(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__NMTOKEN_ * SOAP_FMAC4 soap_in_xsd__NMTOKEN_(struct soap *soap, const char *tag, xsd__NMTOKEN_ *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__NMTOKEN_ *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__NMTOKEN_, sizeof(xsd__NMTOKEN_), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__NMTOKEN_)
+			return (xsd__NMTOKEN_ *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_in_xsd__NMTOKEN(soap, tag, &(a->xsd__NMTOKEN_::__item), "xsd:NMTOKEN"))
+		return NULL;
+	return a;
+}
+
+int xsd__NMTOKEN_::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__NMTOKEN_);
+	if (this->soap_out(soap, tag?tag:"xsd:NMTOKEN", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__NMTOKEN_::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__NMTOKEN_(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__NMTOKEN_ * SOAP_FMAC4 soap_get_xsd__NMTOKEN_(struct soap *soap, xsd__NMTOKEN_ *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__NMTOKEN_(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__NMTOKEN_ * SOAP_FMAC2 soap_instantiate_xsd__NMTOKEN_(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__NMTOKEN_(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__NMTOKEN_, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__NMTOKEN_);
+		if (size)
+			*size = sizeof(xsd__NMTOKEN_);
+		((xsd__NMTOKEN_*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__NMTOKEN_, n);
+		if (size)
+			*size = n * sizeof(xsd__NMTOKEN_);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__NMTOKEN_*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__NMTOKEN_*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__NMTOKEN_(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__NMTOKEN_ %p -> %p\n", q, p));
+	*(xsd__NMTOKEN_*)p = *(xsd__NMTOKEN_*)q;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_xsd__NMTOKEN(struct soap *soap, const std::wstring *a)
@@ -32901,6 +39107,3261 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__base64Binary(struct soap *soap, int st
 	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
 	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__base64Binary %p -> %p\n", q, p));
 	*(xsd__base64Binary*)p = *(xsd__base64Binary*)q;
+}
+
+void xsd__anyType::soap_default(struct soap *soap)
+{
+	this->soap = soap;
+	this->xsd__anyType::__item = NULL;
+	/* transient soap skipped */
+}
+
+void xsd__anyType::soap_serialize(struct soap *soap) const
+{
+#ifndef WITH_NOIDREF
+	(void)soap; /* appease -Wall -Werror */
+	/* transient soap skipped */
+#endif
+}
+
+int xsd__anyType::soap_out(struct soap *soap, const char *tag, int id, const char *type) const
+{
+	return soap_out_xsd__anyType(soap, tag, id, this, type);
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_xsd__anyType(struct soap *soap, const char *tag, int id, const xsd__anyType *a, const char *type)
+{
+	return soap_outliteral(soap, tag, &(a->xsd__anyType::__item), NULL);
+}
+
+void *xsd__anyType::soap_in(struct soap *soap, const char *tag, const char *type)
+{	return soap_in_xsd__anyType(soap, tag, this, type);
+}
+
+SOAP_FMAC3 xsd__anyType * SOAP_FMAC4 soap_in_xsd__anyType(struct soap *soap, const char *tag, xsd__anyType *a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!(a = (xsd__anyType *)soap_class_id_enter(soap, soap->id, a, SOAP_TYPE_xsd__anyType, sizeof(xsd__anyType), soap->type, soap->arrayType)))
+	{	soap->error = SOAP_TAG_MISMATCH;
+		return NULL;
+	}
+	soap_revert(soap);
+	*soap->id = '\0';
+	if (soap->alloced)
+	{	a->soap_default(soap);
+		if (soap->clist->type != SOAP_TYPE_xsd__anyType)
+			return (xsd__anyType *)a->soap_in(soap, tag, type);
+	}
+	if (!soap_inliteral(soap, tag, &(a->xsd__anyType::__item)))
+		return NULL;
+	return a;
+}
+
+int xsd__anyType::soap_put(struct soap *soap, const char *tag, const  char *type) const
+{
+	register int id = soap_embed(soap, (void*)this, NULL, 0, tag, SOAP_TYPE_xsd__anyType);
+	if (this->soap_out(soap, tag?tag:"xsd:anyType", id, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+void *xsd__anyType::soap_get(struct soap *soap, const char *tag, const char *type)
+{
+	return soap_get_xsd__anyType(soap, this, tag, type);
+}
+
+SOAP_FMAC3 xsd__anyType * SOAP_FMAC4 soap_get_xsd__anyType(struct soap *soap, xsd__anyType *p, const char *tag, const char *type)
+{
+	if ((p = soap_in_xsd__anyType(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC1 xsd__anyType * SOAP_FMAC2 soap_instantiate_xsd__anyType(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_xsd__anyType(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_xsd__anyType, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (type && !soap_match_tag(soap, type, "xsd:NMTOKEN"))
+	{	cp->type = SOAP_TYPE_xsd__NMTOKEN_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__NMTOKEN_);
+			if (size)
+				*size = sizeof(xsd__NMTOKEN_);
+			((xsd__NMTOKEN_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__NMTOKEN_, n);
+			if (size)
+				*size = n * sizeof(xsd__NMTOKEN_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__NMTOKEN_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__NMTOKEN_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:anyURI"))
+	{	cp->type = SOAP_TYPE_xsd__anyURI_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__anyURI_);
+			if (size)
+				*size = sizeof(xsd__anyURI_);
+			((xsd__anyURI_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__anyURI_, n);
+			if (size)
+				*size = n * sizeof(xsd__anyURI_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__anyURI_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__anyURI_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:base64Binary"))
+	{	cp->type = SOAP_TYPE_xsd__base64Binary_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__base64Binary_);
+			if (size)
+				*size = sizeof(xsd__base64Binary_);
+			((xsd__base64Binary_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__base64Binary_, n);
+			if (size)
+				*size = n * sizeof(xsd__base64Binary_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__base64Binary_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__base64Binary_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:boolean"))
+	{	cp->type = SOAP_TYPE_xsd__boolean;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__boolean);
+			if (size)
+				*size = sizeof(xsd__boolean);
+			((xsd__boolean*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__boolean, n);
+			if (size)
+				*size = n * sizeof(xsd__boolean);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__boolean*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__boolean*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:date"))
+	{	cp->type = SOAP_TYPE_xsd__date_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__date_);
+			if (size)
+				*size = sizeof(xsd__date_);
+			((xsd__date_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__date_, n);
+			if (size)
+				*size = n * sizeof(xsd__date_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__date_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__date_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:dateTime"))
+	{	cp->type = SOAP_TYPE_xsd__dateTime;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__dateTime);
+			if (size)
+				*size = sizeof(xsd__dateTime);
+			((xsd__dateTime*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__dateTime, n);
+			if (size)
+				*size = n * sizeof(xsd__dateTime);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__dateTime*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__dateTime*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:decimal"))
+	{	cp->type = SOAP_TYPE_xsd__decimal_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__decimal_);
+			if (size)
+				*size = sizeof(xsd__decimal_);
+			((xsd__decimal_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__decimal_, n);
+			if (size)
+				*size = n * sizeof(xsd__decimal_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__decimal_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__decimal_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:double"))
+	{	cp->type = SOAP_TYPE_xsd__double;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__double);
+			if (size)
+				*size = sizeof(xsd__double);
+			((xsd__double*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__double, n);
+			if (size)
+				*size = n * sizeof(xsd__double);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__double*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__double*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:duration"))
+	{	cp->type = SOAP_TYPE_xsd__duration_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__duration_);
+			if (size)
+				*size = sizeof(xsd__duration_);
+			((xsd__duration_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__duration_, n);
+			if (size)
+				*size = n * sizeof(xsd__duration_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__duration_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__duration_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:float"))
+	{	cp->type = SOAP_TYPE_xsd__float;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__float);
+			if (size)
+				*size = sizeof(xsd__float);
+			((xsd__float*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__float, n);
+			if (size)
+				*size = n * sizeof(xsd__float);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__float*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__float*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:gYear"))
+	{	cp->type = SOAP_TYPE_xsd__gYear_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__gYear_);
+			if (size)
+				*size = sizeof(xsd__gYear_);
+			((xsd__gYear_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__gYear_, n);
+			if (size)
+				*size = n * sizeof(xsd__gYear_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__gYear_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__gYear_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:hexBinary"))
+	{	cp->type = SOAP_TYPE_xsd__hexBinary_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__hexBinary_);
+			if (size)
+				*size = sizeof(xsd__hexBinary_);
+			((xsd__hexBinary_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__hexBinary_, n);
+			if (size)
+				*size = n * sizeof(xsd__hexBinary_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__hexBinary_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__hexBinary_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:integer"))
+	{	cp->type = SOAP_TYPE_xsd__integer_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__integer_);
+			if (size)
+				*size = sizeof(xsd__integer_);
+			((xsd__integer_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__integer_, n);
+			if (size)
+				*size = n * sizeof(xsd__integer_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__integer_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__integer_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:language"))
+	{	cp->type = SOAP_TYPE_xsd__language_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__language_);
+			if (size)
+				*size = sizeof(xsd__language_);
+			((xsd__language_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__language_, n);
+			if (size)
+				*size = n * sizeof(xsd__language_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__language_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__language_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:long"))
+	{	cp->type = SOAP_TYPE_xsd__long;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__long);
+			if (size)
+				*size = sizeof(xsd__long);
+			((xsd__long*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__long, n);
+			if (size)
+				*size = n * sizeof(xsd__long);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__long*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__long*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:nonNegativeInteger"))
+	{	cp->type = SOAP_TYPE_xsd__nonNegativeInteger_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__nonNegativeInteger_);
+			if (size)
+				*size = sizeof(xsd__nonNegativeInteger_);
+			((xsd__nonNegativeInteger_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__nonNegativeInteger_, n);
+			if (size)
+				*size = n * sizeof(xsd__nonNegativeInteger_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__nonNegativeInteger_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__nonNegativeInteger_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:positiveInteger"))
+	{	cp->type = SOAP_TYPE_xsd__positiveInteger_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__positiveInteger_);
+			if (size)
+				*size = sizeof(xsd__positiveInteger_);
+			((xsd__positiveInteger_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__positiveInteger_, n);
+			if (size)
+				*size = n * sizeof(xsd__positiveInteger_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__positiveInteger_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__positiveInteger_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:string"))
+	{	cp->type = SOAP_TYPE_xsd__string;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__string);
+			if (size)
+				*size = sizeof(xsd__string);
+			((xsd__string*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__string, n);
+			if (size)
+				*size = n * sizeof(xsd__string);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__string*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__string*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:time"))
+	{	cp->type = SOAP_TYPE_xsd__time_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__time_);
+			if (size)
+				*size = sizeof(xsd__time_);
+			((xsd__time_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__time_, n);
+			if (size)
+				*size = n * sizeof(xsd__time_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__time_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__time_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "xsd:unsignedLong"))
+	{	cp->type = SOAP_TYPE_xsd__unsignedLong;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(xsd__unsignedLong);
+			if (size)
+				*size = sizeof(xsd__unsignedLong);
+			((xsd__unsignedLong*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__unsignedLong, n);
+			if (size)
+				*size = n * sizeof(xsd__unsignedLong);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((xsd__unsignedLong*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (xsd__unsignedLong*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "edlprovider:EDLProviderErrorCodeType"))
+	{	cp->type = SOAP_TYPE_edlprovider__EDLProviderErrorCodeType_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(edlprovider__EDLProviderErrorCodeType_);
+			if (size)
+				*size = sizeof(edlprovider__EDLProviderErrorCodeType_);
+			((edlprovider__EDLProviderErrorCodeType_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(edlprovider__EDLProviderErrorCodeType_, n);
+			if (size)
+				*size = n * sizeof(edlprovider__EDLProviderErrorCodeType_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((edlprovider__EDLProviderErrorCodeType_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (edlprovider__EDLProviderErrorCodeType_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:UUID"))
+	{	cp->type = SOAP_TYPE_fims__UUID__;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__UUID__);
+			if (size)
+				*size = sizeof(fims__UUID__);
+			((fims__UUID__*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__UUID__, n);
+			if (size)
+				*size = n * sizeof(fims__UUID__);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__UUID__*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__UUID__*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:UMID"))
+	{	cp->type = SOAP_TYPE_fims__UMID__;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__UMID__);
+			if (size)
+				*size = sizeof(fims__UMID__);
+			((fims__UMID__*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__UMID__, n);
+			if (size)
+				*size = n * sizeof(fims__UMID__);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__UMID__*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__UMID__*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:UL"))
+	{	cp->type = SOAP_TYPE_fims__UL__;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__UL__);
+			if (size)
+				*size = sizeof(fims__UL__);
+			((fims__UL__*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__UL__, n);
+			if (size)
+				*size = n * sizeof(fims__UL__);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__UL__*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__UL__*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:EmptyID"))
+	{	cp->type = SOAP_TYPE_fims__EmptyID__;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__EmptyID__);
+			if (size)
+				*size = sizeof(fims__EmptyID__);
+			((fims__EmptyID__*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__EmptyID__, n);
+			if (size)
+				*size = n * sizeof(fims__EmptyID__);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__EmptyID__*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__EmptyID__*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ResourceIDType"))
+	{	cp->type = SOAP_TYPE_fims__ResourceIDType__;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ResourceIDType__);
+			if (size)
+				*size = sizeof(fims__ResourceIDType__);
+			((fims__ResourceIDType__*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ResourceIDType__, n);
+			if (size)
+				*size = n * sizeof(fims__ResourceIDType__);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ResourceIDType__*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ResourceIDType__*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:RevisionIDType"))
+	{	cp->type = SOAP_TYPE_fims__RevisionIDType__;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__RevisionIDType__);
+			if (size)
+				*size = sizeof(fims__RevisionIDType__);
+			((fims__RevisionIDType__*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__RevisionIDType__, n);
+			if (size)
+				*size = n * sizeof(fims__RevisionIDType__);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__RevisionIDType__*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__RevisionIDType__*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:Timecode"))
+	{	cp->type = SOAP_TYPE_fims__Timecode__;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__Timecode__);
+			if (size)
+				*size = sizeof(fims__Timecode__);
+			((fims__Timecode__*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__Timecode__, n);
+			if (size)
+				*size = n * sizeof(fims__Timecode__);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__Timecode__*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__Timecode__*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:TimecodeDuration"))
+	{	cp->type = SOAP_TYPE_fims__TimecodeDuration__;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__TimecodeDuration__);
+			if (size)
+				*size = sizeof(fims__TimecodeDuration__);
+			((fims__TimecodeDuration__*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__TimecodeDuration__, n);
+			if (size)
+				*size = n * sizeof(fims__TimecodeDuration__);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__TimecodeDuration__*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__TimecodeDuration__*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:QueueStatusType"))
+	{	cp->type = SOAP_TYPE_fims__QueueStatusType_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__QueueStatusType_);
+			if (size)
+				*size = sizeof(fims__QueueStatusType_);
+			((fims__QueueStatusType_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__QueueStatusType_, n);
+			if (size)
+				*size = n * sizeof(fims__QueueStatusType_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__QueueStatusType_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__QueueStatusType_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:PriorityType"))
+	{	cp->type = SOAP_TYPE_fims__PriorityType_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__PriorityType_);
+			if (size)
+				*size = sizeof(fims__PriorityType_);
+			((fims__PriorityType_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__PriorityType_, n);
+			if (size)
+				*size = n * sizeof(fims__PriorityType_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__PriorityType_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__PriorityType_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StorageTypes"))
+	{	cp->type = SOAP_TYPE_fims__StorageTypes_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StorageTypes_);
+			if (size)
+				*size = sizeof(fims__StorageTypes_);
+			((fims__StorageTypes_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StorageTypes_, n);
+			if (size)
+				*size = n * sizeof(fims__StorageTypes_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StorageTypes_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StorageTypes_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:QueueCommandType"))
+	{	cp->type = SOAP_TYPE_fims__QueueCommandType_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__QueueCommandType_);
+			if (size)
+				*size = sizeof(fims__QueueCommandType_);
+			((fims__QueueCommandType_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__QueueCommandType_, n);
+			if (size)
+				*size = n * sizeof(fims__QueueCommandType_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__QueueCommandType_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__QueueCommandType_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:JobCommandType"))
+	{	cp->type = SOAP_TYPE_fims__JobCommandType_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__JobCommandType_);
+			if (size)
+				*size = sizeof(fims__JobCommandType_);
+			((fims__JobCommandType_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__JobCommandType_, n);
+			if (size)
+				*size = n * sizeof(fims__JobCommandType_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__JobCommandType_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__JobCommandType_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:HashFunctionTypes"))
+	{	cp->type = SOAP_TYPE_fims__HashFunctionTypes_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__HashFunctionTypes_);
+			if (size)
+				*size = sizeof(fims__HashFunctionTypes_);
+			((fims__HashFunctionTypes_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__HashFunctionTypes_, n);
+			if (size)
+				*size = n * sizeof(fims__HashFunctionTypes_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__HashFunctionTypes_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__HashFunctionTypes_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:JobStatusType"))
+	{	cp->type = SOAP_TYPE_fims__JobStatusType_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__JobStatusType_);
+			if (size)
+				*size = sizeof(fims__JobStatusType_);
+			((fims__JobStatusType_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__JobStatusType_, n);
+			if (size)
+				*size = n * sizeof(fims__JobStatusType_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__JobStatusType_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__JobStatusType_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:AudioSampleType"))
+	{	cp->type = SOAP_TYPE_fims__AudioSampleType_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__AudioSampleType_);
+			if (size)
+				*size = sizeof(fims__AudioSampleType_);
+			((fims__AudioSampleType_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__AudioSampleType_, n);
+			if (size)
+				*size = n * sizeof(fims__AudioSampleType_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__AudioSampleType_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__AudioSampleType_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ScanningFormatType"))
+	{	cp->type = SOAP_TYPE_fims__ScanningFormatType_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ScanningFormatType_);
+			if (size)
+				*size = sizeof(fims__ScanningFormatType_);
+			((fims__ScanningFormatType_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ScanningFormatType_, n);
+			if (size)
+				*size = n * sizeof(fims__ScanningFormatType_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ScanningFormatType_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ScanningFormatType_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ScanningOrderType"))
+	{	cp->type = SOAP_TYPE_fims__ScanningOrderType_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ScanningOrderType_);
+			if (size)
+				*size = sizeof(fims__ScanningOrderType_);
+			((fims__ScanningOrderType_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ScanningOrderType_, n);
+			if (size)
+				*size = n * sizeof(fims__ScanningOrderType_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ScanningOrderType_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ScanningOrderType_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:BitRateModeType"))
+	{	cp->type = SOAP_TYPE_fims__BitRateModeType_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__BitRateModeType_);
+			if (size)
+				*size = sizeof(fims__BitRateModeType_);
+			((fims__BitRateModeType_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__BitRateModeType_, n);
+			if (size)
+				*size = n * sizeof(fims__BitRateModeType_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__BitRateModeType_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__BitRateModeType_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ErrorCodeType"))
+	{	cp->type = SOAP_TYPE_fims__ErrorCodeType_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ErrorCodeType_);
+			if (size)
+				*size = sizeof(fims__ErrorCodeType_);
+			((fims__ErrorCodeType_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ErrorCodeType_, n);
+			if (size)
+				*size = n * sizeof(fims__ErrorCodeType_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ErrorCodeType_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ErrorCodeType_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:JobInfoSelectionType"))
+	{	cp->type = SOAP_TYPE_fims__JobInfoSelectionType_;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__JobInfoSelectionType_);
+			if (size)
+				*size = sizeof(fims__JobInfoSelectionType_);
+			((fims__JobInfoSelectionType_*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__JobInfoSelectionType_, n);
+			if (size)
+				*size = n * sizeof(fims__JobInfoSelectionType_);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__JobInfoSelectionType_*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__JobInfoSelectionType_*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "edlprovider:ArrayOfstring"))
+	{	cp->type = SOAP_TYPE_edlprovider__ArrayOfstring;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(edlprovider__ArrayOfstring);
+			if (size)
+				*size = sizeof(edlprovider__ArrayOfstring);
+			((edlprovider__ArrayOfstring*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(edlprovider__ArrayOfstring, n);
+			if (size)
+				*size = n * sizeof(edlprovider__ArrayOfstring);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((edlprovider__ArrayOfstring*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (edlprovider__ArrayOfstring*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "edlprovider:ArrayOfClips"))
+	{	cp->type = SOAP_TYPE_edlprovider__ArrayOfClips;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(edlprovider__ArrayOfClips);
+			if (size)
+				*size = sizeof(edlprovider__ArrayOfClips);
+			((edlprovider__ArrayOfClips*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(edlprovider__ArrayOfClips, n);
+			if (size)
+				*size = n * sizeof(edlprovider__ArrayOfClips);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((edlprovider__ArrayOfClips*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (edlprovider__ArrayOfClips*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "edlprovider:ClipType"))
+	{	cp->type = SOAP_TYPE_edlprovider__ClipType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(edlprovider__ClipType);
+			if (size)
+				*size = sizeof(edlprovider__ClipType);
+			((edlprovider__ClipType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(edlprovider__ClipType, n);
+			if (size)
+				*size = n * sizeof(edlprovider__ClipType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((edlprovider__ClipType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (edlprovider__ClipType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "edlprovider:MapType"))
+	{	cp->type = SOAP_TYPE_edlprovider__MapType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(edlprovider__MapType);
+			if (size)
+				*size = sizeof(edlprovider__MapType);
+			((edlprovider__MapType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(edlprovider__MapType, n);
+			if (size)
+				*size = n * sizeof(edlprovider__MapType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((edlprovider__MapType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (edlprovider__MapType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "edlprovider:MapItemType"))
+	{	cp->type = SOAP_TYPE_edlprovider__MapItemType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(edlprovider__MapItemType);
+			if (size)
+				*size = sizeof(edlprovider__MapItemType);
+			((edlprovider__MapItemType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(edlprovider__MapItemType, n);
+			if (size)
+				*size = n * sizeof(edlprovider__MapItemType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((edlprovider__MapItemType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (edlprovider__MapItemType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "edlprovider:EdlCreateRequestBaseType"))
+	{	cp->type = SOAP_TYPE_edlprovider__EdlCreateRequestBaseType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(edlprovider__EdlCreateRequestBaseType);
+			if (size)
+				*size = sizeof(edlprovider__EdlCreateRequestBaseType);
+			((edlprovider__EdlCreateRequestBaseType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(edlprovider__EdlCreateRequestBaseType, n);
+			if (size)
+				*size = n * sizeof(edlprovider__EdlCreateRequestBaseType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((edlprovider__EdlCreateRequestBaseType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (edlprovider__EdlCreateRequestBaseType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "edlprovider:EdlCreateResponseType"))
+	{	cp->type = SOAP_TYPE_edlprovider__EdlCreateResponseType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(edlprovider__EdlCreateResponseType);
+			if (size)
+				*size = sizeof(edlprovider__EdlCreateResponseType);
+			((edlprovider__EdlCreateResponseType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(edlprovider__EdlCreateResponseType, n);
+			if (size)
+				*size = n * sizeof(edlprovider__EdlCreateResponseType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((edlprovider__EdlCreateResponseType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (edlprovider__EdlCreateResponseType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ExtensionGroup"))
+	{	cp->type = SOAP_TYPE_fims__ExtensionGroup;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ExtensionGroup);
+			if (size)
+				*size = sizeof(fims__ExtensionGroup);
+			((fims__ExtensionGroup*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ExtensionGroup, n);
+			if (size)
+				*size = n * sizeof(fims__ExtensionGroup);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ExtensionGroup*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ExtensionGroup*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ExtensionAttributes"))
+	{	cp->type = SOAP_TYPE_fims__ExtensionAttributes;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ExtensionAttributes);
+			if (size)
+				*size = sizeof(fims__ExtensionAttributes);
+			((fims__ExtensionAttributes*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ExtensionAttributes, n);
+			if (size)
+				*size = n * sizeof(fims__ExtensionAttributes);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ExtensionAttributes*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ExtensionAttributes*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ResourceReferenceType"))
+	{	cp->type = SOAP_TYPE_fims__ResourceReferenceType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ResourceReferenceType);
+			if (size)
+				*size = sizeof(fims__ResourceReferenceType);
+			((fims__ResourceReferenceType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ResourceReferenceType, n);
+			if (size)
+				*size = n * sizeof(fims__ResourceReferenceType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ResourceReferenceType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ResourceReferenceType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:AsyncEndpointType"))
+	{	cp->type = SOAP_TYPE_fims__AsyncEndpointType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__AsyncEndpointType);
+			if (size)
+				*size = sizeof(fims__AsyncEndpointType);
+			((fims__AsyncEndpointType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__AsyncEndpointType, n);
+			if (size)
+				*size = n * sizeof(fims__AsyncEndpointType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__AsyncEndpointType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__AsyncEndpointType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:AncillaryDataFormatType"))
+	{	cp->type = SOAP_TYPE_fims__AncillaryDataFormatType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__AncillaryDataFormatType);
+			if (size)
+				*size = sizeof(fims__AncillaryDataFormatType);
+			((fims__AncillaryDataFormatType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__AncillaryDataFormatType, n);
+			if (size)
+				*size = n * sizeof(fims__AncillaryDataFormatType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__AncillaryDataFormatType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__AncillaryDataFormatType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:BMTrackType"))
+	{	cp->type = SOAP_TYPE_fims__BMTrackType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__BMTrackType);
+			if (size)
+				*size = sizeof(fims__BMTrackType);
+			((fims__BMTrackType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__BMTrackType, n);
+			if (size)
+				*size = n * sizeof(fims__BMTrackType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__BMTrackType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__BMTrackType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:CodecType"))
+	{	cp->type = SOAP_TYPE_fims__CodecType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__CodecType);
+			if (size)
+				*size = sizeof(fims__CodecType);
+			((fims__CodecType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__CodecType, n);
+			if (size)
+				*size = n * sizeof(fims__CodecType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__CodecType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__CodecType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:TransferAtomType"))
+	{	cp->type = SOAP_TYPE_fims__TransferAtomType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__TransferAtomType);
+			if (size)
+				*size = sizeof(fims__TransferAtomType);
+			((fims__TransferAtomType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__TransferAtomType, n);
+			if (size)
+				*size = n * sizeof(fims__TransferAtomType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__TransferAtomType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__TransferAtomType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:TransformAtomType"))
+	{	cp->type = SOAP_TYPE_fims__TransformAtomType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__TransformAtomType);
+			if (size)
+				*size = sizeof(fims__TransformAtomType);
+			((fims__TransformAtomType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__TransformAtomType, n);
+			if (size)
+				*size = n * sizeof(fims__TransformAtomType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__TransformAtomType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__TransformAtomType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:HashType"))
+	{	cp->type = SOAP_TYPE_fims__HashType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__HashType);
+			if (size)
+				*size = sizeof(fims__HashType);
+			((fims__HashType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__HashType, n);
+			if (size)
+				*size = n * sizeof(fims__HashType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__HashType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__HashType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ProcessedInfoType"))
+	{	cp->type = SOAP_TYPE_fims__ProcessedInfoType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ProcessedInfoType);
+			if (size)
+				*size = sizeof(fims__ProcessedInfoType);
+			((fims__ProcessedInfoType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ProcessedInfoType, n);
+			if (size)
+				*size = n * sizeof(fims__ProcessedInfoType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ProcessedInfoType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ProcessedInfoType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:DurationType"))
+	{	cp->type = SOAP_TYPE_fims__DurationType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__DurationType);
+			if (size)
+				*size = sizeof(fims__DurationType);
+			((fims__DurationType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__DurationType, n);
+			if (size)
+				*size = n * sizeof(fims__DurationType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__DurationType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__DurationType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:TimeType"))
+	{	cp->type = SOAP_TYPE_fims__TimeType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__TimeType);
+			if (size)
+				*size = sizeof(fims__TimeType);
+			((fims__TimeType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__TimeType, n);
+			if (size)
+				*size = n * sizeof(fims__TimeType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__TimeType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__TimeType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StartProcessType"))
+	{	cp->type = SOAP_TYPE_fims__StartProcessType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StartProcessType);
+			if (size)
+				*size = sizeof(fims__StartProcessType);
+			((fims__StartProcessType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StartProcessType, n);
+			if (size)
+				*size = n * sizeof(fims__StartProcessType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StartProcessType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StartProcessType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StopProcessType"))
+	{	cp->type = SOAP_TYPE_fims__StopProcessType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StopProcessType);
+			if (size)
+				*size = sizeof(fims__StopProcessType);
+			((fims__StopProcessType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StopProcessType, n);
+			if (size)
+				*size = n * sizeof(fims__StopProcessType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StopProcessType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StopProcessType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StartJobType"))
+	{	cp->type = SOAP_TYPE_fims__StartJobType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StartJobType);
+			if (size)
+				*size = sizeof(fims__StartJobType);
+			((fims__StartJobType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StartJobType, n);
+			if (size)
+				*size = n * sizeof(fims__StartJobType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StartJobType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StartJobType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ManageJobRequestType"))
+	{	cp->type = SOAP_TYPE_fims__ManageJobRequestType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ManageJobRequestType);
+			if (size)
+				*size = sizeof(fims__ManageJobRequestType);
+			((fims__ManageJobRequestType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ManageJobRequestType, n);
+			if (size)
+				*size = n * sizeof(fims__ManageJobRequestType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ManageJobRequestType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ManageJobRequestType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ManageJobResponseType"))
+	{	cp->type = SOAP_TYPE_fims__ManageJobResponseType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ManageJobResponseType);
+			if (size)
+				*size = sizeof(fims__ManageJobResponseType);
+			((fims__ManageJobResponseType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ManageJobResponseType, n);
+			if (size)
+				*size = n * sizeof(fims__ManageJobResponseType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ManageJobResponseType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ManageJobResponseType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ManageQueueRequestType"))
+	{	cp->type = SOAP_TYPE_fims__ManageQueueRequestType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ManageQueueRequestType);
+			if (size)
+				*size = sizeof(fims__ManageQueueRequestType);
+			((fims__ManageQueueRequestType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ManageQueueRequestType, n);
+			if (size)
+				*size = n * sizeof(fims__ManageQueueRequestType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ManageQueueRequestType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ManageQueueRequestType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ManageQueueResponseType"))
+	{	cp->type = SOAP_TYPE_fims__ManageQueueResponseType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ManageQueueResponseType);
+			if (size)
+				*size = sizeof(fims__ManageQueueResponseType);
+			((fims__ManageQueueResponseType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ManageQueueResponseType, n);
+			if (size)
+				*size = n * sizeof(fims__ManageQueueResponseType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ManageQueueResponseType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ManageQueueResponseType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:QueryJobRequestType"))
+	{	cp->type = SOAP_TYPE_fims__QueryJobRequestType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__QueryJobRequestType);
+			if (size)
+				*size = sizeof(fims__QueryJobRequestType);
+			((fims__QueryJobRequestType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__QueryJobRequestType, n);
+			if (size)
+				*size = n * sizeof(fims__QueryJobRequestType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__QueryJobRequestType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__QueryJobRequestType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:QueryJobResponseType"))
+	{	cp->type = SOAP_TYPE_fims__QueryJobResponseType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__QueryJobResponseType);
+			if (size)
+				*size = sizeof(fims__QueryJobResponseType);
+			((fims__QueryJobResponseType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__QueryJobResponseType, n);
+			if (size)
+				*size = n * sizeof(fims__QueryJobResponseType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__QueryJobResponseType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__QueryJobResponseType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:QueryServiceDescriptionRequestType"))
+	{	cp->type = SOAP_TYPE_fims__QueryServiceDescriptionRequestType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__QueryServiceDescriptionRequestType);
+			if (size)
+				*size = sizeof(fims__QueryServiceDescriptionRequestType);
+			((fims__QueryServiceDescriptionRequestType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__QueryServiceDescriptionRequestType, n);
+			if (size)
+				*size = n * sizeof(fims__QueryServiceDescriptionRequestType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__QueryServiceDescriptionRequestType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__QueryServiceDescriptionRequestType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:QueryServiceDescriptionResponseType"))
+	{	cp->type = SOAP_TYPE_fims__QueryServiceDescriptionResponseType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__QueryServiceDescriptionResponseType);
+			if (size)
+				*size = sizeof(fims__QueryServiceDescriptionResponseType);
+			((fims__QueryServiceDescriptionResponseType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__QueryServiceDescriptionResponseType, n);
+			if (size)
+				*size = n * sizeof(fims__QueryServiceDescriptionResponseType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__QueryServiceDescriptionResponseType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__QueryServiceDescriptionResponseType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ListFilterType"))
+	{	cp->type = SOAP_TYPE_fims__ListFilterType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ListFilterType);
+			if (size)
+				*size = sizeof(fims__ListFilterType);
+			((fims__ListFilterType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ListFilterType, n);
+			if (size)
+				*size = n * sizeof(fims__ListFilterType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ListFilterType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ListFilterType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:FaultType"))
+	{	cp->type = SOAP_TYPE_fims__FaultType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__FaultType);
+			if (size)
+				*size = sizeof(fims__FaultType);
+			((fims__FaultType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__FaultType, n);
+			if (size)
+				*size = n * sizeof(fims__FaultType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__FaultType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__FaultType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:InnerFaultType"))
+	{	cp->type = SOAP_TYPE_fims__InnerFaultType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__InnerFaultType);
+			if (size)
+				*size = sizeof(fims__InnerFaultType);
+			((fims__InnerFaultType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__InnerFaultType, n);
+			if (size)
+				*size = n * sizeof(fims__InnerFaultType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__InnerFaultType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__InnerFaultType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ResourcesType"))
+	{	cp->type = SOAP_TYPE_fims__ResourcesType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ResourcesType);
+			if (size)
+				*size = sizeof(fims__ResourcesType);
+			((fims__ResourcesType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ResourcesType, n);
+			if (size)
+				*size = n * sizeof(fims__ResourcesType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ResourcesType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ResourcesType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ProfilesType"))
+	{	cp->type = SOAP_TYPE_fims__ProfilesType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ProfilesType);
+			if (size)
+				*size = sizeof(fims__ProfilesType);
+			((fims__ProfilesType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ProfilesType, n);
+			if (size)
+				*size = n * sizeof(fims__ProfilesType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ProfilesType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ProfilesType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ServicesType"))
+	{	cp->type = SOAP_TYPE_fims__ServicesType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ServicesType);
+			if (size)
+				*size = sizeof(fims__ServicesType);
+			((fims__ServicesType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ServicesType, n);
+			if (size)
+				*size = n * sizeof(fims__ServicesType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ServicesType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ServicesType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:QueuesType"))
+	{	cp->type = SOAP_TYPE_fims__QueuesType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__QueuesType);
+			if (size)
+				*size = sizeof(fims__QueuesType);
+			((fims__QueuesType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__QueuesType, n);
+			if (size)
+				*size = n * sizeof(fims__QueuesType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__QueuesType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__QueuesType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:JobsType"))
+	{	cp->type = SOAP_TYPE_fims__JobsType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__JobsType);
+			if (size)
+				*size = sizeof(fims__JobsType);
+			((fims__JobsType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__JobsType, n);
+			if (size)
+				*size = n * sizeof(fims__JobsType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__JobsType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__JobsType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:VideoFormatsType"))
+	{	cp->type = SOAP_TYPE_fims__VideoFormatsType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__VideoFormatsType);
+			if (size)
+				*size = sizeof(fims__VideoFormatsType);
+			((fims__VideoFormatsType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__VideoFormatsType, n);
+			if (size)
+				*size = n * sizeof(fims__VideoFormatsType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__VideoFormatsType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__VideoFormatsType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:AudioFormatsType"))
+	{	cp->type = SOAP_TYPE_fims__AudioFormatsType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__AudioFormatsType);
+			if (size)
+				*size = sizeof(fims__AudioFormatsType);
+			((fims__AudioFormatsType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__AudioFormatsType, n);
+			if (size)
+				*size = n * sizeof(fims__AudioFormatsType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__AudioFormatsType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__AudioFormatsType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ContainerFormatsType"))
+	{	cp->type = SOAP_TYPE_fims__ContainerFormatsType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ContainerFormatsType);
+			if (size)
+				*size = sizeof(fims__ContainerFormatsType);
+			((fims__ContainerFormatsType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ContainerFormatsType, n);
+			if (size)
+				*size = n * sizeof(fims__ContainerFormatsType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ContainerFormatsType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ContainerFormatsType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:DataFormatsType"))
+	{	cp->type = SOAP_TYPE_fims__DataFormatsType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__DataFormatsType);
+			if (size)
+				*size = sizeof(fims__DataFormatsType);
+			((fims__DataFormatsType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__DataFormatsType, n);
+			if (size)
+				*size = n * sizeof(fims__DataFormatsType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__DataFormatsType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__DataFormatsType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:BMObjectsType"))
+	{	cp->type = SOAP_TYPE_fims__BMObjectsType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__BMObjectsType);
+			if (size)
+				*size = sizeof(fims__BMObjectsType);
+			((fims__BMObjectsType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__BMObjectsType, n);
+			if (size)
+				*size = n * sizeof(fims__BMObjectsType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__BMObjectsType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__BMObjectsType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:BMContentsType"))
+	{	cp->type = SOAP_TYPE_fims__BMContentsType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__BMContentsType);
+			if (size)
+				*size = sizeof(fims__BMContentsType);
+			((fims__BMContentsType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__BMContentsType, n);
+			if (size)
+				*size = n * sizeof(fims__BMContentsType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__BMContentsType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__BMContentsType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:BMContentFormatsType"))
+	{	cp->type = SOAP_TYPE_fims__BMContentFormatsType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__BMContentFormatsType);
+			if (size)
+				*size = sizeof(fims__BMContentFormatsType);
+			((fims__BMContentFormatsType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__BMContentFormatsType, n);
+			if (size)
+				*size = n * sizeof(fims__BMContentFormatsType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__BMContentFormatsType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__BMContentFormatsType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:BMEssenceLocatorsType"))
+	{	cp->type = SOAP_TYPE_fims__BMEssenceLocatorsType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__BMEssenceLocatorsType);
+			if (size)
+				*size = sizeof(fims__BMEssenceLocatorsType);
+			((fims__BMEssenceLocatorsType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__BMEssenceLocatorsType, n);
+			if (size)
+				*size = n * sizeof(fims__BMEssenceLocatorsType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__BMEssenceLocatorsType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__BMEssenceLocatorsType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:DescriptionsType"))
+	{	cp->type = SOAP_TYPE_fims__DescriptionsType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__DescriptionsType);
+			if (size)
+				*size = sizeof(fims__DescriptionsType);
+			((fims__DescriptionsType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__DescriptionsType, n);
+			if (size)
+				*size = n * sizeof(fims__DescriptionsType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__DescriptionsType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__DescriptionsType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:bmContentDescriptionType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__bmContentDescriptionType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__bmContentDescriptionType);
+			if (size)
+				*size = sizeof(fimsdescription__bmContentDescriptionType);
+			((fimsdescription__bmContentDescriptionType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__bmContentDescriptionType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__bmContentDescriptionType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__bmContentDescriptionType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__bmContentDescriptionType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:typeType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__typeType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__typeType);
+			if (size)
+				*size = sizeof(fimsdescription__typeType);
+			((fimsdescription__typeType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__typeType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__typeType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__typeType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__typeType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:coverageType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__coverageType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__coverageType);
+			if (size)
+				*size = sizeof(fimsdescription__coverageType);
+			((fimsdescription__coverageType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__coverageType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__coverageType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__coverageType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__coverageType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:rightsType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__rightsType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__rightsType);
+			if (size)
+				*size = sizeof(fimsdescription__rightsType);
+			((fimsdescription__rightsType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__rightsType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__rightsType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__rightsType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__rightsType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:dateType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__dateType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__dateType);
+			if (size)
+				*size = sizeof(fimsdescription__dateType);
+			((fimsdescription__dateType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__dateType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__dateType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__dateType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__dateType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:entityType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__entityType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__entityType);
+			if (size)
+				*size = sizeof(fimsdescription__entityType);
+			((fimsdescription__entityType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__entityType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__entityType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__entityType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__entityType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:contactDetailsType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__contactDetailsType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__contactDetailsType);
+			if (size)
+				*size = sizeof(fimsdescription__contactDetailsType);
+			((fimsdescription__contactDetailsType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__contactDetailsType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__contactDetailsType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__contactDetailsType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__contactDetailsType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:organisationDetailsType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__organisationDetailsType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__organisationDetailsType);
+			if (size)
+				*size = sizeof(fimsdescription__organisationDetailsType);
+			((fimsdescription__organisationDetailsType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__organisationDetailsType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__organisationDetailsType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__organisationDetailsType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__organisationDetailsType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:detailsType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__detailsType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__detailsType);
+			if (size)
+				*size = sizeof(fimsdescription__detailsType);
+			((fimsdescription__detailsType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__detailsType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__detailsType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__detailsType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__detailsType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:addressType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__addressType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__addressType);
+			if (size)
+				*size = sizeof(fimsdescription__addressType);
+			((fimsdescription__addressType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__addressType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__addressType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__addressType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__addressType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:languageType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__languageType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__languageType);
+			if (size)
+				*size = sizeof(fimsdescription__languageType);
+			((fimsdescription__languageType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__languageType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__languageType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__languageType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__languageType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "edlprovider:EdlCreateRequestType"))
+	{	cp->type = SOAP_TYPE_edlprovider__EdlCreateRequestType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(edlprovider__EdlCreateRequestType);
+			if (size)
+				*size = sizeof(edlprovider__EdlCreateRequestType);
+			((edlprovider__EdlCreateRequestType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(edlprovider__EdlCreateRequestType, n);
+			if (size)
+				*size = n * sizeof(edlprovider__EdlCreateRequestType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((edlprovider__EdlCreateRequestType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (edlprovider__EdlCreateRequestType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "edlprovider:EdlCreateRequestDoubleType"))
+	{	cp->type = SOAP_TYPE_edlprovider__EdlCreateRequestDoubleType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(edlprovider__EdlCreateRequestDoubleType);
+			if (size)
+				*size = sizeof(edlprovider__EdlCreateRequestDoubleType);
+			((edlprovider__EdlCreateRequestDoubleType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(edlprovider__EdlCreateRequestDoubleType, n);
+			if (size)
+				*size = n * sizeof(edlprovider__EdlCreateRequestDoubleType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((edlprovider__EdlCreateRequestDoubleType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (edlprovider__EdlCreateRequestDoubleType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "edlprovider:EdlProviderFaultType"))
+	{	cp->type = SOAP_TYPE_edlprovider__EdlProviderFaultType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(edlprovider__EdlProviderFaultType);
+			if (size)
+				*size = sizeof(edlprovider__EdlProviderFaultType);
+			((edlprovider__EdlProviderFaultType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(edlprovider__EdlProviderFaultType, n);
+			if (size)
+				*size = n * sizeof(edlprovider__EdlProviderFaultType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((edlprovider__EdlProviderFaultType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (edlprovider__EdlProviderFaultType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ResourceType"))
+	{	cp->type = SOAP_TYPE_fims__ResourceType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ResourceType);
+			if (size)
+				*size = sizeof(fims__ResourceType);
+			((fims__ResourceType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ResourceType, n);
+			if (size)
+				*size = n * sizeof(fims__ResourceType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ResourceType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ResourceType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:CaptioningFormatType"))
+	{	cp->type = SOAP_TYPE_fims__CaptioningFormatType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__CaptioningFormatType);
+			if (size)
+				*size = sizeof(fims__CaptioningFormatType);
+			((fims__CaptioningFormatType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__CaptioningFormatType, n);
+			if (size)
+				*size = n * sizeof(fims__CaptioningFormatType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__CaptioningFormatType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__CaptioningFormatType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:TechnicalAttributeType"))
+	{	cp->type = SOAP_TYPE_fims__TechnicalAttributeType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__TechnicalAttributeType);
+			if (size)
+				*size = sizeof(fims__TechnicalAttributeType);
+			((fims__TechnicalAttributeType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__TechnicalAttributeType, n);
+			if (size)
+				*size = n * sizeof(fims__TechnicalAttributeType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__TechnicalAttributeType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__TechnicalAttributeType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:LengthType"))
+	{	cp->type = SOAP_TYPE_fims__LengthType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__LengthType);
+			if (size)
+				*size = sizeof(fims__LengthType);
+			((fims__LengthType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__LengthType, n);
+			if (size)
+				*size = n * sizeof(fims__LengthType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__LengthType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__LengthType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:RationalType"))
+	{	cp->type = SOAP_TYPE_fims__RationalType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__RationalType);
+			if (size)
+				*size = sizeof(fims__RationalType);
+			((fims__RationalType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__RationalType, n);
+			if (size)
+				*size = n * sizeof(fims__RationalType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__RationalType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__RationalType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:EditUnitNumberType"))
+	{	cp->type = SOAP_TYPE_fims__EditUnitNumberType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__EditUnitNumberType);
+			if (size)
+				*size = sizeof(fims__EditUnitNumberType);
+			((fims__EditUnitNumberType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__EditUnitNumberType, n);
+			if (size)
+				*size = n * sizeof(fims__EditUnitNumberType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__EditUnitNumberType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__EditUnitNumberType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ProcessedInfoByBytesType"))
+	{	cp->type = SOAP_TYPE_fims__ProcessedInfoByBytesType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ProcessedInfoByBytesType);
+			if (size)
+				*size = sizeof(fims__ProcessedInfoByBytesType);
+			((fims__ProcessedInfoByBytesType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ProcessedInfoByBytesType, n);
+			if (size)
+				*size = n * sizeof(fims__ProcessedInfoByBytesType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ProcessedInfoByBytesType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ProcessedInfoByBytesType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ProcessedInfoByFramesType"))
+	{	cp->type = SOAP_TYPE_fims__ProcessedInfoByFramesType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ProcessedInfoByFramesType);
+			if (size)
+				*size = sizeof(fims__ProcessedInfoByFramesType);
+			((fims__ProcessedInfoByFramesType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ProcessedInfoByFramesType, n);
+			if (size)
+				*size = n * sizeof(fims__ProcessedInfoByFramesType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ProcessedInfoByFramesType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ProcessedInfoByFramesType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StartProcessByNoWaitType"))
+	{	cp->type = SOAP_TYPE_fims__StartProcessByNoWaitType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StartProcessByNoWaitType);
+			if (size)
+				*size = sizeof(fims__StartProcessByNoWaitType);
+			((fims__StartProcessByNoWaitType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StartProcessByNoWaitType, n);
+			if (size)
+				*size = n * sizeof(fims__StartProcessByNoWaitType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StartProcessByNoWaitType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StartProcessByNoWaitType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StartProcessByTimeType"))
+	{	cp->type = SOAP_TYPE_fims__StartProcessByTimeType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StartProcessByTimeType);
+			if (size)
+				*size = sizeof(fims__StartProcessByTimeType);
+			((fims__StartProcessByTimeType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StartProcessByTimeType, n);
+			if (size)
+				*size = n * sizeof(fims__StartProcessByTimeType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StartProcessByTimeType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StartProcessByTimeType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StartProcessByTimeMarkType"))
+	{	cp->type = SOAP_TYPE_fims__StartProcessByTimeMarkType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StartProcessByTimeMarkType);
+			if (size)
+				*size = sizeof(fims__StartProcessByTimeMarkType);
+			((fims__StartProcessByTimeMarkType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StartProcessByTimeMarkType, n);
+			if (size)
+				*size = n * sizeof(fims__StartProcessByTimeMarkType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StartProcessByTimeMarkType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StartProcessByTimeMarkType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StartProcessByServiceDefinedTimeType"))
+	{	cp->type = SOAP_TYPE_fims__StartProcessByServiceDefinedTimeType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StartProcessByServiceDefinedTimeType);
+			if (size)
+				*size = sizeof(fims__StartProcessByServiceDefinedTimeType);
+			((fims__StartProcessByServiceDefinedTimeType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StartProcessByServiceDefinedTimeType, n);
+			if (size)
+				*size = n * sizeof(fims__StartProcessByServiceDefinedTimeType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StartProcessByServiceDefinedTimeType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StartProcessByServiceDefinedTimeType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StopProcessByTimeType"))
+	{	cp->type = SOAP_TYPE_fims__StopProcessByTimeType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StopProcessByTimeType);
+			if (size)
+				*size = sizeof(fims__StopProcessByTimeType);
+			((fims__StopProcessByTimeType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StopProcessByTimeType, n);
+			if (size)
+				*size = n * sizeof(fims__StopProcessByTimeType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StopProcessByTimeType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StopProcessByTimeType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StopProcessByDurationType"))
+	{	cp->type = SOAP_TYPE_fims__StopProcessByDurationType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StopProcessByDurationType);
+			if (size)
+				*size = sizeof(fims__StopProcessByDurationType);
+			((fims__StopProcessByDurationType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StopProcessByDurationType, n);
+			if (size)
+				*size = n * sizeof(fims__StopProcessByDurationType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StopProcessByDurationType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StopProcessByDurationType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StopProcessByTimeMarkType"))
+	{	cp->type = SOAP_TYPE_fims__StopProcessByTimeMarkType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StopProcessByTimeMarkType);
+			if (size)
+				*size = sizeof(fims__StopProcessByTimeMarkType);
+			((fims__StopProcessByTimeMarkType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StopProcessByTimeMarkType, n);
+			if (size)
+				*size = n * sizeof(fims__StopProcessByTimeMarkType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StopProcessByTimeMarkType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StopProcessByTimeMarkType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StopProcessByServiceDefinedTimeType"))
+	{	cp->type = SOAP_TYPE_fims__StopProcessByServiceDefinedTimeType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StopProcessByServiceDefinedTimeType);
+			if (size)
+				*size = sizeof(fims__StopProcessByServiceDefinedTimeType);
+			((fims__StopProcessByServiceDefinedTimeType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StopProcessByServiceDefinedTimeType, n);
+			if (size)
+				*size = n * sizeof(fims__StopProcessByServiceDefinedTimeType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StopProcessByServiceDefinedTimeType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StopProcessByServiceDefinedTimeType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StopProcessByOpenEndType"))
+	{	cp->type = SOAP_TYPE_fims__StopProcessByOpenEndType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StopProcessByOpenEndType);
+			if (size)
+				*size = sizeof(fims__StopProcessByOpenEndType);
+			((fims__StopProcessByOpenEndType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StopProcessByOpenEndType, n);
+			if (size)
+				*size = n * sizeof(fims__StopProcessByOpenEndType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StopProcessByOpenEndType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StopProcessByOpenEndType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StartJobByNoWaitType"))
+	{	cp->type = SOAP_TYPE_fims__StartJobByNoWaitType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StartJobByNoWaitType);
+			if (size)
+				*size = sizeof(fims__StartJobByNoWaitType);
+			((fims__StartJobByNoWaitType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StartJobByNoWaitType, n);
+			if (size)
+				*size = n * sizeof(fims__StartJobByNoWaitType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StartJobByNoWaitType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StartJobByNoWaitType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StartJobByTimeType"))
+	{	cp->type = SOAP_TYPE_fims__StartJobByTimeType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StartJobByTimeType);
+			if (size)
+				*size = sizeof(fims__StartJobByTimeType);
+			((fims__StartJobByTimeType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StartJobByTimeType, n);
+			if (size)
+				*size = n * sizeof(fims__StartJobByTimeType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StartJobByTimeType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StartJobByTimeType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StartJobByLatestType"))
+	{	cp->type = SOAP_TYPE_fims__StartJobByLatestType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StartJobByLatestType);
+			if (size)
+				*size = sizeof(fims__StartJobByLatestType);
+			((fims__StartJobByLatestType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StartJobByLatestType, n);
+			if (size)
+				*size = n * sizeof(fims__StartJobByLatestType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StartJobByLatestType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StartJobByLatestType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:QueryJobRequestByIDType"))
+	{	cp->type = SOAP_TYPE_fims__QueryJobRequestByIDType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__QueryJobRequestByIDType);
+			if (size)
+				*size = sizeof(fims__QueryJobRequestByIDType);
+			((fims__QueryJobRequestByIDType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__QueryJobRequestByIDType, n);
+			if (size)
+				*size = n * sizeof(fims__QueryJobRequestByIDType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__QueryJobRequestByIDType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__QueryJobRequestByIDType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:QueryJobRequestByFilterType"))
+	{	cp->type = SOAP_TYPE_fims__QueryJobRequestByFilterType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__QueryJobRequestByFilterType);
+			if (size)
+				*size = sizeof(fims__QueryJobRequestByFilterType);
+			((fims__QueryJobRequestByFilterType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__QueryJobRequestByFilterType, n);
+			if (size)
+				*size = n * sizeof(fims__QueryJobRequestByFilterType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__QueryJobRequestByFilterType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__QueryJobRequestByFilterType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:identifierType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__identifierType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__identifierType);
+			if (size)
+				*size = sizeof(fimsdescription__identifierType);
+			((fimsdescription__identifierType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__identifierType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__identifierType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__identifierType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__identifierType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:textElementType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__textElementType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__textElementType);
+			if (size)
+				*size = sizeof(fimsdescription__textElementType);
+			((fimsdescription__textElementType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__textElementType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__textElementType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__textElementType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__textElementType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ServiceType"))
+	{	cp->type = SOAP_TYPE_fims__ServiceType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ServiceType);
+			if (size)
+				*size = sizeof(fims__ServiceType);
+			((fims__ServiceType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ServiceType, n);
+			if (size)
+				*size = n * sizeof(fims__ServiceType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ServiceType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ServiceType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ProfileType"))
+	{	cp->type = SOAP_TYPE_fims__ProfileType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ProfileType);
+			if (size)
+				*size = sizeof(fims__ProfileType);
+			((fims__ProfileType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ProfileType, n);
+			if (size)
+				*size = n * sizeof(fims__ProfileType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ProfileType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ProfileType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:QueueType"))
+	{	cp->type = SOAP_TYPE_fims__QueueType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__QueueType);
+			if (size)
+				*size = sizeof(fims__QueueType);
+			((fims__QueueType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__QueueType, n);
+			if (size)
+				*size = n * sizeof(fims__QueueType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__QueueType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__QueueType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:JobType"))
+	{	cp->type = SOAP_TYPE_fims__JobType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__JobType);
+			if (size)
+				*size = sizeof(fims__JobType);
+			((fims__JobType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__JobType, n);
+			if (size)
+				*size = n * sizeof(fims__JobType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__JobType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__JobType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:FormatType"))
+	{	cp->type = SOAP_TYPE_fims__FormatType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__FormatType);
+			if (size)
+				*size = sizeof(fims__FormatType);
+			((fims__FormatType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__FormatType, n);
+			if (size)
+				*size = n * sizeof(fims__FormatType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__FormatType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__FormatType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:BMObjectType"))
+	{	cp->type = SOAP_TYPE_fims__BMObjectType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__BMObjectType);
+			if (size)
+				*size = sizeof(fims__BMObjectType);
+			((fims__BMObjectType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__BMObjectType, n);
+			if (size)
+				*size = n * sizeof(fims__BMObjectType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__BMObjectType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__BMObjectType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:BMContentType"))
+	{	cp->type = SOAP_TYPE_fims__BMContentType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__BMContentType);
+			if (size)
+				*size = sizeof(fims__BMContentType);
+			((fims__BMContentType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__BMContentType, n);
+			if (size)
+				*size = n * sizeof(fims__BMContentType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__BMContentType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__BMContentType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:DescriptionType"))
+	{	cp->type = SOAP_TYPE_fims__DescriptionType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__DescriptionType);
+			if (size)
+				*size = sizeof(fims__DescriptionType);
+			((fims__DescriptionType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__DescriptionType, n);
+			if (size)
+				*size = n * sizeof(fims__DescriptionType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__DescriptionType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__DescriptionType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:BMContentFormatType"))
+	{	cp->type = SOAP_TYPE_fims__BMContentFormatType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__BMContentFormatType);
+			if (size)
+				*size = sizeof(fims__BMContentFormatType);
+			((fims__BMContentFormatType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__BMContentFormatType, n);
+			if (size)
+				*size = n * sizeof(fims__BMContentFormatType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__BMContentFormatType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__BMContentFormatType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:BMEssenceLocatorType"))
+	{	cp->type = SOAP_TYPE_fims__BMEssenceLocatorType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__BMEssenceLocatorType);
+			if (size)
+				*size = sizeof(fims__BMEssenceLocatorType);
+			((fims__BMEssenceLocatorType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__BMEssenceLocatorType, n);
+			if (size)
+				*size = n * sizeof(fims__BMEssenceLocatorType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__BMEssenceLocatorType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__BMEssenceLocatorType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:StorageType"))
+	{	cp->type = SOAP_TYPE_fims__StorageType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__StorageType);
+			if (size)
+				*size = sizeof(fims__StorageType);
+			((fims__StorageType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__StorageType, n);
+			if (size)
+				*size = n * sizeof(fims__StorageType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__StorageType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__StorageType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:HashFunctionType"))
+	{	cp->type = SOAP_TYPE_fims__HashFunctionType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__HashFunctionType);
+			if (size)
+				*size = sizeof(fims__HashFunctionType);
+			((fims__HashFunctionType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__HashFunctionType, n);
+			if (size)
+				*size = n * sizeof(fims__HashFunctionType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__HashFunctionType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__HashFunctionType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:titleType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__titleType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__titleType);
+			if (size)
+				*size = sizeof(fimsdescription__titleType);
+			((fimsdescription__titleType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__titleType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__titleType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__titleType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__titleType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:subjectType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__subjectType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__subjectType);
+			if (size)
+				*size = sizeof(fimsdescription__subjectType);
+			((fimsdescription__subjectType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__subjectType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__subjectType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__subjectType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__subjectType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fimsdescription:descriptionType"))
+	{	cp->type = SOAP_TYPE_fimsdescription__descriptionType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fimsdescription__descriptionType);
+			if (size)
+				*size = sizeof(fimsdescription__descriptionType);
+			((fimsdescription__descriptionType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fimsdescription__descriptionType, n);
+			if (size)
+				*size = n * sizeof(fimsdescription__descriptionType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fimsdescription__descriptionType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fimsdescription__descriptionType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:VideoFormatType"))
+	{	cp->type = SOAP_TYPE_fims__VideoFormatType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__VideoFormatType);
+			if (size)
+				*size = sizeof(fims__VideoFormatType);
+			((fims__VideoFormatType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__VideoFormatType, n);
+			if (size)
+				*size = n * sizeof(fims__VideoFormatType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__VideoFormatType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__VideoFormatType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:AudioFormatType"))
+	{	cp->type = SOAP_TYPE_fims__AudioFormatType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__AudioFormatType);
+			if (size)
+				*size = sizeof(fims__AudioFormatType);
+			((fims__AudioFormatType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__AudioFormatType, n);
+			if (size)
+				*size = n * sizeof(fims__AudioFormatType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__AudioFormatType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__AudioFormatType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:DataFormatType"))
+	{	cp->type = SOAP_TYPE_fims__DataFormatType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__DataFormatType);
+			if (size)
+				*size = sizeof(fims__DataFormatType);
+			((fims__DataFormatType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__DataFormatType, n);
+			if (size)
+				*size = n * sizeof(fims__DataFormatType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__DataFormatType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__DataFormatType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ContainerFormatType"))
+	{	cp->type = SOAP_TYPE_fims__ContainerFormatType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ContainerFormatType);
+			if (size)
+				*size = sizeof(fims__ContainerFormatType);
+			((fims__ContainerFormatType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ContainerFormatType, n);
+			if (size)
+				*size = n * sizeof(fims__ContainerFormatType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ContainerFormatType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ContainerFormatType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:SimpleFileLocatorType"))
+	{	cp->type = SOAP_TYPE_fims__SimpleFileLocatorType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__SimpleFileLocatorType);
+			if (size)
+				*size = sizeof(fims__SimpleFileLocatorType);
+			((fims__SimpleFileLocatorType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__SimpleFileLocatorType, n);
+			if (size)
+				*size = n * sizeof(fims__SimpleFileLocatorType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__SimpleFileLocatorType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__SimpleFileLocatorType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:ListFileLocatorType"))
+	{	cp->type = SOAP_TYPE_fims__ListFileLocatorType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__ListFileLocatorType);
+			if (size)
+				*size = sizeof(fims__ListFileLocatorType);
+			((fims__ListFileLocatorType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__ListFileLocatorType, n);
+			if (size)
+				*size = n * sizeof(fims__ListFileLocatorType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__ListFileLocatorType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__ListFileLocatorType*)cp->ptr;
+	}
+	if (type && !soap_match_tag(soap, type, "fims:FolderLocatorType"))
+	{	cp->type = SOAP_TYPE_fims__FolderLocatorType;
+		if (n < 0)
+		{	cp->ptr = (void*)SOAP_NEW(fims__FolderLocatorType);
+			if (size)
+				*size = sizeof(fims__FolderLocatorType);
+			((fims__FolderLocatorType*)cp->ptr)->soap = soap;
+		}
+		else
+		{	cp->ptr = (void*)SOAP_NEW_ARRAY(fims__FolderLocatorType, n);
+			if (size)
+				*size = n * sizeof(fims__FolderLocatorType);
+			if (cp->ptr)
+				for (int i = 0; i < n; i++)
+					((fims__FolderLocatorType*)cp->ptr)[i].soap = soap;
+		}
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+		if (!cp->ptr)
+			soap->error = SOAP_EOM;
+		return (fims__FolderLocatorType*)cp->ptr;
+	}
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(xsd__anyType);
+		if (size)
+			*size = sizeof(xsd__anyType);
+		((xsd__anyType*)cp->ptr)->soap = soap;
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(xsd__anyType, n);
+		if (size)
+			*size = n * sizeof(xsd__anyType);
+		if (cp->ptr)
+			for (int i = 0; i < n; i++)
+				((xsd__anyType*)cp->ptr)[i].soap = soap;
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (xsd__anyType*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_xsd__anyType(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying xsd__anyType %p -> %p\n", q, p));
+	*(xsd__anyType*)p = *(xsd__anyType*)q;
 }
 
 #ifndef WITH_NOGLOBAL
@@ -34289,40 +43750,40 @@ SOAP_FMAC3 edlprovider__EdlCreateRequestType ** SOAP_FMAC4 soap_get_PointerToedl
 	return p;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToedlprovider__ArrayOfstring(struct soap *soap, edlprovider__ArrayOfstring *const*a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToedlprovider__MapType(struct soap *soap, edlprovider__MapType *const*a)
 {
 #ifndef WITH_NOIDREF
-	if (!soap_reference(soap, *a, SOAP_TYPE_edlprovider__ArrayOfstring))
+	if (!soap_reference(soap, *a, SOAP_TYPE_edlprovider__MapType))
 		(*a)->soap_serialize(soap);
 #endif
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToedlprovider__ArrayOfstring(struct soap *soap, const char *tag, int id, edlprovider__ArrayOfstring *const*a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToedlprovider__MapType(struct soap *soap, const char *tag, int id, edlprovider__MapType *const*a, const char *type)
 {
-	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_edlprovider__ArrayOfstring);
+	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_edlprovider__MapType);
 	if (id < 0)
 		return soap->error;
 	return (*a)->soap_out(soap, tag, id, type);
 }
 
-SOAP_FMAC3 edlprovider__ArrayOfstring ** SOAP_FMAC4 soap_in_PointerToedlprovider__ArrayOfstring(struct soap *soap, const char *tag, edlprovider__ArrayOfstring **a, const char *type)
+SOAP_FMAC3 edlprovider__MapType ** SOAP_FMAC4 soap_in_PointerToedlprovider__MapType(struct soap *soap, const char *tag, edlprovider__MapType **a, const char *type)
 {
 	if (soap_element_begin_in(soap, tag, 1, NULL))
 		return NULL;
 	if (!a)
-		if (!(a = (edlprovider__ArrayOfstring **)soap_malloc(soap, sizeof(edlprovider__ArrayOfstring *))))
+		if (!(a = (edlprovider__MapType **)soap_malloc(soap, sizeof(edlprovider__MapType *))))
 			return NULL;
 	*a = NULL;
 	if (!soap->null && *soap->href != '#')
 	{	soap_revert(soap);
-		if (!(*a = (edlprovider__ArrayOfstring *)soap_instantiate_edlprovider__ArrayOfstring(soap, -1, soap->type, soap->arrayType, NULL)))
+		if (!(*a = (edlprovider__MapType *)soap_instantiate_edlprovider__MapType(soap, -1, soap->type, soap->arrayType, NULL)))
 			return NULL;
 		(*a)->soap_default(soap);
 		if (!(*a)->soap_in(soap, tag, NULL))
 			return NULL;
 	}
 	else
-	{	edlprovider__ArrayOfstring ** p = (edlprovider__ArrayOfstring **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_edlprovider__ArrayOfstring, sizeof(edlprovider__ArrayOfstring), 0);
+	{	edlprovider__MapType ** p = (edlprovider__MapType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_edlprovider__MapType, sizeof(edlprovider__MapType), 0);
 		a = p;
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
@@ -34330,17 +43791,17 @@ SOAP_FMAC3 edlprovider__ArrayOfstring ** SOAP_FMAC4 soap_in_PointerToedlprovider
 	return a;
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerToedlprovider__ArrayOfstring(struct soap *soap, edlprovider__ArrayOfstring *const*a, const char *tag, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerToedlprovider__MapType(struct soap *soap, edlprovider__MapType *const*a, const char *tag, const char *type)
 {
-	register int id = soap_embed(soap, (void*)a, NULL, 0, tag, SOAP_TYPE_PointerToedlprovider__ArrayOfstring);
-	if (soap_out_PointerToedlprovider__ArrayOfstring(soap, tag?tag:"edlprovider:ArrayOfstring", id, a, type))
+	register int id = soap_embed(soap, (void*)a, NULL, 0, tag, SOAP_TYPE_PointerToedlprovider__MapType);
+	if (soap_out_PointerToedlprovider__MapType(soap, tag?tag:"edlprovider:MapType", id, a, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-SOAP_FMAC3 edlprovider__ArrayOfstring ** SOAP_FMAC4 soap_get_PointerToedlprovider__ArrayOfstring(struct soap *soap, edlprovider__ArrayOfstring **p, const char *tag, const char *type)
+SOAP_FMAC3 edlprovider__MapType ** SOAP_FMAC4 soap_get_PointerToedlprovider__MapType(struct soap *soap, edlprovider__MapType **p, const char *tag, const char *type)
 {
-	if ((p = soap_in_PointerToedlprovider__ArrayOfstring(soap, tag, p, type)))
+	if ((p = soap_in_PointerToedlprovider__MapType(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
@@ -39945,6 +49406,63 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerTofims__RevisionIDType(str
 	return p;
 }
 
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToedlprovider__MapItemType(struct soap *soap, edlprovider__MapItemType *const*a)
+{
+#ifndef WITH_NOIDREF
+	if (!soap_reference(soap, *a, SOAP_TYPE_edlprovider__MapItemType))
+		(*a)->soap_serialize(soap);
+#endif
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToedlprovider__MapItemType(struct soap *soap, const char *tag, int id, edlprovider__MapItemType *const*a, const char *type)
+{
+	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_edlprovider__MapItemType);
+	if (id < 0)
+		return soap->error;
+	return (*a)->soap_out(soap, tag, id, type);
+}
+
+SOAP_FMAC3 edlprovider__MapItemType ** SOAP_FMAC4 soap_in_PointerToedlprovider__MapItemType(struct soap *soap, const char *tag, edlprovider__MapItemType **a, const char *type)
+{
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!a)
+		if (!(a = (edlprovider__MapItemType **)soap_malloc(soap, sizeof(edlprovider__MapItemType *))))
+			return NULL;
+	*a = NULL;
+	if (!soap->null && *soap->href != '#')
+	{	soap_revert(soap);
+		if (!(*a = (edlprovider__MapItemType *)soap_instantiate_edlprovider__MapItemType(soap, -1, soap->type, soap->arrayType, NULL)))
+			return NULL;
+		(*a)->soap_default(soap);
+		if (!(*a)->soap_in(soap, tag, NULL))
+			return NULL;
+	}
+	else
+	{	edlprovider__MapItemType ** p = (edlprovider__MapItemType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_edlprovider__MapItemType, sizeof(edlprovider__MapItemType), 0);
+		a = p;
+		if (soap->body && soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	return a;
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerToedlprovider__MapItemType(struct soap *soap, edlprovider__MapItemType *const*a, const char *tag, const char *type)
+{
+	register int id = soap_embed(soap, (void*)a, NULL, 0, tag, SOAP_TYPE_PointerToedlprovider__MapItemType);
+	if (soap_out_PointerToedlprovider__MapItemType(soap, tag?tag:"edlprovider:MapItemType", id, a, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+SOAP_FMAC3 edlprovider__MapItemType ** SOAP_FMAC4 soap_get_PointerToedlprovider__MapItemType(struct soap *soap, edlprovider__MapItemType **p, const char *tag, const char *type)
+{
+	if ((p = soap_in_PointerToedlprovider__MapItemType(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToxsd__base64Binary(struct soap *soap, xsd__base64Binary *const*a)
 {
 #ifndef WITH_NOIDREF
@@ -40107,6 +49625,720 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerToedlprovider__ArrayOfClips(struct soa
 SOAP_FMAC3 edlprovider__ArrayOfClips ** SOAP_FMAC4 soap_get_PointerToedlprovider__ArrayOfClips(struct soap *soap, edlprovider__ArrayOfClips **p, const char *tag, const char *type)
 {
 	if ((p = soap_in_PointerToedlprovider__ArrayOfClips(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToxsd__anyType(struct soap *soap, xsd__anyType *const*a)
+{
+#ifndef WITH_NOIDREF
+	if (!soap_reference(soap, *a, SOAP_TYPE_xsd__anyType))
+		(*a)->soap_serialize(soap);
+#endif
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToxsd__anyType(struct soap *soap, const char *tag, int id, xsd__anyType *const*a, const char *type)
+{
+	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE_xsd__anyType);
+	if (id < 0)
+		return soap->error;
+	return (*a)->soap_out(soap, tag, id, type);
+}
+
+SOAP_FMAC3 xsd__anyType ** SOAP_FMAC4 soap_in_PointerToxsd__anyType(struct soap *soap, const char *tag, xsd__anyType **a, const char *type)
+{
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!a)
+		if (!(a = (xsd__anyType **)soap_malloc(soap, sizeof(xsd__anyType *))))
+			return NULL;
+	*a = NULL;
+	if (!soap->null && *soap->href != '#')
+	{	soap_revert(soap);
+		if (!(*a = (xsd__anyType *)soap_instantiate_xsd__anyType(soap, -1, soap->type, soap->arrayType, NULL)))
+			return NULL;
+		(*a)->soap_default(soap);
+		if (!(*a)->soap_in(soap, tag, NULL))
+			return NULL;
+	}
+	else
+	{	xsd__anyType ** p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__anyType, sizeof(xsd__anyType), 0);
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__NMTOKEN_, sizeof(xsd__NMTOKEN_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__anyURI_, sizeof(xsd__anyURI_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__base64Binary_, sizeof(xsd__base64Binary_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__boolean, sizeof(xsd__boolean), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__date_, sizeof(xsd__date_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__dateTime, sizeof(xsd__dateTime), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__decimal_, sizeof(xsd__decimal_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__double, sizeof(xsd__double), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__duration_, sizeof(xsd__duration_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__float, sizeof(xsd__float), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__gYear_, sizeof(xsd__gYear_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__hexBinary_, sizeof(xsd__hexBinary_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__integer_, sizeof(xsd__integer_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__language_, sizeof(xsd__language_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__long, sizeof(xsd__long), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__nonNegativeInteger_, sizeof(xsd__nonNegativeInteger_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__positiveInteger_, sizeof(xsd__positiveInteger_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__string, sizeof(xsd__string), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__time_, sizeof(xsd__time_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_xsd__unsignedLong, sizeof(xsd__unsignedLong), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_edlprovider__EDLProviderErrorCodeType_, sizeof(edlprovider__EDLProviderErrorCodeType_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__UUID__, sizeof(fims__UUID__), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__UMID__, sizeof(fims__UMID__), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__UL__, sizeof(fims__UL__), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__EmptyID__, sizeof(fims__EmptyID__), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ResourceIDType__, sizeof(fims__ResourceIDType__), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__RevisionIDType__, sizeof(fims__RevisionIDType__), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__Timecode__, sizeof(fims__Timecode__), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__TimecodeDuration__, sizeof(fims__TimecodeDuration__), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__QueueStatusType_, sizeof(fims__QueueStatusType_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__PriorityType_, sizeof(fims__PriorityType_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StorageTypes_, sizeof(fims__StorageTypes_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__QueueCommandType_, sizeof(fims__QueueCommandType_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__JobCommandType_, sizeof(fims__JobCommandType_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__HashFunctionTypes_, sizeof(fims__HashFunctionTypes_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__JobStatusType_, sizeof(fims__JobStatusType_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__AudioSampleType_, sizeof(fims__AudioSampleType_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ScanningFormatType_, sizeof(fims__ScanningFormatType_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ScanningOrderType_, sizeof(fims__ScanningOrderType_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__BitRateModeType_, sizeof(fims__BitRateModeType_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ErrorCodeType_, sizeof(fims__ErrorCodeType_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__JobInfoSelectionType_, sizeof(fims__JobInfoSelectionType_), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_edlprovider__ArrayOfstring, sizeof(edlprovider__ArrayOfstring), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_edlprovider__ArrayOfClips, sizeof(edlprovider__ArrayOfClips), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_edlprovider__ClipType, sizeof(edlprovider__ClipType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_edlprovider__MapType, sizeof(edlprovider__MapType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_edlprovider__MapItemType, sizeof(edlprovider__MapItemType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_edlprovider__EdlCreateRequestBaseType, sizeof(edlprovider__EdlCreateRequestBaseType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_edlprovider__EdlCreateResponseType, sizeof(edlprovider__EdlCreateResponseType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ExtensionGroup, sizeof(fims__ExtensionGroup), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ExtensionAttributes, sizeof(fims__ExtensionAttributes), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ResourceReferenceType, sizeof(fims__ResourceReferenceType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__AsyncEndpointType, sizeof(fims__AsyncEndpointType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__AncillaryDataFormatType, sizeof(fims__AncillaryDataFormatType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__BMTrackType, sizeof(fims__BMTrackType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__CodecType, sizeof(fims__CodecType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__TransferAtomType, sizeof(fims__TransferAtomType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__TransformAtomType, sizeof(fims__TransformAtomType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__HashType, sizeof(fims__HashType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ProcessedInfoType, sizeof(fims__ProcessedInfoType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__DurationType, sizeof(fims__DurationType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__TimeType, sizeof(fims__TimeType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StartProcessType, sizeof(fims__StartProcessType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StopProcessType, sizeof(fims__StopProcessType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StartJobType, sizeof(fims__StartJobType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ManageJobRequestType, sizeof(fims__ManageJobRequestType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ManageJobResponseType, sizeof(fims__ManageJobResponseType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ManageQueueRequestType, sizeof(fims__ManageQueueRequestType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ManageQueueResponseType, sizeof(fims__ManageQueueResponseType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__QueryJobRequestType, sizeof(fims__QueryJobRequestType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__QueryJobResponseType, sizeof(fims__QueryJobResponseType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__QueryServiceDescriptionRequestType, sizeof(fims__QueryServiceDescriptionRequestType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__QueryServiceDescriptionResponseType, sizeof(fims__QueryServiceDescriptionResponseType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ListFilterType, sizeof(fims__ListFilterType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__FaultType, sizeof(fims__FaultType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__InnerFaultType, sizeof(fims__InnerFaultType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ResourcesType, sizeof(fims__ResourcesType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ProfilesType, sizeof(fims__ProfilesType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ServicesType, sizeof(fims__ServicesType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__QueuesType, sizeof(fims__QueuesType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__JobsType, sizeof(fims__JobsType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__VideoFormatsType, sizeof(fims__VideoFormatsType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__AudioFormatsType, sizeof(fims__AudioFormatsType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ContainerFormatsType, sizeof(fims__ContainerFormatsType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__DataFormatsType, sizeof(fims__DataFormatsType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__BMObjectsType, sizeof(fims__BMObjectsType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__BMContentsType, sizeof(fims__BMContentsType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__BMContentFormatsType, sizeof(fims__BMContentFormatsType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__BMEssenceLocatorsType, sizeof(fims__BMEssenceLocatorsType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__DescriptionsType, sizeof(fims__DescriptionsType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__bmContentDescriptionType, sizeof(fimsdescription__bmContentDescriptionType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__typeType, sizeof(fimsdescription__typeType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__coverageType, sizeof(fimsdescription__coverageType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__rightsType, sizeof(fimsdescription__rightsType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__dateType, sizeof(fimsdescription__dateType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__entityType, sizeof(fimsdescription__entityType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__contactDetailsType, sizeof(fimsdescription__contactDetailsType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__organisationDetailsType, sizeof(fimsdescription__organisationDetailsType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__detailsType, sizeof(fimsdescription__detailsType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__addressType, sizeof(fimsdescription__addressType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__languageType, sizeof(fimsdescription__languageType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_edlprovider__EdlCreateRequestType, sizeof(edlprovider__EdlCreateRequestType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_edlprovider__EdlCreateRequestDoubleType, sizeof(edlprovider__EdlCreateRequestDoubleType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_edlprovider__EdlProviderFaultType, sizeof(edlprovider__EdlProviderFaultType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ResourceType, sizeof(fims__ResourceType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__CaptioningFormatType, sizeof(fims__CaptioningFormatType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__TechnicalAttributeType, sizeof(fims__TechnicalAttributeType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__LengthType, sizeof(fims__LengthType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__RationalType, sizeof(fims__RationalType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__EditUnitNumberType, sizeof(fims__EditUnitNumberType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ProcessedInfoByBytesType, sizeof(fims__ProcessedInfoByBytesType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ProcessedInfoByFramesType, sizeof(fims__ProcessedInfoByFramesType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StartProcessByNoWaitType, sizeof(fims__StartProcessByNoWaitType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StartProcessByTimeType, sizeof(fims__StartProcessByTimeType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StartProcessByTimeMarkType, sizeof(fims__StartProcessByTimeMarkType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StartProcessByServiceDefinedTimeType, sizeof(fims__StartProcessByServiceDefinedTimeType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StopProcessByTimeType, sizeof(fims__StopProcessByTimeType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StopProcessByDurationType, sizeof(fims__StopProcessByDurationType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StopProcessByTimeMarkType, sizeof(fims__StopProcessByTimeMarkType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StopProcessByServiceDefinedTimeType, sizeof(fims__StopProcessByServiceDefinedTimeType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StopProcessByOpenEndType, sizeof(fims__StopProcessByOpenEndType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StartJobByNoWaitType, sizeof(fims__StartJobByNoWaitType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StartJobByTimeType, sizeof(fims__StartJobByTimeType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StartJobByLatestType, sizeof(fims__StartJobByLatestType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__QueryJobRequestByIDType, sizeof(fims__QueryJobRequestByIDType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__QueryJobRequestByFilterType, sizeof(fims__QueryJobRequestByFilterType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__identifierType, sizeof(fimsdescription__identifierType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__textElementType, sizeof(fimsdescription__textElementType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ServiceType, sizeof(fims__ServiceType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ProfileType, sizeof(fims__ProfileType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__QueueType, sizeof(fims__QueueType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__JobType, sizeof(fims__JobType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__FormatType, sizeof(fims__FormatType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__BMObjectType, sizeof(fims__BMObjectType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__BMContentType, sizeof(fims__BMContentType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__DescriptionType, sizeof(fims__DescriptionType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__BMContentFormatType, sizeof(fims__BMContentFormatType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__BMEssenceLocatorType, sizeof(fims__BMEssenceLocatorType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__StorageType, sizeof(fims__StorageType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__HashFunctionType, sizeof(fims__HashFunctionType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__titleType, sizeof(fimsdescription__titleType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__subjectType, sizeof(fimsdescription__subjectType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fimsdescription__descriptionType, sizeof(fimsdescription__descriptionType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__VideoFormatType, sizeof(fims__VideoFormatType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__AudioFormatType, sizeof(fims__AudioFormatType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__DataFormatType, sizeof(fims__DataFormatType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ContainerFormatType, sizeof(fims__ContainerFormatType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__SimpleFileLocatorType, sizeof(fims__SimpleFileLocatorType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__ListFileLocatorType, sizeof(fims__ListFileLocatorType), 0);
+		}
+		if (!p && soap->error == SOAP_HREF)
+		{	soap->error = SOAP_OK;
+			p = (xsd__anyType **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE_fims__FolderLocatorType, sizeof(fims__FolderLocatorType), 0);
+		}
+		a = p;
+		if (soap->body && soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	return a;
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerToxsd__anyType(struct soap *soap, xsd__anyType *const*a, const char *tag, const char *type)
+{
+	register int id = soap_embed(soap, (void*)a, NULL, 0, tag, SOAP_TYPE_PointerToxsd__anyType);
+	if (soap_out_PointerToxsd__anyType(soap, tag?tag:"xsd:anyType", id, a, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+SOAP_FMAC3 xsd__anyType ** SOAP_FMAC4 soap_get_PointerToxsd__anyType(struct soap *soap, xsd__anyType **p, const char *tag, const char *type)
+{
+	if ((p = soap_in_PointerToxsd__anyType(soap, tag, p, type)))
+		if (soap_getindependent(soap))
+			return NULL;
+	return p;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_edlprovider__Map(struct soap *soap, _edlprovider__Map *const*a)
+{
+#ifndef WITH_NOIDREF
+	if (!soap_reference(soap, *a, SOAP_TYPE__edlprovider__Map))
+		(*a)->soap_serialize(soap);
+#endif
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_edlprovider__Map(struct soap *soap, const char *tag, int id, _edlprovider__Map *const*a, const char *type)
+{
+	id = soap_element_id(soap, tag, id, *a, NULL, 0, type, SOAP_TYPE__edlprovider__Map);
+	if (id < 0)
+		return soap->error;
+	return (*a)->soap_out(soap, tag, id, type);
+}
+
+SOAP_FMAC3 _edlprovider__Map ** SOAP_FMAC4 soap_in_PointerTo_edlprovider__Map(struct soap *soap, const char *tag, _edlprovider__Map **a, const char *type)
+{
+	if (soap_element_begin_in(soap, tag, 1, NULL))
+		return NULL;
+	if (!a)
+		if (!(a = (_edlprovider__Map **)soap_malloc(soap, sizeof(_edlprovider__Map *))))
+			return NULL;
+	*a = NULL;
+	if (!soap->null && *soap->href != '#')
+	{	soap_revert(soap);
+		if (!(*a = (_edlprovider__Map *)soap_instantiate__edlprovider__Map(soap, -1, soap->type, soap->arrayType, NULL)))
+			return NULL;
+		(*a)->soap_default(soap);
+		if (!(*a)->soap_in(soap, tag, NULL))
+			return NULL;
+	}
+	else
+	{	_edlprovider__Map ** p = (_edlprovider__Map **)soap_id_lookup(soap, soap->href, (void**)a, SOAP_TYPE__edlprovider__Map, sizeof(_edlprovider__Map), 0);
+		a = p;
+		if (soap->body && soap_element_end_in(soap, tag))
+			return NULL;
+	}
+	return a;
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_edlprovider__Map(struct soap *soap, _edlprovider__Map *const*a, const char *tag, const char *type)
+{
+	register int id = soap_embed(soap, (void*)a, NULL, 0, tag, SOAP_TYPE_PointerTo_edlprovider__Map);
+	if (soap_out_PointerTo_edlprovider__Map(soap, tag?tag:"edlprovider:Map", id, a, type))
+		return soap->error;
+	return soap_putindependent(soap);
+}
+
+SOAP_FMAC3 _edlprovider__Map ** SOAP_FMAC4 soap_get_PointerTo_edlprovider__Map(struct soap *soap, _edlprovider__Map **p, const char *tag, const char *type)
+{
+	if ((p = soap_in_PointerTo_edlprovider__Map(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
@@ -43849,6 +54081,92 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOf_XML(struct soap *soap
 	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
 	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying std::vector<char * > %p -> %p\n", q, p));
 	*(std::vector<char * >*)p = *(std::vector<char * >*)q;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerToedlprovider__MapItemType(struct soap *soap, std::vector<edlprovider__MapItemType * >*p)
+{
+	p->clear();
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_std__vectorTemplateOfPointerToedlprovider__MapItemType(struct soap *soap, const std::vector<edlprovider__MapItemType * >*a)
+{
+#ifndef WITH_NOIDREF
+	for (std::vector<edlprovider__MapItemType * >::const_iterator i = a->begin(); i != a->end(); ++i)
+		soap_serialize_PointerToedlprovider__MapItemType(soap, &(*i));
+#endif
+}
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_std__vectorTemplateOfPointerToedlprovider__MapItemType(struct soap *soap, const char *tag, int id, const std::vector<edlprovider__MapItemType * >*a, const char *type)
+{
+	for (std::vector<edlprovider__MapItemType * >::const_iterator i = a->begin(); i != a->end(); ++i)
+	{
+		if (soap_out_PointerToedlprovider__MapItemType(soap, tag, id, &(*i), ""))
+			return soap->error;
+	}
+	return SOAP_OK;
+}
+
+SOAP_FMAC3 std::vector<edlprovider__MapItemType * >* SOAP_FMAC4 soap_in_std__vectorTemplateOfPointerToedlprovider__MapItemType(struct soap *soap, const char *tag, std::vector<edlprovider__MapItemType * >*a, const char *type)
+{
+	(void)type; /* appease -Wall -Werror */
+	short soap_flag;
+	for (soap_flag = 0;; soap_flag = 1)
+	{	edlprovider__MapItemType *n;
+		if (tag && *tag != '-')
+		{	if (soap_element_begin_in(soap, tag, 1, NULL))
+				break;
+			soap_revert(soap);
+		}
+		n = NULL;
+		if (tag && *tag != '-' && (*soap->id || *soap->href))
+		{	if (!soap_container_id_forward(soap, *soap->id?soap->id:soap->href, a, (size_t)a->size(), SOAP_TYPE_edlprovider__MapItemType, SOAP_TYPE_std__vectorTemplateOfPointerToedlprovider__MapItemType, sizeof(edlprovider__MapItemType), 1))
+				break;
+			if (!soap_in_PointerToedlprovider__MapItemType(soap, tag, NULL, "edlprovider:MapItemType"))
+				break;
+		}
+		else if (!soap_in_PointerToedlprovider__MapItemType(soap, tag, &n, "edlprovider:MapItemType"))
+			break;
+		if (!a && !(a = soap_new_std__vectorTemplateOfPointerToedlprovider__MapItemType(soap, -1)))
+			return NULL;
+		a->push_back(n);
+		if (!tag || *tag == '-')
+			return a;
+	}
+	if (soap_flag && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+	{	soap->error = SOAP_OK;
+		return a;
+	}
+	return NULL;
+}
+
+SOAP_FMAC1 std::vector<edlprovider__MapItemType * > * SOAP_FMAC2 soap_instantiate_std__vectorTemplateOfPointerToedlprovider__MapItemType(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+{
+	(void)type; (void)arrayType; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_std__vectorTemplateOfPointerToedlprovider__MapItemType(%d, %s, %s)\n", n, type?type:"", arrayType?arrayType:""));
+	struct soap_clist *cp = soap_link(soap, NULL, SOAP_TYPE_std__vectorTemplateOfPointerToedlprovider__MapItemType, n, EDLProvider_fdelete);
+	if (!cp)
+		return NULL;
+	if (n < 0)
+	{	cp->ptr = (void*)SOAP_NEW(std::vector<edlprovider__MapItemType * >);
+		if (size)
+			*size = sizeof(std::vector<edlprovider__MapItemType * >);
+	}
+	else
+	{	cp->ptr = (void*)SOAP_NEW_ARRAY(std::vector<edlprovider__MapItemType * >, n);
+		if (size)
+			*size = n * sizeof(std::vector<edlprovider__MapItemType * >);
+	}
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated location=%p\n", cp->ptr));
+	if (!cp->ptr)
+		soap->error = SOAP_EOM;
+	return (std::vector<edlprovider__MapItemType * >*)cp->ptr;
+}
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_std__vectorTemplateOfPointerToedlprovider__MapItemType(struct soap *soap, int st, int tt, void *p, size_t len, const void *q, size_t n)
+{
+	(void)soap; (void)tt; (void)st; (void)len; (void)n; /* appease -Wall -Werror */
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copying std::vector<edlprovider__MapItemType * > %p -> %p\n", q, p));
+	*(std::vector<edlprovider__MapItemType * >*)p = *(std::vector<edlprovider__MapItemType * >*)q;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_std__vectorTemplateOfPointerToedlprovider__ClipType(struct soap *soap, std::vector<edlprovider__ClipType * >*p)

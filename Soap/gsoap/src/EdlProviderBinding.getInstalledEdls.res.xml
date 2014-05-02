@@ -9,8 +9,20 @@
   xmlns:edlprovider="http://temp/edlprovider">
  <SOAP-ENV:Body>
   <edlprovider:installedEdlsResponse>
-   <string></string>
-   <string></string>
+   <edlprovider:Map>
+    <item>
+     <key></key>
+     <value></value>
+     <!-- extensibility element(s) -->
+
+    </item>
+    <item>
+     <key></key>
+     <value></value>
+     <!-- extensibility element(s) -->
+
+    </item>
+   </edlprovider:Map>
   </edlprovider:installedEdlsResponse>
  </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>

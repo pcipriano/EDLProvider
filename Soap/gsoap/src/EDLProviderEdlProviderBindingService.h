@@ -78,7 +78,7 @@ class SOAP_CMAC EdlProviderBindingService : public soap
 	///
 
 	/// Web service operation 'getInstalledEdls' (returns error code or SOAP_OK)
-	virtual	int getInstalledEdls(edlprovider__ArrayOfstring *edlprovider__installedEdlsResponse) SOAP_PURE_VIRTUAL;
+	virtual	int getInstalledEdls(edlprovider__MapType *edlprovider__installedEdlsResponse) SOAP_PURE_VIRTUAL;
 
 	/// Web service operation 'getEdl' (returns error code or SOAP_OK)
 	virtual	int getEdl(edlprovider__EdlCreateRequestType *edlprovider__getEdlRequest, edlprovider__EdlCreateResponseType *edlprovider__getEdlResponse) SOAP_PURE_VIRTUAL;

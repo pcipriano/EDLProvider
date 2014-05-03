@@ -30,17 +30,10 @@
             <xs:field xpath="key"/>
         </xs:unique>
     </xs:element>
-
-    <xs:complexType name="MapType">
-        <xs:sequence>
-            <xs:element ref="edlns:Map"/>
-        </xs:sequence>
-    </xs:complexType>
-
     <xs:complexType name="MapItemType">
         <xs:sequence>
-            <xs:element name="key" type="xs:string"/>
-            <xs:element name="value" type="xs:string"/>
+            <xs:element name="edlType" type="xs:string"/>
+            <xs:element name="edlExtension" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -48,7 +41,7 @@
     <xs:complexType name="EdlCreateRequestBaseType">
         <xs:annotation>
             <xs:documentation source="urn:x-fims:description">
-                Represents the request to create a edl for the specified type.
+                Represents the request to create a EDL for the specified type.
             </xs:documentation>
             <xs:documentation source="urn:x-fims:normativeRequirement"/>
             <xs:documentation source="urn:x-fims:serviceDescription"/>
@@ -57,7 +50,7 @@
         <xs:sequence>
             <xs:element name="edlType" minOccurs="1" maxOccurs="1" type="xs:string" nillable="false">
                 <xs:annotation>
-                    <xs:documentation source="urn:x-fims:description">The edl type to generate, the types available can be obtained using getInstalledEdls.</xs:documentation>
+                    <xs:documentation source="urn:x-fims:description">The EDL type to generate, the types available can be obtained using getInstalledEdls.</xs:documentation>
                     <xs:documentation source="urn:x-fims:normativeRequirement"/>
                     <xs:documentation source="urn:x-fims:serviceDescription"/>
                     <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
@@ -90,7 +83,7 @@
     <xs:complexType name="EdlCreateRequestType">
         <xs:annotation>
             <xs:documentation source="urn:x-fims:description">
-                Represents the request to create a edl for the specified type and frame rate.
+                Represents the request to create a EDL for the specified type and frame rate.
             </xs:documentation>
             <xs:documentation source="urn:x-fims:normativeRequirement"/>
             <xs:documentation source="urn:x-fims:serviceDescription"/>
@@ -116,7 +109,7 @@
     <xs:complexType name="EdlCreateRequestDoubleType">
         <xs:annotation>
             <xs:documentation source="urn:x-fims:description">
-                Represents the request to create a edl for the specified type and frame rate.
+                Represents the request to create a EDL for the specified type and frame rate.
             </xs:documentation>
             <xs:documentation source="urn:x-fims:normativeRequirement"/>
             <xs:documentation source="urn:x-fims:serviceDescription"/>
@@ -140,9 +133,53 @@
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="EdlCreateResponseType">
+        <xs:annotation>
+            <xs:documentation source="urn:x-fims:description">
+                Represents the response when an EDL is created.
+            </xs:documentation>
+            <xs:documentation source="urn:x-fims:normativeRequirement"/>
+            <xs:documentation source="urn:x-fims:serviceDescription"/>
+            <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+        </xs:annotation>
         <xs:sequence>
             <xs:sequence>
-                <xs:element minOccurs="0" name="getEdlResult" nillable="true" type="xs:base64Binary"/>
+                <xs:element minOccurs="0" name="getEdlResult" nillable="true" type="xs:base64Binary">
+                    <xs:annotation>
+                        <xs:documentation source="urn:x-fims:description">The EDL data contents.</xs:documentation>
+                        <xs:documentation source="urn:x-fims:normativeRequirement"/>
+                        <xs:documentation source="urn:x-fims:serviceDescription"/>
+                        <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+                        <xs:documentation source="urn:x-fims:inclusionInRequest">Not applicable</xs:documentation>
+                        <xs:documentation source="urn:x-fims:inclusionInResponse">Mandatory</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="InstalledEdlsResponseType">
+        <xs:annotation>
+            <xs:documentation source="urn:x-fims:description">
+                Represents the response when checking which EDL types are available in the service.
+            </xs:documentation>
+            <xs:documentation source="urn:x-fims:normativeRequirement"/>
+            <xs:documentation source="urn:x-fims:serviceDescription"/>
+            <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:sequence>
+                <xs:element ref="edlns:Map">
+                    <xs:annotation>
+                        <xs:documentation source="urn:x-fims:description">
+                            A key/pair value of EDL types together with their recommended file extension.
+                            The extensions can be different than the recommended, but some programs will not be able to import the files.
+                        </xs:documentation>
+                        <xs:documentation source="urn:x-fims:normativeRequirement"/>
+                        <xs:documentation source="urn:x-fims:serviceDescription"/>
+                        <xs:documentation source="urn:x-fims:contentOfServiceDescription"/>
+                        <xs:documentation source="urn:x-fims:inclusionInRequest">Not applicable</xs:documentation>
+                        <xs:documentation source="urn:x-fims:inclusionInResponse">Mandatory</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
             </xs:sequence>
         </xs:sequence>
     </xs:complexType>
@@ -161,17 +198,17 @@
         <xs:complexContent>
             <xs:extension base="bms:FaultType">
                 <xs:sequence>
-                    <xs:element name="extendedCode" type="edlns:EDLProviderErrorCodeType" minOccurs="0">
+                    <xs:element name="extendedCode" type="edlns:EdlProviderErrorCodeType" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation source="urn:x-fims:description">
-                                EDL provider service-specific error codes as detailed in EDLProviderErrorCodeType.
+                                EDL provider service-specific error codes as detailed in EdlProviderErrorCodeType.
                             </xs:documentation>
                             <xs:documentation source="urn:x-fims:normativeRequirement">
                                 This element shall be set if the service needs to provide service-specific error codes which
                                 are not specified in the fault 'code' element. In this
                                 case, the code element shall be set to 'EXT_S00_0000' and
                                 the extendedCode shall be set to one of the codes described in
-                                EDLProviderErrorCodeType. If the 'code'; element is set
+                                EdlProviderErrorCodeType. If the 'code'; element is set
                                 to any other value than 'EXT_S00_0000'; then this element
                                 shall not be set.
                             </xs:documentation>
@@ -187,7 +224,7 @@
     </xs:complexType>
 
     <!-- **************************** FIMS-defined enumerations **************************** -->
-    <xs:simpleType name="EDLProviderErrorCodeType">
+    <xs:simpleType name="EdlProviderErrorCodeType">
         <xs:annotation>
             <xs:documentation source="urn:x-fims:description">
                 Specific error codes for the EDL provider service, possible errors:

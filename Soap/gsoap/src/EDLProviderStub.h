@@ -27,10 +27,10 @@ compiling, linking, and/or using OpenSSL is allowed.
 \******************************************************************************/
 
 
-#ifndef SOAP_TYPE_edlprovider__EDLProviderErrorCodeType
-#define SOAP_TYPE_edlprovider__EDLProviderErrorCodeType (141)
-/* edlprovider:EDLProviderErrorCodeType */
-enum edlprovider__EDLProviderErrorCodeType { edlprovider__EDLProviderErrorCodeType__EXT_USCORES00_USCORE0001 = 0 };
+#ifndef SOAP_TYPE_edlprovider__EdlProviderErrorCodeType
+#define SOAP_TYPE_edlprovider__EdlProviderErrorCodeType (141)
+/* edlprovider:EdlProviderErrorCodeType */
+enum edlprovider__EdlProviderErrorCodeType { edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0001 = 0 };
 #endif
 
 #ifndef SOAP_TYPE_fims__QueueStatusType
@@ -254,38 +254,17 @@ public:
 };
 #endif
 
-#ifndef SOAP_TYPE_edlprovider__MapType
-#define SOAP_TYPE_edlprovider__MapType (33)
-/* edlprovider:MapType */
-class SOAP_CMAC edlprovider__MapType
-{
-public:
-	class _edlprovider__Map *edlprovider__Map;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type edlprovider:Map */
-	struct soap *soap;	/* transient */
-public:
-	virtual int soap_type() const { return 33; } /* = unique type id SOAP_TYPE_edlprovider__MapType */
-	virtual void soap_default(struct soap*);
-	virtual void soap_serialize(struct soap*) const;
-	virtual int soap_put(struct soap*, const char*, const char*) const;
-	virtual int soap_out(struct soap*, const char*, int, const char*) const;
-	virtual void *soap_get(struct soap*, const char*, const char*);
-	virtual void *soap_in(struct soap*, const char*, const char*);
-	         edlprovider__MapType() { edlprovider__MapType::soap_default(NULL); }
-	virtual ~edlprovider__MapType() { }
-};
-#endif
-
 #ifndef SOAP_TYPE_edlprovider__MapItemType
-#define SOAP_TYPE_edlprovider__MapItemType (34)
+#define SOAP_TYPE_edlprovider__MapItemType (33)
 /* edlprovider:MapItemType */
 class SOAP_CMAC edlprovider__MapItemType
 {
 public:
-	std::wstring key;	/* required element of type xsd:string */
-	std::wstring value;	/* required element of type xsd:string */
+	std::wstring edlType;	/* required element of type xsd:string */
+	std::wstring edlExtension;	/* required element of type xsd:string */
 	struct soap *soap;	/* transient */
 public:
-	virtual int soap_type() const { return 34; } /* = unique type id SOAP_TYPE_edlprovider__MapItemType */
+	virtual int soap_type() const { return 33; } /* = unique type id SOAP_TYPE_edlprovider__MapItemType */
 	virtual void soap_default(struct soap*);
 	virtual void soap_serialize(struct soap*) const;
 	virtual int soap_put(struct soap*, const char*, const char*) const;
@@ -298,7 +277,7 @@ public:
 #endif
 
 #ifndef SOAP_TYPE_edlprovider__EdlCreateRequestBaseType
-#define SOAP_TYPE_edlprovider__EdlCreateRequestBaseType (35)
+#define SOAP_TYPE_edlprovider__EdlCreateRequestBaseType (34)
 /* edlprovider:EdlCreateRequestBaseType */
 class SOAP_CMAC edlprovider__EdlCreateRequestBaseType
 {
@@ -308,7 +287,7 @@ public:
 	std::wstring *edlSequenceName;	/* optional element of type xsd:string */
 	struct soap *soap;	/* transient */
 public:
-	virtual int soap_type() const { return 35; } /* = unique type id SOAP_TYPE_edlprovider__EdlCreateRequestBaseType */
+	virtual int soap_type() const { return 34; } /* = unique type id SOAP_TYPE_edlprovider__EdlCreateRequestBaseType */
 	virtual void soap_default(struct soap*);
 	virtual void soap_serialize(struct soap*) const;
 	virtual int soap_put(struct soap*, const char*, const char*) const;
@@ -321,7 +300,7 @@ public:
 #endif
 
 #ifndef SOAP_TYPE_edlprovider__EdlCreateResponseType
-#define SOAP_TYPE_edlprovider__EdlCreateResponseType (38)
+#define SOAP_TYPE_edlprovider__EdlCreateResponseType (37)
 /* edlprovider:EdlCreateResponseType */
 class SOAP_CMAC edlprovider__EdlCreateResponseType
 {
@@ -329,7 +308,7 @@ public:
 	xsd__base64Binary *getEdlResult;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* optional element of type xsd:base64Binary */
 	struct soap *soap;	/* transient */
 public:
-	virtual int soap_type() const { return 38; } /* = unique type id SOAP_TYPE_edlprovider__EdlCreateResponseType */
+	virtual int soap_type() const { return 37; } /* = unique type id SOAP_TYPE_edlprovider__EdlCreateResponseType */
 	virtual void soap_default(struct soap*);
 	virtual void soap_serialize(struct soap*) const;
 	virtual int soap_put(struct soap*, const char*, const char*) const;
@@ -338,6 +317,27 @@ public:
 	virtual void *soap_in(struct soap*, const char*, const char*);
 	         edlprovider__EdlCreateResponseType() { edlprovider__EdlCreateResponseType::soap_default(NULL); }
 	virtual ~edlprovider__EdlCreateResponseType() { }
+};
+#endif
+
+#ifndef SOAP_TYPE_edlprovider__InstalledEdlsResponseType
+#define SOAP_TYPE_edlprovider__InstalledEdlsResponseType (38)
+/* edlprovider:InstalledEdlsResponseType */
+class SOAP_CMAC edlprovider__InstalledEdlsResponseType
+{
+public:
+	class _edlprovider__Map *edlprovider__Map;	/* SOAP 1.2 RPC return element (when namespace qualified) */	/* required element of type edlprovider:Map */
+	struct soap *soap;	/* transient */
+public:
+	virtual int soap_type() const { return 38; } /* = unique type id SOAP_TYPE_edlprovider__InstalledEdlsResponseType */
+	virtual void soap_default(struct soap*);
+	virtual void soap_serialize(struct soap*) const;
+	virtual int soap_put(struct soap*, const char*, const char*) const;
+	virtual int soap_out(struct soap*, const char*, int, const char*) const;
+	virtual void *soap_get(struct soap*, const char*, const char*);
+	virtual void *soap_in(struct soap*, const char*, const char*);
+	         edlprovider__InstalledEdlsResponseType() { edlprovider__InstalledEdlsResponseType::soap_default(NULL); }
+	virtual ~edlprovider__InstalledEdlsResponseType() { }
 };
 #endif
 
@@ -2151,14 +2151,14 @@ public:
 #endif
 
 #ifndef SOAP_TYPE_edlprovider__EdlCreateRequestType
-#define SOAP_TYPE_edlprovider__EdlCreateRequestType (36)
+#define SOAP_TYPE_edlprovider__EdlCreateRequestType (35)
 /* edlprovider:EdlCreateRequestType */
 class SOAP_CMAC edlprovider__EdlCreateRequestType : public edlprovider__EdlCreateRequestBaseType
 {
 public:
 	class fims__RationalType *edlFramesPerSecond;	/* required element of type fims:RationalType */
 public:
-	virtual int soap_type() const { return 36; } /* = unique type id SOAP_TYPE_edlprovider__EdlCreateRequestType */
+	virtual int soap_type() const { return 35; } /* = unique type id SOAP_TYPE_edlprovider__EdlCreateRequestType */
 	virtual void soap_default(struct soap*);
 	virtual void soap_serialize(struct soap*) const;
 	virtual int soap_put(struct soap*, const char*, const char*) const;
@@ -2171,14 +2171,14 @@ public:
 #endif
 
 #ifndef SOAP_TYPE_edlprovider__EdlCreateRequestDoubleType
-#define SOAP_TYPE_edlprovider__EdlCreateRequestDoubleType (37)
+#define SOAP_TYPE_edlprovider__EdlCreateRequestDoubleType (36)
 /* edlprovider:EdlCreateRequestDoubleType */
 class SOAP_CMAC edlprovider__EdlCreateRequestDoubleType : public edlprovider__EdlCreateRequestBaseType
 {
 public:
 	double edlFramesPerSecond;	/* required element of type xsd:double */
 public:
-	virtual int soap_type() const { return 37; } /* = unique type id SOAP_TYPE_edlprovider__EdlCreateRequestDoubleType */
+	virtual int soap_type() const { return 36; } /* = unique type id SOAP_TYPE_edlprovider__EdlCreateRequestDoubleType */
 	virtual void soap_default(struct soap*);
 	virtual void soap_serialize(struct soap*) const;
 	virtual int soap_put(struct soap*, const char*, const char*) const;
@@ -2196,7 +2196,7 @@ public:
 class SOAP_CMAC edlprovider__EdlProviderFaultType : public fims__FaultType
 {
 public:
-	enum edlprovider__EDLProviderErrorCodeType *extendedCode;	/* optional element of type edlprovider:EDLProviderErrorCodeType */
+	enum edlprovider__EdlProviderErrorCodeType *extendedCode;	/* optional element of type edlprovider:EdlProviderErrorCodeType */
 public:
 	virtual int soap_type() const { return 39; } /* = unique type id SOAP_TYPE_edlprovider__EdlProviderFaultType */
 	virtual void soap_default(struct soap*);

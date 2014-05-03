@@ -192,7 +192,7 @@ int EdlProviderBindingService::dispatch()
 
 static int serve___edlprovider__getInstalledEdls(EdlProviderBindingService *soap)
 {	struct __edlprovider__getInstalledEdls soap_tmp___edlprovider__getInstalledEdls;
-	edlprovider__MapType edlprovider__installedEdlsResponse;
+	edlprovider__InstalledEdlsResponseType edlprovider__installedEdlsResponse;
 	edlprovider__installedEdlsResponse.soap_default(soap);
 	soap_default___edlprovider__getInstalledEdls(soap, &soap_tmp___edlprovider__getInstalledEdls);
 	if (soap_body_end_in(soap)

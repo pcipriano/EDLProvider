@@ -11,12 +11,12 @@
   <edlprovider:installedEdlsResponse>
    <edlprovider:Map>
     <item>
-     <key></key>
-     <value></value>
+     <edlType></edlType>
+     <edlExtension></edlExtension>
     </item>
     <item>
-     <key></key>
-     <value></value>
+     <edlType></edlType>
+     <edlExtension></edlExtension>
     </item>
    </edlprovider:Map>
   </edlprovider:installedEdlsResponse>

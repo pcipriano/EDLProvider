@@ -13,10 +13,10 @@
     <wsdl:types>
         <schema targetNamespace="http://temp/edlprovider" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <include schemaLocation="EDLProvider.xsd"/>
-            <element name="installedEdlsResponse" type="edlns:MapType">
+            <element name="installedEdlsResponse" type="edlns:InstalledEdlsResponseType">
                 <annotation>
                     <documentation source="urn:x-fims:description">
-                        This element provides the list of edl types in the service together with the recommended extension types.
+                        This element provides the list of EDL types in the service together with the recommended extension types.
                     </documentation>
                     <documentation source="urn:x-fims:normativeRequirement"/>
                     <documentation source="urn:x-fims:serviceDescription"/>
@@ -80,7 +80,7 @@
     </wsdl:message>
     <wsdl:message name="getInstalledEdlsResponseMsg">
         <wsdl:part name="out" element="edlns:installedEdlsResponse">
-            <wsdl:documentation>This message provides the response to getting all the edl types available in the service.</wsdl:documentation>
+            <wsdl:documentation>This message provides the response to getting all the EDL types available in the service.</wsdl:documentation>
         </wsdl:part>
     </wsdl:message>
     <wsdl:message name="getEdlRequestMsg">
@@ -110,9 +110,9 @@
     </wsdl:message>
 
     <wsdl:portType name="EdlProviderService">
-        <wsdl:documentation>The EDLProvider SOAP interface provides a based on FIMS service for creating edl's.</wsdl:documentation>
+        <wsdl:documentation>The EDLProvider SOAP interface provides a based on FIMS service for creating EDL's.</wsdl:documentation>
         <wsdl:operation name="getInstalledEdls">
-            <wsdl:documentation>This operation gets all the edl types available in the service.</wsdl:documentation>
+            <wsdl:documentation>This operation gets all the EDL types available in the service.</wsdl:documentation>
             <wsdl:input wsaw:Action="http://temp/edlprovider/getInstalledEdls" message="edlns:getInstalledEdlsRequestMsg"/>
             <wsdl:output wsaw:Action="http://temp/edlprovider/getInstalledEdlsResponse" message="edlns:getInstalledEdlsResponseMsg"/>
             <wsdl:fault name="fault" message="edlns:FaultMsg" />
@@ -124,7 +124,7 @@
             <wsdl:fault name="fault" message="edlns:FaultMsg" />
         </wsdl:operation>
         <wsdl:operation name="getEdlDouble">
-            <wsdl:documentation>This operation gets all the edl types available in the service.</wsdl:documentation>
+            <wsdl:documentation>This operation gets all the EDL types available in the service.</wsdl:documentation>
             <wsdl:input wsaw:Action="http://temp/edlprovider/getEdlDouble" message="edlns:getEdlDoubleRequestMsg"/>
             <wsdl:output wsaw:Action="http://temp/edlprovider/getEdlDoubleResponse" message="edlns:getEdlDoubleResponseMsg"/>
             <wsdl:fault name="fault" message="edlns:FaultMsg" />

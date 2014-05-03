@@ -610,27 +610,27 @@ SOAP_FMAC3 enum fims__QueueStatusType * SOAP_FMAC4 soap_get_fims__QueueStatusTyp
 #endif
 
 
-#ifndef SOAP_TYPE_edlprovider__EDLProviderErrorCodeType
-#define SOAP_TYPE_edlprovider__EDLProviderErrorCodeType (141)
+#ifndef SOAP_TYPE_edlprovider__EdlProviderErrorCodeType
+#define SOAP_TYPE_edlprovider__EdlProviderErrorCodeType (141)
 #endif
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_edlprovider__EDLProviderErrorCodeType(struct soap*, enum edlprovider__EDLProviderErrorCodeType *);
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__EDLProviderErrorCodeType(struct soap*, const char*, int, const enum edlprovider__EDLProviderErrorCodeType *, const char*);
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_edlprovider__EdlProviderErrorCodeType(struct soap*, enum edlprovider__EdlProviderErrorCodeType *);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__EdlProviderErrorCodeType(struct soap*, const char*, int, const enum edlprovider__EdlProviderErrorCodeType *, const char*);
 
-SOAP_FMAC3S const char* SOAP_FMAC4S soap_edlprovider__EDLProviderErrorCodeType2s(struct soap*, enum edlprovider__EDLProviderErrorCodeType);
-SOAP_FMAC3 enum edlprovider__EDLProviderErrorCodeType * SOAP_FMAC4 soap_in_edlprovider__EDLProviderErrorCodeType(struct soap*, const char*, enum edlprovider__EDLProviderErrorCodeType *, const char*);
+SOAP_FMAC3S const char* SOAP_FMAC4S soap_edlprovider__EdlProviderErrorCodeType2s(struct soap*, enum edlprovider__EdlProviderErrorCodeType);
+SOAP_FMAC3 enum edlprovider__EdlProviderErrorCodeType * SOAP_FMAC4 soap_in_edlprovider__EdlProviderErrorCodeType(struct soap*, const char*, enum edlprovider__EdlProviderErrorCodeType *, const char*);
 
-SOAP_FMAC3S int SOAP_FMAC4S soap_s2edlprovider__EDLProviderErrorCodeType(struct soap*, const char*, enum edlprovider__EDLProviderErrorCodeType *);
+SOAP_FMAC3S int SOAP_FMAC4S soap_s2edlprovider__EdlProviderErrorCodeType(struct soap*, const char*, enum edlprovider__EdlProviderErrorCodeType *);
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_edlprovider__EDLProviderErrorCodeType(struct soap*, const enum edlprovider__EDLProviderErrorCodeType *, const char*, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_edlprovider__EdlProviderErrorCodeType(struct soap*, const enum edlprovider__EdlProviderErrorCodeType *, const char*, const char*);
 
-#ifndef soap_write_edlprovider__EDLProviderErrorCodeType
-#define soap_write_edlprovider__EDLProviderErrorCodeType(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_edlprovider__EDLProviderErrorCodeType(soap, data),0) || soap_put_edlprovider__EDLProviderErrorCodeType(soap, data, "edlprovider:EDLProviderErrorCodeType", NULL) || soap_end_send(soap), (soap)->error )
+#ifndef soap_write_edlprovider__EdlProviderErrorCodeType
+#define soap_write_edlprovider__EdlProviderErrorCodeType(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_edlprovider__EdlProviderErrorCodeType(soap, data),0) || soap_put_edlprovider__EdlProviderErrorCodeType(soap, data, "edlprovider:EdlProviderErrorCodeType", NULL) || soap_end_send(soap), (soap)->error )
 #endif
 
-SOAP_FMAC3 enum edlprovider__EDLProviderErrorCodeType * SOAP_FMAC4 soap_get_edlprovider__EDLProviderErrorCodeType(struct soap*, enum edlprovider__EDLProviderErrorCodeType *, const char*, const char*);
+SOAP_FMAC3 enum edlprovider__EdlProviderErrorCodeType * SOAP_FMAC4 soap_get_edlprovider__EdlProviderErrorCodeType(struct soap*, enum edlprovider__EdlProviderErrorCodeType *, const char*, const char*);
 
-#ifndef soap_read_edlprovider__EDLProviderErrorCodeType
-#define soap_read_edlprovider__EDLProviderErrorCodeType(soap, data) ( soap_begin_recv(soap) || !soap_get_edlprovider__EDLProviderErrorCodeType(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#ifndef soap_read_edlprovider__EdlProviderErrorCodeType
+#define soap_read_edlprovider__EdlProviderErrorCodeType(soap, data) ( soap_begin_recv(soap) || !soap_get_edlprovider__EdlProviderErrorCodeType(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
 #endif
 
 
@@ -4621,14 +4621,43 @@ inline edlprovider__EdlProviderFaultType * soap_new_edlprovider__EdlProviderFaul
 
 inline edlprovider__EdlProviderFaultType * soap_new_req_edlprovider__EdlProviderFaultType(struct soap *soap, enum fims__ErrorCodeType code1) { edlprovider__EdlProviderFaultType *_p = soap_instantiate_edlprovider__EdlProviderFaultType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->fims__FaultType::code = code1; } return _p; }
 
-inline edlprovider__EdlProviderFaultType * soap_new_set_edlprovider__EdlProviderFaultType(struct soap *soap, enum edlprovider__EDLProviderErrorCodeType *extendedCode, enum fims__ErrorCodeType code1, std::wstring *description1, std::wstring *detail1, std::vector<fims__InnerFaultType * >& innerFault1) { edlprovider__EdlProviderFaultType *_p = soap_instantiate_edlprovider__EdlProviderFaultType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__EdlProviderFaultType::extendedCode = extendedCode; _p->fims__FaultType::code = code1; _p->fims__FaultType::description = description1; _p->fims__FaultType::detail = detail1; _p->fims__FaultType::innerFault = innerFault1; } return _p; }
+inline edlprovider__EdlProviderFaultType * soap_new_set_edlprovider__EdlProviderFaultType(struct soap *soap, enum edlprovider__EdlProviderErrorCodeType *extendedCode, enum fims__ErrorCodeType code1, std::wstring *description1, std::wstring *detail1, std::vector<fims__InnerFaultType * >& innerFault1) { edlprovider__EdlProviderFaultType *_p = soap_instantiate_edlprovider__EdlProviderFaultType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__EdlProviderFaultType::extendedCode = extendedCode; _p->fims__FaultType::code = code1; _p->fims__FaultType::description = description1; _p->fims__FaultType::detail = detail1; _p->fims__FaultType::innerFault = innerFault1; } return _p; }
 
 inline void soap_delete_edlprovider__EdlProviderFaultType(struct soap *soap, edlprovider__EdlProviderFaultType *p) { soap_delete(soap, p); }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__EdlProviderFaultType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
+#ifndef SOAP_TYPE_edlprovider__InstalledEdlsResponseType
+#define SOAP_TYPE_edlprovider__InstalledEdlsResponseType (38)
+#endif
+
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__InstalledEdlsResponseType(struct soap*, const char*, int, const edlprovider__InstalledEdlsResponseType *, const char*);
+SOAP_FMAC3 edlprovider__InstalledEdlsResponseType * SOAP_FMAC4 soap_in_edlprovider__InstalledEdlsResponseType(struct soap*, const char*, edlprovider__InstalledEdlsResponseType *, const char*);
+
+#ifndef soap_write_edlprovider__InstalledEdlsResponseType
+#define soap_write_edlprovider__InstalledEdlsResponseType(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || ((data)->soap_serialize(soap),0) || (data)->soap_put(soap, "edlprovider:InstalledEdlsResponseType", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 edlprovider__InstalledEdlsResponseType * SOAP_FMAC4 soap_get_edlprovider__InstalledEdlsResponseType(struct soap*, edlprovider__InstalledEdlsResponseType *, const char*, const char*);
+
+#ifndef soap_read_edlprovider__InstalledEdlsResponseType
+#define soap_read_edlprovider__InstalledEdlsResponseType(soap, data) ( soap_begin_recv(soap) || !soap_get_edlprovider__InstalledEdlsResponseType(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+SOAP_FMAC1 edlprovider__InstalledEdlsResponseType * SOAP_FMAC2 soap_instantiate_edlprovider__InstalledEdlsResponseType(struct soap*, int, const char*, const char*, size_t*);
+
+inline edlprovider__InstalledEdlsResponseType * soap_new_edlprovider__InstalledEdlsResponseType(struct soap *soap, int n = -1) { return soap_instantiate_edlprovider__InstalledEdlsResponseType(soap, n, NULL, NULL, NULL); }
+
+inline edlprovider__InstalledEdlsResponseType * soap_new_req_edlprovider__InstalledEdlsResponseType(struct soap *soap, _edlprovider__Map *edlprovider__Map) { edlprovider__InstalledEdlsResponseType *_p = soap_instantiate_edlprovider__InstalledEdlsResponseType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__InstalledEdlsResponseType::edlprovider__Map = edlprovider__Map; } return _p; }
+
+inline edlprovider__InstalledEdlsResponseType * soap_new_set_edlprovider__InstalledEdlsResponseType(struct soap *soap, _edlprovider__Map *edlprovider__Map) { edlprovider__InstalledEdlsResponseType *_p = soap_instantiate_edlprovider__InstalledEdlsResponseType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__InstalledEdlsResponseType::edlprovider__Map = edlprovider__Map; } return _p; }
+
+inline void soap_delete_edlprovider__InstalledEdlsResponseType(struct soap *soap, edlprovider__InstalledEdlsResponseType *p) { soap_delete(soap, p); }
+
+SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__InstalledEdlsResponseType(struct soap*, int, int, void*, size_t, const void*, size_t);
+
 #ifndef SOAP_TYPE_edlprovider__EdlCreateResponseType
-#define SOAP_TYPE_edlprovider__EdlCreateResponseType (38)
+#define SOAP_TYPE_edlprovider__EdlCreateResponseType (37)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__EdlCreateResponseType(struct soap*, const char*, int, const edlprovider__EdlCreateResponseType *, const char*);
@@ -4657,7 +4686,7 @@ inline void soap_delete_edlprovider__EdlCreateResponseType(struct soap *soap, ed
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__EdlCreateResponseType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_edlprovider__EdlCreateRequestDoubleType
-#define SOAP_TYPE_edlprovider__EdlCreateRequestDoubleType (37)
+#define SOAP_TYPE_edlprovider__EdlCreateRequestDoubleType (36)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__EdlCreateRequestDoubleType(struct soap*, const char*, int, const edlprovider__EdlCreateRequestDoubleType *, const char*);
@@ -4686,7 +4715,7 @@ inline void soap_delete_edlprovider__EdlCreateRequestDoubleType(struct soap *soa
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__EdlCreateRequestDoubleType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_edlprovider__EdlCreateRequestType
-#define SOAP_TYPE_edlprovider__EdlCreateRequestType (36)
+#define SOAP_TYPE_edlprovider__EdlCreateRequestType (35)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__EdlCreateRequestType(struct soap*, const char*, int, const edlprovider__EdlCreateRequestType *, const char*);
@@ -4715,7 +4744,7 @@ inline void soap_delete_edlprovider__EdlCreateRequestType(struct soap *soap, edl
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__EdlCreateRequestType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_edlprovider__EdlCreateRequestBaseType
-#define SOAP_TYPE_edlprovider__EdlCreateRequestBaseType (35)
+#define SOAP_TYPE_edlprovider__EdlCreateRequestBaseType (34)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__EdlCreateRequestBaseType(struct soap*, const char*, int, const edlprovider__EdlCreateRequestBaseType *, const char*);
@@ -4744,7 +4773,7 @@ inline void soap_delete_edlprovider__EdlCreateRequestBaseType(struct soap *soap,
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__EdlCreateRequestBaseType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_edlprovider__MapItemType
-#define SOAP_TYPE_edlprovider__MapItemType (34)
+#define SOAP_TYPE_edlprovider__MapItemType (33)
 #endif
 
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__MapItemType(struct soap*, const char*, int, const edlprovider__MapItemType *, const char*);
@@ -4764,42 +4793,13 @@ SOAP_FMAC1 edlprovider__MapItemType * SOAP_FMAC2 soap_instantiate_edlprovider__M
 
 inline edlprovider__MapItemType * soap_new_edlprovider__MapItemType(struct soap *soap, int n = -1) { return soap_instantiate_edlprovider__MapItemType(soap, n, NULL, NULL, NULL); }
 
-inline edlprovider__MapItemType * soap_new_req_edlprovider__MapItemType(struct soap *soap, std::wstring& key, std::wstring& value) { edlprovider__MapItemType *_p = soap_instantiate_edlprovider__MapItemType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__MapItemType::key = key; _p->edlprovider__MapItemType::value = value; } return _p; }
+inline edlprovider__MapItemType * soap_new_req_edlprovider__MapItemType(struct soap *soap, std::wstring& edlType, std::wstring& edlExtension) { edlprovider__MapItemType *_p = soap_instantiate_edlprovider__MapItemType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__MapItemType::edlType = edlType; _p->edlprovider__MapItemType::edlExtension = edlExtension; } return _p; }
 
-inline edlprovider__MapItemType * soap_new_set_edlprovider__MapItemType(struct soap *soap, std::wstring& key, std::wstring& value) { edlprovider__MapItemType *_p = soap_instantiate_edlprovider__MapItemType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__MapItemType::key = key; _p->edlprovider__MapItemType::value = value; } return _p; }
+inline edlprovider__MapItemType * soap_new_set_edlprovider__MapItemType(struct soap *soap, std::wstring& edlType, std::wstring& edlExtension) { edlprovider__MapItemType *_p = soap_instantiate_edlprovider__MapItemType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__MapItemType::edlType = edlType; _p->edlprovider__MapItemType::edlExtension = edlExtension; } return _p; }
 
 inline void soap_delete_edlprovider__MapItemType(struct soap *soap, edlprovider__MapItemType *p) { soap_delete(soap, p); }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__MapItemType(struct soap*, int, int, void*, size_t, const void*, size_t);
-
-#ifndef SOAP_TYPE_edlprovider__MapType
-#define SOAP_TYPE_edlprovider__MapType (33)
-#endif
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_edlprovider__MapType(struct soap*, const char*, int, const edlprovider__MapType *, const char*);
-SOAP_FMAC3 edlprovider__MapType * SOAP_FMAC4 soap_in_edlprovider__MapType(struct soap*, const char*, edlprovider__MapType *, const char*);
-
-#ifndef soap_write_edlprovider__MapType
-#define soap_write_edlprovider__MapType(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || ((data)->soap_serialize(soap),0) || (data)->soap_put(soap, "edlprovider:MapType", NULL) || soap_end_send(soap), (soap)->error )
-#endif
-
-SOAP_FMAC3 edlprovider__MapType * SOAP_FMAC4 soap_get_edlprovider__MapType(struct soap*, edlprovider__MapType *, const char*, const char*);
-
-#ifndef soap_read_edlprovider__MapType
-#define soap_read_edlprovider__MapType(soap, data) ( soap_begin_recv(soap) || !soap_get_edlprovider__MapType(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
-#endif
-
-SOAP_FMAC1 edlprovider__MapType * SOAP_FMAC2 soap_instantiate_edlprovider__MapType(struct soap*, int, const char*, const char*, size_t*);
-
-inline edlprovider__MapType * soap_new_edlprovider__MapType(struct soap *soap, int n = -1) { return soap_instantiate_edlprovider__MapType(soap, n, NULL, NULL, NULL); }
-
-inline edlprovider__MapType * soap_new_req_edlprovider__MapType(struct soap *soap, _edlprovider__Map *edlprovider__Map) { edlprovider__MapType *_p = soap_instantiate_edlprovider__MapType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__MapType::edlprovider__Map = edlprovider__Map; } return _p; }
-
-inline edlprovider__MapType * soap_new_set_edlprovider__MapType(struct soap *soap, _edlprovider__Map *edlprovider__Map) { edlprovider__MapType *_p = soap_instantiate_edlprovider__MapType(soap, -1, NULL, NULL, NULL); if (_p) { _p->soap_default(soap); _p->edlprovider__MapType::edlprovider__Map = edlprovider__Map; } return _p; }
-
-inline void soap_delete_edlprovider__MapType(struct soap *soap, edlprovider__MapType *p) { soap_delete(soap, p); }
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_copy_edlprovider__MapType(struct soap*, int, int, void*, size_t, const void*, size_t);
 
 #ifndef SOAP_TYPE_edlprovider__ClipType
 #define SOAP_TYPE_edlprovider__ClipType (32)
@@ -5701,22 +5701,22 @@ SOAP_FMAC3 edlprovider__EdlCreateRequestType ** SOAP_FMAC4 soap_get_PointerToedl
 #endif
 
 
-#ifndef SOAP_TYPE_PointerToedlprovider__MapType
-#define SOAP_TYPE_PointerToedlprovider__MapType (353)
+#ifndef SOAP_TYPE_PointerToedlprovider__InstalledEdlsResponseType
+#define SOAP_TYPE_PointerToedlprovider__InstalledEdlsResponseType (353)
 #endif
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToedlprovider__MapType(struct soap*, edlprovider__MapType *const*);
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToedlprovider__MapType(struct soap*, const char *, int, edlprovider__MapType *const*, const char *);
-SOAP_FMAC3 edlprovider__MapType ** SOAP_FMAC4 soap_in_PointerToedlprovider__MapType(struct soap*, const char*, edlprovider__MapType **, const char*);
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerToedlprovider__MapType(struct soap*, edlprovider__MapType *const*, const char*, const char*);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToedlprovider__InstalledEdlsResponseType(struct soap*, edlprovider__InstalledEdlsResponseType *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToedlprovider__InstalledEdlsResponseType(struct soap*, const char *, int, edlprovider__InstalledEdlsResponseType *const*, const char *);
+SOAP_FMAC3 edlprovider__InstalledEdlsResponseType ** SOAP_FMAC4 soap_in_PointerToedlprovider__InstalledEdlsResponseType(struct soap*, const char*, edlprovider__InstalledEdlsResponseType **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerToedlprovider__InstalledEdlsResponseType(struct soap*, edlprovider__InstalledEdlsResponseType *const*, const char*, const char*);
 
-#ifndef soap_write_PointerToedlprovider__MapType
-#define soap_write_PointerToedlprovider__MapType(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_PointerToedlprovider__MapType(soap, data),0) || soap_put_PointerToedlprovider__MapType(soap, data, "edlprovider:MapType", NULL) || soap_end_send(soap), (soap)->error )
+#ifndef soap_write_PointerToedlprovider__InstalledEdlsResponseType
+#define soap_write_PointerToedlprovider__InstalledEdlsResponseType(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_PointerToedlprovider__InstalledEdlsResponseType(soap, data),0) || soap_put_PointerToedlprovider__InstalledEdlsResponseType(soap, data, "edlprovider:InstalledEdlsResponseType", NULL) || soap_end_send(soap), (soap)->error )
 #endif
 
-SOAP_FMAC3 edlprovider__MapType ** SOAP_FMAC4 soap_get_PointerToedlprovider__MapType(struct soap*, edlprovider__MapType **, const char*, const char*);
+SOAP_FMAC3 edlprovider__InstalledEdlsResponseType ** SOAP_FMAC4 soap_get_PointerToedlprovider__InstalledEdlsResponseType(struct soap*, edlprovider__InstalledEdlsResponseType **, const char*, const char*);
 
-#ifndef soap_read_PointerToedlprovider__MapType
-#define soap_read_PointerToedlprovider__MapType(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerToedlprovider__MapType(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#ifndef soap_read_PointerToedlprovider__InstalledEdlsResponseType
+#define soap_read_PointerToedlprovider__InstalledEdlsResponseType(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerToedlprovider__InstalledEdlsResponseType(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
 #endif
 
 
@@ -6366,22 +6366,22 @@ SOAP_FMAC3 fims__AsyncEndpointType ** SOAP_FMAC4 soap_get_PointerTofims__AsyncEn
 #endif
 
 
-#ifndef SOAP_TYPE_PointerToedlprovider__EDLProviderErrorCodeType
-#define SOAP_TYPE_PointerToedlprovider__EDLProviderErrorCodeType (303)
+#ifndef SOAP_TYPE_PointerToedlprovider__EdlProviderErrorCodeType
+#define SOAP_TYPE_PointerToedlprovider__EdlProviderErrorCodeType (303)
 #endif
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToedlprovider__EDLProviderErrorCodeType(struct soap*, enum edlprovider__EDLProviderErrorCodeType *const*);
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToedlprovider__EDLProviderErrorCodeType(struct soap*, const char *, int, enum edlprovider__EDLProviderErrorCodeType *const*, const char *);
-SOAP_FMAC3 enum edlprovider__EDLProviderErrorCodeType ** SOAP_FMAC4 soap_in_PointerToedlprovider__EDLProviderErrorCodeType(struct soap*, const char*, enum edlprovider__EDLProviderErrorCodeType **, const char*);
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerToedlprovider__EDLProviderErrorCodeType(struct soap*, enum edlprovider__EDLProviderErrorCodeType *const*, const char*, const char*);
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToedlprovider__EdlProviderErrorCodeType(struct soap*, enum edlprovider__EdlProviderErrorCodeType *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToedlprovider__EdlProviderErrorCodeType(struct soap*, const char *, int, enum edlprovider__EdlProviderErrorCodeType *const*, const char *);
+SOAP_FMAC3 enum edlprovider__EdlProviderErrorCodeType ** SOAP_FMAC4 soap_in_PointerToedlprovider__EdlProviderErrorCodeType(struct soap*, const char*, enum edlprovider__EdlProviderErrorCodeType **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerToedlprovider__EdlProviderErrorCodeType(struct soap*, enum edlprovider__EdlProviderErrorCodeType *const*, const char*, const char*);
 
-#ifndef soap_write_PointerToedlprovider__EDLProviderErrorCodeType
-#define soap_write_PointerToedlprovider__EDLProviderErrorCodeType(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_PointerToedlprovider__EDLProviderErrorCodeType(soap, data),0) || soap_put_PointerToedlprovider__EDLProviderErrorCodeType(soap, data, "edlprovider:EDLProviderErrorCodeType", NULL) || soap_end_send(soap), (soap)->error )
+#ifndef soap_write_PointerToedlprovider__EdlProviderErrorCodeType
+#define soap_write_PointerToedlprovider__EdlProviderErrorCodeType(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_PointerToedlprovider__EdlProviderErrorCodeType(soap, data),0) || soap_put_PointerToedlprovider__EdlProviderErrorCodeType(soap, data, "edlprovider:EdlProviderErrorCodeType", NULL) || soap_end_send(soap), (soap)->error )
 #endif
 
-SOAP_FMAC3 enum edlprovider__EDLProviderErrorCodeType ** SOAP_FMAC4 soap_get_PointerToedlprovider__EDLProviderErrorCodeType(struct soap*, enum edlprovider__EDLProviderErrorCodeType **, const char*, const char*);
+SOAP_FMAC3 enum edlprovider__EdlProviderErrorCodeType ** SOAP_FMAC4 soap_get_PointerToedlprovider__EdlProviderErrorCodeType(struct soap*, enum edlprovider__EdlProviderErrorCodeType **, const char*, const char*);
 
-#ifndef soap_read_PointerToedlprovider__EDLProviderErrorCodeType
-#define soap_read_PointerToedlprovider__EDLProviderErrorCodeType(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerToedlprovider__EDLProviderErrorCodeType(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#ifndef soap_read_PointerToedlprovider__EdlProviderErrorCodeType
+#define soap_read_PointerToedlprovider__EdlProviderErrorCodeType(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerToedlprovider__EdlProviderErrorCodeType(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
 #endif
 
 
@@ -7620,8 +7620,27 @@ SOAP_FMAC3 edlprovider__MapItemType ** SOAP_FMAC4 soap_get_PointerToedlprovider_
 #endif
 
 
+#ifndef SOAP_TYPE_PointerTo_edlprovider__Map
+#define SOAP_TYPE_PointerTo_edlprovider__Map (171)
+#endif
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_edlprovider__Map(struct soap*, _edlprovider__Map *const*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_edlprovider__Map(struct soap*, const char *, int, _edlprovider__Map *const*, const char *);
+SOAP_FMAC3 _edlprovider__Map ** SOAP_FMAC4 soap_in_PointerTo_edlprovider__Map(struct soap*, const char*, _edlprovider__Map **, const char*);
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_edlprovider__Map(struct soap*, _edlprovider__Map *const*, const char*, const char*);
+
+#ifndef soap_write_PointerTo_edlprovider__Map
+#define soap_write_PointerTo_edlprovider__Map(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_PointerTo_edlprovider__Map(soap, data),0) || soap_put_PointerTo_edlprovider__Map(soap, data, "edlprovider:Map", NULL) || soap_end_send(soap), (soap)->error )
+#endif
+
+SOAP_FMAC3 _edlprovider__Map ** SOAP_FMAC4 soap_get_PointerTo_edlprovider__Map(struct soap*, _edlprovider__Map **, const char*, const char*);
+
+#ifndef soap_read_PointerTo_edlprovider__Map
+#define soap_read_PointerTo_edlprovider__Map(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_edlprovider__Map(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
+#endif
+
+
 #ifndef SOAP_TYPE_PointerToxsd__base64Binary
-#define SOAP_TYPE_PointerToxsd__base64Binary (171)
+#define SOAP_TYPE_PointerToxsd__base64Binary (170)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToxsd__base64Binary(struct soap*, xsd__base64Binary *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToxsd__base64Binary(struct soap*, const char *, int, xsd__base64Binary *const*, const char *);
@@ -7640,7 +7659,7 @@ SOAP_FMAC3 xsd__base64Binary ** SOAP_FMAC4 soap_get_PointerToxsd__base64Binary(s
 
 
 #ifndef SOAP_TYPE_PointerTostd__wstring
-#define SOAP_TYPE_PointerTostd__wstring (170)
+#define SOAP_TYPE_PointerTostd__wstring (169)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTostd__wstring(struct soap*, std::wstring *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTostd__wstring(struct soap*, const char *, int, std::wstring *const*, const char *);
@@ -7659,7 +7678,7 @@ SOAP_FMAC3 std::wstring ** SOAP_FMAC4 soap_get_PointerTostd__wstring(struct soap
 
 
 #ifndef SOAP_TYPE_PointerToedlprovider__ArrayOfClips
-#define SOAP_TYPE_PointerToedlprovider__ArrayOfClips (169)
+#define SOAP_TYPE_PointerToedlprovider__ArrayOfClips (168)
 #endif
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerToedlprovider__ArrayOfClips(struct soap*, edlprovider__ArrayOfClips *const*);
 SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerToedlprovider__ArrayOfClips(struct soap*, const char *, int, edlprovider__ArrayOfClips *const*, const char *);
@@ -7674,25 +7693,6 @@ SOAP_FMAC3 edlprovider__ArrayOfClips ** SOAP_FMAC4 soap_get_PointerToedlprovider
 
 #ifndef soap_read_PointerToedlprovider__ArrayOfClips
 #define soap_read_PointerToedlprovider__ArrayOfClips(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerToedlprovider__ArrayOfClips(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
-#endif
-
-
-#ifndef SOAP_TYPE_PointerTo_edlprovider__Map
-#define SOAP_TYPE_PointerTo_edlprovider__Map (168)
-#endif
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_PointerTo_edlprovider__Map(struct soap*, _edlprovider__Map *const*);
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_PointerTo_edlprovider__Map(struct soap*, const char *, int, _edlprovider__Map *const*, const char *);
-SOAP_FMAC3 _edlprovider__Map ** SOAP_FMAC4 soap_in_PointerTo_edlprovider__Map(struct soap*, const char*, _edlprovider__Map **, const char*);
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_PointerTo_edlprovider__Map(struct soap*, _edlprovider__Map *const*, const char*, const char*);
-
-#ifndef soap_write_PointerTo_edlprovider__Map
-#define soap_write_PointerTo_edlprovider__Map(soap, data) ( soap_free_temp(soap), soap_begin_send(soap) || (soap_serialize_PointerTo_edlprovider__Map(soap, data),0) || soap_put_PointerTo_edlprovider__Map(soap, data, "edlprovider:Map", NULL) || soap_end_send(soap), (soap)->error )
-#endif
-
-SOAP_FMAC3 _edlprovider__Map ** SOAP_FMAC4 soap_get_PointerTo_edlprovider__Map(struct soap*, _edlprovider__Map **, const char*, const char*);
-
-#ifndef soap_read_PointerTo_edlprovider__Map
-#define soap_read_PointerTo_edlprovider__Map(soap, data) ( soap_begin_recv(soap) || !soap_get_PointerTo_edlprovider__Map(soap, data, NULL, NULL) || soap_end_recv(soap), (soap)->error )
 #endif
 
 

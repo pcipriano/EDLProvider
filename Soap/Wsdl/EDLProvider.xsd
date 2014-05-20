@@ -9,7 +9,7 @@
     </xs:complexType>
     <xs:complexType name="ArrayOfClips">
         <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" name="clips" type="edlns:ClipType"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="clip" type="edlns:ClipType"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="ClipType">

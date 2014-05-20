@@ -25,7 +25,7 @@ bool EdlProviderService::setUp()
 
     //Configure logger
     el::Configurations conf(logConfFile.toStdString());
-    el::Loggers::reconfigureAllLoggers(conf);
+    el::Loggers::setDefaultConfigurations(conf, true);
 
     return true;
 }

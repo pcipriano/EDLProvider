@@ -19,7 +19,23 @@ class FinalCut : public QObject, public interfaces::EdlInterface
 public:
     FinalCut();
 
+    // EdlInterface interface
+    /*!
+    * \sa {EdlInterface::getEdlName}.
+    */
     std::wstring getEdlName() const override final { return L"FinalCut"; }
+
+    /*!
+    * \sa {EdlInterface::getEdlExtension}.
+    */
+    std::wstring getEdlExtension() const override final { return L".xml"; }
+
+    /*!
+    * \sa {EdlInterface::createEdl}.
+    */
+    QByteArray createEdl(const std::wstring* const edlSequenceName,
+                         const fims__RationalType* const edlFrameRate,
+                         const std::vector<edlprovider__ClipType*>& clips) const;
 };
 
 }

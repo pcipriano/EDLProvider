@@ -19,13 +19,35 @@ public:
 private:
     EdlProviderBindingService* copy() override final;
 
-    int getInstalledEdls(edlprovider__ArrayOfstring* edlprovider__installedEdlsResponse) override final;
+    int getInstalledEdls(edlprovider__InstalledEdlsResponseType* edlprovider__installedEdlsResponse) override final;
 
     int getEdl(edlprovider__EdlCreateRequestType* edlprovider__getEdlRequest,
                edlprovider__EdlCreateResponseType* edlprovider__getEdlResponse) override final;
 
     int getEdlDouble(edlprovider__EdlCreateRequestDoubleType* edlprovider__getEdlDoubleRequest,
                      edlprovider__EdlCreateResponseType* edlprovider__getEdlResponse) override final;
+
+    soap_int32 processGetEdl(soap* const soap,
+                             const std::wstring& edlType,
+                             const std::wstring* const edlSequenceName,
+                             const fims__RationalType* const edlFrameRate,
+                             const std::vector<edlprovider__ClipType*>& clips,
+                             edlprovider__EdlCreateResponseType* const response);
+
+    void buildEdlSoapFault(soap* const soap,
+                           const QString& description,
+                           edlprovider__EdlProviderErrorCodeType extendedCode,
+                           const QString& detailInfo = QString(),
+                           std::vector<class fims__InnerFaultType*> innerFault = std::vector<class fims__InnerFaultType*>(),
+                           bool isSenderFault = true);
+
+    void buildSoapFault(soap* const soap,
+                        const QString& description,
+                        fims__ErrorCodeType mainErrorCode,
+                        std::vector<class fims__InnerFaultType*> innerFault = std::vector<class fims__InnerFaultType*>(),
+                        const QString& detailInfo = QString(),
+                        edlprovider__EdlProviderErrorCodeType* extendedCode = nullptr,
+                        bool isSenderFault = true);
 
     QSharedPointer<plugins::interfaces::EdlPluginManager> pluginManager_;
 

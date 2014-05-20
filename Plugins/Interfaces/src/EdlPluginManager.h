@@ -20,6 +20,8 @@ public:
 
     QList<EdlInterface*> getEdls() const { return loader_->getInstances(); }
 
+    EdlInterface* const findEdl(const std::wstring& edlType) const;
+
 private Q_SLOTS:
     void handlePluginsDirChange(const QString& path);
 

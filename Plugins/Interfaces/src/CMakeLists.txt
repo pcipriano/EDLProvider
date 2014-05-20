@@ -8,6 +8,7 @@ set(HEADERS
    )
 
 include_directories(../../../Common/src)
+include_directories(../../../Soap/gsoap/src)
 
 add_library(EdlPlugins ${SOURCES} ${HEADERS})
 target_link_libraries(EdlPlugins Qt5::Core)

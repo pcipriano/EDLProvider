@@ -1,5 +1,7 @@
 #include "EdlProviderService.h"
 
+#include "EdlProviderServer.h"
+
 #include <QDebug>
 
 #include "EDLProviderInfo.h"

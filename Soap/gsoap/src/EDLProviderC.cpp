@@ -15,7 +15,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 
 #include "EDLProviderH.h"
 
-SOAP_SOURCE_STAMP("@(#) EDLProviderC.cpp ver 2.8.17r 2014-05-03 09:31:40 GMT")
+SOAP_SOURCE_STAMP("@(#) EDLProviderC.cpp ver 2.8.17r 2014-05-24 13:36:32 GMT")
 
 
 #ifndef WITH_NOGLOBAL
@@ -6516,6 +6516,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_default_edlprovider__EdlProviderErrorCodeType(st
 
 static const struct soap_code_map soap_codes_edlprovider__EdlProviderErrorCodeType[] =
 {	{ (long)edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0001, "EXT_S00_0001" },
+	{ (long)edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0002, "EXT_S00_0002" },
 	{ 0, NULL }
 };
 
@@ -6542,7 +6543,7 @@ SOAP_FMAC3S int SOAP_FMAC4S soap_s2edlprovider__EdlProviderErrorCodeType(struct 
 		*a = (enum edlprovider__EdlProviderErrorCodeType)map->code;
 	else
 	{	long n;
-		if (soap_s2long(soap, s, &n) || ((soap->mode & SOAP_XML_STRICT) && (n < 0 || n > 0)))
+		if (soap_s2long(soap, s, &n) || ((soap->mode & SOAP_XML_STRICT) && (n < 0 || n > 1)))
 			return soap->error = SOAP_TYPE;
 		*a = (enum edlprovider__EdlProviderErrorCodeType)n;
 	}

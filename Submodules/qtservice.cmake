@@ -29,3 +29,7 @@ endif()
 
 add_library(QtSolutions_Service ${SOURCES} ${HEADERS} ${EXTRA_INCLUDES})
 target_link_libraries(QtSolutions_Service Qt5::Core ${EXTRA_LIBS})
+
+if(MSVC)
+    target_compile_definitions(QtSolutions_Service PUBLIC "-D_UNICODE" "-DUNICODE")
+endif()

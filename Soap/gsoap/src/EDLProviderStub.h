@@ -30,7 +30,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 #ifndef SOAP_TYPE_edlprovider__EdlProviderErrorCodeType
 #define SOAP_TYPE_edlprovider__EdlProviderErrorCodeType (141)
 /* edlprovider:EdlProviderErrorCodeType */
-enum edlprovider__EdlProviderErrorCodeType { edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0001 = 0 };
+enum edlprovider__EdlProviderErrorCodeType { edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0001 = 0, edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0002 = 1 };
 #endif
 
 #ifndef SOAP_TYPE_fims__QueueStatusType

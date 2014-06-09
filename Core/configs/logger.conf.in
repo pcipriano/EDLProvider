@@ -13,8 +13,10 @@
 * TRACE:
 * VERBOSE:
     FORMAT                  =   "%datetime{%d/%M/%y} | %level-%vlevel | %msg"
+    ENABLED                 =   true
 ## Error logs
 * ERROR:
     FILENAME                =   "@LOG_FILES_FOLDER@/@PROJECT_NAME@-error.log"
+    ENABLED                 =   true
 * FATAL:
     ENABLED                 =   true

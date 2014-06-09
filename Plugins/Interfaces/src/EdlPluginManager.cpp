@@ -3,8 +3,12 @@
 using namespace plugins::interfaces;
 
 EdlPluginManager::EdlPluginManager(const QString& pluginsLocation, bool autoUpdate)
-    : loader_(new common::util::PluginLoader<EdlInterface>(pluginsLocation))
+    : loggerLoader_(new common::util::PluginLoader<SharedLoggerInterface>(pluginsLocation)),
+      edlLoader_(new common::util::PluginLoader<EdlInterface>(pluginsLocation))
 {
+    for (auto sharedLogger : loggerLoader_->getInstances())
+        sharedLogger->setEasyloggingStorage(el::Helpers::storage());
+
     if (autoUpdate)
     {
         dirWatcher_.addPath(pluginsLocation);
@@ -19,17 +23,22 @@ EdlPluginManager::EdlPluginManager(const QString& pluginsLocation, bool autoUpda
 void EdlPluginManager::handlePluginsDirChange(const QString& path)
 {
     //Update the plugins list
-    loader_.reset(new common::util::PluginLoader<EdlInterface>(path));
+    loggerLoader_.reset(new common::util::PluginLoader<SharedLoggerInterface>(path));
+    edlLoader_.reset(new common::util::PluginLoader<EdlInterface>(path));
+
+    for (auto sharedLogger : loggerLoader_->getInstances())
+        sharedLogger->setEasyloggingStorage(el::Helpers::storage());
+
 }
 
 
 plugins::interfaces::EdlInterface* const plugins::interfaces::EdlPluginManager::findEdl(const std::wstring& edlType) const
 {
-    auto instances = loader_->getInstances();
-    QList<plugins::interfaces::EdlInterface*>::const_iterator edl = std::find_if(instances.cbegin(),
+    auto instances = edlLoader_->getInstances();
+    auto edl = std::find_if(instances.cbegin(),
                             instances.cend(),
-                            [&](const EdlInterface* const interface)
-                            { return interface->getEdlName() == edlType; });
+                            [&](const EdlInterface* const edlInterface)
+                            { return edlInterface->getEdlName() == edlType; });
 
     if (edl == instances.cend())
         return nullptr;

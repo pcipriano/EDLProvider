@@ -4,17 +4,18 @@
 #include <QObject>
 
 #include "EdlInterface.h"
+#include "SharedLoggerInterface.h"
 
 namespace plugins
 {
 namespace finalcut
 {
 
-class FinalCut : public QObject, public interfaces::EdlInterface
+class FinalCut final : public QObject, public interfaces::EdlInterface, private interfaces::SharedLoggerInterface
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID EDL_INTERFACE_IDENTIFIER)
-    Q_INTERFACES(plugins::interfaces::EdlInterface)
+    Q_INTERFACES(plugins::interfaces::EdlInterface plugins::interfaces::SharedLoggerInterface)
 
 public:
     FinalCut();
@@ -36,6 +37,8 @@ public:
     QByteArray createEdl(const std::wstring* const edlSequenceName,
                          const fims__RationalType* const edlFrameRate,
                          const std::vector<edlprovider__ClipType*>& clips) const;
+
+    void setEasyloggingStorage(el::base::type::StoragePointer storage) final override;
 };
 
 }

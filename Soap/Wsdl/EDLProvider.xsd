@@ -9,7 +9,7 @@
     </xs:complexType>
     <xs:complexType name="ArrayOfClips">
         <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" name="clip" type="edlns:ClipType"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="clips" type="edlns:ClipType"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="ClipType">
@@ -242,6 +242,11 @@
             <xs:enumeration value="EXT_S00_0001">
                 <xs:annotation>
                     <xs:documentation source="urn:x-fims:description">EDL type not found.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="EXT_S00_0002">
+                <xs:annotation>
+                    <xs:documentation source="urn:x-fims:description">Frame rate not supported.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
         </xs:restriction>

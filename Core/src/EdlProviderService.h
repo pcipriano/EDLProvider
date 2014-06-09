@@ -5,7 +5,14 @@
 #include <QCoreApplication>
 
 #include "Configuration.h"
-#include "EdlProviderServer.h"
+
+namespace edlprovider
+{
+namespace soap
+{
+class EdlProviderServer;
+}
+}
 
 namespace edlprovider
 {

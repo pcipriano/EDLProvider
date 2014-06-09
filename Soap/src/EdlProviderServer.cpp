@@ -157,7 +157,11 @@ int EdlProviderServer::getEdlDouble(edlprovider__EdlCreateRequestDoubleType* edl
     if (!setEditRate(edlprovider__getEdlDoubleRequest->edlFramesPerSecond, *frameRate))
     {
         LOG(ERROR) << "Specified framerate [" << edlprovider__getEdlDoubleRequest->edlFramesPerSecond << "] not supported.";
-
+        buildEdlSoapFault(edlprovider__getEdlDoubleRequest->soap,
+                          "Framerate not supported.",
+                          edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0002,
+                          QString("Specified [%1] framerate not supported by the application").arg(edlprovider__getEdlDoubleRequest->edlFramesPerSecond));
+        return SOAP_FAULT;
     }
 
     return processGetEdl(edlprovider__getEdlDoubleRequest->soap,
@@ -193,7 +197,7 @@ soap_int32 EdlProviderServer::processGetEdl(soap* const soap,
 
         auto resultData = soap_new_xsd__base64Binary(soap);
         char* result = (char*) soap_malloc(soap, edlData.size());
-        strncpy(result, edlData.constData(), edlData.size());
+        memcpy(result, edlData.constData(), edlData.size());
         resultData->__ptr = (unsigned char*) result;
         resultData->__size = edlData.size();
         response->getEdlResult = resultData;

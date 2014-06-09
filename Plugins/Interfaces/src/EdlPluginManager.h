@@ -5,6 +5,7 @@
 
 #include "PluginLoader.h"
 #include "EdlInterface.h"
+#include "SharedLoggerInterface.h"
 
 namespace plugins
 {
@@ -18,7 +19,7 @@ class EdlPluginManager : public QObject
 public:
     explicit EdlPluginManager(const QString& pluginsLocation, bool autoUpdate = false);
 
-    QList<EdlInterface*> getEdls() const { return loader_->getInstances(); }
+    QList<EdlInterface*> getEdls() const { return edlLoader_->getInstances(); }
 
     EdlInterface* const findEdl(const std::wstring& edlType) const;
 
@@ -28,7 +29,9 @@ private Q_SLOTS:
 private:
     QFileSystemWatcher dirWatcher_;
 
-    QScopedPointer<common::util::PluginLoader<EdlInterface>> loader_;
+    QScopedPointer<common::util::PluginLoader<SharedLoggerInterface>> loggerLoader_;
+
+    QScopedPointer<common::util::PluginLoader<EdlInterface>> edlLoader_;
 };
 
 }

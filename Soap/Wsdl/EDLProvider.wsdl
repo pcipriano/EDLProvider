@@ -64,7 +64,7 @@
             <element name="edlProviderFault" type="edlns:EdlProviderFaultType">
                 <annotation>
                     <documentation source="urn:x-fims:description">
-                        This element represents the a fault that migh occur when requesting EDL's from the service.
+                        This element represents a fault that might occur when requesting EDL's from the service.
                     </documentation>
                     <documentation source="urn:x-fims:normativeRequirement"/>
                     <documentation source="urn:x-fims:serviceDescription"/>

@@ -4,6 +4,7 @@
   xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:fimstime="http://baseTime.fims.tv"
   xmlns:fimsdescription="http://description.fims.tv"
   xmlns:fims="http://base.fims.tv"
   xmlns:edlprovider="http://temp/edlprovider">

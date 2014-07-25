@@ -3,8 +3,7 @@
 
 	<xs:annotation>
 		<xs:documentation>This schema defines attributes and an 
-  		attribute group that enable schemas such as the ETSI TS 102 822-3-1 V1.3.1 (2005-06) 
-		metadata schema and schemas derived from it 
+  		attribute group that enable schemas 
 		to allow xml:base, xml:lang or xml:space attributes
         on elements they define.</xs:documentation>
 	</xs:annotation>
@@ -76,16 +75,7 @@
    accordingly; the version at
    http://www.w3.org/2004/10/xml.xsd will not change.</xs:documentation>
 	</xs:annotation>
-	<xs:attribute name="lang" type="xs:language">
-		<xs:annotation>
-			<xs:documentation>Attempting to install the relevant ISO 2- and 3-letter
-         codes as the enumerated possible values is probably never
-         going to be a realistic possibility.  See
-         RFC 3066 at http://www.ietf.org/rfc/rfc3066.txt and the IANA registry
-         at http://www.iana.org/assignments/lang-tag-apps.htm for
-         further information.</xs:documentation>
-		</xs:annotation>
-	</xs:attribute>
+	<xs:attribute name="lang" type="xs:language"/>
 	<xs:attribute name="space">
 		<xs:simpleType>
 			<xs:restriction base="xs:NCName">

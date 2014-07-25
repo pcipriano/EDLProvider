@@ -103,6 +103,7 @@
 edlprovider = "http://temp/edlprovider"
 fims = "http://base.fims.tv"
 fimsdescription = "http://description.fims.tv"
+fimstime = "http://baseTime.fims.tv"
 
 #	Remember: type bindings are given on a single line (use \ to continue
 #	with the next line). Here is an example binding for the XSD int type

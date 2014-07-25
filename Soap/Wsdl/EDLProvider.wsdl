@@ -7,6 +7,7 @@
                   xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
                   xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
                   xmlns:bms="http://base.fims.tv"
+                  xmlns:tim="http://baseTime.fims.tv"
                   xmlns:edlns="http://temp/edlprovider"
                   targetNamespace="http://temp/edlprovider">
 

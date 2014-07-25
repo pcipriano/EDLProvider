@@ -4,6 +4,7 @@
   xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:fimstime="http://baseTime.fims.tv"
   xmlns:fimsdescription="http://description.fims.tv"
   xmlns:fims="http://base.fims.tv"
   xmlns:edlprovider="http://temp/edlprovider">
@@ -14,10 +15,10 @@
     <clips>
      <clips>
       <markIn>
-       <fims:timecode></fims:timecode>
+       <fimstime:timecode></fimstime:timecode>
       </markIn>
       <markOut>
-       <fims:timecode></fims:timecode>
+       <fimstime:timecode></fimstime:timecode>
       </markOut>
       <clipInfo>
        <fims:bmContents>
@@ -38,8 +39,14 @@
            <fims:resourceID></fims:resourceID>
           </fims:description>
          </fims:descriptions>
-         <fims:resourceCreationDate>2014-05-24T13:36:32Z</fims:resourceCreationDate>
-         <fims:resourceModifiedDate>2014-05-24T13:36:32Z</fims:resourceModifiedDate>
+         <fims:status>
+          <fims:status>new</fims:status>
+          <fims:resourceID></fims:resourceID>
+         </fims:status>
+         <fims:resourceCreationDate>2014-07-25T21:34:36Z</fims:resourceCreationDate>
+         <fims:resourceModifiedDate>2014-07-25T21:34:36Z</fims:resourceModifiedDate>
+         <fims:serviceGeneratedElement>false</fims:serviceGeneratedElement>
+         <fims:isFullyPopulated>false</fims:isFullyPopulated>
          <fims:notifyAt>
           <fims:replyTo></fims:replyTo>
           <fims:faultTo></fims:faultTo>
@@ -69,8 +76,14 @@
            <fims:resourceID></fims:resourceID>
           </fims:description>
          </fims:descriptions>
-         <fims:resourceCreationDate>2014-05-24T13:36:32Z</fims:resourceCreationDate>
-         <fims:resourceModifiedDate>2014-05-24T13:36:32Z</fims:resourceModifiedDate>
+         <fims:status>
+          <fims:status>new</fims:status>
+          <fims:resourceID></fims:resourceID>
+         </fims:status>
+         <fims:resourceCreationDate>2014-07-25T21:34:36Z</fims:resourceCreationDate>
+         <fims:resourceModifiedDate>2014-07-25T21:34:36Z</fims:resourceModifiedDate>
+         <fims:serviceGeneratedElement>false</fims:serviceGeneratedElement>
+         <fims:isFullyPopulated>false</fims:isFullyPopulated>
          <fims:notifyAt>
           <fims:replyTo></fims:replyTo>
           <fims:faultTo></fims:faultTo>
@@ -83,9 +96,13 @@
          <fims:revisionID></fims:revisionID>
          <fims:location></fims:location>
         </fims:bmContent>
+
+
        </fims:bmContents>
-       <fims:resourceCreationDate>2014-05-24T13:36:32Z</fims:resourceCreationDate>
-       <fims:resourceModifiedDate>2014-05-24T13:36:32Z</fims:resourceModifiedDate>
+       <fims:resourceCreationDate>2014-07-25T21:34:36Z</fims:resourceCreationDate>
+       <fims:resourceModifiedDate>2014-07-25T21:34:36Z</fims:resourceModifiedDate>
+       <fims:serviceGeneratedElement>false</fims:serviceGeneratedElement>
+       <fims:isFullyPopulated>false</fims:isFullyPopulated>
        <fims:notifyAt>
         <fims:replyTo></fims:replyTo>
         <fims:faultTo></fims:faultTo>
@@ -103,10 +120,10 @@
      </clips>
      <clips>
       <markIn>
-       <fims:timecode></fims:timecode>
+       <fimstime:timecode></fimstime:timecode>
       </markIn>
       <markOut>
-       <fims:timecode></fims:timecode>
+       <fimstime:timecode></fimstime:timecode>
       </markOut>
       <clipInfo>
        <fims:bmContents>
@@ -127,8 +144,14 @@
            <fims:resourceID></fims:resourceID>
           </fims:description>
          </fims:descriptions>
-         <fims:resourceCreationDate>2014-05-24T13:36:32Z</fims:resourceCreationDate>
-         <fims:resourceModifiedDate>2014-05-24T13:36:32Z</fims:resourceModifiedDate>
+         <fims:status>
+          <fims:status>new</fims:status>
+          <fims:resourceID></fims:resourceID>
+         </fims:status>
+         <fims:resourceCreationDate>2014-07-25T21:34:36Z</fims:resourceCreationDate>
+         <fims:resourceModifiedDate>2014-07-25T21:34:36Z</fims:resourceModifiedDate>
+         <fims:serviceGeneratedElement>false</fims:serviceGeneratedElement>
+         <fims:isFullyPopulated>false</fims:isFullyPopulated>
          <fims:notifyAt>
           <fims:replyTo></fims:replyTo>
           <fims:faultTo></fims:faultTo>
@@ -158,8 +181,14 @@
            <fims:resourceID></fims:resourceID>
           </fims:description>
          </fims:descriptions>
-         <fims:resourceCreationDate>2014-05-24T13:36:32Z</fims:resourceCreationDate>
-         <fims:resourceModifiedDate>2014-05-24T13:36:32Z</fims:resourceModifiedDate>
+         <fims:status>
+          <fims:status>new</fims:status>
+          <fims:resourceID></fims:resourceID>
+         </fims:status>
+         <fims:resourceCreationDate>2014-07-25T21:34:36Z</fims:resourceCreationDate>
+         <fims:resourceModifiedDate>2014-07-25T21:34:36Z</fims:resourceModifiedDate>
+         <fims:serviceGeneratedElement>false</fims:serviceGeneratedElement>
+         <fims:isFullyPopulated>false</fims:isFullyPopulated>
          <fims:notifyAt>
           <fims:replyTo></fims:replyTo>
           <fims:faultTo></fims:faultTo>
@@ -172,9 +201,13 @@
          <fims:revisionID></fims:revisionID>
          <fims:location></fims:location>
         </fims:bmContent>
+
+
        </fims:bmContents>
-       <fims:resourceCreationDate>2014-05-24T13:36:32Z</fims:resourceCreationDate>
-       <fims:resourceModifiedDate>2014-05-24T13:36:32Z</fims:resourceModifiedDate>
+       <fims:resourceCreationDate>2014-07-25T21:34:36Z</fims:resourceCreationDate>
+       <fims:resourceModifiedDate>2014-07-25T21:34:36Z</fims:resourceModifiedDate>
+       <fims:serviceGeneratedElement>false</fims:serviceGeneratedElement>
+       <fims:isFullyPopulated>false</fims:isFullyPopulated>
        <fims:notifyAt>
         <fims:replyTo></fims:replyTo>
         <fims:faultTo></fims:faultTo>

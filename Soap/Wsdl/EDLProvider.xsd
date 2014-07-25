@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema targetNamespace="http://temp/edlprovider" elementFormDefault="qualified" xmlns:bms="http://base.fims.tv" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edlns="http://temp/edlprovider">
-    <xs:import namespace="http://base.fims.tv" schemaLocation="baseMediaService-V1_0_7.xsd"/>
+<xs:schema targetNamespace="http://temp/edlprovider" elementFormDefault="qualified" xmlns:bms="http://base.fims.tv" xmlns:tim="http://baseTime.fims.tv" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edlns="http://temp/edlprovider">
+    <xs:import namespace="http://base.fims.tv" schemaLocation="baseMediaService-V1_1_0.xsd"/>
+    <xs:import namespace="http://baseTime.fims.tv" schemaLocation="baseTime-V1_1_0.xsd"/>
 
     <xs:complexType name="ArrayOfstring">
         <xs:sequence>
@@ -14,8 +15,8 @@
     </xs:complexType>
     <xs:complexType name="ClipType">
         <xs:sequence>
-            <xs:element minOccurs="1" maxOccurs="1" name="markIn" type="bms:TimeType"/>
-            <xs:element minOccurs="1" maxOccurs="1" name="markOut" type="bms:TimeType"/>
+            <xs:element minOccurs="1" maxOccurs="1" name="markIn" type="tim:TimeType"/>
+            <xs:element minOccurs="1" maxOccurs="1" name="markOut" type="tim:TimeType"/>
             <xs:element minOccurs="1" maxOccurs="1" name="clipInfo" type="bms:BMObjectType"/>
         </xs:sequence>
     </xs:complexType>

@@ -7,17 +7,17 @@
 
 #include <QString>
 
-inline MAKE_LOGGABLE(fims__TimeType, timeType, os)
+inline MAKE_LOGGABLE(fimstime__TimeType, timeType, os)
 {
     switch (timeType.__union_TimeType)
     {
-        case SOAP_UNION__fims__union_TimeType_timecode:
+        case SOAP_UNION__fimstime__union_TimeType_timecode:
             os << "TC:" << QString::fromStdWString(*timeType.union_TimeType.timecode).toStdString();
             break;
-        case SOAP_UNION__fims__union_TimeType_normalPlayTime:
+        case SOAP_UNION__fimstime__union_TimeType_normalPlayTime:
             os << "T:" << QString::fromStdWString(*timeType.union_TimeType.normalPlayTime).toStdString();
             break;
-        case SOAP_UNION__fims__union_TimeType_editUnitNumber:
+        case SOAP_UNION__fimstime__union_TimeType_editUnitNumber:
             os << "units:" << timeType.union_TimeType.editUnitNumber->__item
                << " rate:" << QString::fromStdWString(timeType.union_TimeType.editUnitNumber->editRate).toStdString()
                << " " << QString::fromStdWString(timeType.union_TimeType.editUnitNumber->factorNumerator).toStdString()
@@ -39,17 +39,17 @@ inline MAKE_LOGGABLE(fims__RationalType, rationalType, os)
     return os;
 }
 
-inline MAKE_LOGGABLE(fims__DurationType, durationType, os)
+inline MAKE_LOGGABLE(fimstime__DurationType, durationType, os)
 {
     switch (durationType.__union_DurationType)
     {
-        case SOAP_UNION__fims__union_DurationType_timecode:
+        case SOAP_UNION__fimstime__union_DurationType_timecode:
             os << "TC:" << QString::fromStdWString(*durationType.union_DurationType.timecode).toStdString();
             break;
-        case SOAP_UNION__fims__union_DurationType_normalPlayTime:
+        case SOAP_UNION__fimstime__union_DurationType_normalPlayTime:
             os << "T:" << durationType.union_DurationType.normalPlayTime;
             break;
-        case SOAP_UNION__fims__union_DurationType_editUnitNumber:
+        case SOAP_UNION__fimstime__union_DurationType_editUnitNumber:
             os << "units:" << durationType.union_DurationType.editUnitNumber->__item
                << " rate:" << QString::fromStdWString(durationType.union_DurationType.editUnitNumber->editRate).toStdString()
                << " " << QString::fromStdWString(durationType.union_DurationType.editUnitNumber->factorNumerator).toStdString()

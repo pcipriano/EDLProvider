@@ -21,6 +21,10 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
                                const fims__RationalType* const edlFrameRate,
                                const std::vector<edlprovider__ClipType*>& clips) const
 {
+    QString sequenceName;
+    if (edlSequenceName != NULL)
+        sequenceName = QString::fromStdWString(*edlSequenceName);
+
     QXmlStreamWriter xmlWriter;
     QBuffer xmlBuffer;
     xmlBuffer.open(QIODevice::WriteOnly);
@@ -28,11 +32,22 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
     xmlWriter.setAutoFormatting(true);
     xmlWriter.writeStartDocument("1.0");
 
+    VLOG(1) << "SequenceName:[" << sequenceName << "] "
+               "Rate:[" << *edlFrameRate << "]";
+
     for (const edlprovider__ClipType* const clip : clips)
     {
-        auto clipss = clip->markIn->union_TimeType.timecode;
-        VLOG(1) << "MarkIn:[" << *clip->markIn << "]" << " "
-                   "MarkOut:[" << *clip->markOut << "]";
+        if (clip->clipInfo->bmContents == NULL)
+            throw std::invalid_argument("bmContents must be set.");
+
+        fims__BMContentType* clipInfo = clip->clipInfo->bmContents->bmContent.front();
+        fims__BMContentFormatType* clipFormatInfo = clipInfo->bmContentFormats->bmContentFormat.front();
+
+        VLOG(1) << "MarkIn:[" << *clip->markIn << "] "
+                   "MarkOut:[" << *clip->markOut << "] "
+                   "Id:[" << clip->clipInfo->resourceID << "] "
+                   "Duration:[" << *clipFormatInfo->duration << "]"
+                   "Path:[" << *clipFormatInfo->bmEssenceLocators->bmEssenceLocator.front()->location << "]";
     }
 
     return xmlBuffer.buffer();

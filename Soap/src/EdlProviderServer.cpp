@@ -100,6 +100,8 @@ int EdlProviderServer::run(int port)
 {
     if (soap_valid_socket(this->master) || soap_valid_socket(bind(hostName_.isEmpty() ? NULL : hostName_.toLatin1().data(), port, 100)))
     {
+        LOG(INFO) << "Running server in [" << this->endpoint << "].";
+
         Q_FOREVER
         {
             if (!soap_valid_socket(accept()))
@@ -191,16 +193,37 @@ soap_int32 EdlProviderServer::processGetEdl(soap* const soap,
     }
     else
     {
-        QByteArray edlData = edl->createEdl(edlSequenceName,
-                                            edlFrameRate,
-                                            clips);
+        try
+        {
+            QByteArray edlData = edl->createEdl(edlSequenceName,
+                                                edlFrameRate,
+                                                clips);
 
-        auto resultData = soap_new_xsd__base64Binary(soap);
-        char* result = (char*) soap_malloc(soap, edlData.size());
-        memcpy(result, edlData.constData(), edlData.size());
-        resultData->__ptr = (unsigned char*) result;
-        resultData->__size = edlData.size();
-        response->getEdlResult = resultData;
+            auto resultData = soap_new_xsd__base64Binary(soap);
+            char* result = (char*) soap_malloc(soap, edlData.size());
+            memcpy(result, edlData.constData(), edlData.size());
+            resultData->__ptr = (unsigned char*) result;
+            resultData->__size = edlData.size();
+            response->getEdlResult = resultData;
+        }
+        catch (const std::invalid_argument& ia)
+        {
+            buildSoapFault(soap,
+                           "Invalid request parameters.",
+                           fims__ErrorCodeType__DAT_USCORES00_USCORE0006,
+                           std::vector<fims__InnerFaultType*>(),
+                           ia.what());
+            return SOAP_FAULT;
+        }
+        catch (...)
+        {
+            buildSoapFault(soap,
+                           "Unknown error.",
+                           fims__ErrorCodeType__INF_USCORES00_USCORE0003,
+                           std::vector<fims__InnerFaultType*>(),
+                           "Unknow error writing Edl.");
+            return SOAP_FAULT;
+        }
     }
 
     return SOAP_OK;
@@ -222,12 +245,12 @@ void EdlProviderServer::buildEdlSoapFault(soap* const soap,
 }
 
 void EdlProviderServer::buildSoapFault(soap* const soap,
-                                         const QString& description,
-                                         fims__ErrorCodeType mainErrorCode,
-                                         std::vector<fims__InnerFaultType*> innerFault,
-                                         const QString& detailInfo,
-                                         edlprovider__EdlProviderErrorCodeType* extendedCode,
-                                         bool isSenderFault)
+                                       const QString& description,
+                                       fims__ErrorCodeType mainErrorCode,
+                                       std::vector<fims__InnerFaultType*> innerFault,
+                                       const QString& detailInfo,
+                                       edlprovider__EdlProviderErrorCodeType* extendedCode,
+                                       bool isSenderFault)
 {
     std::wstring* descriptionTemp = soap_new_set_std__wstring(soap);
     descriptionTemp->assign(description.toStdWString());

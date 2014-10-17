@@ -80,6 +80,7 @@ include(Submodules/qtservice.cmake)
 
 #Directories
 add_subdirectory(Core)
+add_subdirectory(TimeUtils)
 add_subdirectory(Soap)
 add_subdirectory(Common)
 add_subdirectory(Plugins)

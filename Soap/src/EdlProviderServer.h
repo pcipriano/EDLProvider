@@ -19,20 +19,20 @@ public:
 private:
     EdlProviderBindingService* copy() override final;
 
-    int getInstalledEdls(edlprovider__InstalledEdlsResponseType* edlprovider__installedEdlsResponse) override final;
+    int getInstalledEdls(edlprovider__InstalledEdlsResponseType& edlprovider__installedEdlsResponse) override final;
 
     int getEdl(edlprovider__EdlCreateRequestType* edlprovider__getEdlRequest,
-               edlprovider__EdlCreateResponseType* edlprovider__getEdlResponse) override final;
+               edlprovider__EdlCreateResponseType& edlprovider__getEdlResponse) override final;
 
     int getEdlDouble(edlprovider__EdlCreateRequestDoubleType* edlprovider__getEdlDoubleRequest,
-                     edlprovider__EdlCreateResponseType* edlprovider__getEdlResponse) override final;
+                     edlprovider__EdlCreateResponseType& edlprovider__getEdlResponse) override final;
 
     soap_int32 processGetEdl(soap* const soap,
                              const std::wstring& edlType,
                              const std::wstring* const edlSequenceName,
                              const fims__RationalType* const edlFrameRate,
                              const std::vector<edlprovider__ClipType*>& clips,
-                             edlprovider__EdlCreateResponseType* const response);
+                             edlprovider__EdlCreateResponseType& response);
 
     void buildEdlSoapFault(soap* const soap,
                            const QString& description,

@@ -69,12 +69,6 @@ static bool setEditRate(double editRate, fims__RationalType& editRateResult)
         editRateResult.numerator = L"1000";
         editRateResult.denominator = L"1001";
     }
-    else if (editRate > 49.000 && editRate < 50.000)
-    {
-        editRateResult.__item = 50;
-        editRateResult.numerator = L"1000";
-        editRateResult.denominator = L"1001";
-    }
     else if (editRate > 59.000 && editRate < 60.000)
     {
         editRateResult.__item = 60;
@@ -122,27 +116,27 @@ EdlProviderBindingService* edlprovider::soap::EdlProviderServer::copy()
     return new EdlProviderServer(*this);
 }
 
-int EdlProviderServer::getInstalledEdls(edlprovider__InstalledEdlsResponseType* edlprovider__installedEdlsResponse)
+int EdlProviderServer::getInstalledEdls(edlprovider__InstalledEdlsResponseType& edlprovider__installedEdlsResponse)
 {
     //Get all plugin names.
-    _edlprovider__Map* edls = soap_new_req__edlprovider__Map(edlprovider__installedEdlsResponse->soap);
+    _edlprovider__Map* edls = soap_new_req__edlprovider__Map(edlprovider__installedEdlsResponse.soap);
     for (EdlInterface* const edl : pluginManager_->getEdls())
     {
         std::wstring name = edl->getEdlName();
         std::wstring extension = edl->getEdlExtension();
-        auto item = soap_new_req_edlprovider__MapItemType(edlprovider__installedEdlsResponse->soap,
+        auto item = soap_new_req_edlprovider__MapItemType(edlprovider__installedEdlsResponse.soap,
                                                           name,
                                                           extension);
         edls->item.push_back(item);
     }
 
-    edlprovider__installedEdlsResponse->edlprovider__Map = edls;
+    edlprovider__installedEdlsResponse.edlprovider__Map = edls;
 
     return SOAP_OK;
 }
 
 int EdlProviderServer::getEdl(edlprovider__EdlCreateRequestType* edlprovider__getEdlRequest,
-                              edlprovider__EdlCreateResponseType* edlprovider__getEdlResponse)
+                              edlprovider__EdlCreateResponseType& edlprovider__getEdlResponse)
 {
     return processGetEdl(edlprovider__getEdlRequest->soap,
                          edlprovider__getEdlRequest->edlType,
@@ -153,7 +147,7 @@ int EdlProviderServer::getEdl(edlprovider__EdlCreateRequestType* edlprovider__ge
 }
 
 int EdlProviderServer::getEdlDouble(edlprovider__EdlCreateRequestDoubleType* edlprovider__getEdlDoubleRequest,
-                                    edlprovider__EdlCreateResponseType* edlprovider__getEdlResponse)
+                                    edlprovider__EdlCreateResponseType& edlprovider__getEdlResponse)
 {
     auto frameRate = soap_new_fims__RationalType(edlprovider__getEdlDoubleRequest->soap);
     if (!setEditRate(edlprovider__getEdlDoubleRequest->edlFramesPerSecond, *frameRate))
@@ -179,7 +173,7 @@ soap_int32 EdlProviderServer::processGetEdl(soap* const soap,
                                             const std::wstring* const edlSequenceName,
                                             const fims__RationalType* const edlFrameRate,
                                             const std::vector<edlprovider__ClipType*>& clips,
-                                            edlprovider__EdlCreateResponseType* const response)
+                                            edlprovider__EdlCreateResponseType& response)
 {
     EdlInterface* edl = pluginManager_->findEdl(edlType);
 
@@ -204,7 +198,7 @@ soap_int32 EdlProviderServer::processGetEdl(soap* const soap,
             memcpy(result, edlData.constData(), edlData.size());
             resultData->__ptr = (unsigned char*) result;
             resultData->__size = edlData.size();
-            response->getEdlResult = resultData;
+            response.getEdlResult = resultData;
         }
         catch (const std::invalid_argument& ia)
         {

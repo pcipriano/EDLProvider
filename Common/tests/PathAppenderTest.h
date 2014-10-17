@@ -10,7 +10,7 @@ namespace util
 namespace tests
 {
 
-class PathAppenderTest : public QObject
+class PathAppenderTest final : public QObject
 {
     Q_OBJECT
 

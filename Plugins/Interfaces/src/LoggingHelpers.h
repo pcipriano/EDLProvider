@@ -62,4 +62,14 @@ inline MAKE_LOGGABLE(fimstime__DurationType, durationType, os)
     return os;
 }
 
+inline MAKE_LOGGABLE(fims__LengthType, lengthType, os)
+{
+    os << "value:" << QString::fromStdWString(lengthType.__item).toStdString();
+
+    if (lengthType.unit != NULL)
+        os << " unit:" << QString::fromStdWString(*lengthType.unit).toStdString();
+
+    return os;
+}
+
 #endif // PLUGINS_INTERFACES_SRC_LOGGINGHELPERS_H

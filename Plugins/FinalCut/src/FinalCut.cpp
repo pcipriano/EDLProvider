@@ -181,7 +181,7 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
                                          "Audio Channels:[" << nrAudioChannels << "] "
                                          "Audio Tracks:[" << nrAudioTracks << "]";
 
-        uint32_t frameRateNum = std::stoi(videoInfo->frameRate->numerator);
+        uint32_t frameRateNum = std::stoi(videoInfo->frameRate->numerator) * videoInfo->frameRate->__item;
         uint32_t frameRateDen = std::stoi(videoInfo->frameRate->denominator);
 
         uint64_t fileDurationFrames = getNrFrames(*clipFormatInfo->duration, frameRateNum, frameRateDen);
@@ -256,7 +256,7 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
 
         xmlWriter.writeAttribute("id", fInfo.completeBaseName());
         xmlWriter.writeTextElement("name", fInfo.completeBaseName());
-        xmlWriter.writeAttribute("pathurl", QString::fromStdWString(*clipFormatInfo->bmEssenceLocators->bmEssenceLocator.front()->location));
+        xmlWriter.writeTextElement("pathurl", QString::fromStdWString(*clipFormatInfo->bmEssenceLocators->bmEssenceLocator.front()->location));
         writeRateSection(isDropFrame, timeBase, xmlWriter);
         xmlWriter.writeTextElement("duration", QString::number(fileDurationFrames));
 
@@ -296,6 +296,19 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
                               nrAudioChannels,
                               fInfo,
                               xmlWriter);
+
+        if (!clipInfo->descriptions->description.empty())
+        {
+            fims__DescriptionType* descriptions = clipInfo->descriptions->description.front();
+            if (!descriptions->fimsdescription__bmContentDescription->description.empty())
+            {
+                fimsdescription__descriptionType* description = descriptions->fimsdescription__bmContentDescription->description.front();
+                xmlWriter.writeStartElement("comments");
+                xmlWriter.writeTextElement("clipcommenta", QString::fromStdWString(description->__item));
+                //</comments>
+                xmlWriter.writeEndElement();
+            }
+        }
 
         //</clipitem>
         xmlWriter.writeEndElement();

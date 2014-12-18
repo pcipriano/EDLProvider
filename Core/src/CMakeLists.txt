@@ -41,3 +41,21 @@ target_link_libraries(${PROJECT_NAME} SoapServer Qt5::Core QtSolutions_Service C
 
 copy_file_to_target_dir("${PROJECT_SOURCE_DIR}/Core/configs/${APP_CONFIG_FILE}" ${PROJECT_NAME})
 copy_file_to_target_dir("${CMAKE_CURRENT_BINARY_DIR}/../configs/${LOG_CONFIG_FILE_NAME}" ${PROJECT_NAME})
+
+#Install files
+install(TARGETS ${PROJECT_NAME} DESTINATION ${BIN_INSTALL_DIR})
+
+install(CODE "
+message(\"CPack install prefix [\${CMAKE_INSTALL_PREFIX}]\")
+
+#Write qt conf file that is used to tell QtLibraries where to look for plugins
+file(WRITE \"\${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_DIR_RESOURCES}/qt.conf\" \"\")
+
+file(GLOB_RECURSE QTPLUGINS \"\${CMAKE_INSTALL_PREFIX}/${BIN_INSTALL_DIR_PLUGINS}/*${CMAKE_SHARED_LIBRARY_SUFFIX}\")
+
+set(BU_CHMOD_BUNDLE_ITEMS ON)
+
+include(BundleUtilities)
+#Now fixup bundle
+fixup_bundle(\"\${CMAKE_INSTALL_PREFIX}/${EXECUTABLE}\" \"\${QTPLUGINS}\" \"${QT_LOCATION}\")"
+)

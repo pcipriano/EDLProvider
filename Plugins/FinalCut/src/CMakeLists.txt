@@ -15,3 +15,6 @@ include_directories(../../../Submodules/easyloggingpp/src)
 add_library(FinalCut MODULE ${SOURCES} ${HEADERS})
 target_link_libraries(FinalCut EdlPlugins TimeUtils Qt5::Core Qt5::Xml Qt5::XmlPatterns)
 set_target_properties(FinalCut PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/plugins")
+
+#Install plugin
+install(TARGETS FinalCut DESTINATION ${BIN_INSTALL_DIR_PLUGINS} COMPONENT FinalCut)

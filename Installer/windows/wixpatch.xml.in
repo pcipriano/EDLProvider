@@ -1,0 +1,16 @@
+<CPackWiXPatch>
+    <CPackWiXFragment Id="CM_CP_Unspecified.@EXECUTABLE@">
+        <ServiceInstall Type="ownProcess"
+                                Vital="yes"
+                                Name="@CPACK_PACKAGE_NAME@"
+                                DisplayName="@CPACK_PACKAGE_NAME@"
+                                Description="@CPACK_PACKAGE_DESCRIPTION_SUMMARY@"
+                                Start="auto"
+                                Account="[SERVICE_USERNAME]"
+                                Password="[SERVICE_PASSWORD]"
+                                ErrorControl="normal"
+                                Interactive="no">
+        </ServiceInstall>
+        <ServiceControl Id="ServControl" Stop="both" Remove="both" Name="@CPACK_PACKAGE_NAME@" Wait="yes" />
+    </CPackWiXFragment>
+</CPackWiXPatch>

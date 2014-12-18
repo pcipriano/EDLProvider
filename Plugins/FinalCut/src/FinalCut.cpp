@@ -297,7 +297,7 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
                               fInfo,
                               xmlWriter);
 
-        if (!clipInfo->descriptions->description.empty())
+        if ((clipInfo->descriptions != NULL) && (!clipInfo->descriptions->description.empty()))
         {
             fims__DescriptionType* descriptions = clipInfo->descriptions->description.front();
             if (!descriptions->fimsdescription__bmContentDescription->description.empty())

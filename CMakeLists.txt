@@ -66,6 +66,10 @@ find_package(Qt5XmlPatterns REQUIRED)
 find_package(Qt5Network REQUIRED)
 find_package(Qt5Test QUIET REQUIRED)
 
+get_target_property(QT_LOCATION Qt5::Core LOCATION)
+get_filename_component(QT_LOCATION ${QT_LOCATION} DIRECTORY)
+message("Qt found at [${QT_LOCATION}]")
+
 #Doxygen
 find_package(Doxygen)
 
@@ -77,6 +81,9 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${${PROJECT_NAME}_BINARY_DIR}/lib")
 #Extra includes
 include(Macros.cmake)
 include(Submodules/qtservice.cmake)
+
+#Set default install directories
+set_install_defaults()
 
 #Directories
 add_subdirectory(Core)
@@ -92,4 +99,6 @@ if(DOXYGEN_FOUND)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY})
     add_custom_target(${PROJECT_NAME}Doc ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile COMMENT "Generating API documentation with Doxygen" VERBATIM)
 endif(DOXYGEN_FOUND)
+
+include(Installer/CPackConfig.cmake)
 

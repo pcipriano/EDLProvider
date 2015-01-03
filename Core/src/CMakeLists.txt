@@ -45,6 +45,10 @@ copy_file_to_target_dir("${CMAKE_CURRENT_BINARY_DIR}/../configs/${LOG_CONFIG_FIL
 #Install files
 install(TARGETS ${PROJECT_NAME} DESTINATION ${BIN_INSTALL_DIR})
 
+#Ancillary files
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/../configs/${LOG_CONFIG_FILE_NAME}.deploy" DESTINATION ${BIN_INSTALL_DIR} RENAME ${LOG_CONFIG_FILE_NAME})
+install(FILES "${PROJECT_SOURCE_DIR}/Core/configs/${APP_CONFIG_FILE}" DESTINATION ${BIN_INSTALL_DIR})
+
 install(CODE "
 message(\"CPack install prefix [\${CMAKE_INSTALL_PREFIX}]\")
 

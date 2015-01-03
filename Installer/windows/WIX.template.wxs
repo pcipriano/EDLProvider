@@ -2,7 +2,7 @@
 
 <?include "cpack_variables.wxi"?>
 
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:fire="http://schemas.microsoft.com/wix/FirewallExtension"
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:fire="http://schemas.microsoft.com/wix/FirewallExtension" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
     RequiredVersion="3.6.3303.0">
 
     <Product Id="$(var.CPACK_WIX_PRODUCT_GUID)"
@@ -40,6 +40,7 @@
         <FeatureRef Id="ProductFeature">
             <ComponentRef Id="FirewallException"/>
             <ComponentRef Id="ApplicationShortcut"/>
+            <ComponentRef Id="PortConfiguration"/>
         </FeatureRef>
 
         <UIRef Id="WixUI_FeatureTreeCustom" />
@@ -55,10 +56,10 @@
 
     <Fragment>
         <Component Directory="TARGETDIR" Guid="6DF12DAD-EB81-447D-91F7-828D67193024" Id="FirewallException">
-            <fire:FirewallException Id="FirewallException" Program="[#CM_FP_@EXECUTABLE@]" Scope="any" Name="@CPACK_PACKAGE_NAME@ firewall exception" />
+            <fire:FirewallException Id="FirewallException" Program="[#CM_FP_Unspecified.@EXECUTABLE@]" Scope="any" Name="@CPACK_PACKAGE_NAME@ firewall exception" />
         </Component>
     </Fragment>
-    
+
     <Fragment>
         <DirectoryRef Id="ApplicationProgramsFolder">
             <Component Id="ApplicationShortcut" Guid="*">
@@ -71,5 +72,16 @@
                 <RegistryValue Root="HKCU" Key="Software\$(var.CPACK_PACKAGE_VENDOR)\$(var.CPACK_PACKAGE_NAME)" Name="shortcut" Type="integer" Value="1" KeyPath="yes"/>
             </Component>
         </DirectoryRef>
+    </Fragment>
+
+    <Fragment>
+        <Component Id="PortConfiguration" Directory="TARGETDIR" Guid="A542FC2D-5470-41BB-BA46-B98732274544">
+            <util:XmlFile Id="SetPort"
+                          Action="setValue"
+                          ElementPath="//EdlProvider/Service/Port"
+                          Value="[PORTNUMBER]"
+                          File="[#CM_FP_Unspecified.@APP_CONFIG_FILE@]"
+                          SelectionLanguage="XPath" />
+        </Component>
     </Fragment>
 </Wix>

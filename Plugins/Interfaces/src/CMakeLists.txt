@@ -5,7 +5,7 @@ set(SOURCES
 set(HEADERS
     EdlInterface.h
     EdlPluginManager.h
-    loggingHelpers.h
+    LoggingHelpers.h
     SharedLoggerInterface.h
    )
 

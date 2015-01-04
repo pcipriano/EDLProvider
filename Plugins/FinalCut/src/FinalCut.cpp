@@ -11,7 +11,7 @@
 #include <QBuffer>
 #include <QXmlStreamWriter>
 
-#include "Timecode.h"
+#include "TimeCode.h"
 #include "LoggingHelpers.h"
 
 _INITIALIZE_NULL_EASYLOGGINGPP

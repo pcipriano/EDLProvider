@@ -49,6 +49,11 @@ install(TARGETS ${PROJECT_NAME} DESTINATION ${BIN_INSTALL_DIR})
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/../configs/${LOG_CONFIG_FILE_NAME}.deploy" DESTINATION ${BIN_INSTALL_DIR} RENAME ${LOG_CONFIG_FILE_NAME})
 install(FILES "${PROJECT_SOURCE_DIR}/Core/configs/${APP_CONFIG_FILE}" DESTINATION ${BIN_INSTALL_DIR})
 
+if(UNIX AND NOT APPLE)
+    #Init daemon script install
+    install(PROGRAMS "${PROJECT_BINARY_DIR}/Installer/${PROJECT_NAME_LOWER}" DESTINATION ../etc/init.d/)
+endif()
+
 install(CODE "
 message(\"CPack install prefix [\${CMAKE_INSTALL_PREFIX}]\")
 

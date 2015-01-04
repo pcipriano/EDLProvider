@@ -1,0 +1,13 @@
+#!/bin/sh
+# prerm script for @PROJECT_USER_NAME@
+
+#Check if daemon exists and stops it
+if [ -f /etc/init.d/@PROJECT_NAME_LOWER@ ]; then
+    if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
+        invoke-rc.d @PROJECT_NAME_LOWER@ stop || true
+        invoke-rc.d @PROJECT_NAME_LOWER@ uninstall || true
+    else
+        service @PROJECT_NAME_LOWER@ stop || true
+        service @PROJECT_NAME_LOWER@ uninstall || true
+    fi
+fi

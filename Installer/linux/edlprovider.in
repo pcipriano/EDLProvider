@@ -1,0 +1,77 @@
+### BEGIN INIT INFO
+# Provides:          @PROJECT_USER_NAME@
+# Required-Start:    $remote_fs $network $syslog
+# Required-Stop:     $remote_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Manages the daemon @PROJECT_USER_NAME@
+# Description:       @CPACK_PACKAGE_DESCRIPTION_SUMMARY@
+### END INIT INFO
+
+# Using the lsb functions to perform the operations.
+. /lib/lsb/init-functions
+
+# Process name ( For display )
+NAME=@PROJECT_USER_NAME@
+# Daemon name, where is the actual executable
+DAEMON="@CMAKE_INSTALL_PREFIX@/@EXECUTABLE@"
+
+# If the daemon is not there, then exit.
+test -x $DAEMON || exit 5
+
+case $1 in
+ start)
+    # Starting daemon
+    $DAEMON -v && status="0" || status="$?"
+    if [ "$status" = 0 ]; then
+        $DAEMON && exit 0 || exit $?
+        log_success_msg "Started daemon $NAME result $?"
+    else
+        log_failure_msg "Failed to get status of $NAME when starting"
+    fi
+  ;;
+ stop)
+    # Stopping daemon
+    $DAEMON -v && status="0" || status="$?"
+    if [ "$status" = 0 ]; then
+        $DAEMON -t && exit 0 || exit $?
+        log_success_msg "Stopped daemon $NAME result $?"
+    else
+        log_failure_msg "Failed to get status of $NAME when stopping"
+    fi
+  ;;
+ install)
+    # Installing daemon
+    $DAEMON -v && status="0" || status="$?"
+    if [ "$status" = 0 ]; then
+        $DAEMON -i && exit 0 || exit $?
+        log_success_msg "Installed daemon $NAME result $?"
+    else
+        log_failure_msg "Failed to get status of $NAME when installing"
+    fi
+  ;;
+ uninstall)
+    # Uninstalling daemon
+    $DAEMON -v && status="0" || status="$?"
+    if [ "$status" = 0 ]; then
+        $DAEMON -u && exit 0 || exit $?
+        log_success_msg "Uninstalled daemon $NAME result $?"
+    else
+        log_failure_msg "Failed to get status of $NAME when uninstalling"
+    fi
+  ;;
+ restart)
+    # Restart the daemon.
+    $0 stop && sleep 2 && $0 start
+  ;;
+ status)
+    # Check the status of the process.
+    $DAEMON -v && exit 0 || exit $?
+    log_warning_msg $?
+  ;;
+ *)
+    # For invalid arguments, print the usage message.
+    echo "Usage: $0 {start|stop|restart|status|install|uninstall}"
+    exit 2
+  ;;
+esac

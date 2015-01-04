@@ -1,0 +1,11 @@
+#!/bin/sh
+# postrm script for @PROJECT_USER_NAME@
+
+#Check if daemon exists and removes it
+if [ ! -f /etc/init.d/@PROJECT_NAME_LOWER@ ]; then
+    if [ -x "`which update-rc.d 2>/dev/null`" ]; then
+        update-rc.d @PROJECT_NAME_LOWER@ remove >/dev/null || exit $?
+    else
+        chkconfig --del @PROJECT_NAME_LOWER@
+    fi
+fi

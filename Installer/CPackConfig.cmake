@@ -36,15 +36,18 @@ elseif(UNIX)
         set(CPACK_GENERATOR "${CPACK_GENERATOR};RPM")
         set(CPACK_RPM_PACKAGE_ARCHITECTURE "i686")
         set(CPACK_RPM_PACKAGE_GROUP "Applications/Productivity")
-        set(CPACK_RPM_PACKAGE_LICENSE ${LICENSE_FILE})
-        #LSB functions
+#        set(CPACK_RPM_PACKAGE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
+        #LSB functions are required
         set(CPACK_RPM_PACKAGE_REQUIRES "lsb")
+        set(CPACK_RPM_PRE_INSTALL_SCRIPT_FILE "${PROJECT_BINARY_DIR}/Installer/preinst")
+        set(CPACK_RPM_PRE_UNINSTALL_SCRIPT_FILE "${PROJECT_BINARY_DIR}/Installer/prerm")
+        set(CPACK_RPM_POST_INSTALL_SCRIPT_FILE "${PROJECT_BINARY_DIR}/Installer/postinst")
+        set(CPACK_RPM_POST_UNINSTALL_SCRIPT_FILE "${PROJECT_BINARY_DIR}/Installer/postrm")
     endif()
     set(CPACK_SYSTEM_NAME "${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}")
-    if (RPM_FOUND)
-    endif()
     set(CPACK_DEBIAN_PACKAGE_MAINTAINER "")
     set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA "")
+    set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA "${PROJECT_BINARY_DIR}/Installer/preinst;${PROJECT_BINARY_DIR}/Installer/prerm;${PROJECT_BINARY_DIR}/Installer/postinst;${PROJECT_BINARY_DIR}/Installer/postrm")
 endif()
 
 set(CMAKE_INSTALL_SYSTEM_RUNTIME_DESTINATION "${BIN_INSTALL_DIR}")
@@ -62,6 +65,33 @@ if(WIN32)
     configure_file(
         "${CMAKE_CURRENT_LIST_DIR}/windows/wixpatch.xml.in"
         "${PROJECT_BINARY_DIR}/Installer/wixpatch.xml"
+    )
+elseif(UNIX AND NOT APPLE)
+    #Configure the linux init script
+    configure_file(
+        "${CMAKE_CURRENT_LIST_DIR}/linux/${PROJECT_NAME_LOWER}.in"
+        "${PROJECT_BINARY_DIR}/Installer/${PROJECT_NAME_LOWER}"
+    )
+
+    #Configure all the post/pre install scripts used in rpm and deb files
+    configure_file(
+        "${CMAKE_CURRENT_LIST_DIR}/linux/postinst.in"
+        "${PROJECT_BINARY_DIR}/Installer/postinst"
+    )
+
+    configure_file(
+        "${CMAKE_CURRENT_LIST_DIR}/linux/postrm.in"
+        "${PROJECT_BINARY_DIR}/Installer/postrm"
+    )
+
+    configure_file(
+        "${CMAKE_CURRENT_LIST_DIR}/linux/preinst.in"
+        "${PROJECT_BINARY_DIR}/Installer/preinst"
+    )
+
+    configure_file(
+        "${CMAKE_CURRENT_LIST_DIR}/linux/prerm.in"
+        "${PROJECT_BINARY_DIR}/Installer/prerm"
     )
 endif()
 

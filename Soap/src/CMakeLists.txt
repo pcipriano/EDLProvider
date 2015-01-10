@@ -5,6 +5,7 @@ set(SOURCES
     ../gsoap/src/EDLProviderEdlProviderBindingService.cpp
     EdlProviderServer.cpp
     EdlProviderProcessRequest.cpp
+    EdlProviderServerThread.cpp
    )
 
 set(HEADERS
@@ -16,6 +17,7 @@ set(HEADERS
     ../gsoap/src/duration.h
     EdlProviderServer.h
     EdlProviderProcessRequest.h
+    EdlProviderServerThread.h
    )
 
 include_directories(../gsoap/src)

@@ -1,6 +1,12 @@
 #include "TimeCode.h"
 
+#ifdef USING_QT
+#include <QRegExp>
+#include <QStringList>
+#else
 #include <regex>
+#endif
+
 #include <cmath>
 #include <cfenv>
 #include <sstream>
@@ -39,10 +45,21 @@ inline T convertToNumber(std::wstring const& s)
     return x;
 }
 
-Timecode Timecode::fromTimecodeString(std::wstring timecode, int32_t rateNum, int32_t rateDen)
+Timecode Timecode::fromTimecodeString(const std::wstring& timecode, int32_t rateNum, int32_t rateDen)
 {
+    std::wstring expression = L"([0-1][0-9]|2[0-3])([:][0-5][0-9]){2}([:;][0-5][0-9])";
+
+#ifdef USING_QT
+    //Using QT allows more systems and compilers to be supported
+    QRegExp regExp(QString::fromStdWString(expression));
+
+    if (!regExp.exactMatch(QString::fromStdWString(timecode)))
+        return Timecode();
+
+    std::wstring matchValue = regExp.cap(0).toStdWString();
+#else
     //First validate
-    std::wregex regExp(L"([0-1][0-9]|2[0-3])([:][0-5][0-9]){2}([:;][0-5][0-9])");
+    std::wregex regExp(expression);
     std::wsmatch wsMatch;
     std::regex_match(timecode, wsMatch, regExp);
 
@@ -50,6 +67,7 @@ Timecode Timecode::fromTimecodeString(std::wstring timecode, int32_t rateNum, in
         return Timecode();
 
     std::wstring matchValue = *wsMatch.cbegin();
+#endif
 
     std::vector<std::wstring> components = split<std::wstring>(matchValue, L":;");
 

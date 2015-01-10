@@ -14,7 +14,7 @@ public:
      * \param rateDen The denominator representing the edit unit rate.
      * \return
      */
-    static Timecode fromTimecodeString(std::wstring timecode, int32_t rateNum, int32_t rateDen);
+    static Timecode fromTimecodeString(const std::wstring& timecode, int32_t rateNum, int32_t rateDen);
 
     /*!
      * \brief Builds a \c Timecode from milliseconds.

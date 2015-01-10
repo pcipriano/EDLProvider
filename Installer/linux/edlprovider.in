@@ -11,8 +11,8 @@
 # Using the lsb functions to perform the operations.
 . /lib/lsb/init-functions
 
-# Process name ( For display )
-NAME=@PROJECT_USER_NAME@
+# Process name
+NAME="@PROJECT_USER_NAME@"
 # Daemon name, where is the actual executable
 DAEMON="@CMAKE_INSTALL_PREFIX@/@EXECUTABLE@"
 

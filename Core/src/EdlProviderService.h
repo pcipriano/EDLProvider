@@ -11,6 +11,7 @@ namespace edlprovider
 namespace soap
 {
 class EdlProviderServer;
+class EdlProviderServerThread;
 }
 }
 
@@ -41,6 +42,8 @@ private:
     QScopedPointer<Configuration> configuration_;
 
     QScopedPointer<soap::EdlProviderServer> soapServer_;
+
+    QScopedPointer<soap::EdlProviderServerThread> soapServerThread_;
 };
 
 }

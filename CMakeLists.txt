@@ -41,6 +41,9 @@ configure_file(
   )
 
 option(COMMON_QT "Compile common library with classes depending on Qt." ON)
+if(UNIX AND NOT APPLE)
+    option(TIME_UTILS_QT "Compile TimeUtils library with Qt dependency." ON)
+endif()
 
 if(MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")

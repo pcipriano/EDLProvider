@@ -1,6 +1,7 @@
 #include "EdlProviderService.h"
 
 #include "EdlProviderServer.h"
+#include "EdlProviderServerThread.h"
 
 #include <QDebug>
 
@@ -14,6 +15,7 @@ using namespace edlprovider::core;
 EdlProviderService::EdlProviderService(int argc, char** argv)
     : QtService(argc, argv, edlprovider::info::PROJECT_USER_NAME)
 {
+    setServiceFlags(QtServiceBase::Default);
 }
 
 EdlProviderService::~EdlProviderService()
@@ -45,13 +47,32 @@ void EdlProviderService::start()
     soapServer_.reset(new soap::EdlProviderServer(configuration_->getServiceHostName(),
                                                   configuration_->getPluginsAutoUpdate()));
 
-    if(soapServer_->run(configuration_->getServicePort()) != SOAP_OK)
-        LOG(ERROR) << "Service could not be started.";
+    soapServerThread_.reset(new soap::EdlProviderServerThread());
+
+    QObject::connect(soapServerThread_.data(),
+                     &soap::EdlProviderServerThread::finished,
+                     soapServerThread_.data(),
+                     &soap::EdlProviderServerThread::deleteLater);
+
+
+    QObject::connect(soapServerThread_.data(),
+                     &soap::EdlProviderServerThread::started,
+                     [this]()
+    {
+        if(soapServer_->run(configuration_->getServicePort()) != SOAP_OK)
+            LOG(ERROR) << "Service could not be started.";
+    });
+
+    //Now start the soap server thread
+    soapServerThread_->start();
 }
 
 void EdlProviderService::stop()
 {
     LOG(INFO) << "Stopping [" << edlprovider::info::PROJECT_USER_NAME << "].";
+
+    if (soapServerThread_)
+        soapServerThread_->quit();
 }
 
 void EdlProviderService::createApplication(int& argc, char** argv)

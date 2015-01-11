@@ -20,30 +20,57 @@ namespace edlprovider
 namespace core
 {
 
+/*!
+ * \brief The EdlProviderService class is the main entry for setting up everything and starting the soap service.
+ */
 class EdlProviderService : public QtService<QCoreApplication>
 {
 public:
+    /*!
+     * \brief EdlProviderService constructor.
+     * \param argc Arguments count passed when initializing the service.
+     * \param argv Arguments values.
+     */
     EdlProviderService(int argc, char** argv);
 
+    /*!
+     * \brief EdlProviderService destructor.
+     */
     ~EdlProviderService();
 
-    bool setUp();
-
 protected:
+    /*!
+    * \sa {QtService::start}
+    */
     virtual void start() override final;
 
+    /*!
+    * \sa {QtService::stop}
+    */
     virtual void stop() override final;
 
+    /*!
+    * \sa {QtService::createApplication}
+    */
     virtual void createApplication(int &argc, char **argv) override final;
 
+    /*!
+    * \sa {QtService::executeApplication}
+    */
     virtual int executeApplication() override final;
 
 private:
-    QScopedPointer<Configuration> configuration_;
+    /*!
+     * \brief Sets up settings for the correct functioning of the service.
+     * \return True if successful, false otherwise.
+     */
+    bool setUp();
 
-    QScopedPointer<soap::EdlProviderServer> soapServer_;
+    QScopedPointer<Configuration> configuration_;   //!< Application configuration manager.
 
-    QScopedPointer<soap::EdlProviderServerThread> soapServerThread_;
+    QScopedPointer<soap::EdlProviderServer> soapServer_;    //!< Soap server handler.
+
+    QScopedPointer<soap::EdlProviderServerThread> soapServerThread_;    //!< Soap server thread object.
 };
 
 }

@@ -92,9 +92,10 @@ EdlProviderServer::EdlProviderServer(const QString& host, bool pluginsAutoReload
 
 int EdlProviderServer::run(int port)
 {
-    if (soap_valid_socket(this->master) || soap_valid_socket(bind(hostName_.isEmpty() ? NULL : hostName_.toLatin1().data(), port, 100)))
+    if (soap_valid_socket(this->master) || soap_valid_socket(bind(hostName_.isEmpty() ? NULL : hostName_.toLocal8Bit().data(), port, 100)))
     {
-        LOG(INFO) << "Running server in [" << this->endpoint << "].";
+        std::string hostName = hostName_.isEmpty() ? "localhost" : hostName_.toStdString();
+        LOG(INFO) << "Running server in [" << hostName << ":" << std::to_string(port) << "].";
 
         Q_FOREVER
         {

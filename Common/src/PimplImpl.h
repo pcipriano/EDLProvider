@@ -22,19 +22,13 @@ Pimpl<T>::Pimpl(Args&& ...args)
 }
 
 template<typename T>
-Pimpl<T>::~Pimpl()
-{
-}
-
-template<typename T>
-Pimpl<T>::Pimpl(const T& other)
-    : impl_(new T(other))
-{
-}
-
-template<typename T>
 Pimpl<T>::Pimpl(const Pimpl& other)
     : impl_(new T(*other.impl_.get()))
+{
+}
+
+template<typename T>
+Pimpl<T>::~Pimpl()
 {
 }
 

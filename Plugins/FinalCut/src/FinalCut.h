@@ -14,6 +14,9 @@ namespace plugins
 namespace finalcut
 {
 
+/*!
+ * \brief The FinalCut class provides functionality to write Final Cut Pro XML interchange format.
+ */
 class FinalCut final : public QObject, public interfaces::EdlInterface, private interfaces::SharedLoggerInterface
 {
     Q_OBJECT
@@ -21,21 +24,24 @@ class FinalCut final : public QObject, public interfaces::EdlInterface, private 
     Q_INTERFACES(plugins::interfaces::EdlInterface plugins::interfaces::SharedLoggerInterface)
 
 public:
+    /*!
+     * \brief FinalCut constructor.
+     */
     FinalCut();
 
     // EdlInterface interface
     /*!
-    * \sa {EdlInterface::getEdlName}.
+    * \sa {interfaces::EdlInterface::getEdlName}
     */
     std::wstring getEdlName() const override final { return L"FinalCut"; }
 
     /*!
-    * \sa {EdlInterface::getEdlExtension}.
+    * \sa {interfaces::EdlInterface::getEdlExtension}
     */
     std::wstring getEdlExtension() const override final { return L".xml"; }
 
     /*!
-    * \sa {EdlInterface::createEdl}.
+    * \sa {interfaces::EdlInterface::createEdl}
     */
     QByteArray createEdl(const std::wstring* const edlSequenceName,
                          const fims__RationalType* const edlFrameRate,
@@ -43,7 +49,7 @@ public:
 
     //SharedLoggerInterface interface
     /*!
-    * \sa {SharedLoggerInterface::setEasyloggingStorage}.
+    * \sa {interfaces::SharedLoggerInterface::setEasyloggingStorage}
     */
     void setEasyloggingStorage(el::base::type::StoragePointer storage) override final;
 
@@ -56,17 +62,51 @@ private:
      */
     void processFrameRate(const fims__RationalType* const frameRate, bool& isDrop, uint32_t& timeBase) const;
 
+    /*!
+     * \brief Helper function to write rate section of FCP XML.
+     * \param dropFrame True if is drop frame.
+     * \param timeBase The time base of the frame rate.
+     * \param writer The XML stream writer where to write the rate section.
+     */
     void writeRateSection(bool dropFrame, uint32_t timeBase, QXmlStreamWriter& writer) const;
 
+    /*!
+     * \brief Helper function to write timecode section of FCP XML.
+     * \param dropFrame True if is drop frame.
+     * \param timeBase The time base of the frame rate.
+     * \param writer The XML stream writer where to write the rate section.
+     */
     void writeTimecodeSection(bool dropFrame, uint32_t timeBase, QXmlStreamWriter& writer) const;
 
+    /*!
+     * \brief Helper function to write format section of FCP XML.
+     * \param dropFrame True if is drop frame.
+     * \param timeBase The time base of the frame rate.
+     * \param videoInfo Video information.
+     * \param writer The XML stream writer where to write the rate section.
+     */
     void writeFormatSection(bool dropFrame,
                             uint32_t timeBase,
                             const fims__VideoFormatType* const videoInfo,
                             QXmlStreamWriter& writer) const;
 
+    /*!
+     * \brief Helper function to write audio description section of FCP XML.
+     * \param nrAudioTracks The number of audio tracks in the clip.
+     * \param nrAudioChannels The number of audio channels in each track of the clip.
+     * \param writer The XML stream writer where to write the rate section.
+     */
     void writeAudioDescription(ushort nrAudioTracks, ushort nrAudioChannels, QXmlStreamWriter& writer) const;
 
+    /*!
+     * \brief Helper function to write link descriptions section of FCP XML.
+     * \param clipUniqueId The clip unique id to use for referencing when linking.
+     * \param clipPos The clip position in the index.
+     * \param nrAudioTracks The number of audio tracks in the clip.
+     * \param nrAudioChannels The number of audio channels for each track.
+     * \param clipPathInfo The file path of the clip.
+     * \param writer The XML stream writer where to write the rate section.
+     */
     void writeLinkDescriptions(const QString& clipUniqueId,
                                size_t clipPos,
                                ushort nrAudioTracks,

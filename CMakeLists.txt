@@ -24,7 +24,7 @@ set(${PROJECT_NAME_UPPER}_VERSION ${${PROJECT_NAME_UPPER}_VERSION_V}.${${PROJECT
 message(STATUS "Building ${PROJECT_NAME} ${${PROJECT_NAME_UPPER}_VERSION} in ${CMAKE_BUILD_TYPE} mode")
 
 #Logging defines
-add_definitions(-D_ELPP_THREAD_SAFE -D_ELPP_FORCE_USE_STD_THREAD -D_ELPP_STACKTRACE_ON_CRASH -D_ELPP_STL_LOGGING -D_ELPP_QT_LOGGING)
+add_definitions(-DELPP_THREAD_SAFE -DELPP_FORCE_USE_STD_THREAD -DELPP_STACKTRACE_ON_CRASH -DELPP_STL_LOGGING -DELPP_QT_LOGGING)
 set(LOG_CONFIG_FILE_NAME "logger.conf")
 
 #Configuration file
@@ -102,7 +102,7 @@ enable_testing()
 if(DOXYGEN_FOUND)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY})
     add_custom_target(${PROJECT_NAME}Doc ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile COMMENT "Generating API documentation with Doxygen" VERBATIM)
-endif(DOXYGEN_FOUND)
+endif()
 
 include(Installer/CPackConfig.cmake)
 

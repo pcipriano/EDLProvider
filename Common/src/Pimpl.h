@@ -41,21 +41,15 @@ public:
     Pimpl(Args&& ...);
 
     /*!
-     * \brief Pimpl destructor.
-     */
-    ~Pimpl();
-
-    /*!
-     * \brief Pimpl constructor.
-     * \param other Private implementation instance.
-     */
-    Pimpl(const T& other);
-
-    /*!
      * \brief Pimpl copy constructor.
      * \param other The other instance to copy from.
      */
     Pimpl(const Pimpl& other);
+
+    /*!
+     * \brief Pimpl destructor.
+     */
+    ~Pimpl();
 
     /*!
      * \brief assignment operator.

@@ -11,7 +11,7 @@ void PathAppenderTest::initTestCase_data()
     QTest::addColumn<QString>("result");
 
 #ifdef Q_OS_WIN
-    QTest::newRow("Working path") << "c:\\program files\\app" << "config" << "c:\\program files\\app\\config";
+    QTest::newRow("Working path") << "c:\\program files\\app" << "config" << "c:/program files/app/config";
 #else
     QTest::newRow("Working path") << "/tmp/test" << "config" << "/tmp/test/config";
 #endif

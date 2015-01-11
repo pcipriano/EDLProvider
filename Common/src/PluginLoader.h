@@ -11,7 +11,7 @@ namespace util
 {
 
 /*!
- * \brief The PluginLoader class is a helper class for loading all the plugins form a specified folder.
+ * \brief The PluginLoader class is a helper class for loading all the plugins from a specified folder.
  *
  */
 template<typename T>

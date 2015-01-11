@@ -4,7 +4,7 @@
 
 #include "easylogging++.h"
 
-_INITIALIZE_EASYLOGGINGPP       //Initialize logging
+INITIALIZE_EASYLOGGINGPP       //Initialize logging
 
 int main(int argc, char** argv)
 {

@@ -14,7 +14,7 @@
 #include "TimeCode.h"
 #include "LoggingHelpers.h"
 
-_INITIALIZE_NULL_EASYLOGGINGPP
+INITIALIZE_NULL_EASYLOGGINGPP
 
 using namespace plugins::finalcut;
 
@@ -485,7 +485,8 @@ void FinalCut::writeAudioDescription(ushort nrAudioTracks, ushort nrAudioChannel
 void FinalCut::writeLinkDescriptions(const QString& clipUniqueId,
                                      size_t clipPos,
                                      ushort nrAudioTracks,
-                                     ushort nrAudioChannels, const QFileInfo& clipPathInfo,
+                                     ushort nrAudioChannels,
+                                     const QFileInfo& clipPathInfo,
                                      QXmlStreamWriter& writer) const
 {
     writer.writeStartElement("link");

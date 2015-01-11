@@ -22,18 +22,6 @@ EdlProviderService::~EdlProviderService()
 {
 }
 
-bool EdlProviderService::setUp()
-{
-    QString logConfFile = common::util::PathAppender(application()->applicationDirPath(),
-                                                     edlprovider::info::PROJECT_LOG_FILE_CONFIG);
-
-    //Configure logger
-    el::Configurations conf(logConfFile.toStdString());
-    el::Loggers::setDefaultConfigurations(conf, true);
-
-    return true;
-}
-
 void EdlProviderService::start()
 {
     QString appConfigFile = common::util::PathAppender(application()->applicationDirPath(),
@@ -91,4 +79,16 @@ int EdlProviderService::executeApplication()
         return -1;
 
     return QtService::executeApplication();
+}
+
+bool EdlProviderService::setUp()
+{
+    QString logConfFile = common::util::PathAppender(application()->applicationDirPath(),
+                                                     edlprovider::info::PROJECT_LOG_FILE_CONFIG);
+
+    //Configure logger
+    el::Configurations conf(logConfFile.toStdString());
+    el::Loggers::setDefaultConfigurations(conf, true);
+
+    return true;
 }

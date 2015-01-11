@@ -3,11 +3,11 @@
 
 #include "EdlProviderService.h"
 
-_INITIALIZE_EASYLOGGINGPP       //Initialize logging
+INITIALIZE_EASYLOGGINGPP       //Initialize logging
 
 int main(int argc, char** argv)
 {
-    _START_EASYLOGGINGPP(argc, argv);
+    START_EASYLOGGINGPP(argc, argv);
 
     edlprovider::core::EdlProviderService service(argc, argv);
 

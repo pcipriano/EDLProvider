@@ -8,9 +8,15 @@ namespace edlprovider
 namespace soap
 {
 
+/*!
+ * \brief The EdlProviderServerThread class is simply a helper to launch the Edl provider soap server in a separate thread.
+ */
 class EdlProviderServerThread : public QThread
 {
 public:
+    /*!
+     * \brief EdlProviderServerThread constructor.
+     */
     EdlProviderServerThread();
 };
 

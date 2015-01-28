@@ -163,11 +163,11 @@ void Timecode::setInvalid()
     framesPerHour_ = 0;
 }
 
-void Timecode::init(uint16_t rounded_rate, bool drop_frame)
+void Timecode::init(uint16_t roundedRate, bool dropFrame)
 {
-    roundedTCBase_ = rounded_rate;
-    if (rounded_rate == 30 || rounded_rate == 60)
-        dropFrame_ = drop_frame;
+    roundedTCBase_ = roundedRate;
+    if (roundedRate == 30 || roundedRate == 60)
+        dropFrame_ = dropFrame;
     else
         dropFrame_ = false;
 
@@ -196,19 +196,19 @@ void Timecode::init(uint16_t rounded_rate, bool drop_frame)
     offset_ = 0;
 }
 
-void Timecode::init(uint16_t rounded_rate, bool drop_frame, int64_t offset)
+void Timecode::init(uint16_t roundedRate, bool dropFrame, int64_t offset)
 {
-    init(rounded_rate, drop_frame);
+    init(roundedRate, dropFrame);
     offset_ = offset;
     cleanOffset();
 
     updateTimecode();
 }
 
-void Timecode::init(int32_t rateNum, int32_t rateDen, bool drop_frame)
+void Timecode::init(int32_t rateNum, int32_t rateDen, bool dropFrame)
 {
     uint16_t roundedBase = (uint16_t)((rateNum + rateDen/2) / rateDen);
-    init(roundedBase, drop_frame);
+    init(roundedBase, dropFrame);
 }
 
 void Timecode::init(int64_t offset)
@@ -219,9 +219,9 @@ void Timecode::init(int64_t offset)
     updateTimecode();
 }
 
-void Timecode::init(int32_t rateNum, int32_t rateDen, bool drop_frame, int64_t offset)
+void Timecode::init(int32_t rateNum, int32_t rateDen, bool dropFrame, int64_t offset)
 {
-    init(rateNum, rateDen, drop_frame);
+    init(rateNum, rateDen, dropFrame);
     init(offset);
 }
 
@@ -236,9 +236,9 @@ void Timecode::init(int16_t hour, int16_t min, int16_t sec, int16_t frame)
     updateOffset();
 }
 
-void Timecode::init(int32_t rateNum, int32_t rateDen, bool drop_frame, int16_t hour, int16_t min, int16_t sec, int16_t frame)
+void Timecode::init(int32_t rateNum, int32_t rateDen, bool dropFrame, int16_t hour, int16_t min, int16_t sec, int16_t frame)
 {
-    init(rateNum, rateDen, drop_frame);
+    init(rateNum, rateDen, dropFrame);
     init(hour, min, sec, frame);
 }
 
@@ -375,36 +375,36 @@ void Timecode::updateTimecode()
     }
 }
 
-int64_t Timecode::convertPosition(int64_t in_position, int64_t factor_top, int64_t factor_bottom, Rounding rounding) const
+int64_t Timecode::convertPosition(int64_t inPosition, int64_t factorTop, int64_t factorBottom, Rounding rounding) const
 {
-    if (in_position == 0 || factor_top == factor_bottom)
-        return in_position;
+    if (inPosition == 0 || factorTop == factorBottom)
+        return inPosition;
 
-    if (in_position < 0) {
-        if (rounding == Rounding::ROUND_UP || (rounding == Rounding::ROUND_AUTO && factor_top < factor_bottom))
-            return -convertPosition(-in_position, factor_top, factor_bottom, Rounding::ROUND_DOWN);
+    if (inPosition < 0) {
+        if (rounding == Rounding::ROUND_UP || (rounding == Rounding::ROUND_AUTO && factorTop < factorBottom))
+            return -convertPosition(-inPosition, factorTop, factorBottom, Rounding::ROUND_DOWN);
         else
-            return -convertPosition(-in_position, factor_top, factor_bottom, Rounding::ROUND_UP);
+            return -convertPosition(-inPosition, factorTop, factorBottom, Rounding::ROUND_UP);
     }
 
     int64_t round_num = 0;
-    if (rounding == Rounding::ROUND_UP || (rounding == Rounding::ROUND_AUTO && factor_top < factor_bottom))
-        round_num = factor_bottom - 1;
+    if (rounding == Rounding::ROUND_UP || (rounding == Rounding::ROUND_AUTO && factorTop < factorBottom))
+        round_num = factorBottom - 1;
     else if (rounding == Rounding::ROUND_NEAREST)
-        round_num = factor_bottom / 2;
+        round_num = factorBottom / 2;
 
-    if (in_position <= INT32_MAX)
+    if (inPosition <= INT32_MAX)
     {
         // no chance of overflow (assuming there exists a result that fits into int64_t)
-        return (in_position * factor_top + round_num) / factor_bottom;
+        return (inPosition * factorTop + round_num) / factorBottom;
     }
     else
     {
         // separate the calculation into 2 parts so there is no chance of an overflow (assuming there exists
         // a result that fits into int64_t)
         // a*b/c = ((a/c)*c + a%c) * b) / c = (a/c)*b + (a%c)*b/c
-        return (in_position / factor_bottom) * factor_top +
-               ((in_position % factor_bottom) * factor_top + round_num) / factor_bottom;
+        return (inPosition / factorBottom) * factorTop +
+               ((inPosition % factorBottom) * factorTop + round_num) / factorBottom;
     }
 }
 

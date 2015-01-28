@@ -52,7 +52,7 @@ public:
     ~Pimpl();
 
     /*!
-     * \brief assignment operator.
+     * \brief Assignment operator.
      * \param other The other instance to assign from.
      * \return This object instance reference.
      */

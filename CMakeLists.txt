@@ -89,14 +89,14 @@ include(Submodules/qtservice.cmake)
 #Set default install directories
 set_install_defaults()
 
+enable_testing()
+
 #Directories
 add_subdirectory(Core)
 add_subdirectory(TimeUtils)
 add_subdirectory(Soap)
 add_subdirectory(Common)
 add_subdirectory(Plugins)
-
-enable_testing()
 
 #Doxygen
 if(DOXYGEN_FOUND)

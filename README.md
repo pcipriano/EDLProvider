@@ -4,8 +4,15 @@ EDLProvider is a simple application that provides edit decision lists of various
 
 # Table of contents #
 
-* [EDLProvider](https://github.com/pcipriano/EDLProvider#readme)
-* [Roadmap](https://github.com/pcipriano/EDLProvider#Roadmap)
+* [EDLProvider](https://github.com/pcipriano/EDLProvider#edlprovider)
+* [Roadmap](https://github.com/pcipriano/EDLProvider#roadmap)
+
+# Introduction #
+
+EDLProvider runs as a service/daemon when installed using the provided packages. The project uses a plugin architecture where all the EDL are implemented in separate libraries (go to [EDL Plugins](https://github.com/pcipriano/EDLProvider#edl plugins) for information on how to implement one).
+
+# EDL Plugins #
+
 
 # Roadmap #
 

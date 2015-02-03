@@ -9,7 +9,8 @@
     MAX_LOG_FILE_SIZE       =   20971520
 * DEBUG:
     TO_STANDARD_OUTPUT      =   true
-    ENABLED                 =   false ## We will set it to false after development completed
+    ENABLED                 =   false
 * TRACE:
+    ENABLED                 =   false
 * VERBOSE:
-    FORMAT                  =   "%datetime{%d/%M/%y} | %level-%vlevel | %msg"
+    FORMAT                  =   "%datetime{%d/%M/%y} | %logger | %level-%vlevel | %msg"

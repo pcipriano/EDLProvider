@@ -45,7 +45,7 @@ public:
     */
     QByteArray createEdl(const std::wstring* const edlSequenceName,
                          const fims__RationalType* const edlFrameRate,
-                         const std::vector<edlprovider__ClipType*>& clips) const;
+                         const std::vector<edlprovider__ClipType*>& clips) const override final;
 
     //SharedLoggerInterface interface
     /*!

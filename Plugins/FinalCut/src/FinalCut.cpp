@@ -2,6 +2,10 @@
 #define _LOGGER "FinalCut"
 #endif
 
+#ifndef ELPP_DEFAULT_LOGGER
+#define ELPP_DEFAULT_LOGGER _LOGGER
+#endif
+
 #include <QTime>
 #include <QFileInfo>
 

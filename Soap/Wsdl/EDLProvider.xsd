@@ -250,6 +250,21 @@
                     <xs:documentation source="urn:x-fims:description">Frame rate not supported.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="EXT_S00_0003">
+                <xs:annotation>
+                    <xs:documentation source="urn:x-fims:description">Missing required value.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="EXT_S00_0004">
+                <xs:annotation>
+                    <xs:documentation source="urn:x-fims:description">MarkIn bigger than MarkOut.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="EXT_S00_0005">
+                <xs:annotation>
+                    <xs:documentation source="urn:x-fims:description">MarkIn or MarkOut outside of media total duration.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>

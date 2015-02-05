@@ -6,6 +6,7 @@
 #include "easylogging++.h"
 
 #include "PathAppender.h"
+#include "EdlException.h"
 #include "EdlProviderBinding.nsmap"
 #include "EdlProviderProcessRequest.h"
 
@@ -208,6 +209,28 @@ soap_int32 EdlProviderServer::processGetEdl(soap* const soap,
                            fims__ErrorCodeType__DAT_USCORES00_USCORE0006,
                            std::vector<fims__InnerFaultType*>(),
                            ia.what());
+            return SOAP_FAULT;
+        }
+        catch (const EdlException& ex)
+        {
+            edlprovider__EdlProviderErrorCodeType errorCode;
+            switch (ex.getCode())
+            {
+                case EdlException::EdlError::REQUIRED_VALUE:
+                    errorCode = edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0003;
+                    break;
+                case EdlException::EdlError::MARKIN_BIGGER_THAN_MARKOUT:
+                    errorCode = edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0004;
+                    break;
+                case EdlException::EdlError::MARK_INOUT_OUTSIDE_DURATION:
+                    errorCode = edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0005;
+                    break;
+                default:
+                    errorCode = edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0001; //Should never occur
+                    break;
+            }
+
+            buildEdlSoapFault(soap, ex.what(), errorCode, ex.detailedInformation());
             return SOAP_FAULT;
         }
         catch (...)

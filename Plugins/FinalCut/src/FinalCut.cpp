@@ -16,6 +16,7 @@
 #include <QXmlStreamWriter>
 
 #include "TimeCode.h"
+#include "EdlException.h"
 #include "LoggingHelpers.h"
 
 INITIALIZE_NULL_EASYLOGGINGPP
@@ -191,6 +192,12 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
         uint64_t fileDurationFrames = getNrFrames(*clipFormatInfo->duration, frameRateNum, frameRateDen);
         uint64_t clipMarkInFrames = getNrFrames(*clip->markIn, frameRateNum, frameRateDen);
         uint64_t clipMarkOutFrames = getNrFrames(*clip->markOut, frameRateNum, frameRateDen);
+        if (clipMarkInFrames > clipMarkOutFrames)
+            throw interfaces::EdlException(interfaces::EdlException::EdlError::MARKIN_BIGGER_THAN_MARKOUT);
+
+        if ((clipMarkInFrames > fileDurationFrames) || (clipMarkOutFrames > fileDurationFrames))
+            throw interfaces::EdlException(interfaces::EdlException::EdlError::MARK_INOUT_OUTSIDE_DURATION);
+
         uint64_t clipDurationFrames = clipMarkOutFrames - clipMarkInFrames;
 
         VLOG(2) << "File Frames Duration:[" << fileDurationFrames << "] "

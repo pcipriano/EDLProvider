@@ -1,5 +1,6 @@
 set(SOURCES
     EdlPluginManager.cpp
+    EdlException.cpp
    )
 
 set(HEADERS
@@ -7,6 +8,7 @@ set(HEADERS
     EdlPluginManager.h
     LoggingHelpers.h
     SharedLoggerInterface.h
+    EdlException.h
    )
 
 include_directories(../../../Common/src)

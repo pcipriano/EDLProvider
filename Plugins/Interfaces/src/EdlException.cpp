@@ -23,8 +23,10 @@ const char* EdlException::what() const
             return "MarkIn is bigger than MarkOut.";
         case EdlError::MARK_INOUT_OUTSIDE_DURATION:
             return "MarkIn or MarkOut is outside of the clip total duration.";
+        case EdlError::UNSUPPORTED_FRAME_RATE:
+            return "Specified frame rate not supported by the system.";
         default:
-            return "";
+            return "";  //Should never occur
     }
 }
 

@@ -31,6 +31,8 @@ public:
         MARKIN_BIGGER_THAN_MARKOUT,
         //!< Error when the specified markein or markout is outside of the clip total duration.
         MARK_INOUT_OUTSIDE_DURATION,
+        //!< The frame rate specified is not supported.
+        UNSUPPORTED_FRAME_RATE,
     };
 
     /*!

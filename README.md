@@ -137,8 +137,80 @@ Make sure that markout is bigger than the markin to be able to generate an EDL.
 
 For elements using the FIMS DurationType the normalPlayTime remarked above will have a different meaning and the expected value is simply the duration of the clip in milliseconds.
 
-## Required Values ##
+## Values ##
 
+Different EDL implementations will have more or less requirements on which values need to be provided to create an EDL. Below are the values that will allow a EDL of any type to be created (basically the list of parameters that should be understood by any EDL in general).
+
+A working request with the minimal amount of information provided would be:
+```
+#!xml
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:edl="http://temp/edlprovider" xmlns:bas="http://baseTime.fims.tv" xmlns:base="http://base.fims.tv" xmlns:des="http://description.fims.tv">
+   <soapenv:Header/>
+   <soapenv:Body>
+   <edl:getEdlDoubleRequest>
+      <edl:edlType>FinalCut</edl:edlType>
+      <edl:edlFramesPerSecond>25</edl:edlFramesPerSecond>
+   </edl:getEdlDoubleRequest>
+</soapenv:Body>
+</soapenv:Envelope>
+```
+This is essentially of no use since no clips are on the EDL, so it would produce an EDL with no media inside.
+
+There's two different soap operations available, one will accept the EDL frames per second to be specified as a rounded value the other a precise value.
+```
+#!xml
+<!--Rounded value-->
+<edl:edlFramesPerSecond>25</edl:edlFramesPerSecond>
+<!--Precise specification of the frame rate-->
+<edl:edlFramesPerSecond numerator="1" denominator="1">25</edl:edlFramesPerSecond>
+<!--Ntsc frame rate-->
+<edl:edlFramesPerSecond numerator="1000" denominator="1001">30</edl:edlFramesPerSecond>
+```
+
+The **edlType** specifies the EDL type to generate, the types available can be obtained by using getInstalledEdls soap operation.
+
+To include clips of media in an EDL the request must contain at least one clip element. The clip element contains three top level child elements:
+
+* markIn
+* markOut
+* clipInfo
+
+The **markIn/markOut** elements have already been described in [Roadmap](https://github.com/pcipriano/EDLProvider#edl-generation#mark-in/out).
+
+The **clipInfo** uses the FIMS type BMObjectType. Not all elements need to be filled and although FIMS specifies some of the elements as optional they might be required in the context of EDL generation.
+
+Breakdown of the elements understood and/or required by an EDL plugin:
+
+* resourceID
+  * Although required by the FIMS specification its value is not really required for the generation of an EDL.
+* location
+  * The input file location of the clip. This is the element in bmEssenceLocator, at least one bmContentFormat must be provided.
+* displayWidth
+  * The width of the media being pointed(e.g. 1920, 1280, 640). This element is inside videoFormat FIMS element contained inside the element formatCollection.
+* displayHeight
+  * The same as displayWidth but now for the media height dimensions.
+* frameRate
+  * The frame rate of the media.
+* aspectRatio
+  * The aspect ratio of the media. Refer to the FIMS specification to see which values to use in this element.
+* lines
+  * Number of scanning lines in the media, normally the same as displayHeight.
+* scanningFormat
+  * The scanning format of the media. If it's interlaced or progressive media.
+* scanningOrder
+  * If scanningFormat is interlaced this element will indicate which filed comes first (Top or Bottom fields).
+* samplingRate
+  * Audio sampling rate of all audio streams, all audio streams in a file must have the same layout (e.g. 48000, 44100).
+* audioTrack
+  * This will be one element per audio stream in the media.
+* channels
+  * The number of audio channels per audio stream. Mono will has a value of 1 stereo 2 etc.
+* sampleSize
+  * The audio sample size or also commonly called number of quantization bits (e.g. 16 or 24).
+* edlSequenceName
+  * An optional element to give the EDL sequence a name. This information has different meanings depending on which EDL is being generated.
+* edlFramesPerSecond
+  * This is the frames per second for the complete sequence. Clips inside the sequence can have different frame rates. Some EDL's do not support mixed frame rates in a sequence.
 
 Example of a minimalist request:
 ```
@@ -148,154 +220,61 @@ Example of a minimalist request:
    <soapenv:Body>
       <edl:getEdlDoubleRequest>
          <edl:edlType>FinalCut</edl:edlType>
-         <!--Optional:-->
          <edl:clips>
-            <!--Zero or more repetitions:-->
             <edl:clips>
                <edl:markIn>
-                  <!--You have a CHOICE of the next 3 items at this level-->
                   <bas:timecode>00:11:12:13</bas:timecode>
                </edl:markIn>
                <edl:markOut>
-                  <!--You have a CHOICE of the next 3 items at this level-->
                   <bas:timecode>00:12:02:10</bas:timecode>
                </edl:markOut>
                <edl:clipInfo>
                   <base:resourceID>?</base:resourceID>
-                  <!--Optional:-->
                   <base:bmContents>
-                     <!--1 or more repetitions:-->
                      <base:bmContent>
-                        <base:resourceID>urn:smpte:umid:060a2b34.01010108.0e0a0f20.13000000.5146f23d.c3444642.bb7139eb.05427734</base:resourceID>
-                        <!--Optional:-->
+                        <base:resourceID>urn:smpte:umid:050a2b34.85632554.0e0a0f20.13000000.5146f23d.c3444642.bb7139eb.05427734</base:resourceID>
                         <base:bmContentFormats>
-                           <!--1 or more repetitions:-->
                            <base:bmContentFormat>
                               <base:resourceID>?</base:resourceID>
-                              <!--Optional:-->
                               <base:bmEssenceLocators>
-                                 <!--1 or more repetitions:-->
                                  <base:bmEssenceLocator>
                                     <base:resourceID>?</base:resourceID>
-                                    <!--Optional:-->
-                                    <base:revisionID>?</base:revisionID>
-                                    <!--Optional:-->
                                     <base:location>c:/TestLocation/Myfile.mxf</base:location>
-                                    <!--Optional:-->
-                                    <base:containerMimeType typeLabel="?" typeDefinition="?" typeLink="?">?</base:containerMimeType>
                                  </base:bmEssenceLocator>
-                                 <!--You may enter ANY elements at this point-->
                               </base:bmEssenceLocators>
-                              <!--Optional:-->
                               <base:formatCollection>
-                                 <!--Optional:-->
                                  <base:videoFormat>
                                     <base:resourceID>?</base:resourceID>
-                                    <!--Optional:-->
-                                    <base:notifyAt>
-                                       <base:replyTo>?</base:replyTo>
-                                       <base:faultTo>?</base:faultTo>
-                                    </base:notifyAt>
-                                    <!--Optional:-->
-                                    <base:ExtensionGroup>
-                                       <!--You may enter ANY elements at this point-->
-                                    </base:ExtensionGroup>
-                                    <!--Optional:-->
-                                    <base:ExtensionAttributes/>
-                                    <!--Zero or more repetitions:-->
-                                    <base:technicalAttribute typeLabel="?" typeDefinition="?" typeLink="?" formatLabel="?" formatDefinition="?" formatLink="?">?</base:technicalAttribute>
-                                    <!--Optional:-->
                                     <base:displayWidth unit="?">1920</base:displayWidth>
-                                    <!--Optional:-->
                                     <base:displayHeight unit="?">1080</base:displayHeight>
-                                    <!--Optional:-->
                                     <base:frameRate numerator="1" denominator="1">25</base:frameRate>
-                                    <!--Optional:-->
                                     <base:aspectRatio numerator="16" denominator="9">1</base:aspectRatio>
-                                    <!--Optional:-->
-                                    <base:videoEncoding typeLabel="?" typeDefinition="?" typeLink="?">
-                                       <!--Optional:-->
-                                       <base:name>?</base:name>
-                                       <!--Optional:-->
-                                       <base:vendor>?</base:vendor>
-                                       <!--Optional:-->
-                                       <base:version>?</base:version>
-                                       <!--Optional:-->
-                                       <base:family>?</base:family>
-                                    </base:videoEncoding>
-                                    <!--Zero or more repetitions:-->
-                                    <base:videoTrack trackID="?" typeLabel="?" typeDefinition="?" typeLink="?" trackName="?" language="?">
-                                       <!--Optional:-->
-                                       <base:ExtensionGroup>
-                                          <!--You may enter ANY elements at this point-->
-                                       </base:ExtensionGroup>
-                                       <!--Optional:-->
-                                       <base:ExtensionAttributes/>
-                                    </base:videoTrack>
-                                    <!--Optional:-->
                                     <base:lines>1080</base:lines>
-                                    <!--Optional:-->
                                     <base:scanningFormat>interlaced</base:scanningFormat>
-                                    <!--Optional:-->
                                     <base:scanningOrder>top</base:scanningOrder>
                                  </base:videoFormat>
-                                 <!--Optional:-->
                                  <base:audioFormat>
                                     <base:resourceID>?</base:resourceID>
-                                    <!--Optional:-->
-                                    <base:notifyAt>
-                                       <base:replyTo>?</base:replyTo>
-                                       <base:faultTo>?</base:faultTo>
-                                    </base:notifyAt>
-                                    <!--Optional:-->
-                                    <base:ExtensionGroup>
-                                       <!--You may enter ANY elements at this point-->
-                                    </base:ExtensionGroup>
-                                    <!--Optional:-->
-                                    <base:ExtensionAttributes/>
-                                    <!--Zero or more repetitions:-->
-                                    <base:technicalAttribute typeLabel="?" typeDefinition="?" typeLink="?" formatLabel="?" formatDefinition="?" formatLink="?">?</base:technicalAttribute>
-                                    <!--Optional:-->
                                     <base:samplingRate>48000</base:samplingRate>
-                                    <!--Optional:-->
-                                    <base:audioEncoding typeLabel="?" typeDefinition="?" typeLink="?">
-                                       <!--Optional:-->
-                                       <base:name>?</base:name>
-                                       <!--Optional:-->
-                                       <base:vendor>?</base:vendor>
-                                       <!--Optional:-->
-                                       <base:version>?</base:version>
-                                       <!--Optional:-->
-                                       <base:family>?</base:family>
-                                    </base:audioEncoding>
-                                    <!--Optional:-->
-                                    <base:trackConfiguration typeLabel="?" typeDefinition="?" typeLink="?"/>
                                     <!--Zero or more repetitions:-->
                                     <base:audioTrack trackID="0" typeLabel="?" typeDefinition="?" typeLink="?" trackName="?" language="?"/>
                                     <base:audioTrack trackID="1" typeLabel="?" typeDefinition="?" typeLink="?" trackName="?" language="?"/>
                                     <base:audioTrack trackID="2" typeLabel="?" typeDefinition="?" typeLink="?" trackName="?" language="?"/>
                                     <base:audioTrack trackID="3" typeLabel="?" typeDefinition="?" typeLink="?" trackName="?" language="?"/>
-                                    <!--Optional:-->
                                     <base:channels>1</base:channels>
-                                    <!--Optional:-->
                                     <base:sampleSize>24</base:sampleSize>
                                  </base:audioFormat>
                               </base:formatCollection>
-                              <!--Optional:-->
                               <base:duration>
-                                 <!--You have a CHOICE of the next 3 items at this level-->
                                  <bas:timecode>00:12:02:10</bas:timecode>
                               </base:duration>
                            </base:bmContentFormat>
-                           <!--You may enter ANY elements at this point-->
                         </base:bmContentFormats>
                      </base:bmContent>
-                     <!--You may enter ANY elements at this point-->
                   </base:bmContents>
                </edl:clipInfo>
             </edl:clips>
          </edl:clips>
-         <!--Optional:-->
          <edl:edlSequenceName>My Sequence</edl:edlSequenceName>
          <edl:edlFramesPerSecond>25</edl:edlFramesPerSecond>
       </edl:getEdlDoubleRequest>
@@ -304,6 +283,10 @@ Example of a minimalist request:
 ```
 
 # SOAP Code Generation #
+
+EDLProvider uses gSOAP to generate SOAP server code from a WSDL file. To regenerate all the code automatically in ************ there's a python script that will run the gSOAP tools to generate the server code. Simply run the script and specify the gSOAP root directory for it to work.
+
+[gSOAP](http://www.cs.fsu.edu/~engelen/soap.html)
 
 # Roadmap #
 

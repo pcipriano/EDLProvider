@@ -59,8 +59,9 @@ private:
      * \param frameRate The frame rate information to process.
      * \param isDrop Set to \c True if the frame rate is drop frame (NTSC).
      * \param timeBase The rounded time base of the frame rate.
+     * \return \c true if the processing was successful.
      */
-    void processFrameRate(const fims__RationalType* const frameRate, bool& isDrop, uint32_t& timeBase) const;
+    bool processFrameRate(const fims__RationalType* const frameRate, bool& isDrop, uint32_t& timeBase) const;
 
     /*!
      * \brief Helper function to write rate section of FCP XML.

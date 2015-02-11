@@ -135,7 +135,9 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
 
     bool isDropFrame = false;
     uint32_t timeBase = 0;
-    processFrameRate(edlFrameRate, isDropFrame, timeBase);
+    if (!processFrameRate(edlFrameRate, isDropFrame, timeBase))
+        throw interfaces::EdlException(interfaces::EdlException::EdlError::UNSUPPORTED_FRAME_RATE,
+                                       "Sequence frame rate no supported.");
 
     //Rate
     writeRateSection(isDropFrame, timeBase, xmlWriter);
@@ -205,7 +207,9 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
                    "MarkOut Frames Position:[" << clipMarkOutFrames << "] "
                    "Clip Frames Duration:[" << clipDurationFrames << "]";
 
-        processFrameRate(videoInfo->frameRate, isDropFrame, timeBase);
+        if (!processFrameRate(videoInfo->frameRate, isDropFrame, timeBase))
+                throw interfaces::EdlException(interfaces::EdlException::EdlError::UNSUPPORTED_FRAME_RATE,
+                                               "Clip has an unsupported frame rate.");
 
         //Add new audio information to use later
         audioInfos.emplace_back(isDropFrame,
@@ -409,10 +413,13 @@ void FinalCut::setEasyloggingStorage(el::base::type::StoragePointer storage)
     el::Loggers::getLogger(_LOGGER);
 }
 
-void FinalCut::processFrameRate(const fims__RationalType* const frameRate, bool& isDrop, uint32_t& timeBase) const
+bool FinalCut::processFrameRate(const fims__RationalType* const frameRate, bool& isDrop, uint32_t& timeBase) const
 {
+    bool result = false;
+
     if (frameRate->__item == 24)
     {
+        result = true;
         timeBase = 24;
         if (frameRate->numerator == L"1" && frameRate->denominator == L"1")
             isDrop = false;
@@ -421,11 +428,13 @@ void FinalCut::processFrameRate(const fims__RationalType* const frameRate, bool&
     }
     else if (frameRate->__item == 25)
     {
+        result = true;
         timeBase = 25;
         isDrop = false;
     }
     else if (frameRate->__item == 30)
     {
+        result = true;
         timeBase = 30;
         if (frameRate->numerator == L"1" && frameRate->denominator == L"1")
             isDrop = false;
@@ -434,11 +443,13 @@ void FinalCut::processFrameRate(const fims__RationalType* const frameRate, bool&
     }
     else if (frameRate->__item == 50)
     {
+        result = true;
         timeBase = 50;
         isDrop = false;
     }
     else if (frameRate->__item == 60)
     {
+        result = true;
         timeBase = 60;
         if (frameRate->numerator == L"1" && frameRate->denominator == L"1")
             isDrop = false;
@@ -446,9 +457,11 @@ void FinalCut::processFrameRate(const fims__RationalType* const frameRate, bool&
             isDrop = true;
     }
 
-    VLOG(1) << "Input frame rate:[" << *frameRate << "]" << "out ntsc:["
+    VLOG_IF(result, 1) << "Input frame rate:[" << *frameRate << "]" << "out ntsc:["
             << std::to_string(isDrop) << "]"
             << "out time base:[" << std::to_string(timeBase) << "].";
+
+    return result;
 }
 
 void FinalCut::writeRateSection(bool dropFrame, uint32_t timeBase, QXmlStreamWriter& writer) const

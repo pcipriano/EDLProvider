@@ -56,7 +56,7 @@ public:
      * \brief Returns information about the exception.
      * \return Text giving generic details about the exception.
      */
-    virtual const char* what() const final override Q_DECL_NOEXCEPT;
+    virtual const char* what() const Q_DECL_NOEXCEPT final override;
 
     /*!
      * \brief Gets detailed information about the exception.

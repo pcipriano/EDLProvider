@@ -7,9 +7,14 @@ EDLProvider is a simple application that provides edit decision lists of various
 * [EDLProvider](https://github.com/pcipriano/EDLProvider#edlprovider)
 * [Introduction](https://github.com/pcipriano/EDLProvider#introduction)
 * [EDL Plugins](https://github.com/pcipriano/EDLProvider#edl-plugins)
+  * [Logger](https://github.com/pcipriano/EDLProvider#logger)
 * [Building](https://github.com/pcipriano/EDLProvider#building)
+  * [CMake](https://github.com/pcipriano/EDLProvider#cmake)
+  * [Qt 5](https://github.com/pcipriano/EDLProvider#qt-5)
 * [Unit Tests](https://github.com/pcipriano/EDLProvider#unit-tests)
 * [EDL Generation](https://github.com/pcipriano/EDLProvider#edl-generation)
+  * [Mark In/Out](https://github.com/pcipriano/EDLProvider#mark-inout)
+  * [Values](https://github.com/pcipriano/EDLProvider#values)
 * [SOAP Code Generation](https://github.com/pcipriano/EDLProvider#soap-code-generation)
 * [Roadmap](https://github.com/pcipriano/EDLProvider#roadmap)
 
@@ -168,7 +173,7 @@ To include clips of media in an EDL the request must contain at least one clip e
 * markOut
 * clipInfo
 
-The **markIn/markOut** elements have already been described in [Roadmap](https://github.com/pcipriano/EDLProvider#edl-generation#mark-in/out).
+The **markIn/markOut** elements have already been described in [Mark In/Out](https://github.com/pcipriano/EDLProvider#mark-inout).
 
 The **clipInfo** uses the FIMS type BMObjectType. Not all elements need to be filled and although FIMS specifies some of the elements as optional they might be required in the context of EDL generation.
 

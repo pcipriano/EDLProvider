@@ -22,8 +22,7 @@ EDLProvider runs as a service/daemon when installed using the provided packages.
 To add an EDL plugin to the project start by creating a library. To simplify copy the contents of "Plugins/FinalCut" to a new folder inside "Plugins" folder and rename everything referring to FinalCut.
 Add an entry in the CMakeLists.txt file inside the "Plugins" directory. Now add a class to the library that implements both QObject and interfaces::EdlInterface, check the example:
 
-```
-#!c++
+```cpp
 
 #include <QObject>
 #include "EdlInterface.h"
@@ -53,8 +52,7 @@ After following the steps above you should be able to test the plugin. Build the
 
 To use the application wide logger in a plugin just implement interfaces::SharedLoggerInterface. If you want to use a logger id unique in the plugin, override setEasyloggingStorage:
 
-```
-#!c++
+```cpp
 
 void setEasyloggingStorage(el::base::type::StoragePointer storage) override
 {
@@ -110,24 +108,21 @@ Both MarkIn and MarkOut elements use the FIMS TimeType, this type has three poss
 
 1. editUnitNumber
   *This is the actual number of frames from the start of the clip.
-```
-#!xml
+```xml
 <markIn>
   <editUnitNumber editRate="25" factorNumerator="1" factorDenominator="1">100</editUnitNumber>
 </markIn>
 ```
 2. normalPlayTime
   *This is the actual time of the day in the format hh:mm:ss.sss with an optional following time zone indicator.
-```
-#!xml
+```xml
 <markIn>
   <normalPlayTime>10:40:20.400</normalPlayTime>
 </markIn>
 ```
 3. timecode
   *This is a timecode that represents the point in time where the mark in/out exists.
-```
-#!xml
+```xml
 <markIn>
   <timecode>00:11:12:13</timecode>
 </markIn>
@@ -142,8 +137,7 @@ For elements using the FIMS DurationType the normalPlayTime remarked above will 
 Different EDL implementations will have more or less requirements on which values need to be provided to create an EDL. Below are the values that will allow a EDL of any type to be created (basically the list of parameters that should be understood by any EDL in general).
 
 A working request with the minimal amount of information provided would be:
-```
-#!xml
+```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:edl="http://temp/edlprovider" xmlns:bas="http://baseTime.fims.tv" xmlns:base="http://base.fims.tv" xmlns:des="http://description.fims.tv">
    <soapenv:Header/>
    <soapenv:Body>
@@ -157,8 +151,7 @@ A working request with the minimal amount of information provided would be:
 This is essentially of no use since no clips are on the EDL, so it would produce an EDL with no media inside.
 
 There's two different soap operations available, one will accept the EDL frames per second to be specified as a rounded value the other a precise value.
-```
-#!xml
+```xml
 <!--Rounded value-->
 <edl:edlFramesPerSecond>25</edl:edlFramesPerSecond>
 <!--Precise specification of the frame rate-->
@@ -213,8 +206,7 @@ Breakdown of the elements understood and/or required by an EDL plugin:
   * This is the frames per second for the complete sequence. Clips inside the sequence can have different frame rates. Some EDL's do not support mixed frame rates in a sequence.
 
 Example of a minimalist request:
-```
-#!xml
+```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:edl="http://temp/edlprovider" xmlns:bas="http://baseTime.fims.tv" xmlns:base="http://base.fims.tv" xmlns:des="http://description.fims.tv">
    <soapenv:Header/>
    <soapenv:Body>

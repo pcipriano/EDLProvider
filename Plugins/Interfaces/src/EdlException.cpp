@@ -13,7 +13,7 @@ EdlException::EdlException(const EdlException::EdlError errorType, std::string d
 {
 }
 
-const char* EdlException::what() const
+const char* EdlException::what() const Q_DECL_NOEXCEPT
 {
     switch (errorType_)
     {

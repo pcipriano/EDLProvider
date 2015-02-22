@@ -27,4 +27,9 @@ include_directories(../../Submodules/easyloggingpp/src)
 
 add_library(SoapServer ${SOURCES} ${HEADERS})
 target_link_libraries(SoapServer EdlPlugins Qt5::Core)
-set_target_properties(SoapServer PROPERTIES COMPILE_DEFINITIONS "WITH_PURE_VIRTUAL")
+if(MSVC)
+    set_target_properties(SoapServer PROPERTIES COMPILE_DEFINITIONS "WITH_PURE_VIRTUAL;_CRT_SECURE_NO_WARNINGS")
+else()
+    set_target_properties(SoapServer PROPERTIES COMPILE_DEFINITIONS "WITH_PURE_VIRTUAL")
+endif()
+

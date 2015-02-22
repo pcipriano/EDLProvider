@@ -7,6 +7,18 @@ macro(copy_file_to_target_dir file target)
         )
 endmacro()
 
+macro(copy_file_to_destination file destination)
+    if (NOT TARGET CopyFiles)
+        add_custom_target(CopyFiles ALL COMMENT "Copies files to specified destinations")
+    endif()
+
+    add_custom_command(TARGET CopyFiles
+                       COMMAND ${CMAKE_COMMAND} -E copy_if_different ${file} ${destination}
+                       COMMENT "Copying ${file} to ${destination}"
+                       VERBATIM
+        )
+endmacro()
+
 macro(set_log_path folder)
     set(LOG_FILES_FOLDER "${folder}")
 

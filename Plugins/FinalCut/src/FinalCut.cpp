@@ -125,7 +125,7 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
         uint16_t nrAudioTracks = 0;
         uint16_t nrAudioChannels = 0;
 
-        interfaces::processClipInfo(clip, clipInfo, clipFormatInfo, videoInfo, audioInfo, nrAudioTracks, nrAudioChannels);
+        interfaces::processClipInfo(clip, &clipInfo, &clipFormatInfo, &videoInfo, &audioInfo, nrAudioTracks, nrAudioChannels);
 
         interfaces::logClipInformation(clipFormatInfo, clip, videoInfo, audioInfo, nrAudioTracks, nrAudioChannels);
 

@@ -39,10 +39,10 @@ uint64_t getNrFrames(const fimstime__DurationType& duration, uint32_t frameRateN
  * \param nrAudioChannels Number of audio channels per track in the clip.
  */
 void processClipInfo(const edlprovider__ClipType* const clip,
-                     const fims__BMContentType* clipInfo,
-                     const fims__BMContentFormatType* clipFormatInfo,
-                     const fims__VideoFormatType* videoInfo,
-                     const fims__AudioFormatType* audioInfo,
+                     const fims__BMContentType** clipInfo,
+                     const fims__BMContentFormatType** clipFormatInfo,
+                     const fims__VideoFormatType** videoInfo,
+                     const fims__AudioFormatType** audioInfo,
                      uint16_t& nrAudioTracks,
                      uint16_t& nrAudioChannels);
 

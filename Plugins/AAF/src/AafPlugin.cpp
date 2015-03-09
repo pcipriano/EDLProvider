@@ -131,7 +131,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         uint16_t nrAudioTracks = 0;
         uint16_t nrAudioChannels = 0;
 
-        interfaces::processClipInfo(clip, clipInfo, clipFormatInfo, videoInfo, audioInfo, nrAudioTracks, nrAudioChannels);
+        interfaces::processClipInfo(clip, &clipInfo, &clipFormatInfo, &videoInfo, &audioInfo, nrAudioTracks, nrAudioChannels);
         interfaces::logClipInformation(clipFormatInfo, clip, videoInfo, audioInfo, nrAudioTracks, nrAudioChannels);
 
         uint64_t fileDurationFrames = 0;
@@ -197,8 +197,6 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
     IAAFImportDescriptor*           tapeDesc = NULL;
     IAAFTimelineMobSlot*            newSlot = NULL;
     IAAFSegment*                    segment = NULL;
-    IAAFSourceClip*                 fileSclp = NULL;
-    IAAFSourceClip*                 masterSclp = NULL;
     IAAFSourceClip*                 compSclp = NULL;
     IAAFComponent*                  compFill = NULL;
     IAAFLocator*                    locator = NULL;
@@ -209,7 +207,6 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
     IAAFClassDef*                   cdTapeDescriptor = 0;
     IAAFClassDef*                   cdDigitalImageDescriptor = 0;
     IAAFClassDef*                   cdSoundDescriptor = 0;
-    IAAFClassDef*                   cdPCMSoundDescriptor = 0;
     IAAFClassDef*                   cdNetworkLocator = 0;
     IAAFClassDef*                   cdMasterMob = 0;
     IAAFClassDef*                   cdSourceClip = 0;
@@ -261,7 +258,6 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
     check(dictionary->LookupClassDef(AUID_AAFImportDescriptor, &cdTapeDescriptor));
     check(dictionary->LookupClassDef(AUID_AAFCDCIDescriptor, &cdDigitalImageDescriptor));
     check(dictionary->LookupClassDef(AUID_AAFSoundDescriptor, &cdSoundDescriptor));
-    check(dictionary->LookupClassDef(AUID_AAFPCMDescriptor, &cdPCMSoundDescriptor));
     check(dictionary->LookupClassDef(AUID_AAFNetworkLocator, &cdNetworkLocator));
     check(dictionary->LookupClassDef(AUID_AAFMasterMob, &cdMasterMob));
     check(dictionary->LookupClassDef(AUID_AAFSourceClip, &cdSourceClip));
@@ -377,7 +373,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
     newSlot = NULL;
     segment->Release();
     segment = NULL;
-    mobSlot->Release ();
+    mobSlot->Release();
     mobSlot = NULL;
 
     check(header->AddMob(compMob));
@@ -448,6 +444,8 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         check(mob->LookupSlot(audioTimelineSlotPos + 2, &mobSlot));
         check(mobSlot->SetPhysicalNum(1));
 
+        mob->Release();
+        mob = NULL;
         mobSlot->Release();
         mobSlot = NULL;
 
@@ -680,14 +678,14 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
                 check(mobSlot->SetPhysicalNum(audioTrackNumber + 1));
                 audioTrackNumber++;
 
+                check(mob->GetMobID(&fileMobID));
+                check(header->AddMob(mob));
+
+                mob->Release();
+                mob = NULL;
                 mobSlot->Release();
                 mobSlot = NULL;
             }
-
-            check(mob->GetMobID(&fileMobID));
-            check(header->AddMob(mob));
-            mob->Release();
-            mob = NULL;
 
             sourceRef.sourceID = fileMobID;
             sourceRef.sourceSlotID = 1;
@@ -776,12 +774,6 @@ cleanup:
     if (compSclp)
         compSclp->Release();
 
-    if (masterSclp)
-        masterSclp->Release();
-
-    if (fileSclp)
-        fileSclp->Release();
-
     if (tapeDesc)
         tapeDesc->Release();
 
@@ -808,6 +800,9 @@ cleanup:
 
     if (compMob)
         compMob->Release();
+
+    if (compMob2)
+        compMob2->Release();
 
     if (collectionCompositionMob)
         collectionCompositionMob->Release();
@@ -878,12 +873,6 @@ cleanup:
         cdSoundDescriptor = 0;
     }
 
-    if (cdPCMSoundDescriptor)
-    {
-        cdPCMSoundDescriptor->Release();
-        cdPCMSoundDescriptor = 0;
-    }
-
     if (soundDef)
     {
         soundDef->Release();
@@ -912,6 +901,12 @@ cleanup:
     {
         cdFiller->Release();
         cdFiller = 0;
+    }
+
+    if (cdTimecode)
+    {
+        cdTimecode->Release();
+        cdTimecode = 0;
     }
 
     if (dDefPicture)

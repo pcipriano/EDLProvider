@@ -49,22 +49,22 @@ uint64_t plugins::interfaces::getNrFrames(const fimstime__DurationType& duration
 
 
 void plugins::interfaces::processClipInfo(const edlprovider__ClipType* const clip,
-                                          const fims__BMContentType* clipInfo,
-                                          const fims__BMContentFormatType* clipFormatInfo,
-                                          const fims__VideoFormatType* videoInfo,
-                                          const fims__AudioFormatType* audioInfo,
+                                          const fims__BMContentType** clipInfo,
+                                          const fims__BMContentFormatType** clipFormatInfo,
+                                          const fims__VideoFormatType** videoInfo,
+                                          const fims__AudioFormatType** audioInfo,
                                           uint16_t& nrAudioTracks,
                                           uint16_t& nrAudioChannels)
 {
     if (clip->clipInfo->bmContents == NULL)
         throw std::invalid_argument("bmContents must be set.");
 
-    clipInfo = clip->clipInfo->bmContents->bmContent.front();
-    clipFormatInfo = clipInfo->bmContentFormats->bmContentFormat.front();
-    videoInfo = clipFormatInfo->formatCollection->videoFormat;
-    audioInfo = clipFormatInfo->formatCollection->audioFormat;
-    nrAudioTracks = audioInfo->audioTrack.size();
-    nrAudioChannels = std::stoi(*audioInfo->channels);
+    *clipInfo = clip->clipInfo->bmContents->bmContent.front();
+    *clipFormatInfo = (*clipInfo)->bmContentFormats->bmContentFormat.front();
+    *videoInfo = (*clipFormatInfo)->formatCollection->videoFormat;
+    *audioInfo = (*clipFormatInfo)->formatCollection->audioFormat;
+    nrAudioTracks = (*audioInfo)->audioTrack.size();
+    nrAudioChannels = std::stoi(*(*audioInfo)->channels);
 }
 
 

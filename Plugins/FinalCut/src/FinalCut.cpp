@@ -142,12 +142,6 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
                                             clipMarkOutFrames,
                                             clipDurationFrames);
 
-
-        VLOG(2) << "File Frames Duration:[" << fileDurationFrames << "] "
-                   "MarkIn Frames Position:[" << clipMarkInFrames << "] "
-                   "MarkOut Frames Position:[" << clipMarkOutFrames << "] "
-                   "Clip Frames Duration:[" << clipDurationFrames << "]";
-
         processFrameRate(videoInfo->frameRate, "Clip has an unsupported frame rate.", isDropFrame, timeBase);
 
         //Add new audio information to use later

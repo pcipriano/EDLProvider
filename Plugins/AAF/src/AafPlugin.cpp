@@ -147,11 +147,6 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
                                             clipMarkOutFrames,
                                             clipDurationFrames);
 
-        VLOG(2) << "File Frames Duration:[" << fileDurationFrames << "] "
-                   "MarkIn Frames Position:[" << clipMarkInFrames << "] "
-                   "MarkOut Frames Position:[" << clipMarkOutFrames << "] "
-                   "Clip Frames Duration:[" << clipDurationFrames << "]";
-
         clipsProcessed.emplace_back(clipInfo,
                                     clipFormatInfo,
                                     videoInfo,

@@ -101,7 +101,8 @@ void plugins::interfaces::getClipDurationInFrames(const edlprovider__ClipType* c
                                                   uint64_t& fileDurationFrames,
                                                   uint64_t& clipMarkInFrames,
                                                   uint64_t& clipMarkOutFrames,
-                                                  uint64_t& clipDurationFrames)
+                                                  uint64_t& clipDurationFrames,
+                                                  bool logValues)
 {
     uint32_t frameRateNum = std::stoi(videoInfo->frameRate->numerator) * videoInfo->frameRate->__item;
     uint32_t frameRateDen = std::stoi(videoInfo->frameRate->denominator);
@@ -117,4 +118,9 @@ void plugins::interfaces::getClipDurationInFrames(const edlprovider__ClipType* c
         throw interfaces::EdlException(interfaces::EdlException::EdlError::MARK_INOUT_OUTSIDE_DURATION);
 
     clipDurationFrames = clipMarkOutFrames - clipMarkInFrames;
+
+    VLOG_IF(logValues, 2) << "File Frames Duration:[" << fileDurationFrames << "] "
+                             "MarkIn Frames Position:[" << clipMarkInFrames << "] "
+                             "MarkOut Frames Position:[" << clipMarkOutFrames << "] "
+                             "Clip Frames Duration:[" << clipDurationFrames << "]";
 }

@@ -6,11 +6,16 @@
 #include "EdlInterface.h"
 #include "SharedLoggerInterface.h"
 
+#include <AAFTypes.h>
+
 namespace plugins
 {
 namespace aaf
 {
 
+/*!
+ * \brief The AAFPlugin class provides functionality to write AAF.
+ */
 class AafPlugin final : public QObject, public interfaces::EdlInterface, private interfaces::SharedLoggerInterface
 {
     Q_OBJECT
@@ -46,6 +51,19 @@ public:
     * \sa {interfaces::SharedLoggerInterface::setEasyloggingStorage}
     */
     void setEasyloggingStorage(el::base::type::StoragePointer storage) override final;
+
+private:
+    /*!
+     * \brief Processes frame rate information to extract details to be used in the AAF EDL.
+     * \param frameRate The frame rate information to process.
+     * \param message The message to write in case the processing is unsuccessful.
+     * \param isDrop Set to \c true if the frame rate is drop frame (NTSC).
+     * \param editRate The edit rate extracted from the \p frameRate input.
+     */
+    void processFrameRate(const fims__RationalType* const frameRate,
+                          const std::string& message,
+                          bool& isDrop,
+                          aafRational_t& editRate) const;
 };
 
 }

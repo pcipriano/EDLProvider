@@ -6,59 +6,20 @@
 #define ELPP_DEFAULT_LOGGER _LOGGER
 #endif
 
-#include <QTime>
+#include "EdlHelpers.h"
 #include <QFileInfo>
 
 #include "FinalCut.h"
 
-#include <cstdint>
 #include <QBuffer>
 #include <QXmlStreamWriter>
 
-#include "TimeCode.h"
 #include "EdlException.h"
 #include "LoggingHelpers.h"
 
 INITIALIZE_NULL_EASYLOGGINGPP
 
 using namespace plugins::finalcut;
-
-static uint64_t getNrFrames(const fimstime__DurationType& duration, uint32_t frameRateNum, uint32_t frameRateDen)
-{
-    if (duration.__union_DurationType == SOAP_UNION__fimstime__union_DurationType_editUnitNumber)
-    {
-        return duration.union_DurationType.editUnitNumber->__item;
-    }
-    else if (duration.__union_DurationType == SOAP_UNION__fimstime__union_DurationType_timecode)
-    {
-        Timecode tc = Timecode::fromTimecodeString(*duration.union_DurationType.timecode, frameRateNum, frameRateDen);
-        return tc.getTotalFrames();
-    }
-    else
-    {
-        Timecode tc = Timecode::fromMilliseconds(*duration.union_DurationType.normalPlayTime, frameRateNum, frameRateDen, true);
-        return tc.getTotalFrames();
-    }
-}
-
-static uint64_t getNrFrames(const fimstime__TimeType& time, uint32_t frameRateNum, uint32_t frameRateDen)
-{
-    if (time.__union_TimeType == SOAP_UNION__fimstime__union_TimeType_editUnitNumber)
-    {
-        return time.union_TimeType.editUnitNumber->__item;
-    }
-    else if (time.__union_TimeType == SOAP_UNION__fimstime__union_TimeType_timecode)
-    {
-        Timecode tc = Timecode::fromTimecodeString(*time.union_TimeType.timecode, frameRateNum, frameRateDen);
-        return tc.getTotalFrames();
-    }
-    else
-    {
-        QTime timeCount = QTime::fromString(QString::fromStdWString(*time.union_TimeType.normalPlayTime));
-        Timecode tc = Timecode::fromMilliseconds(timeCount.msec(), frameRateNum, frameRateDen, true);
-        return tc.getTotalFrames();
-    }
-}
 
 inline bool operator==(const fims__LengthType& lhs, const fims__LengthType rhs)
 {
@@ -73,8 +34,8 @@ struct AudioInformation
                      uint64_t markOutFrames,
                      uint64_t durationFrames,
                      const std::wstring& path,
-                     ushort nrAudioTracks,
-                     ushort nrAudioChannels)
+                     uint16_t nrAudioTracks,
+                     uint16_t nrAudioChannels)
         : isDrop(isDrop),
           timeBase(timeBase),
           markInFrames(markInFrames),
@@ -98,9 +59,9 @@ struct AudioInformation
 
     std::wstring path;
 
-    ushort nrAudioTracks;
+    uint16_t nrAudioTracks;
 
-    ushort nrAudioChannels;
+    uint16_t nrAudioChannels;
 };
 
 FinalCut::FinalCut()
@@ -135,9 +96,7 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
 
     bool isDropFrame = false;
     uint32_t timeBase = 0;
-    if (!processFrameRate(edlFrameRate, isDropFrame, timeBase))
-        throw interfaces::EdlException(interfaces::EdlException::EdlError::UNSUPPORTED_FRAME_RATE,
-                                       "Sequence frame rate no supported.");
+    processFrameRate(edlFrameRate, "Sequence frame rate not supported.", isDropFrame, timeBase);
 
     //Rate
     writeRateSection(isDropFrame, timeBase, xmlWriter);
@@ -159,57 +118,37 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
     for (auto clipIt = clips.cbegin(); clipIt != clips.cend(); clipIt++)
     {
         const edlprovider__ClipType* const clip = *clipIt;
+        const fims__BMContentType* clipInfo = nullptr;
+        const fims__BMContentFormatType* clipFormatInfo = nullptr;
+        const fims__VideoFormatType* videoInfo = nullptr;
+        const fims__AudioFormatType* audioInfo = nullptr;
+        uint16_t nrAudioTracks = 0;
+        uint16_t nrAudioChannels = 0;
 
-        if (clip->clipInfo->bmContents == NULL)
-            throw std::invalid_argument("bmContents must be set.");
+        interfaces::processClipInfo(clip, clipInfo, clipFormatInfo, videoInfo, audioInfo, nrAudioTracks, nrAudioChannels);
 
-        fims__BMContentType* clipInfo = clip->clipInfo->bmContents->bmContent.front();
-        fims__BMContentFormatType* clipFormatInfo = clipInfo->bmContentFormats->bmContentFormat.front();
-        fims__VideoFormatType* videoInfo = clipFormatInfo->formatCollection->videoFormat;
-        fims__AudioFormatType* audioInfo = clipFormatInfo->formatCollection->audioFormat;
-        ushort nrAudioTracks = audioInfo->audioTrack.size();
-        ushort nrAudioChannels = std::stoi(*audioInfo->channels);
+        interfaces::logClipInformation(clipFormatInfo, clip, videoInfo, audioInfo, nrAudioTracks, nrAudioChannels);
 
-        VLOG(1) << "MarkIn:[" << *clip->markIn << "] "
-                   "MarkOut:[" << *clip->markOut << "] "
-                   "Id:[" << clip->clipInfo->resourceID << "] "
-                   "Duration:[" << *clipFormatInfo->duration << "] "
-                   "Path:[" << *clipFormatInfo->bmEssenceLocators->bmEssenceLocator.front()->location << "] "
-                   "Clip Video Rate:[" << *videoInfo->frameRate << "] "
-                   "Display Width:[" << *videoInfo->displayWidth << "] "
-                   "Display Height:[" << *videoInfo->displayHeight << "] "
-                   "Aspect Ratio:[" << *videoInfo->aspectRatio << "] "
-                   "Scanning order:[" << (*videoInfo->scanningOrder == fims__ScanningOrderType__top ? "top" : "bottom") << "] "
-                   "Scanning format:[" << (*videoInfo->scanningFormat == fims__ScanningFormatType__interlaced ? "interlaced" : "progressive") << "]";
+        uint64_t fileDurationFrames = 0;
+        uint64_t clipMarkInFrames   = 0;
+        uint64_t clipMarkOutFrames  = 0;
+        uint64_t clipDurationFrames = 0;
 
-        //Log audio information if audio tracks present
-        VLOG_IF(nrAudioTracks > 0, 1) << "Audio Sampling Rate:[" << *audioInfo->samplingRate << "] "
-                                         "Audio Sample Size:[" << *audioInfo->sampleSize << "] "
-                                         "Audio Channels:[" << nrAudioChannels << "] "
-                                         "Audio Tracks:[" << nrAudioTracks << "]";
+        interfaces::getClipDurationInFrames(clip,
+                                            clipFormatInfo,
+                                            videoInfo,
+                                            fileDurationFrames,
+                                            clipMarkInFrames,
+                                            clipMarkOutFrames,
+                                            clipDurationFrames);
 
-        uint32_t frameRateNum = std::stoi(videoInfo->frameRate->numerator) * videoInfo->frameRate->__item;
-        uint32_t frameRateDen = std::stoi(videoInfo->frameRate->denominator);
-
-        uint64_t fileDurationFrames = getNrFrames(*clipFormatInfo->duration, frameRateNum, frameRateDen);
-        uint64_t clipMarkInFrames = getNrFrames(*clip->markIn, frameRateNum, frameRateDen);
-        uint64_t clipMarkOutFrames = getNrFrames(*clip->markOut, frameRateNum, frameRateDen);
-        if (clipMarkInFrames > clipMarkOutFrames)
-            throw interfaces::EdlException(interfaces::EdlException::EdlError::MARKIN_BIGGER_THAN_MARKOUT);
-
-        if ((clipMarkInFrames > fileDurationFrames) || (clipMarkOutFrames > fileDurationFrames))
-            throw interfaces::EdlException(interfaces::EdlException::EdlError::MARK_INOUT_OUTSIDE_DURATION);
-
-        uint64_t clipDurationFrames = clipMarkOutFrames - clipMarkInFrames;
 
         VLOG(2) << "File Frames Duration:[" << fileDurationFrames << "] "
                    "MarkIn Frames Position:[" << clipMarkInFrames << "] "
                    "MarkOut Frames Position:[" << clipMarkOutFrames << "] "
                    "Clip Frames Duration:[" << clipDurationFrames << "]";
 
-        if (!processFrameRate(videoInfo->frameRate, isDropFrame, timeBase))
-                throw interfaces::EdlException(interfaces::EdlException::EdlError::UNSUPPORTED_FRAME_RATE,
-                                               "Clip has an unsupported frame rate.");
+        processFrameRate(videoInfo->frameRate, "Clip has an unsupported frame rate.", isDropFrame, timeBase);
 
         //Add new audio information to use later
         audioInfos.emplace_back(isDropFrame,
@@ -413,7 +352,10 @@ void FinalCut::setEasyloggingStorage(el::base::type::StoragePointer storage)
     el::Loggers::getLogger(_LOGGER);
 }
 
-bool FinalCut::processFrameRate(const fims__RationalType* const frameRate, bool& isDrop, uint32_t& timeBase) const
+void FinalCut::processFrameRate(const fims__RationalType* const frameRate,
+                                const std::string& message,
+                                bool& isDrop,
+                                uint32_t& timeBase) const
 {
     bool result = false;
 
@@ -461,7 +403,8 @@ bool FinalCut::processFrameRate(const fims__RationalType* const frameRate, bool&
             << std::to_string(isDrop) << "]"
             << "out time base:[" << std::to_string(timeBase) << "].";
 
-    return result;
+    if (!result)
+        throw interfaces::EdlException(interfaces::EdlException::EdlError::UNSUPPORTED_FRAME_RATE, message);
 }
 
 void FinalCut::writeRateSection(bool dropFrame, uint32_t timeBase, QXmlStreamWriter& writer) const
@@ -495,7 +438,7 @@ void FinalCut::writeFormatSection(bool dropFrame,
     writer.writeEndElement();
 }
 
-void FinalCut::writeAudioDescription(ushort nrAudioTracks, ushort nrAudioChannels, QXmlStreamWriter& writer) const
+void FinalCut::writeAudioDescription(uint16_t nrAudioTracks, uint16_t nrAudioChannels, QXmlStreamWriter& writer) const
 {
     for (int i = 0; i < nrAudioTracks; i++)
     {
@@ -508,8 +451,8 @@ void FinalCut::writeAudioDescription(ushort nrAudioTracks, ushort nrAudioChannel
 
 void FinalCut::writeLinkDescriptions(const QString& clipUniqueId,
                                      size_t clipPos,
-                                     ushort nrAudioTracks,
-                                     ushort nrAudioChannels,
+                                     uint16_t nrAudioTracks,
+                                     uint16_t nrAudioChannels,
                                      const QFileInfo& clipPathInfo,
                                      QXmlStreamWriter& writer) const
 {

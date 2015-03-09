@@ -18,8 +18,12 @@ include_directories(../../../Soap/gsoap/src)
 include_directories(../../../Submodules/easyloggingpp/src)
 
 add_library(Aaf MODULE ${SOURCES} ${HEADERS})
-target_link_libraries(Aaf EdlPlugins TimeUtils Qt5::Core ${AAF_LIBRARIES})
+target_link_libraries(Aaf EdlPlugins TimeUtils Qt5::Core ${AAF_LIBRARY} ${AAFIID_LIBRARY})
 set_target_properties(Aaf PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/plugins")
+
+if(MSVC)
+    target_compile_definitions(Aaf PUBLIC "-DNOMINMAX")
+endif()
 
 copy_file_to_destination("${AAF_MODULE}" "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 

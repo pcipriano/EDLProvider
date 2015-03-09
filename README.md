@@ -196,7 +196,7 @@ Breakdown of the elements understood and/or required by an EDL plugin:
 * scanningFormat
   * The scanning format of the media. If it's interlaced or progressive media.
 * scanningOrder
-  * If scanningFormat is interlaced this element will indicate which filed comes first (Top or Bottom fields).
+  * If scanningFormat is interlaced this element will indicate which field comes first (Top or Bottom fields).
 * samplingRate
   * Audio sampling rate of all audio streams, all audio streams in a file must have the same layout (e.g. 48000, 44100).
 * audioTrack

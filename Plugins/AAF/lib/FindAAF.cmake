@@ -10,7 +10,8 @@
 #
 #   AAF_FOUND - AAF found
 #   AAF_INCLUDE_DIR - the AAF include directory
-#   AAF_LIBRARIES - AAF libraries to link to
+#   AAF_LIBRARY - AAF library to link to
+#   AAFIID_LIBRARY - AAFIID library to link to
 #   AAF_MODULE - AAF dynamic library
 
 # If not tried to find aaf libraries set paths
@@ -29,7 +30,11 @@ find_path(AAF_INCLUDE_DIR NAMES "AAF.h"
     PATH_SUFFIXES "include"
   )
 
-find_library(AAF_LIBRARIES NAMES AAF AAFIID
+find_library(AAF_LIBRARY NAMES AAF
+    PATHS ${AAF_LIB_PLATFORM_DIR}
+  )
+
+find_library(AAFIID_LIBRARY NAMES AAFIID
     PATHS ${AAF_LIB_PLATFORM_DIR}
   )
 
@@ -41,9 +46,10 @@ set(AAF_MODULE ${AAF_LIB_PLATFORM_DIR}/${CMAKE_SHARED_LIBRARY_PREFIX}AAFCOAPI${C
 
 include(FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(AAF
-    REQUIRED_VARS AAF_INCLUDE_DIR AAF_LIBRARIES AAF_MODULE
+    REQUIRED_VARS AAF_INCLUDE_DIR AAF_LIBRARY AAFIID_LIBRARY AAF_MODULE
   )
 
 mark_as_advanced(AAF_INCLUDE_DIR
-                 AAF_LIBRARIES
+                 AAF_LIBRARY
+                 AAFIID_LIBRARY
                  AAF_MODULE)

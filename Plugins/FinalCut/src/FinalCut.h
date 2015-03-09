@@ -57,11 +57,14 @@ private:
     /*!
      * \brief Processes frame rate information to extract details to be used in the finalcut EDL.
      * \param frameRate The frame rate information to process.
-     * \param isDrop Set to \c True if the frame rate is drop frame (NTSC).
+     * \param message The message to write in case the processing is unsuccessful.
+     * \param isDrop Set to \c true if the frame rate is drop frame (NTSC).
      * \param timeBase The rounded time base of the frame rate.
-     * \return \c true if the processing was successful.
      */
-    bool processFrameRate(const fims__RationalType* const frameRate, bool& isDrop, uint32_t& timeBase) const;
+    void processFrameRate(const fims__RationalType* const frameRate,
+                          const std::string& message,
+                          bool& isDrop,
+                          uint32_t& timeBase) const;
 
     /*!
      * \brief Helper function to write rate section of FCP XML.
@@ -97,7 +100,7 @@ private:
      * \param nrAudioChannels The number of audio channels in each track of the clip.
      * \param writer The XML stream writer where to write the rate section.
      */
-    void writeAudioDescription(ushort nrAudioTracks, ushort nrAudioChannels, QXmlStreamWriter& writer) const;
+    void writeAudioDescription(uint16_t nrAudioTracks, uint16_t nrAudioChannels, QXmlStreamWriter& writer) const;
 
     /*!
      * \brief Helper function to write link descriptions section of FCP XML.
@@ -110,8 +113,8 @@ private:
      */
     void writeLinkDescriptions(const QString& clipUniqueId,
                                size_t clipPos,
-                               ushort nrAudioTracks,
-                               ushort nrAudioChannels,
+                               uint16_t nrAudioTracks,
+                               uint16_t nrAudioChannels,
                                const QFileInfo& clipPathInfo,
                                QXmlStreamWriter& writer) const;
 };

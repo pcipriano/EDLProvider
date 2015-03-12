@@ -662,6 +662,9 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
             fileDesc->Release();
             fileDesc = NULL;
 
+            check(fileMob->QueryInterface(IID_IAAFMob, (void**) &mob));
+            check(mob->SetName(L"Audio file"));
+
             for (int s = 0; s < clip.nrAudioTracks; s++)
             {
                 sourceRef.sourceID = tapeMobID;
@@ -670,22 +673,19 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
 
                 check(fileMob->NewPhysSourceRef(edlVideoRate, s + 1, soundDef, sourceRef, fileLen));
 
-                check(fileMob->QueryInterface(IID_IAAFMob, (void**) &mob));
-                check(mob->SetName(L"Audio file"));
-
                 check(mob->LookupSlot(s + 1, &mobSlot));
                 check(mobSlot->SetName(get_track_name(L"A", z + s + 1).c_str()));
                 check(mobSlot->SetPhysicalNum(audioTrackNumber + 1));
                 audioTrackNumber++;
 
-                check(mob->GetMobID(&fileMobID));
-                check(header->AddMob(mob));
-
-                mob->Release();
-                mob = NULL;
                 mobSlot->Release();
                 mobSlot = NULL;
             }
+
+            check(mob->GetMobID(&fileMobID));
+            check(header->AddMob(mob));
+            mob->Release();
+            mob = NULL;
 
             sourceRef.sourceID = fileMobID;
             sourceRef.sourceSlotID = 1;

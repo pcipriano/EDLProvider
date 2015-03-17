@@ -231,14 +231,17 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
     aafSourceRef_t                  sourceRef;
     aafRational_t                   edlVideoRate;
 
+    aafCharacter companyName[] = L"EDLProvider";
+    aafCharacter productName[] = L"AAFPlugin";
+
     aafProductVersion_t version;
     version.major = 0;
     version.minor = 0;
     version.tertiary = 0;
     version.patchLevel = 1;
     version.type = kAAFVersionBeta;
-    productInfo.companyName = L"EDLProvider";
-    productInfo.productName = L"AAFPlugin";
+    productInfo.companyName = companyName;
+    productInfo.productName = productName;
     productInfo.productVersion = &version;
     productInfo.productVersionString = NULL;
     productInfo.productID = NIL_UID;
@@ -559,7 +562,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
             auto soundDesc = queryInterfaceHelper<IAAFSoundDescriptor>(fileDesc.get(), IID_IAAFSoundDescriptor);
 
             auto audioSamplingRateValue = std::stoul(*clip.audioInfo->samplingRate);
-            aafRational_t audioSamplingRate = { audioSamplingRateValue, 1 };
+            aafRational_t audioSamplingRate = { (aafInt32)audioSamplingRateValue, 1 };
             aafLength_t audioLength = (audioSamplingRateValue * fileLen * edlVideoRate.denominator) / edlVideoRate.numerator;
 
             check(fileDesc->SetLength(audioLength));

@@ -221,9 +221,6 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
     //Max slots is mainly used to know how much audio sequences need to be done
     int maxSlots = (maxChannels * maxStereos) + maxMonos;
 
-    IAAFSequence**                  audioSequences = new IAAFSequence*[maxSlots];
-
-    IAAFFile*                       file = NULL;
     IAAFMob*                        mob = NULL;
 
     aafMobID_t                      tapeMobID, fileMobID, masterMobID;
@@ -258,7 +255,9 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
                                        "Failed generating temporary file on disk.");
     }
 
-    check(AAFFileOpenNewModifyEx(tempFile.fileName().toStdWString().c_str(), &kAAFFileKind_Aaf4KBinary, 0, &productInfo, &file));
+    IAAFFile* filePtr = NULL;
+    check(AAFFileOpenNewModifyEx(tempFile.fileName().toStdWString().c_str(), &kAAFFileKind_Aaf4KBinary, 0, &productInfo, &filePtr));
+    auto file = UPCustomDel<IAAFFile>(filePtr, [](IAAFFile* val) { val->Release(); });
 
     IAAFHeader* headerPtr = NULL;
     check(file->GetHeader(&headerPtr));
@@ -319,13 +318,16 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
     mob->Release();
     mob = NULL;
 
+    std::vector<UPCustomDel<IAAFSequence> > audioSequences;
+    for (int x = 0; x < maxSlots; x++)
+        audioSequences.push_back(createInstanceHelper<IAAFSequence>(cdSequence.get(), IID_IAAFSequence));
+
     int audioTimelineSlotPos = 0;
     //AAF will have at least one element in vectorOFClips
     for (int s = 0; s < maxSlots; s++)
     {
-        check(cdSequence->CreateInstance(IID_IAAFSequence, (IUnknown**) &audioSequences[audioTimelineSlotPos]));
-        segment.reset(queryInterfaceHelper<IAAFSegment>(audioSequences[audioTimelineSlotPos], IID_IAAFSegment).release());
-        component.reset(queryInterfaceHelper<IAAFComponent>(audioSequences[audioTimelineSlotPos], IID_IAAFComponent).release());
+        segment.reset(queryInterfaceHelper<IAAFSegment>(audioSequences[audioTimelineSlotPos].get(), IID_IAAFSegment).release());
+        component.reset(queryInterfaceHelper<IAAFComponent>(audioSequences[audioTimelineSlotPos].get(), IID_IAAFComponent).release());
         check(component->SetDataDef(soundDef.get()));
 
         //The slot names will be copied from last item on the vector if files have different audio layouts (eg. 2 mono and 4 mono)
@@ -336,12 +338,12 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
                                               0,
                                               &newSlot));
 
+        newSlot->Release();
+        newSlot = NULL;
+
         //Set PhysicalTrackNumber
         mobSlot.reset(lookupSlotHelper(compMob.get(), audioTimelineSlotPos + 2).release());
         check(mobSlot->SetPhysicalNum(audioTimelineSlotPos + 1));
-
-        newSlot->Release();
-        newSlot = NULL;
 
         audioTimelineSlotPos++;
     }
@@ -367,12 +369,12 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
 
     check(compMob->AppendNewTimelineSlot(edlVideoRate, segment.get(), audioTimelineSlotPos + 2, L"timecode", 0, &newSlot));
 
+    newSlot->Release();
+    newSlot = NULL;
+
     //Set PhysicalTrackNumber
     mobSlot.reset(lookupSlotHelper(compMob.get(), audioTimelineSlotPos + 2).release());
     check(mobSlot->SetPhysicalNum(1));
-
-    newSlot->Release();
-    newSlot = NULL;
 
     check(header->AddMob(compMob.get()));
 
@@ -674,21 +676,8 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
     if (mob)
         mob->Release();
 
-    for (int l = 0; l < maxSlots; l++)
-    {
-        if (audioSequences[l])
-            audioSequences[l]->Release ();
-    }
-
-    if (audioSequences)
-        delete [] audioSequences;
-
-    if (file)
-    {
-        file->Save();
-        file->Close();
-        file->Release();
-    }
+    file->Save();
+    file->Close();
 
     return tempFile.readAll();
 }

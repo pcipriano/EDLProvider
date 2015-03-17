@@ -17,6 +17,8 @@ const char* EdlException::what() const Q_DECL_NOEXCEPT
 {
     switch (errorType_)
     {
+        case EdlError::GENERIC:
+            return "Generic error when creating the EDL.";
         case EdlError::REQUIRED_VALUE:
             return "Missing required value in the request.";
         case EdlError::MARKIN_BIGGER_THAN_MARKOUT:

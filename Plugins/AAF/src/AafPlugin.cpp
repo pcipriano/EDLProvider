@@ -37,7 +37,8 @@ using namespace plugins::aaf;
     if (FAILED(a)) \
     { \
         LOG(ERROR) << "Failed on AAF SDK call with error [" << std::to_string(a) << "]"; \
-        goto cleanup; \
+        throw interfaces::EdlException(interfaces::EdlException::EdlError::GENERIC, \
+                                       "Failed on AAF SDK call with error [" + std::to_string(a) + "]" ); \
     } \
 }
 
@@ -103,9 +104,58 @@ static void computeMaxValues(const std::vector<ClipDetails>& clipDetails,
     }
 }
 
-AafPlugin::AafPlugin()
-{
+template<typename T>
+using UPCustomDel = std::unique_ptr<T, std::function<void(T*)>>;
 
+template<typename T>
+UPCustomDel<T> checkResult(HRESULT result, T* const typeExtracted, const std::string& funcName)
+{
+    if (FAILED(result))
+    {
+        LOG(ERROR) << "Failed on AAF SDK " << funcName << " call with error [" << std::to_string(result) << "]";
+        throw plugins::interfaces::EdlException(plugins::interfaces::EdlException::EdlError::GENERIC,
+                                                "Failed on AAF SDK " + funcName + " call with error [" + std::to_string(result) + "]");
+    }
+
+    return UPCustomDel<T>(typeExtracted, [](T* val) { val->Release(); });
+}
+
+template<typename T>
+inline UPCustomDel<T> queryInterfaceHelper(IUnknown* const uInterface, IID guid)
+{
+    T* interfaceQueried = NULL;
+    auto result = uInterface->QueryInterface(guid, (void**) &interfaceQueried);
+    return checkResult(result, interfaceQueried, "QueryInterface");
+}
+
+template<typename T>
+inline UPCustomDel<T> createInstanceHelper(IAAFClassDef* const classDef, IID guid)
+{
+    T* instanceCreated = NULL;
+    auto result = classDef->CreateInstance(guid, (IUnknown**) &instanceCreated);
+    return checkResult(result, instanceCreated, "CreateInstance");
+}
+
+inline UPCustomDel<IAAFClassDef> lookupClassHelper(IAAFDictionary* const dictionary, _aafUID_t uid)
+{
+    IAAFClassDef* classDefExtracted = NULL;
+    auto result = dictionary->LookupClassDef(uid, &classDefExtracted);
+    return checkResult(result, classDefExtracted, "LookupClassDef");
+}
+
+inline UPCustomDel<IAAFDataDef> lookupDataDefHelper(IAAFDictionary* const dictionary, _aafUID_t uid)
+{
+    IAAFDataDef* dataDefFound = NULL;
+    auto result = dictionary->LookupDataDef(uid, &dataDefFound);
+    return checkResult(result, dataDefFound, "LookupDataDef");
+}
+
+template<typename T>
+inline UPCustomDel<IAAFMobSlot> lookupSlotHelper(T* const mob, aafSlotID_t id)
+{
+    IAAFMobSlot* slotFound = NULL;
+    auto result = mob->LookupSlot(id, &slotFound);
+    return checkResult(result, slotFound, "LookupSlot");
 }
 
 QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
@@ -171,50 +221,11 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
     //Max slots is mainly used to know how much audio sequences need to be done
     int maxSlots = (maxChannels * maxStereos) + maxMonos;
 
-    IAAFDigitalImageDescriptor2*    digitalImageDesc = NULL;
-    IAAFCDCIDescriptor2*            cDCIDescripor = NULL;
-    IAAFSoundDescriptor*            soundDesc = NULL;
-
-    IAAFCompositionMob*             collectionCompositionMob = NULL;
-
-    IAAFSequence*                   videoSequence = NULL;
     IAAFSequence**                  audioSequences = new IAAFSequence*[maxSlots];
 
-    IAAFMobSlot*                    mobSlot = NULL;
-    IAAFTimelineMobSlot2*           timelineMobSlot2 = NULL;
     IAAFFile*                       file = NULL;
-    IAAFHeader*                     header = NULL;
-    IAAFDictionary*                 dictionary = NULL;
     IAAFMob*                        mob = NULL;
-    IAAFMob*                        compMob = NULL;
-    IAAFMob2*                       compMob2 = NULL;
-    IAAFEssenceDescriptor*          essenceDesc = NULL;
-    IAAFMasterMob*                  masterMob = NULL;
-    IAAFSourceMob*                  fileMob = NULL;
-    IAAFSourceMob*                  tapeMob = NULL;
-    IAAFComponent*                  component = NULL;
-    IAAFFileDescriptor*             fileDesc = NULL;
-    IAAFImportDescriptor*           tapeDesc = NULL;
-    IAAFTimelineMobSlot*            newSlot = NULL;
-    IAAFSegment*                    segment = NULL;
-    IAAFSourceClip*                 compSclp = NULL;
-    IAAFComponent*                  compFill = NULL;
-    IAAFLocator*                    locator = NULL;
-    IAAFNetworkLocator*             netLocator = NULL;
-    IAAFClassDef*                   cdCompositionMob = 0;
-    IAAFClassDef*                   cdSequence = 0;
-    IAAFClassDef*                   cdSourceMob = 0;
-    IAAFClassDef*                   cdTapeDescriptor = 0;
-    IAAFClassDef*                   cdDigitalImageDescriptor = 0;
-    IAAFClassDef*                   cdSoundDescriptor = 0;
-    IAAFClassDef*                   cdNetworkLocator = 0;
-    IAAFClassDef*                   cdMasterMob = 0;
-    IAAFClassDef*                   cdSourceClip = 0;
-    IAAFClassDef*                   cdFiller = 0;
-    IAAFClassDef*                   cdTimecode = 0;
-    IAAFDataDef*                    dDefPicture = 0;
-    IAAFDataDef*                    soundDef = 0;
-    IAAFDataDef*                    timecodeDef = 0;
+
     aafMobID_t                      tapeMobID, fileMobID, masterMobID;
     aafTimecode_t                   tapeTC;
     aafLength_t                     fileLen = 0;
@@ -243,47 +254,50 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
     if (!tempFile.open())
     {
         LOG(ERROR) << "Temporary file to write the aaf could not be open.";
-        goto cleanup;
+        throw interfaces::EdlException(interfaces::EdlException::EdlError::GENERIC,
+                                       "Failed generating temporary file on disk.");
     }
 
     check(AAFFileOpenNewModifyEx(tempFile.fileName().toStdWString().c_str(), &kAAFFileKind_Aaf4KBinary, 0, &productInfo, &file));
-    check(file->GetHeader(&header));
+
+    IAAFHeader* headerPtr = NULL;
+    check(file->GetHeader(&headerPtr));
+    auto header = UPCustomDel<IAAFHeader>(headerPtr, [](IAAFHeader* val) { val->Release(); });
 
     // Get the AAF Dictionary so that we can create valid AAF objects.
-    check(header->GetDictionary(&dictionary));
+    IAAFDictionary* dictionaryPtr = NULL;
+    check(header->GetDictionary(&dictionaryPtr));
+    auto dictionary = UPCustomDel<IAAFDictionary>(dictionaryPtr, [](IAAFDictionary* val) { val->Release(); });
 
-    check(dictionary->LookupClassDef(AUID_AAFCompositionMob, &cdCompositionMob));
-    check(dictionary->LookupClassDef(AUID_AAFSequence, &cdSequence));
-    check(dictionary->LookupClassDef(AUID_AAFSourceMob, &cdSourceMob));
-    check(dictionary->LookupClassDef(AUID_AAFImportDescriptor, &cdTapeDescriptor));
-    check(dictionary->LookupClassDef(AUID_AAFCDCIDescriptor, &cdDigitalImageDescriptor));
-    check(dictionary->LookupClassDef(AUID_AAFSoundDescriptor, &cdSoundDescriptor));
-    check(dictionary->LookupClassDef(AUID_AAFNetworkLocator, &cdNetworkLocator));
-    check(dictionary->LookupClassDef(AUID_AAFMasterMob, &cdMasterMob));
-    check(dictionary->LookupClassDef(AUID_AAFSourceClip, &cdSourceClip));
-    check(dictionary->LookupClassDef(AUID_AAFFiller, &cdFiller));
-    check(dictionary->LookupDataDef(kAAFDataDef_Picture, &dDefPicture));
-    check(dictionary->LookupDataDef(kAAFDataDef_Sound, &soundDef));
-    check(dictionary->LookupDataDef(kAAFDataDef_Timecode, &timecodeDef));
-    check(dictionary->LookupClassDef(AUID_AAFTimecode, &cdTimecode));
+    auto cdCompositionMob = lookupClassHelper(dictionary.get(), AUID_AAFCompositionMob);
+    auto cdSequence = lookupClassHelper(dictionary.get(), AUID_AAFSequence);
+    auto cdSourceMob = lookupClassHelper(dictionary.get(), AUID_AAFSourceMob);
+    auto cdTapeDescriptor = lookupClassHelper(dictionary.get(), AUID_AAFImportDescriptor);
+    auto cdDigitalImageDescriptor = lookupClassHelper(dictionary.get(), AUID_AAFCDCIDescriptor);
+    auto cdSoundDescriptor = lookupClassHelper(dictionary.get(), AUID_AAFSoundDescriptor);
+    auto cdNetworkLocator = lookupClassHelper(dictionary.get(), AUID_AAFNetworkLocator);
+    auto cdMasterMob = lookupClassHelper(dictionary.get(), AUID_AAFMasterMob);
+    auto cdSourceClip = lookupClassHelper(dictionary.get(), AUID_AAFSourceClip);
+    auto cdFiller = lookupClassHelper(dictionary.get(), AUID_AAFFiller);
+    auto cdTimecode = lookupClassHelper(dictionary.get(), AUID_AAFTimecode);
+    auto dDefPicture = lookupDataDefHelper(dictionary.get(), kAAFDataDef_Picture);
+    auto soundDef = lookupDataDefHelper(dictionary.get(), kAAFDataDef_Sound);
+    auto timecodeDef = lookupDataDefHelper(dictionary.get(), kAAFDataDef_Timecode);
 
     // sequence creation code pulled out of the subsequent loop.
     // Create a Composition Mob
-    check(cdCompositionMob->CreateInstance(IID_IAAFCompositionMob, (IUnknown**) &collectionCompositionMob));
+    auto collectionCompositionMob = createInstanceHelper<IAAFCompositionMob>(cdCompositionMob.get(), IID_IAAFCompositionMob);
 
-    check(collectionCompositionMob->QueryInterface(IID_IAAFMob, (void**) &compMob));
+    auto compMob = queryInterfaceHelper<IAAFMob>(collectionCompositionMob.get(), IID_IAAFMob);
 
-    check(cdSequence->CreateInstance(IID_IAAFSequence, (IUnknown**) &videoSequence));
+    auto videoSequence = createInstanceHelper<IAAFSequence>(cdSequence.get(), IID_IAAFSequence);
 
-    check(videoSequence->QueryInterface (IID_IAAFSegment, (void**) &segment));
+    auto segment = queryInterfaceHelper<IAAFSegment>(videoSequence.get(), IID_IAAFSegment);
 
-    check(videoSequence->QueryInterface(IID_IAAFComponent, (void**) &component));
+    auto component = queryInterfaceHelper<IAAFComponent>(videoSequence.get(), IID_IAAFComponent);
+    check(component->SetDataDef(dDefPicture.get()));
 
-    check(component->SetDataDef(dDefPicture));
-    component->Release();
-    component = NULL;
-
-    check(compMob->QueryInterface(IID_IAAFMob2, (void**) &compMob2));
+    auto compMob2 = queryInterfaceHelper<IAAFMob2>(compMob.get(), IID_IAAFMob2);
     compMob2->SetUsageCode(kAAFUsage_TopLevel);
 
     check(compMob->QueryInterface(IID_IAAFMob, (void**) &mob));
@@ -293,62 +307,50 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
 
     bool isDrop;
     processFrameRate(edlFrameRate, "Sequence frame rate not supported.", isDrop, edlVideoRate);
-    check(mob->AppendNewTimelineSlot(edlVideoRate, segment, 1, L"VideoSlot", 0, &newSlot));
+    IAAFTimelineMobSlot* newSlot;
+    check(mob->AppendNewTimelineSlot(edlVideoRate, segment.get(), 1, L"VideoSlot", 0, &newSlot));
+    newSlot->Release();
+    newSlot = NULL;
 
     //Set PhysicalTrackNumber
-    check(compMob->LookupSlot(1, &mobSlot));
+    auto mobSlot = lookupSlotHelper(compMob.get(), 1);
     check(mobSlot->SetPhysicalNum(1));
 
     mob->Release();
     mob = NULL;
-    newSlot->Release();
-    newSlot = NULL;
-    segment->Release();
-    segment = NULL;
-    mobSlot->Release ();
-    mobSlot = NULL;
 
     int audioTimelineSlotPos = 0;
     //AAF will have at least one element in vectorOFClips
     for (int s = 0; s < maxSlots; s++)
     {
         check(cdSequence->CreateInstance(IID_IAAFSequence, (IUnknown**) &audioSequences[audioTimelineSlotPos]));
-        check(audioSequences[audioTimelineSlotPos]->QueryInterface (IID_IAAFSegment, (void**) &segment));
-        check(audioSequences[audioTimelineSlotPos]->QueryInterface(IID_IAAFComponent, (void**) &component));
-        check(component->SetDataDef(soundDef));
-        component->Release();
-        component = NULL;
+        segment.reset(queryInterfaceHelper<IAAFSegment>(audioSequences[audioTimelineSlotPos], IID_IAAFSegment).release());
+        component.reset(queryInterfaceHelper<IAAFComponent>(audioSequences[audioTimelineSlotPos], IID_IAAFComponent).release());
+        check(component->SetDataDef(soundDef.get()));
 
         //The slot names will be copied from last item on the vector if files have different audio layouts (eg. 2 mono and 4 mono)
         check (compMob->AppendNewTimelineSlot(edlVideoRate,
-                                              segment,
+                                              segment.get(),
                                               audioTimelineSlotPos + 2,
                                               QString("AudioSlot%1").arg(audioTimelineSlotPos).toStdWString().c_str(),
                                               0,
                                               &newSlot));
 
         //Set PhysicalTrackNumber
-        check(compMob->LookupSlot(audioTimelineSlotPos + 2, &mobSlot));
+        mobSlot.reset(lookupSlotHelper(compMob.get(), audioTimelineSlotPos + 2).release());
         check(mobSlot->SetPhysicalNum(audioTimelineSlotPos + 1));
 
         newSlot->Release();
         newSlot = NULL;
-        segment->Release();
-        segment = NULL;
-        mobSlot->Release ();
-        mobSlot = NULL;
 
         audioTimelineSlotPos++;
     }
 
-    IAAFTimecode* timecode = NULL;
-    check(cdTimecode->CreateInstance(IID_IAAFTimecode, (IUnknown**) &timecode));
-    check(timecode->QueryInterface(IID_IAAFSegment, (void**) &segment));
-    check(timecode->QueryInterface(IID_IAAFComponent, (void**) &component));
+    auto timecode = createInstanceHelper<IAAFTimecode>(cdTimecode.get(), IID_IAAFTimecode);
+    segment.reset(queryInterfaceHelper<IAAFSegment>(timecode.get(), IID_IAAFSegment).release());
+    component.reset(queryInterfaceHelper<IAAFComponent>(timecode.get(), IID_IAAFComponent).release());
 
-    check(component->SetDataDef(timecodeDef));
-    component->Release();
-    component = NULL;
+    check(component->SetDataDef(timecodeDef.get()));
 
     //Assume atleast 1 element exist
     tapeTC.drop = isDrop ? kAAFTcDrop : kAAFTcNonDrop;
@@ -363,20 +365,16 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
 
     check(timecode->Initialize(totalLength, &tapeTC));
 
-    check(compMob->AppendNewTimelineSlot(edlVideoRate, segment, audioTimelineSlotPos + 2, L"timecode", 0, &newSlot));
+    check(compMob->AppendNewTimelineSlot(edlVideoRate, segment.get(), audioTimelineSlotPos + 2, L"timecode", 0, &newSlot));
 
     //Set PhysicalTrackNumber
-    check(compMob->LookupSlot(audioTimelineSlotPos + 2, &mobSlot));
+    mobSlot.reset(lookupSlotHelper(compMob.get(), audioTimelineSlotPos + 2).release());
     check(mobSlot->SetPhysicalNum(1));
 
     newSlot->Release();
     newSlot = NULL;
-    segment->Release();
-    segment = NULL;
-    mobSlot->Release();
-    mobSlot = NULL;
 
-    check(header->AddMob(compMob));
+    check(header->AddMob(compMob.get()));
 
     // now looping around the remainder N times to make N components
     for (const ClipDetails& clip : clipsProcessed)
@@ -387,51 +385,37 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         QFileInfo fInfo(QString::fromStdWString(*clip.clipFormatInfo->bmEssenceLocators->bmEssenceLocator.front()->location));
 
         //Make the Tape MOB
-        check(cdSourceMob->CreateInstance(IID_IAAFSourceMob, (IUnknown**) &tapeMob));
-        check(cdTapeDescriptor->CreateInstance(IID_IAAFImportDescriptor, (IUnknown**) &tapeDesc));
+        auto tapeMob = createInstanceHelper<IAAFSourceMob>(cdSourceMob.get(), IID_IAAFSourceMob);
+        auto tapeDesc = createInstanceHelper<IAAFImportDescriptor>(cdTapeDescriptor.get(), IID_IAAFImportDescriptor);
         check(tapeMob->QueryInterface(IID_IAAFMob, (void**) &mob));
-        check(tapeDesc->QueryInterface(IID_IAAFEssenceDescriptor, (void**) &essenceDesc));
+        auto essenceDesc = queryInterfaceHelper<IAAFEssenceDescriptor>(tapeDesc.get(), IID_IAAFEssenceDescriptor);
 
         // Make a locator, and attach it to the EssenceDescriptor
-        check(cdNetworkLocator->CreateInstance(IID_IAAFNetworkLocator, (IUnknown**) &netLocator));
-        check(netLocator->QueryInterface(IID_IAAFLocator, (void**) &locator));
+        auto netLocator = createInstanceHelper<IAAFNetworkLocator>(cdNetworkLocator.get(), IID_IAAFNetworkLocator);
+        auto locator = queryInterfaceHelper<IAAFLocator>(netLocator.get(), IID_IAAFLocator);
 
         check(locator->SetPath(fInfo.absoluteFilePath().toStdWString().c_str()));
-        check(essenceDesc->AppendLocator(locator));
-        locator->Release();
-        locator = NULL;
-        netLocator->Release();
-        netLocator = NULL;
+        check(essenceDesc->AppendLocator(locator.get()));
 
-        check(tapeMob->SetEssenceDescriptor(essenceDesc));
-        essenceDesc->Release();
-        essenceDesc = NULL;
-        tapeDesc->Release();
-        tapeDesc = NULL;
+        check(tapeMob->SetEssenceDescriptor(essenceDesc.get()));
 
         aafLength_t componentTotalLength = fileLen;
-        check(tapeMob->AddNilReference(1, componentTotalLength, dDefPicture, edlVideoRate));
+        check(tapeMob->AddNilReference(1, componentTotalLength, dDefPicture.get(), edlVideoRate));
 
         //Set PhysicalTrackNumber
-        check(mob->LookupSlot(1, &mobSlot));
+        mobSlot.reset(lookupSlotHelper(mob, 1).release());
         check(mobSlot->SetPhysicalNum(1));
         check(mobSlot->SetName(L"V1"));
-
-        mobSlot->Release();
-        mobSlot = NULL;
 
         audioTimelineSlotPos = 0;
         for (int s = 0; s < clip.nrAudioTracks; s++)
         {
-            check(tapeMob->AddNilReference(audioTimelineSlotPos + 2, componentTotalLength, soundDef, edlVideoRate));
+            check(tapeMob->AddNilReference(audioTimelineSlotPos + 2, componentTotalLength, soundDef.get(), edlVideoRate));
 
             //Set PhysicalTrackNumber
-            check(mob->LookupSlot(audioTimelineSlotPos + 2, &mobSlot));
+            mobSlot.reset(lookupSlotHelper(mob, audioTimelineSlotPos + 2).release());
             check(mobSlot->SetPhysicalNum(audioTimelineSlotPos + 1));
             check(mobSlot->SetName(get_track_name(L"A", audioTimelineSlotPos + 1).c_str()));
-
-            mobSlot->Release();
-            mobSlot = NULL;
             audioTimelineSlotPos++;
         }
 
@@ -441,17 +425,13 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
                                           componentTotalLength));
 
         //Set PhysicalTrackNumber
-        check(mob->LookupSlot(audioTimelineSlotPos + 2, &mobSlot));
+        mobSlot.reset(lookupSlotHelper(mob, audioTimelineSlotPos + 2).release());
         check(mobSlot->SetPhysicalNum(1));
 
         mob->Release();
         mob = NULL;
-        mobSlot->Release();
-        mobSlot = NULL;
 
         check(tapeMob->QueryInterface(IID_IAAFMob, (void**) &mob));
-        tapeMob->Release();
-        tapeMob = NULL;
 
         //Set tape Mob name
         check(mob->SetName(fInfo.completeBaseName().toStdWString().c_str()));
@@ -462,12 +442,12 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         mob = NULL;
 
         // Make a FileMob
-        check(cdSourceMob->CreateInstance(IID_IAAFSourceMob, (IUnknown**) &fileMob));
-        check(cdDigitalImageDescriptor->CreateInstance(IID_IAAFFileDescriptor, (IUnknown**) &fileDesc));
-        check(fileDesc->QueryInterface(IID_IAAFEssenceDescriptor, (void**) &essenceDesc));
+        auto fileMob = createInstanceHelper<IAAFSourceMob>(cdSourceMob.get(), IID_IAAFSourceMob);
+        auto fileDesc = createInstanceHelper<IAAFFileDescriptor>(cdDigitalImageDescriptor.get(), IID_IAAFFileDescriptor);
+        essenceDesc.reset(queryInterfaceHelper<IAAFEssenceDescriptor>(fileDesc.get(), IID_IAAFEssenceDescriptor).release());
 
         //Request the fileMob Image Description
-        check(fileDesc->QueryInterface(IID_IAAFDigitalImageDescriptor2, (void**) &digitalImageDesc));
+        auto digitalImageDesc = queryInterfaceHelper<IAAFDigitalImageDescriptor2>(fileDesc.get(), IID_IAAFDigitalImageDescriptor2);
         check(fileDesc->SetLength(videoFileLen));
         check(fileDesc->SetSampleRate(edlVideoRate));
 
@@ -501,74 +481,51 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
                                       std::stoi(clip.videoInfo->aspectRatio->denominator) };
         check(digitalImageDesc->SetImageAspectRatio(aspectRatio));
 
-        check(essenceDesc->QueryInterface(IID_IAAFCDCIDescriptor2, (void**) &cDCIDescripor));
-
-        digitalImageDesc->Release();
-        digitalImageDesc = NULL;
-
-        cDCIDescripor->Release();
-        cDCIDescripor = NULL;
-
         // Make a locator, and attach it to the EssenceDescriptor
-        check(cdNetworkLocator->CreateInstance(IID_IAAFNetworkLocator, (IUnknown**) &netLocator));
-        check(netLocator->QueryInterface(IID_IAAFLocator, (void**) &locator));
+        netLocator.reset(createInstanceHelper<IAAFNetworkLocator>(cdNetworkLocator.get(), IID_IAAFNetworkLocator).release());
+        locator.reset(queryInterfaceHelper<IAAFLocator>(netLocator.get(), IID_IAAFLocator).release());
 
         check(locator->SetPath(fInfo.absoluteFilePath().toStdWString().c_str()));
-        check(essenceDesc->AppendLocator(locator));
-        locator->Release();
-        locator = NULL;
-        netLocator->Release();
-        netLocator = NULL;
+        check(essenceDesc->AppendLocator(locator.get()));
 
-        check(fileMob->SetEssenceDescriptor(essenceDesc));
-        essenceDesc->Release();
-        essenceDesc = NULL;
-        fileDesc->Release();
-        fileDesc = NULL;
+        check(fileMob->SetEssenceDescriptor(essenceDesc.get()));
 
         sourceRef.sourceID = tapeMobID;
         sourceRef.sourceSlotID = 1;
         sourceRef.startTime = 0;
-        check(fileMob->NewPhysSourceRef(edlVideoRate, 1, dDefPicture, sourceRef, fileLen));
+        check(fileMob->NewPhysSourceRef(edlVideoRate, 1, dDefPicture.get(), sourceRef, fileLen));
 
         check(fileMob->QueryInterface(IID_IAAFMob, (void**) &mob));
         check(mob->SetName(L"Video file"));
 
         check(mob->GetMobID(&fileMobID));
         check(header->AddMob(mob));
-        check(mob->LookupSlot(1, &mobSlot));
+        mobSlot.reset(lookupSlotHelper(mob, 1).release());
         check(mobSlot->SetName(L"V1"));
         check(mobSlot->SetPhysicalNum(1));
 
-        mobSlot->Release();
-        mobSlot = NULL;
         mob->Release();
         mob = NULL;
 
         //Make the Master MOB
-        check(cdMasterMob->CreateInstance(IID_IAAFMasterMob, (IUnknown**) &masterMob));
+        auto masterMob = createInstanceHelper<IAAFMasterMob>(cdMasterMob.get(), IID_IAAFMasterMob);
 
         sourceRef.sourceID = fileMobID;
         sourceRef.sourceSlotID = 1;
         sourceRef.startTime = 0;
-        check(masterMob->NewPhysSourceRef(edlVideoRate, 1, dDefPicture, sourceRef, fileLen));
+        check(masterMob->NewPhysSourceRef(edlVideoRate, 1, dDefPicture.get(), sourceRef, fileLen));
 
         check(masterMob->QueryInterface(IID_IAAFMob, (void**) &mob));
 
         check(mob->GetMobID(&masterMobID));
 
         //Set MarkIn and MarkOut in masterMob
-        check(mob->LookupSlot(1, &mobSlot));
+        mobSlot.reset(lookupSlotHelper(mob, 1).release());
         check(mobSlot->SetName(L"V1"));
         check(mobSlot->SetPhysicalNum(1));
-        check(mobSlot->QueryInterface(IID_IAAFTimelineMobSlot2, (void**) &timelineMobSlot2));
+        auto timelineMobSlot2 = queryInterfaceHelper<IAAFTimelineMobSlot2>(mobSlot.get(), IID_IAAFTimelineMobSlot2);
         check(timelineMobSlot2->SetMarkIn(clip.clipMarkInFrames));
         check(timelineMobSlot2->SetMarkOut(clip.clipMarkOutFrames));
-
-        timelineMobSlot2->Release();
-        timelineMobSlot2 = NULL;
-        mobSlot->Release();
-        mobSlot = NULL;
 
         //Set masterMobName
         check(mob->SetName(fInfo.completeBaseName().toStdWString().c_str()));
@@ -578,25 +535,16 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         mob = NULL;
 
         // Create a SourceClip
-        check(cdSourceClip->CreateInstance(IID_IAAFSourceClip, (IUnknown**) &compSclp));
+        auto compSclp = createInstanceHelper<IAAFSourceClip>(cdSourceClip.get(), IID_IAAFSourceClip);
 
         sourceRef.sourceID = masterMobID;
         sourceRef.sourceSlotID = 1;
         sourceRef.startTime = clip.clipMarkInFrames;
         check(compSclp->SetSourceReference(sourceRef));
-        check(compSclp->QueryInterface(IID_IAAFComponent, (void**) &component));
-        check(component->SetDataDef(dDefPicture));
+        component.reset(queryInterfaceHelper<IAAFComponent>(compSclp.get(), IID_IAAFComponent).release());
+        check(component->SetDataDef(dDefPicture.get()));
         check(component->SetLength(segLen));
-        check(videoSequence->AppendComponent(component));
-
-        component->Release();
-        component = NULL;
-
-        compSclp->Release();
-        compSclp = NULL;
-
-        fileMob->Release();
-        fileMob = NULL;
+        check(videoSequence->AppendComponent(component.get()));
 
         int audioTrackNumber = 0;
         int audioTimelineSlotPos = 0;
@@ -608,28 +556,21 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
             {
                 for (; audioTimelineSlotPos < (maxStereos * 2); audioTimelineSlotPos++)
                 {
-                    check(cdFiller->CreateInstance(IID_IAAFComponent, (IUnknown**) &compFill));
+                    auto compFill = createInstanceHelper<IAAFComponent>(cdFiller.get(), IID_IAAFComponent);
 
                     check(compFill->SetLength(segLen));
-
-                    check(compFill->SetDataDef(soundDef));
-                    check(audioSequences[audioTimelineSlotPos]->AppendComponent(compFill));
-
-                    compFill->Release();
-                    compFill = NULL;
+                    check(compFill->SetDataDef(soundDef.get()));
+                    check(audioSequences[audioTimelineSlotPos]->AppendComponent(compFill.get()));
                 }
             }
 
             // Make a FileMob
-            check(cdSourceMob->CreateInstance(IID_IAAFSourceMob, (IUnknown**) &fileMob));
-
-            check(cdSoundDescriptor->CreateInstance(IID_IAAFFileDescriptor, (IUnknown**) &fileDesc));
-
-            check(fileDesc->QueryInterface(IID_IAAFEssenceDescriptor, (void**) &essenceDesc));
+            fileMob.reset(createInstanceHelper<IAAFSourceMob>(cdSourceMob.get(), IID_IAAFSourceMob).release());
+            fileDesc.reset(createInstanceHelper<IAAFFileDescriptor>(cdSoundDescriptor.get(), IID_IAAFFileDescriptor).release());
+            essenceDesc.reset(queryInterfaceHelper<IAAFEssenceDescriptor>(fileDesc.get(), IID_IAAFEssenceDescriptor).release());
 
             //Request the fileMob Audio Description
-            check(fileDesc->QueryInterface (IID_IAAFSoundDescriptor, (void**) &soundDesc));
-
+            auto soundDesc = queryInterfaceHelper<IAAFSoundDescriptor>(fileDesc.get(), IID_IAAFSoundDescriptor);
 
             auto audioSamplingRateValue = std::stoul(*clip.audioInfo->samplingRate);
             aafRational_t audioSamplingRate = { audioSamplingRateValue, 1 };
@@ -642,25 +583,14 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
             check(soundDesc->SetChannelCount(clip.nrAudioChannels));
             check(soundDesc->SetQuantizationBits(std::stoul(*clip.audioInfo->sampleSize)));
 
-            soundDesc->Release();
-            soundDesc = NULL;
-
             // Make a locator, and attach it to the EssenceDescriptor
-            check(cdNetworkLocator->CreateInstance(IID_IAAFNetworkLocator, (IUnknown**) &netLocator));
-            check(netLocator->QueryInterface(IID_IAAFLocator, (void**) &locator));
+            netLocator.reset(createInstanceHelper<IAAFNetworkLocator>(cdNetworkLocator.get(), IID_IAAFNetworkLocator).release());
+            locator.reset(queryInterfaceHelper<IAAFLocator>(netLocator.get(), IID_IAAFLocator).release());
 
             check(locator->SetPath(fInfo.absoluteFilePath().toStdWString().c_str()));
-            check(essenceDesc->AppendLocator(locator));
-            locator->Release();
-            locator = NULL;
-            netLocator->Release();
-            netLocator = NULL;
+            check(essenceDesc->AppendLocator(locator.get()));
 
-            check(fileMob->SetEssenceDescriptor(essenceDesc));
-            essenceDesc->Release();
-            essenceDesc = NULL;
-            fileDesc->Release();
-            fileDesc = NULL;
+            check(fileMob->SetEssenceDescriptor(essenceDesc.get()));
 
             check(fileMob->QueryInterface(IID_IAAFMob, (void**) &mob));
             check(mob->SetName(L"Audio file"));
@@ -671,15 +601,12 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
                 sourceRef.sourceSlotID = s + 2;
                 sourceRef.startTime = 0;
 
-                check(fileMob->NewPhysSourceRef(edlVideoRate, s + 1, soundDef, sourceRef, fileLen));
+                check(fileMob->NewPhysSourceRef(edlVideoRate, s + 1, soundDef.get(), sourceRef, fileLen));
 
-                check(mob->LookupSlot(s + 1, &mobSlot));
+                mobSlot.reset(lookupSlotHelper(mob, s + 1).release());
                 check(mobSlot->SetName(get_track_name(L"A", z + s + 1).c_str()));
                 check(mobSlot->SetPhysicalNum(audioTrackNumber + 1));
                 audioTrackNumber++;
-
-                mobSlot->Release();
-                mobSlot = NULL;
             }
 
             check(mob->GetMobID(&fileMobID));
@@ -690,25 +617,20 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
             sourceRef.sourceID = fileMobID;
             sourceRef.sourceSlotID = 1;
             sourceRef.startTime = 0;
-            check(masterMob->AppendPhysSourceRef(edlVideoRate, z + 2, soundDef, sourceRef, fileLen));
+            check(masterMob->AppendPhysSourceRef(edlVideoRate, z + 2, soundDef.get(), sourceRef, fileLen));
             check(masterMob->QueryInterface(IID_IAAFMob, (void**) &mob));
             check(mob->GetMobID(&masterMobID));
 
             //Set masterMobName
             check(mob->SetName(fInfo.completeBaseName().toStdWString().c_str()));
 
-            check(mob->LookupSlot(z + 2, &mobSlot));
+            mobSlot.reset(lookupSlotHelper(mob, z + 2).release());
             check(mobSlot->SetName(get_track_name(L"A", z + 1).c_str()));
             check(mobSlot->SetPhysicalNum(z + 1));
-            check(mobSlot->QueryInterface(IID_IAAFTimelineMobSlot2, (void**) &timelineMobSlot2));
+            timelineMobSlot2.reset(queryInterfaceHelper<IAAFTimelineMobSlot2>(mobSlot.get(), IID_IAAFTimelineMobSlot2).release());
             check(timelineMobSlot2->SetMarkIn(clip.clipMarkInFrames));
             check(timelineMobSlot2->SetMarkOut(clip.clipMarkOutFrames));
 
-            timelineMobSlot2->Release();
-            timelineMobSlot2 = NULL;
-
-            mobSlot->Release();
-            mobSlot = NULL;
             mob->Release();
             mob = NULL;
 
@@ -716,43 +638,29 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
             for (int s = 0; s < clip.nrAudioTracks; s++)
             {
                 // Create a SourceClip
-                check(cdSourceClip->CreateInstance(IID_IAAFSourceClip, (IUnknown**) &compSclp));
+                compSclp.reset(createInstanceHelper<IAAFSourceClip>(cdSourceClip.get(), IID_IAAFSourceClip).release());
 
                 sourceRef.sourceID = masterMobID;
                 sourceRef.sourceSlotID = z + 2;
                 sourceRef.startTime = clip.clipMarkInFrames;
                 check(compSclp->SetSourceReference(sourceRef));
-                check(compSclp->QueryInterface(IID_IAAFComponent, (void**) &component));
-                check(component->SetDataDef(soundDef));
+                component.reset(queryInterfaceHelper<IAAFComponent>(compSclp.get(), IID_IAAFComponent).release());
+                check(component->SetDataDef(soundDef.get()));
                 check(component->SetLength(segLen));
-                check(audioSequences[audioTimelineSlotPos]->AppendComponent(component));
-
-                component->Release();
-                component = NULL;
-                compSclp->Release();
-                compSclp = NULL;
+                check(audioSequences[audioTimelineSlotPos]->AppendComponent(component.get()));
 
                 audioTimelineSlotPos++;
             }
-
-            fileMob->Release();
-            fileMob = NULL;
         }
-
-        masterMob->Release();
-        masterMob = NULL;
 
         for (; audioTimelineSlotPos < maxSlots; audioTimelineSlotPos++)
         {
             // Create a filler - Get the component interface only (IID_IAAFComponent)
-            check(cdFiller->CreateInstance(IID_IAAFComponent, (IUnknown**) &compFill));
+            auto compFill = createInstanceHelper<IAAFComponent>(cdFiller.get(), IID_IAAFComponent);
+
             check(compFill->SetLength(segLen));
-
-            check(compFill->SetDataDef(soundDef));
-            check(audioSequences[audioTimelineSlotPos]->AppendComponent(compFill));
-
-            compFill->Release();
-            compFill = NULL;
+            check(compFill->SetDataDef(soundDef.get()));
+            check(audioSequences[audioTimelineSlotPos]->AppendComponent(compFill.get()));
         }
 
         //  end of loop since only one dictionary and header are needed
@@ -760,67 +668,11 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         //  are complete
     }
 
-cleanup:
+//cleanup:
     // Cleanup and return
-    if (netLocator)
-        netLocator->Release();
-
-    if (locator)
-        locator->Release();
-
-    if (compFill)
-        compFill->Release();
-
-    if (compSclp)
-        compSclp->Release();
-
-    if (tapeDesc)
-        tapeDesc->Release();
-
-    if (fileDesc)
-        fileDesc->Release();
-
-    if (tapeMob)
-        tapeMob->Release();
-
-    if (fileMob)
-        fileMob->Release();
-
-    if (masterMob)
-        masterMob->Release();
-
-    if (essenceDesc)
-        essenceDesc->Release();
-
-    if (newSlot)
-        newSlot->Release();
 
     if (mob)
         mob->Release();
-
-    if (compMob)
-        compMob->Release();
-
-    if (compMob2)
-        compMob2->Release();
-
-    if (collectionCompositionMob)
-        collectionCompositionMob->Release();
-
-    if (mobSlot)
-        mobSlot->Release();
-
-    if (timelineMobSlot2)
-        timelineMobSlot2->Release();
-
-    if (segment)
-        segment->Release();
-
-    if (component)
-        component->Release();
-
-    if (videoSequence)
-        videoSequence->Release();
 
     for (int l = 0; l < maxSlots; l++)
     {
@@ -830,96 +682,6 @@ cleanup:
 
     if (audioSequences)
         delete [] audioSequences;
-
-    if (dictionary)
-        dictionary->Release();
-
-    if (header)
-        header->Release();
-
-    if (cdCompositionMob)
-    {
-        cdCompositionMob->Release();
-        cdCompositionMob = 0;
-    }
-
-    if (cdSequence)
-    {
-        cdSequence->Release();
-        cdSequence = 0;
-    }
-
-    if (cdSourceMob)
-    {
-        cdSourceMob->Release();
-        cdSourceMob = 0;
-    }
-
-    if (cdTapeDescriptor)
-    {
-        cdTapeDescriptor->Release();
-        cdTapeDescriptor = 0;
-    }
-
-    if (cdDigitalImageDescriptor)
-    {
-        cdDigitalImageDescriptor->Release();
-        cdDigitalImageDescriptor = 0;
-    }
-
-    if (cdSoundDescriptor)
-    {
-        cdSoundDescriptor->Release();
-        cdSoundDescriptor = 0;
-    }
-
-    if (soundDef)
-    {
-        soundDef->Release();
-        soundDef = 0;
-    }
-
-    if (cdNetworkLocator)
-    {
-        cdNetworkLocator->Release();
-        cdNetworkLocator = 0;
-    }
-
-    if (cdMasterMob)
-    {
-        cdMasterMob->Release();
-        cdMasterMob = 0;
-    }
-
-    if (cdSourceClip)
-    {
-        cdSourceClip->Release();
-        cdSourceClip = 0;
-    }
-
-    if (cdFiller)
-    {
-        cdFiller->Release();
-        cdFiller = 0;
-    }
-
-    if (cdTimecode)
-    {
-        cdTimecode->Release();
-        cdTimecode = 0;
-    }
-
-    if (dDefPicture)
-    {
-        dDefPicture->Release();
-        dDefPicture = 0;
-    }
-
-    if (timecodeDef)
-    {
-        timecodeDef->Release();
-        timecodeDef = 0;
-    }
 
     if (file)
     {

@@ -25,6 +25,8 @@ public:
      */
     enum class EdlError : uint8_t
     {
+        //!< Generic exception that does not fall into any specific category.
+        GENERIC,
         //!< Error when a missing required value is not present in the request.
         REQUIRED_VALUE,
         //!< If markin is bigger than markout.

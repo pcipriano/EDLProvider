@@ -23,11 +23,6 @@ class AafPlugin final : public QObject, public interfaces::EdlInterface, private
     Q_INTERFACES(plugins::interfaces::EdlInterface plugins::interfaces::SharedLoggerInterface)
 
 public:
-    /*!
-     * \brief AafPlugin constructor.
-     */
-    AafPlugin();
-
     // EdlInterface interface
     /*!
     * \sa {interfaces::EdlInterface::getEdlName}

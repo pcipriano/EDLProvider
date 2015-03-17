@@ -15,7 +15,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 
 #include "EDLProviderH.h"
 
-SOAP_SOURCE_STAMP("@(#) EDLProviderC.cpp ver 2.8.21 2015-02-05 21:42:27 GMT")
+SOAP_SOURCE_STAMP("@(#) EDLProviderC.cpp ver 2.8.21 2015-03-17 20:15:56 GMT")
 
 
 #ifndef WITH_NOGLOBAL
@@ -8515,6 +8515,7 @@ static const struct soap_code_map soap_codes_edlprovider__EdlProviderErrorCodeTy
 	{ (long)edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0003, "EXT_S00_0003" },
 	{ (long)edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0004, "EXT_S00_0004" },
 	{ (long)edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0005, "EXT_S00_0005" },
+	{ (long)edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0006, "EXT_S00_0006" },
 	{ 0, NULL }
 };
 
@@ -8541,7 +8542,7 @@ SOAP_FMAC3S int SOAP_FMAC4S soap_s2edlprovider__EdlProviderErrorCodeType(struct 
 		*a = (enum edlprovider__EdlProviderErrorCodeType)map->code;
 	else
 	{	long n;
-		if (soap_s2long(soap, s, &n) || ((soap->mode & SOAP_XML_STRICT) && (n < 0 || n > 4)))
+		if (soap_s2long(soap, s, &n) || ((soap->mode & SOAP_XML_STRICT) && (n < 0 || n > 5)))
 			return soap->error = SOAP_TYPE;
 		*a = (enum edlprovider__EdlProviderErrorCodeType)n;
 	}

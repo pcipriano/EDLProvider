@@ -221,8 +221,6 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
     //Max slots is mainly used to know how much audio sequences need to be done
     int maxSlots = (maxChannels * maxStereos) + maxMonos;
 
-    IAAFMob*                        mob = NULL;
-
     aafMobID_t                      tapeMobID, fileMobID, masterMobID;
     aafTimecode_t                   tapeTC;
     aafLength_t                     fileLen = 0;
@@ -299,7 +297,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
     auto compMob2 = queryInterfaceHelper<IAAFMob2>(compMob.get(), IID_IAAFMob2);
     compMob2->SetUsageCode(kAAFUsage_TopLevel);
 
-    check(compMob->QueryInterface(IID_IAAFMob, (void**) &mob));
+    auto mob = queryInterfaceHelper<IAAFMob>(compMob.get(), IID_IAAFMob);
 
     //Add a Sequence name
     check(mob->SetName(sequenceName.toStdWString().c_str()));
@@ -314,9 +312,6 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
     //Set PhysicalTrackNumber
     auto mobSlot = lookupSlotHelper(compMob.get(), 1);
     check(mobSlot->SetPhysicalNum(1));
-
-    mob->Release();
-    mob = NULL;
 
     std::vector<UPCustomDel<IAAFSequence> > audioSequences;
     for (int x = 0; x < maxSlots; x++)
@@ -389,7 +384,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         //Make the Tape MOB
         auto tapeMob = createInstanceHelper<IAAFSourceMob>(cdSourceMob.get(), IID_IAAFSourceMob);
         auto tapeDesc = createInstanceHelper<IAAFImportDescriptor>(cdTapeDescriptor.get(), IID_IAAFImportDescriptor);
-        check(tapeMob->QueryInterface(IID_IAAFMob, (void**) &mob));
+        mob.reset(queryInterfaceHelper<IAAFMob>(tapeMob.get(), IID_IAAFMob).release());
         auto essenceDesc = queryInterfaceHelper<IAAFEssenceDescriptor>(tapeDesc.get(), IID_IAAFEssenceDescriptor);
 
         // Make a locator, and attach it to the EssenceDescriptor
@@ -405,7 +400,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         check(tapeMob->AddNilReference(1, componentTotalLength, dDefPicture.get(), edlVideoRate));
 
         //Set PhysicalTrackNumber
-        mobSlot.reset(lookupSlotHelper(mob, 1).release());
+        mobSlot.reset(lookupSlotHelper(mob.get(), 1).release());
         check(mobSlot->SetPhysicalNum(1));
         check(mobSlot->SetName(L"V1"));
 
@@ -415,7 +410,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
             check(tapeMob->AddNilReference(audioTimelineSlotPos + 2, componentTotalLength, soundDef.get(), edlVideoRate));
 
             //Set PhysicalTrackNumber
-            mobSlot.reset(lookupSlotHelper(mob, audioTimelineSlotPos + 2).release());
+            mobSlot.reset(lookupSlotHelper(mob.get(), audioTimelineSlotPos + 2).release());
             check(mobSlot->SetPhysicalNum(audioTimelineSlotPos + 1));
             check(mobSlot->SetName(get_track_name(L"A", audioTimelineSlotPos + 1).c_str()));
             audioTimelineSlotPos++;
@@ -427,21 +422,15 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
                                           componentTotalLength));
 
         //Set PhysicalTrackNumber
-        mobSlot.reset(lookupSlotHelper(mob, audioTimelineSlotPos + 2).release());
+        mobSlot.reset(lookupSlotHelper(mob.get(), audioTimelineSlotPos + 2).release());
         check(mobSlot->SetPhysicalNum(1));
 
-        mob->Release();
-        mob = NULL;
-
-        check(tapeMob->QueryInterface(IID_IAAFMob, (void**) &mob));
+        mob.reset(queryInterfaceHelper<IAAFMob>(tapeMob.get(), IID_IAAFMob).release());
 
         //Set tape Mob name
         check(mob->SetName(fInfo.completeBaseName().toStdWString().c_str()));
-        check(header->AddMob(mob));
+        check(header->AddMob(mob.get()));
         check(mob->GetMobID(&tapeMobID));
-
-        mob->Release();
-        mob = NULL;
 
         // Make a FileMob
         auto fileMob = createInstanceHelper<IAAFSourceMob>(cdSourceMob.get(), IID_IAAFSourceMob);
@@ -497,17 +486,14 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         sourceRef.startTime = 0;
         check(fileMob->NewPhysSourceRef(edlVideoRate, 1, dDefPicture.get(), sourceRef, fileLen));
 
-        check(fileMob->QueryInterface(IID_IAAFMob, (void**) &mob));
+        mob.reset(queryInterfaceHelper<IAAFMob>(fileMob.get(), IID_IAAFMob).release());
         check(mob->SetName(L"Video file"));
 
         check(mob->GetMobID(&fileMobID));
-        check(header->AddMob(mob));
-        mobSlot.reset(lookupSlotHelper(mob, 1).release());
+        check(header->AddMob(mob.get()));
+        mobSlot.reset(lookupSlotHelper(mob.get(), 1).release());
         check(mobSlot->SetName(L"V1"));
         check(mobSlot->SetPhysicalNum(1));
-
-        mob->Release();
-        mob = NULL;
 
         //Make the Master MOB
         auto masterMob = createInstanceHelper<IAAFMasterMob>(cdMasterMob.get(), IID_IAAFMasterMob);
@@ -517,12 +503,12 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         sourceRef.startTime = 0;
         check(masterMob->NewPhysSourceRef(edlVideoRate, 1, dDefPicture.get(), sourceRef, fileLen));
 
-        check(masterMob->QueryInterface(IID_IAAFMob, (void**) &mob));
+        mob.reset(queryInterfaceHelper<IAAFMob>(masterMob.get(), IID_IAAFMob).release());
 
         check(mob->GetMobID(&masterMobID));
 
         //Set MarkIn and MarkOut in masterMob
-        mobSlot.reset(lookupSlotHelper(mob, 1).release());
+        mobSlot.reset(lookupSlotHelper(mob.get(), 1).release());
         check(mobSlot->SetName(L"V1"));
         check(mobSlot->SetPhysicalNum(1));
         auto timelineMobSlot2 = queryInterfaceHelper<IAAFTimelineMobSlot2>(mobSlot.get(), IID_IAAFTimelineMobSlot2);
@@ -532,9 +518,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         //Set masterMobName
         check(mob->SetName(fInfo.completeBaseName().toStdWString().c_str()));
 
-        check(header->AddMob(mob));
-        mob->Release();
-        mob = NULL;
+        check(header->AddMob(mob.get()));
 
         // Create a SourceClip
         auto compSclp = createInstanceHelper<IAAFSourceClip>(cdSourceClip.get(), IID_IAAFSourceClip);
@@ -594,7 +578,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
 
             check(fileMob->SetEssenceDescriptor(essenceDesc.get()));
 
-            check(fileMob->QueryInterface(IID_IAAFMob, (void**) &mob));
+            mob.reset(queryInterfaceHelper<IAAFMob>(fileMob.get(), IID_IAAFMob).release());
             check(mob->SetName(L"Audio file"));
 
             for (int s = 0; s < clip.nrAudioTracks; s++)
@@ -605,36 +589,31 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
 
                 check(fileMob->NewPhysSourceRef(edlVideoRate, s + 1, soundDef.get(), sourceRef, fileLen));
 
-                mobSlot.reset(lookupSlotHelper(mob, s + 1).release());
+                mobSlot.reset(lookupSlotHelper(mob.get(), s + 1).release());
                 check(mobSlot->SetName(get_track_name(L"A", z + s + 1).c_str()));
                 check(mobSlot->SetPhysicalNum(audioTrackNumber + 1));
                 audioTrackNumber++;
             }
 
             check(mob->GetMobID(&fileMobID));
-            check(header->AddMob(mob));
-            mob->Release();
-            mob = NULL;
+            check(header->AddMob(mob.get()));
 
             sourceRef.sourceID = fileMobID;
             sourceRef.sourceSlotID = 1;
             sourceRef.startTime = 0;
             check(masterMob->AppendPhysSourceRef(edlVideoRate, z + 2, soundDef.get(), sourceRef, fileLen));
-            check(masterMob->QueryInterface(IID_IAAFMob, (void**) &mob));
+            mob.reset(queryInterfaceHelper<IAAFMob>(masterMob.get(), IID_IAAFMob).release());
             check(mob->GetMobID(&masterMobID));
 
             //Set masterMobName
             check(mob->SetName(fInfo.completeBaseName().toStdWString().c_str()));
 
-            mobSlot.reset(lookupSlotHelper(mob, z + 2).release());
+            mobSlot.reset(lookupSlotHelper(mob.get(), z + 2).release());
             check(mobSlot->SetName(get_track_name(L"A", z + 1).c_str()));
             check(mobSlot->SetPhysicalNum(z + 1));
             timelineMobSlot2.reset(queryInterfaceHelper<IAAFTimelineMobSlot2>(mobSlot.get(), IID_IAAFTimelineMobSlot2).release());
             check(timelineMobSlot2->SetMarkIn(clip.clipMarkInFrames));
             check(timelineMobSlot2->SetMarkOut(clip.clipMarkOutFrames));
-
-            mob->Release();
-            mob = NULL;
 
             // the remaining part of the sequence code, adapted for updating slot names
             for (int s = 0; s < clip.nrAudioTracks; s++)
@@ -669,12 +648,6 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         //  the file is then saved, closed and released after all modifications
         //  are complete
     }
-
-//cleanup:
-    // Cleanup and return
-
-    if (mob)
-        mob->Release();
 
     file->Save();
     file->Close();

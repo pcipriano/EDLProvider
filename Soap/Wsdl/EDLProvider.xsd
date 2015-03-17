@@ -265,6 +265,11 @@
                     <xs:documentation source="urn:x-fims:description">MarkIn or MarkOut outside of media total duration.</xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="EXT_S00_0006">
+                <xs:annotation>
+                    <xs:documentation source="urn:x-fims:description">Generic EDL error.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>

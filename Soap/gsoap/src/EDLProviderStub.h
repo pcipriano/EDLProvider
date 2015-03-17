@@ -31,7 +31,7 @@ compiling, linking, and/or using OpenSSL is allowed.
 #ifndef SOAP_TYPE_edlprovider__EdlProviderErrorCodeType
 #define SOAP_TYPE_edlprovider__EdlProviderErrorCodeType (187)
 /* edlprovider:EdlProviderErrorCodeType */
-enum edlprovider__EdlProviderErrorCodeType { edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0001 = 0, edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0002 = 1, edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0003 = 2, edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0004 = 3, edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0005 = 4 };
+enum edlprovider__EdlProviderErrorCodeType { edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0001 = 0, edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0002 = 1, edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0003 = 2, edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0004 = 3, edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0005 = 4, edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0006 = 5 };
 #endif
 
 #ifndef SOAP_TYPE_fims__CurrentVersion

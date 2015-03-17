@@ -216,6 +216,9 @@ soap_int32 EdlProviderServer::processGetEdl(soap* const soap,
             edlprovider__EdlProviderErrorCodeType errorCode;
             switch (ex.getCode())
             {
+                case EdlException::EdlError::UNSUPPORTED_FRAME_RATE:
+                    errorCode = edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0002;
+                    break;
                 case EdlException::EdlError::REQUIRED_VALUE:
                     errorCode = edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0003;
                     break;
@@ -225,8 +228,11 @@ soap_int32 EdlProviderServer::processGetEdl(soap* const soap,
                 case EdlException::EdlError::MARK_INOUT_OUTSIDE_DURATION:
                     errorCode = edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0005;
                     break;
+                case EdlException::EdlError::GENERIC:
+                    errorCode = edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0006;
+                    break;
                 default:
-                    errorCode = edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0001; //Should never occur
+                    errorCode = edlprovider__EdlProviderErrorCodeType__EXT_USCORES00_USCORE0006; //Should never occur
                     break;
             }
 

@@ -281,7 +281,7 @@ Example of a minimalist request:
 
 # SOAP Code Generation #
 
-EDLProvider uses gSOAP to generate SOAP server code from a WSDL file. To regenerate all the code automatically in ************ there's a python script that will run the gSOAP tools to generate the server code. Simply run the script and specify the gSOAP root directory for it to work.
+EDLProvider uses gSOAP to generate SOAP server code from a WSDL file. To regenerate all the code automatically in [gSoapGenerator](https://github.com/pcipriano/EDLProvider/blob/master/Soap/gsoap/gsoap%20commands.py) there's a python script that will run the gSOAP tools to generate the server code. Simply run the script and specify the gSOAP root directory for it to work.
 
 [gSOAP](http://www.cs.fsu.edu/~engelen/soap.html)
 

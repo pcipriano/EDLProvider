@@ -101,3 +101,8 @@ cpack_add_component(FinalCut
     DISPLAY_NAME "Final Cut Pro XML"
     DESCRIPTION "Final Cut Pro XML Interchange Format"
 )
+
+cpack_add_component(Aaf
+    DISPLAY_NAME "AAF"
+    DESCRIPTION "Advanced Authoring Format"
+)

@@ -11,6 +11,7 @@
 
 #include "FinalCut.h"
 
+#include <QUrl>
 #include <QBuffer>
 #include <QXmlStreamWriter>
 
@@ -24,6 +25,11 @@ using namespace plugins::finalcut;
 inline bool operator==(const fims__LengthType& lhs, const fims__LengthType rhs)
 {
     return (lhs.unit == rhs.unit) && (lhs.__item == rhs.__item);
+}
+
+inline QString boolToString(const bool value)
+{
+    return value ? "true" : "false";
 }
 
 struct AudioInformation
@@ -63,10 +69,6 @@ struct AudioInformation
 
     uint16_t nrAudioChannels;
 };
-
-FinalCut::FinalCut()
-{
-}
 
 QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
                                const fims__RationalType* const edlFrameRate,
@@ -168,8 +170,8 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
                 (videoInfo->frameRate->numerator != previousClipVideoInfo->frameRate->numerator) ||
                 (videoInfo->frameRate->denominator != previousClipVideoInfo->frameRate->denominator))
             {
-                xmlWriter.writeTextElement("enabled", "true");
-                xmlWriter.writeTextElement("locked", "false");
+                xmlWriter.writeTextElement("enabled", boolToString(true));
+                xmlWriter.writeTextElement("locked", boolToString(false));
 
                 //</track>
                 xmlWriter.writeEndElement();        //Close previous track section
@@ -189,7 +191,7 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
 
         //Add clip
         xmlWriter.writeStartElement("clipitem");
-        xmlWriter.writeAttribute("id", QString::fromStdWString(clip->clipInfo->resourceID));
+        xmlWriter.writeAttribute("id", QString::fromStdWString(clipInfo->resourceID));
 
         xmlWriter.writeTextElement("name", fInfo.fileName());
         xmlWriter.writeTextElement("duration", QString::number(clipDurationFrames));
@@ -198,13 +200,14 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
         xmlWriter.writeTextElement("out", QString::number(clipMarkOutFrames));
         xmlWriter.writeTextElement("start", QString::number(totalTrackFramesDuration));
         xmlWriter.writeTextElement("end", QString::number(totalTrackFramesDuration += clipDurationFrames));
-        xmlWriter.writeTextElement("enabled", "true");
+        xmlWriter.writeTextElement("enabled", boolToString(true));
         xmlWriter.writeTextElement("masterclipid", fInfo.fileName() + "1");
         xmlWriter.writeStartElement("file");
 
         xmlWriter.writeAttribute("id", fInfo.completeBaseName());
         xmlWriter.writeTextElement("name", fInfo.completeBaseName());
-        xmlWriter.writeTextElement("pathurl", QString::fromStdWString(*clipFormatInfo->bmEssenceLocators->bmEssenceLocator.front()->location));
+        QUrl path = QUrl::fromLocalFile(QString::fromStdWString(*clipFormatInfo->bmEssenceLocators->bmEssenceLocator.front()->location));
+        xmlWriter.writeTextElement("pathurl", path.toEncoded());
         writeRateSection(isDropFrame, timeBase, xmlWriter);
         xmlWriter.writeTextElement("duration", QString::number(fileDurationFrames));
 
@@ -222,7 +225,7 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
         //</video>
         xmlWriter.writeEndElement();
 
-        writeAudioDescription(nrAudioTracks, nrAudioChannels, xmlWriter);
+        writeAudioDescription(audioInfo, nrAudioTracks, nrAudioChannels, xmlWriter);
 
         //</media>
         xmlWriter.writeEndElement();
@@ -238,7 +241,7 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
         //</sourcetrack>
         xmlWriter.writeEndElement();
 
-        writeLinkDescriptions(QString::fromStdWString(clip->clipInfo->resourceID),
+        writeLinkDescriptions(QString::fromStdWString(clipInfo->resourceID),
                               nItem,
                               nrAudioTracks,
                               nrAudioChannels,
@@ -262,8 +265,8 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
         xmlWriter.writeEndElement();
     }
 
-    xmlWriter.writeTextElement("enabled", "true");
-    xmlWriter.writeTextElement("locked", "false");
+    xmlWriter.writeTextElement("enabled", boolToString(true));
+    xmlWriter.writeTextElement("locked", boolToString(false));
 
     //</track>
     xmlWriter.writeEndElement();
@@ -283,10 +286,10 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
     {
         QFileInfo fInfo(QString::fromStdWString(audInfoIt->path));
 
-        xmlWriter.writeStartElement("track");
 
         for (int i = 0; i < (audInfoIt->nrAudioChannels * audInfoIt->nrAudioTracks); i++)
         {
+            xmlWriter.writeStartElement("track");
             xmlWriter.writeStartElement("clipitem");
 
             xmlWriter.writeAttribute("id", fInfo.fileName() + QString::number(nItem));
@@ -297,7 +300,7 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
             xmlWriter.writeTextElement("out", QString::number(audInfoIt->markOutFrames));
             xmlWriter.writeTextElement("start", QString::number(totalTrackFramesDuration));
             xmlWriter.writeTextElement("end", QString::number(totalTrackFramesDuration + audInfoIt->durationFrames));
-            xmlWriter.writeTextElement("enabled", "true");
+            xmlWriter.writeTextElement("enabled", boolToString(true));
             xmlWriter.writeTextElement("masterclipid", fInfo.fileName() + "1");
             xmlWriter.writeStartElement("file");
             xmlWriter.writeAttribute("id", fInfo.completeBaseName());
@@ -312,13 +315,15 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
             xmlWriter.writeEndElement();
 
             xmlWriter.writeTextElement("outputchannelindex", QString::number(i + 1));
+            xmlWriter.writeTextElement("enabled", boolToString(true));
+            xmlWriter.writeTextElement("locked", boolToString(false));
+
+            //</track>
+            xmlWriter.writeEndElement();
+
+            nItem++;
         }
 
-        xmlWriter.writeTextElement("enabled", "true");
-        xmlWriter.writeTextElement("locked", "false");
-
-        //</track>
-        xmlWriter.writeEndElement();
 
         totalTrackFramesDuration += audInfoIt->durationFrames;
     }
@@ -331,7 +336,7 @@ QByteArray FinalCut::createEdl(const std::wstring* const edlSequenceName,
 
     xmlWriter.writeTextElement("duration", QString::number(totalTrackFramesDuration));
 
-    xmlWriter.writeTextElement("ismasterclip", "false");
+    xmlWriter.writeTextElement("ismasterclip", boolToString(false));
 
     xmlWriter.writeEndDocument();
 
@@ -404,7 +409,7 @@ void FinalCut::processFrameRate(const fims__RationalType* const frameRate,
 void FinalCut::writeRateSection(bool dropFrame, uint32_t timeBase, QXmlStreamWriter& writer) const
 {
     writer.writeStartElement("rate");
-    writer.writeTextElement("ntsc", QString::number(dropFrame));
+    writer.writeTextElement("ntsc", boolToString(dropFrame));
     writer.writeTextElement("timebase", QString::number(timeBase));
     writer.writeEndElement();
 }
@@ -432,11 +437,20 @@ void FinalCut::writeFormatSection(bool dropFrame,
     writer.writeEndElement();
 }
 
-void FinalCut::writeAudioDescription(uint16_t nrAudioTracks, uint16_t nrAudioChannels, QXmlStreamWriter& writer) const
+void FinalCut::writeAudioDescription(const fims__AudioFormatType* const audioInfo,
+                                     uint16_t nrAudioTracks,
+                                     uint16_t nrAudioChannels,
+                                     QXmlStreamWriter& writer) const
 {
     for (int i = 0; i < nrAudioTracks; i++)
     {
         writer.writeStartElement("audio");
+
+        writer.writeStartElement("samplecharacteristics");
+        writer.writeTextElement("depth", QString::fromStdWString(*audioInfo->sampleSize));
+        writer.writeTextElement("samplerate", QString::fromStdWString(*audioInfo->samplingRate));
+        writer.writeEndElement();
+
         writer.writeTextElement("channelcount", QString::number(nrAudioChannels));
         writer.writeTextElement("layout", nrAudioChannels == 2 ? "stereo" : "mono");
         writer.writeEndElement();

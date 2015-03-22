@@ -24,11 +24,6 @@ class FinalCut final : public QObject, public interfaces::EdlInterface, private 
     Q_INTERFACES(plugins::interfaces::EdlInterface plugins::interfaces::SharedLoggerInterface)
 
 public:
-    /*!
-     * \brief FinalCut constructor.
-     */
-    FinalCut();
-
     // EdlInterface interface
     /*!
     * \sa {interfaces::EdlInterface::getEdlName}
@@ -96,11 +91,15 @@ private:
 
     /*!
      * \brief Helper function to write audio description section of FCP XML.
+     * \param audioInfo Audio information.
      * \param nrAudioTracks The number of audio tracks in the clip.
      * \param nrAudioChannels The number of audio channels in each track of the clip.
      * \param writer The XML stream writer where to write the rate section.
      */
-    void writeAudioDescription(uint16_t nrAudioTracks, uint16_t nrAudioChannels, QXmlStreamWriter& writer) const;
+    void writeAudioDescription(const fims__AudioFormatType* const audioInfo,
+                               uint16_t nrAudioTracks,
+                               uint16_t nrAudioChannels,
+                               QXmlStreamWriter& writer) const;
 
     /*!
      * \brief Helper function to write link descriptions section of FCP XML.

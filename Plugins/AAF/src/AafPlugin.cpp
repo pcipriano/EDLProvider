@@ -21,6 +21,7 @@
 #include <AAFCompressionDefs.h>
 #include <AAFStoredObjectIDs.h>
 
+#include <QUrl>
 #include <QFileInfo>
 #include <QTemporaryFile>
 
@@ -328,7 +329,6 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         component.reset(queryInterfaceHelper<IAAFComponent>(audioSequences[audioTimelineSlotPos].get(), IID_IAAFComponent).release());
         check(component->SetDataDef(soundDef.get()));
 
-        //The slot names will be copied from last item on the vector if files have different audio layouts (eg. 2 mono and 4 mono)
         check (compMob->AppendNewTimelineSlot(edlVideoRate,
                                               segment.get(),
                                               audioTimelineSlotPos + 2,
@@ -383,6 +383,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         fileLen = clip.fileDurationFrames;
         videoFileLen = clip.fileDurationFrames;
         QFileInfo fInfo(QString::fromStdWString(*clip.clipFormatInfo->bmEssenceLocators->bmEssenceLocator.front()->location));
+        QUrl path = QUrl::fromLocalFile(fInfo.absoluteFilePath());
 
         //Make the Tape MOB
         auto tapeMob = createInstanceHelper<IAAFSourceMob>(cdSourceMob.get(), IID_IAAFSourceMob);
@@ -394,7 +395,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         auto netLocator = createInstanceHelper<IAAFNetworkLocator>(cdNetworkLocator.get(), IID_IAAFNetworkLocator);
         auto locator = queryInterfaceHelper<IAAFLocator>(netLocator.get(), IID_IAAFLocator);
 
-        check(locator->SetPath(fInfo.absoluteFilePath().toStdWString().c_str()));
+        check(locator->SetPath(path.toString(QUrl::FullyEncoded).toStdWString().c_str()));
         check(essenceDesc->AppendLocator(locator.get()));
 
         check(tapeMob->SetEssenceDescriptor(essenceDesc.get()));
@@ -445,13 +446,6 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         check(fileDesc->SetLength(videoFileLen));
         check(fileDesc->SetSampleRate(edlVideoRate));
 
-        int displayHeight = std::stoi(clip.videoInfo->displayHeight->__item);
-        int displayWidth = std::stoi(clip.videoInfo->displayWidth->__item);
-
-        check(digitalImageDesc->SetDisplayView(displayHeight, displayWidth, 0, 0));
-        check(digitalImageDesc->SetSampledView(displayHeight, displayWidth, 0, 0));
-        check(digitalImageDesc->SetStoredView(displayHeight, displayWidth));
-
         aafFrameLayout_t layout = (*clip.videoInfo->scanningFormat) == fims__ScanningFormatType__interlaced ? kAAFSeparateFields : kAAFFullFrame;
         check(digitalImageDesc->SetFrameLayout(layout));
 
@@ -471,6 +465,16 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
             check(digitalImageDesc->SetVideoLineMap(2, lineMap));
         }
 
+        int displayHeight = std::stoi(clip.videoInfo->displayHeight->__item);
+        int displayWidth = std::stoi(clip.videoInfo->displayWidth->__item);
+
+        if (layout == kAAFSeparateFields)
+            displayHeight /= 2;
+
+        check(digitalImageDesc->SetDisplayView(displayHeight, displayWidth, 0, 0));
+        check(digitalImageDesc->SetSampledView(displayHeight, displayWidth, 0, 0));
+        check(digitalImageDesc->SetStoredView(displayHeight, displayWidth));
+
         aafRational_t aspectRatio = { std::stoi(clip.videoInfo->aspectRatio->numerator),
                                       std::stoi(clip.videoInfo->aspectRatio->denominator) };
         check(digitalImageDesc->SetImageAspectRatio(aspectRatio));
@@ -479,7 +483,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         netLocator.reset(createInstanceHelper<IAAFNetworkLocator>(cdNetworkLocator.get(), IID_IAAFNetworkLocator).release());
         locator.reset(queryInterfaceHelper<IAAFLocator>(netLocator.get(), IID_IAAFLocator).release());
 
-        check(locator->SetPath(fInfo.absoluteFilePath().toStdWString().c_str()));
+        check(locator->SetPath(path.toString(QUrl::FullyEncoded).toStdWString().c_str()));
         check(essenceDesc->AppendLocator(locator.get()));
 
         check(fileMob->SetEssenceDescriptor(essenceDesc.get()));
@@ -536,7 +540,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         check(videoSequence->AppendComponent(component.get()));
 
         int audioTrackNumber = 0;
-        int audioTimelineSlotPos = 0;
+        audioTimelineSlotPos = 0;
 
         //Cicle between all the audio files that will be added
         for (int z = 0; z < clip.nrAudioChannels; z++)
@@ -576,7 +580,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
             netLocator.reset(createInstanceHelper<IAAFNetworkLocator>(cdNetworkLocator.get(), IID_IAAFNetworkLocator).release());
             locator.reset(queryInterfaceHelper<IAAFLocator>(netLocator.get(), IID_IAAFLocator).release());
 
-            check(locator->SetPath(fInfo.absoluteFilePath().toStdWString().c_str()));
+            check(locator->SetPath(path.toString(QUrl::FullyEncoded).toStdWString().c_str()));
             check(essenceDesc->AppendLocator(locator.get()));
 
             check(fileMob->SetEssenceDescriptor(essenceDesc.get()));

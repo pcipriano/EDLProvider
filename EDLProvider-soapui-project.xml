@@ -11630,8 +11630,10 @@ responseParser[soap_ns.Body][edlprovider_ns.installedEdlsResponse][edlprovider_n
 	if (new File(groovyUtils.projectPath, 'EDL_Plugins').exists())
 	{		
 		edlFile = new File(groovyUtils.projectPath, 'EDL_Plugins' + File.separator + edlType + edlExtension)
+   		
    		//First delete files in case they were already created
-   		edlFile.delete()
+   		if (edlFile.exists())
+   			edlFile.delete()
 
 		edlFile.withOutputStream { stream ->
 			stream.write(nodeDecoded)
@@ -11676,7 +11678,7 @@ responseParser[soap_ns.Body][edlprovider_ns.installedEdlsResponse][edlprovider_n
                                     <!--Optional:-->
                                     <base:revisionID>?</base:revisionID>
                                     <!--Optional:-->
-                                    <base:location>C:\Users\Pedro\Desktop\xdcamdv-pal.mxf</base:location>                                    
+                                    <base:location>C:\testfile.mxf</base:location>                                    
                                     <!--Optional:-->
                                     <base:containerMimeType typeLabel="?" typeDefinition="?" typeLink="?">?</base:containerMimeType>                               
                                  </base:bmEssenceLocator>
@@ -11770,7 +11772,7 @@ responseParser[soap_ns.Body][edlprovider_ns.installedEdlsResponse][edlprovider_n
                                     <base:audioTrack trackID="0" typeLabel="?" typeDefinition="?" typeLink="?" trackName="?" language="?"/>
                                     <base:audioTrack trackID="1" typeLabel="?" typeDefinition="?" typeLink="?" trackName="?" language="?"/>
                                     <!--Optional:-->
-                                    <base:channels>2</base:channels>
+                                    <base:channels>1</base:channels>
                                     <!--Optional:-->
                                     <base:sampleSize>24</base:sampleSize>
                                  </base:audioFormat>
@@ -11794,4 +11796,4 @@ responseParser[soap_ns.Body][edlprovider_ns.installedEdlsResponse][edlprovider_n
          <edl:edlFramesPerSecond>25</edl:edlFramesPerSecond>
       </edl:getEdlDoubleRequest>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response" id="bc57fe96-7229-4058-a1c3-131dc5590075"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://temp/edlprovider/getEdlDouble"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:loadTest name="LoadTest 1" id="370c60b3-9e52-4c63-a39c-3167c826938c"><con:settings><con:setting id="HttpSettings@close-connections">false</con:setting></con:settings><con:threadCount>14</con:threadCount><con:startDelay>0</con:startDelay><con:sampleInterval>250</con:sampleInterval><con:calculateTPSOnTimePassed>true</con:calculateTPSOnTimePassed><con:resetStatisticsOnThreadCountChange>true</con:resetStatisticsOnThreadCountChange><con:historyLimit>-1</con:historyLimit><con:testLimit>240</con:testLimit><con:limitType>TIME</con:limitType><con:loadStrategy><con:type>Simple</con:type></con:loadStrategy><con:assertion type="Step Status" name="Step Status"/><con:assertion type="Max Errors" name="Max Errors"><con:configuration><name>Max Errors</name><max-absolute-errors>1</max-absolute-errors><max-relative-errors>0.2</max-relative-errors><test-step>- Any -</test-step></con:configuration></con:assertion><con:maxAssertionErrors>100</con:maxAssertionErrors><con:cancelExcessiveThreads>true</con:cancelExcessiveThreads><con:strategyInterval>500</con:strategyInterval></con:loadTest><con:setupScript>testRunner.testCase.properties['CurrentFormat'].setValue(null)</con:setupScript><con:properties><con:property><con:name>CurrentFormat</con:name><con:value>FinalCut</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response" id="bc57fe96-7229-4058-a1c3-131dc5590075"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://temp/edlprovider/getEdlDouble"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:loadTest name="LoadTest 1" id="370c60b3-9e52-4c63-a39c-3167c826938c"><con:settings><con:setting id="HttpSettings@close-connections">false</con:setting></con:settings><con:threadCount>14</con:threadCount><con:startDelay>0</con:startDelay><con:sampleInterval>250</con:sampleInterval><con:calculateTPSOnTimePassed>true</con:calculateTPSOnTimePassed><con:resetStatisticsOnThreadCountChange>true</con:resetStatisticsOnThreadCountChange><con:historyLimit>-1</con:historyLimit><con:testLimit>240</con:testLimit><con:limitType>TIME</con:limitType><con:loadStrategy><con:type>Simple</con:type></con:loadStrategy><con:assertion type="Step Status" name="Step Status"/><con:assertion type="Max Errors" name="Max Errors"><con:configuration><name>Max Errors</name><max-absolute-errors>1</max-absolute-errors><max-relative-errors>0.2</max-relative-errors><test-step>- Any -</test-step></con:configuration></con:assertion><con:maxAssertionErrors>100</con:maxAssertionErrors><con:cancelExcessiveThreads>true</con:cancelExcessiveThreads><con:strategyInterval>500</con:strategyInterval></con:loadTest><con:setupScript>testRunner.testCase.properties['CurrentFormat'].setValue(null)</con:setupScript><con:properties><con:property><con:name>CurrentFormat</con:name><con:value>FinalCut</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

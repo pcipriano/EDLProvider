@@ -85,26 +85,6 @@ static std::wstring get_track_name(std::wstring prefix, int number)
     return prefix.append(std::to_wstring(number));
 }
 
-static void computeMaxValues(const std::vector<ClipDetails>& clipDetails,
-                             int* maxChannels,
-                             int* maxStereos,
-                             int* maxMonos)
-{
-    *maxChannels = 0;
-    *maxStereos = 0;
-    *maxMonos = 0;
-
-    for (const ClipDetails& clip : clipDetails)
-    {
-        *maxChannels = std::max((int) clip.nrAudioChannels, *maxChannels);
-
-        if (clip.nrAudioChannels > 1)
-            *maxStereos = std::max((int) clip.nrAudioTracks, *maxStereos);
-        else if (clip.nrAudioChannels == 1)
-            *maxMonos = std::max((int) clip.nrAudioTracks, *maxMonos);
-    }
-}
-
 template<typename T>
 using UPCustomDel = std::unique_ptr<T, std::function<void(T*)>>;
 
@@ -214,13 +194,13 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
 
     const aafUID_t NIL_UID = { 0, 0, 0, { 0, 0, 0, 0, 0, 0, 0, 0 }};
 
-    int maxChannels = 0;
-    int maxStereos = 0;
-    int maxMonos = 0;
-    computeMaxValues(clipsProcessed, &maxChannels, &maxStereos, &maxMonos);
-
     //Max slots is mainly used to know how much audio sequences need to be done
-    int maxSlots = (maxChannels * maxStereos) + maxMonos;
+    int maxSlots = 0;
+    std::for_each(clipsProcessed.cbegin(), clipsProcessed.cend(),
+                  [&maxSlots](const ClipDetails& clip)
+    {
+        maxSlots = std::max((int) clip.nrAudioChannels * (int) clip.nrAudioTracks, maxSlots);
+    });
 
     aafMobID_t                      tapeMobID, fileMobID, masterMobID;
     aafTimecode_t                   tapeTC;
@@ -275,7 +255,7 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
     auto cdSourceMob = lookupClassHelper(dictionary.get(), AUID_AAFSourceMob);
     auto cdTapeDescriptor = lookupClassHelper(dictionary.get(), AUID_AAFImportDescriptor);
     auto cdDigitalImageDescriptor = lookupClassHelper(dictionary.get(), AUID_AAFCDCIDescriptor);
-    auto cdSoundDescriptor = lookupClassHelper(dictionary.get(), AUID_AAFSoundDescriptor);
+    auto cdPCMSoundDescriptor = lookupClassHelper(dictionary.get(), AUID_AAFPCMDescriptor);
     auto cdNetworkLocator = lookupClassHelper(dictionary.get(), AUID_AAFNetworkLocator);
     auto cdMasterMob = lookupClassHelper(dictionary.get(), AUID_AAFMasterMob);
     auto cdSourceClip = lookupClassHelper(dictionary.get(), AUID_AAFSourceClip);
@@ -322,7 +302,6 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         audioSequences.push_back(createInstanceHelper<IAAFSequence>(cdSequence.get(), IID_IAAFSequence));
 
     int audioTimelineSlotPos = 0;
-    //AAF will have at least one element in vectorOFClips
     for (int s = 0; s < maxSlots; s++)
     {
         segment.reset(queryInterfaceHelper<IAAFSegment>(audioSequences[audioTimelineSlotPos].get(), IID_IAAFSegment).release());
@@ -468,9 +447,6 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         int displayHeight = std::stoi(clip.videoInfo->displayHeight->__item);
         int displayWidth = std::stoi(clip.videoInfo->displayWidth->__item);
 
-        if (layout == kAAFSeparateFields)
-            displayHeight /= 2;
-
         check(digitalImageDesc->SetDisplayView(displayHeight, displayWidth, 0, 0));
         check(digitalImageDesc->SetSampledView(displayHeight, displayWidth, 0, 0));
         check(digitalImageDesc->SetStoredView(displayHeight, displayWidth));
@@ -543,24 +519,15 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
         audioTimelineSlotPos = 0;
 
         //Cicle between all the audio files that will be added
-        for (int z = 0; z < clip.nrAudioChannels; z++)
+        for (uint16_t z = 0; z < clip.nrAudioChannels * clip.nrAudioTracks ; z++)
         {
-            if (clip.nrAudioChannels == 1 && maxStereos != 0)
-            {
-                for (; audioTimelineSlotPos < (maxStereos * 2); audioTimelineSlotPos++)
-                {
-                    auto compFill = createInstanceHelper<IAAFComponent>(cdFiller.get(), IID_IAAFComponent);
-
-                    check(compFill->SetLength(segLen));
-                    check(compFill->SetDataDef(soundDef.get()));
-                    check(audioSequences[audioTimelineSlotPos]->AppendComponent(compFill.get()));
-                }
-            }
-
             // Make a FileMob
             fileMob.reset(createInstanceHelper<IAAFSourceMob>(cdSourceMob.get(), IID_IAAFSourceMob).release());
-            fileDesc.reset(createInstanceHelper<IAAFFileDescriptor>(cdSoundDescriptor.get(), IID_IAAFFileDescriptor).release());
+            fileDesc.reset(createInstanceHelper<IAAFFileDescriptor>(cdPCMSoundDescriptor.get(), IID_IAAFFileDescriptor).release());
             essenceDesc.reset(queryInterfaceHelper<IAAFEssenceDescriptor>(fileDesc.get(), IID_IAAFEssenceDescriptor).release());
+
+            auto pcmSoundDesc = queryInterfaceHelper<IAAFPCMDescriptor>(fileDesc.get(), IID_IAAFPCMDescriptor);
+            pcmSoundDesc->Initialize();
 
             //Request the fileMob Audio Description
             auto soundDesc = queryInterfaceHelper<IAAFSoundDescriptor>(fileDesc.get(), IID_IAAFSoundDescriptor);
@@ -588,19 +555,16 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
             mob.reset(queryInterfaceHelper<IAAFMob>(fileMob.get(), IID_IAAFMob).release());
             check(mob->SetName(L"Audio file"));
 
-            for (int s = 0; s < clip.nrAudioTracks; s++)
-            {
-                sourceRef.sourceID = tapeMobID;
-                sourceRef.sourceSlotID = s + 2;
-                sourceRef.startTime = 0;
+            sourceRef.sourceID = tapeMobID;
+            sourceRef.sourceSlotID = z + 2;
+            sourceRef.startTime = 0;
 
-                check(fileMob->NewPhysSourceRef(edlVideoRate, s + 1, soundDef.get(), sourceRef, fileLen));
+            check(fileMob->NewPhysSourceRef(edlVideoRate, 1, soundDef.get(), sourceRef, fileLen));
 
-                mobSlot.reset(lookupSlotHelper(mob.get(), s + 1).release());
-                check(mobSlot->SetName(get_track_name(L"A", z + s + 1).c_str()));
-                check(mobSlot->SetPhysicalNum(audioTrackNumber + 1));
-                audioTrackNumber++;
-            }
+            mobSlot.reset(lookupSlotHelper(mob.get(), 1).release());
+            check(mobSlot->SetName(get_track_name(L"A", z + 1).c_str()));
+            check(mobSlot->SetPhysicalNum(audioTrackNumber + 1));
+            audioTrackNumber++;
 
             check(mob->GetMobID(&fileMobID));
             check(header->AddMob(mob.get()));
@@ -623,22 +587,19 @@ QByteArray AafPlugin::createEdl(const std::wstring* const edlSequenceName,
             check(timelineMobSlot2->SetMarkOut(clip.clipMarkOutFrames));
 
             // the remaining part of the sequence code, adapted for updating slot names
-            for (int s = 0; s < clip.nrAudioTracks; s++)
-            {
-                // Create a SourceClip
-                compSclp.reset(createInstanceHelper<IAAFSourceClip>(cdSourceClip.get(), IID_IAAFSourceClip).release());
+            // Create a SourceClip
+            compSclp.reset(createInstanceHelper<IAAFSourceClip>(cdSourceClip.get(), IID_IAAFSourceClip).release());
 
-                sourceRef.sourceID = masterMobID;
-                sourceRef.sourceSlotID = z + 2;
-                sourceRef.startTime = clip.clipMarkInFrames;
-                check(compSclp->SetSourceReference(sourceRef));
-                component.reset(queryInterfaceHelper<IAAFComponent>(compSclp.get(), IID_IAAFComponent).release());
-                check(component->SetDataDef(soundDef.get()));
-                check(component->SetLength(segLen));
-                check(audioSequences[audioTimelineSlotPos]->AppendComponent(component.get()));
+            sourceRef.sourceID = masterMobID;
+            sourceRef.sourceSlotID = z + 2;
+            sourceRef.startTime = clip.clipMarkInFrames;
+            check(compSclp->SetSourceReference(sourceRef));
+            component.reset(queryInterfaceHelper<IAAFComponent>(compSclp.get(), IID_IAAFComponent).release());
+            check(component->SetDataDef(soundDef.get()));
+            check(component->SetLength(segLen));
+            check(audioSequences[audioTimelineSlotPos]->AppendComponent(component.get()));
 
-                audioTimelineSlotPos++;
-            }
+            audioTimelineSlotPos++;
         }
 
         for (; audioTimelineSlotPos < maxSlots; audioTimelineSlotPos++)

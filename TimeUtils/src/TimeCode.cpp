@@ -11,6 +11,7 @@
 #include <cfenv>
 #include <sstream>
 #include <iostream>
+#include <iomanip>
 #include <cassert>
 
 template<typename T>
@@ -278,6 +279,16 @@ bool Timecode::operator<(const Timecode& right) const
     return (roundedTCBase_ != 0 && right.roundedTCBase_ == 0) ||
            (roundedTCBase_ != 0 && right.roundedTCBase_ != 0 &&
             offset_ < convertPosition(right.offset_, roundedTCBase_, right.roundedTCBase_, Rounding::ROUND_AUTO));
+}
+
+std::wstring Timecode::toTimecodeString(bool useDropDelimiter) const
+{
+    std::wstringstream wss;
+    wss << std::setfill(L'0') << std::setw(2) << getHour();
+    wss << L":" << std::setfill(L'0') << std::setw(2) << getMin();
+    wss << L":" << std::setfill(L'0') << std::setw(2) << getSec();
+    wss << (useDropDelimiter && isDropFrame() ? L";" : L":") << std::setfill(L'0') << std::setw(2) << getFrame();
+    return wss.str();
 }
 
 void Timecode::cleanOffset()

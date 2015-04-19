@@ -24,6 +24,10 @@ private Q_SLOTS:
     void fromMillisecondsTest_data();
 
     void fromMillisecondsTest();
+
+    void toTimecodeStringTest_data();
+
+    void toTimecodeStringTest();
 };
 
 }

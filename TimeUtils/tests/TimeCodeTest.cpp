@@ -120,4 +120,35 @@ void TimeCodeTest::fromMillisecondsTest()
     QCOMPARE(tc.getFrame(), frames);
 }
 
+void TimeCodeTest::toTimecodeStringTest_data()
+{
+    QTest::addColumn<QString>("timecode");
+    QTest::addColumn<int32_t>("rateNum");
+    QTest::addColumn<int32_t>("rateDen");
+    QTest::addColumn<bool>("valid");
+
+    QTest::newRow("Valid PAL 1") << "10:00:00:00" << 25 << 1 << true;
+    QTest::newRow("Valid PAL 2") << "00:05:18:24" << 25 << 1 << true;
+    QTest::newRow("Valid PAL 3") << "02:40:27:22" << 25 << 1 << true;
+    QTest::newRow("Valid PAL 4") << "20:00:23:04" << 25 << 1 << true;
+    QTest::newRow("Valid NTSC 1") << "00:04:04;27" << 30000 << 1001 << true;
+    QTest::newRow("Valid NTSC 2") << "01:02:28;29" << 30000 << 1001 << true;
+    QTest::newRow("Valid NTSC 3") << "23:01:37;03" << 30000 << 1001 << true;
+    QTest::newRow("Valid NTSC 4") << "03:00:12;10" << 30000 << 1001 << true;
+}
+
+void TimeCodeTest::toTimecodeStringTest()
+{
+    QFETCH(QString, timecode);
+    QFETCH(int32_t, rateNum);
+    QFETCH(int32_t, rateDen);
+    QFETCH(bool, valid);
+
+    Timecode tc = Timecode::fromTimecodeString(timecode.toStdWString(), rateNum, rateDen);
+
+    QCOMPARE(!tc.isInvalid(), valid);
+    QCOMPARE(QString::fromStdWString(tc.toTimecodeString()), timecode);
+    QCOMPARE(QString::fromStdWString(tc.toTimecodeString(false)), tc.isDropFrame() ? timecode.replace(";", ":") : timecode);
+}
+
 DECLARE_TEST(TimeCodeTest)

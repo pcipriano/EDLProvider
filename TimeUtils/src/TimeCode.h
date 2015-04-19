@@ -208,6 +208,13 @@ public:
      */
     bool operator<(const Timecode& right) const;
 
+    /*!
+     * \brief Converts the current \c Timecode object to its string representation.
+     * \param useDropDelimiter If \c true use the ';' to delimit the frame number part when the time code is drop frame.
+     * \return String representation of the \c Timecode object.
+     */
+    std::wstring toTimecodeString(bool useDropDelimiter = true) const;
+
 private:
     /*!
      * \brief The rounding possibilities.

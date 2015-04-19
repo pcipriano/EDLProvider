@@ -106,3 +106,8 @@ cpack_add_component(Aaf
     DISPLAY_NAME "AAF"
     DESCRIPTION "Advanced Authoring Format"
 )
+
+cpack_add_component(Cmx
+    DISPLAY_NAME "CMX3600"
+    DESCRIPTION "CMX3600 EDL format"
+)

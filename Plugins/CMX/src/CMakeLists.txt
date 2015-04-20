@@ -13,7 +13,7 @@ include_directories(../../../Soap/gsoap/src)
 include_directories(../../../Submodules/easyloggingpp/src)
 
 add_library(Cmx MODULE ${SOURCES} ${HEADERS})
-target_link_libraries(Cmx EdlPlugins Qt5::Core Qt5::Xml Qt5::XmlPatterns)
+target_link_libraries(Cmx EdlPlugins Qt5::Core)
 set_target_properties(Cmx PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/plugins")
 
 #Install plugin

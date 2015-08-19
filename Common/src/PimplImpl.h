@@ -10,20 +10,32 @@ namespace util
 
 template<typename T>
 Pimpl<T>::Pimpl()
+#ifdef MAKE_UNIQUE
+    : impl_(std::make_unique<T>())
+#else
     : impl_(new T())
+#endif
 {
 }
 
 template<typename T>
 template<typename ...Args>
 Pimpl<T>::Pimpl(Args&& ...args)
+#ifdef MAKE_UNIQUE
+    : impl_(std::make_unique<T>(std::forward<Args>(args)...))
+#else
     : impl_(new T(std::forward<Args>(args)...))
+#endif
 {
 }
 
 template<typename T>
 Pimpl<T>::Pimpl(const Pimpl& other)
+#ifdef MAKE_UNIQUE
+    : impl_(std::make_unique<T>(*other.impl_.get()))
+#else
     : impl_(new T(*other.impl_.get()))
+#endif
 {
 }
 

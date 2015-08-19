@@ -7,7 +7,11 @@ using namespace common::util::tests;
 class TestClass
 {
 public:
-    TestClass(int value1, const QString& value2 = QString())
+    TestClass()
+    {
+    }
+
+    explicit TestClass(int value1, const QString& value2 = QString())
         : impl_(value1, value2)
     {
     }
@@ -33,6 +37,11 @@ private:
         int value1_;
         QString value2_;
 
+        Impl()
+            : value1_(50)
+        {
+        }
+
         Impl(int value)
             : value1_(value)
         {
@@ -54,9 +63,13 @@ private:
 
 void PimplTest::pimplConstructionTest()
 {
-    TestClass instance(5);
+    TestClass instance;
 
-    QCOMPARE(5, instance.getValue());
+    QCOMPARE(50, instance.getValue());
+
+    TestClass instance1(5);
+
+    QCOMPARE(5, instance1.getValue());
 
     TestClass instance2(3, "TestString");
 
